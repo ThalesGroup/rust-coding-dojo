@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::error::Error;
 use std::f32::consts;
 use crate::combined::{CompetenceMatrix, Employee, Promotable};
-use crate::introduction::{Book, Library};
+use crate::introduction::{BookType, Book, Library};
 use crate::pattern_matching::{categorize_numbers, is_prime, Shape};
 use crate::string::{count_vowels, longest_word, merge_and_remove_duplicates};
 use crate::traits::{Calculator, CustomStruct, display_elements, MathOperation, Sortable};
@@ -14,36 +14,39 @@ mod pattern_matching;
 mod combined;
 
 fn main() {
-    // Section 1: Introduction - Exercise 1
+    // Section 1: Introduction - Exercise 2
     let book1 = Book {
         title: String::from("The Rust Programming Language"),
         author: String::from("Steve Klabnik and Carol Nichols"),
         publication_year: 2018,
+        book_type: BookType::Programming,
     };
 
-    // Section 1: Introduction - Exercise 2
+    // Section 1: Introduction - Exercise 3
     let library = Library {
         books: vec![
             Book {
                 title: String::from("Clean Code"),
                 author: String::from("Robert C. Martin"),
                 publication_year: 2008,
+                book_type: BookType::Programming,
             },
             Book {
                 title: String::from("Rust in Action"),
                 author: String::from("Tim McNamara"),
                 publication_year: 2020,
+                book_type: BookType::Programming,
             },
         ],
     };
 
-    // Section 1: Introduction - Exercise 3
+    // Section 1: Introduction - Exercise 4
     let current_year = 2024;
     let age = book1.calculate_age(current_year);
 
     // Display Book Details
     println!("Book 1 Details:");
-    println!("Title: {}, Author: {}, Year: {}", book1.title, book1.author, book1.publication_year);
+    println!("Title: {}, Author: {}, Year: {}, Type: {:?}", book1.title, book1.author, book1.publication_year, book1.book_type);
     println!("Age of Book 1: {} years", age);
 
     // Display Library Books
@@ -131,6 +134,11 @@ fn main() {
             println!("{}", employee);
             // Section 5: Combined Exercise - Exercise 2
             employee.promote();
+        }
+
+        println!("\nAfter Promotion:");
+        for employee in rust_employees.iter() {
+            println!("{}", employee);
         }
     } else {
         println!("No employees found with Rust skills.");

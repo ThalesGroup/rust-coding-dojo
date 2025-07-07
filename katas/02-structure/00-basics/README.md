@@ -103,4 +103,4 @@ The SETUP and STARTER packages must have been completed
 
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 
-Acces to the Rust book at https://doc.rust-lang.org/book/
+Access to the Rust book at https://doc.rust-lang.org/book/

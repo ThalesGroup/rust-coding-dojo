@@ -96,14 +96,13 @@ Master the basics of smart pointers in Rust
 
 ### Tasks
 
-- Introduction (5 minutes): `introduction.rs`
-- Box and Heap Allocation (15 minutes): `box.rs`
-- Rc and Shared Ownership (20 minutes): `rc.rs`
-- RefCell and Interior Mutability (20 minutes): `refcell.rs`
-- Combined Exercise (15 minutes): `combined.rs`
+- Box and Heap Allocation (15 minutes): [box.rs](src/box.rs)
+- Rc and Shared Ownership (20 minutes): [rc.rs](src/rc.rs)
+- RefCell and Interior Mutability (20 minutes): [refcell.rs](src/refcell.rs)
+- Combined Exercise (15 minutes): [combined.rs](src/combined.rs)
 - Q&A and Closing (5 minutes)
 
-Resolved exercises : [solutions](solutions/src/main.rs)
+Resolved exercises : [solutions](solutions/main.rs)
 
 ## How to run a kata
 All katas share the same structure:
@@ -132,6 +131,6 @@ The SETUP and STARTER packages must have been completed
 
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 
-Acces to the Rust book at https://doc.rust-lang.org/book/
+Access to the Rust book at https://doc.rust-lang.org/book/
 
 

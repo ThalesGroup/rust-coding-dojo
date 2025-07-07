@@ -67,14 +67,14 @@ Master the basics about structure handling in Rust
 
 ### Tasks
 
-1. Introduction (5 minutes) : [introduction.rs](examples/src/introduction.rs)
-2. Strings and Vectors (15 minutes) : [string.rs](examples/src/string.rs)
-3. Pattern Matching (20 minutes): [pattern_matching.rs](examples/src/pattern_matching.rs)
-4. Basics of Traits (20 minutes): [trait.rs](examples/src/traits)
-5. Combined Exercise (15 minutes): [combined.rs](examples/src/combined.rs)
+1. Introduction (5 minutes) : [introduction.rs](src/introduction.rs)
+2. Strings and Vectors (15 minutes) : [string.rs](src/string.rs)
+3. Pattern Matching (20 minutes): [pattern_matching.rs](src/pattern_matching.rs)
+4. Basics of Traits (20 minutes): [trait.rs](src/traits)
+5. Combined Exercise (15 minutes): [combined.rs](src/combined.rs)
 6. Q&A and Closing (5 minutes)
 
-Resolved exercises : [solutions](solutions/src/main.rs)
+Resolved exercises : [solutions](solutions/main.rs)
 
 ## How to run a kata
 All katas share the same structure:
@@ -103,4 +103,4 @@ The SETUP and STARTER packages must have been completed
 
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 
-Acces to the Rust book at https://doc.rust-lang.org/book/
+Access to the Rust book at https://doc.rust-lang.org/book/

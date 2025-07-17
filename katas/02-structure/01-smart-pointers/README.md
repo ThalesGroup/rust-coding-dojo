@@ -104,6 +104,25 @@ Master the basics of smart pointers in Rust
 
 Resolved exercises : [solutions](solutions/main.rs)
 
+---
+
+### ❓ FAQ: Rust Myths vs Reality
+
+Below are some common misconceptions (“myths”) about Rust, contrasted with what actually happens in practice — many illustrated by the smart‑pointer exercises in this kata.
+
+| Myth                                                        | Reality                                                                                                                                         | Related Exercises                                  |
+|-------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| **"Rust has zero memory bugs, always."**                    | Rust prevents many memory errors at compile time, but you can still create logic bugs, runtime panics (`RefCell` borrow violations), or leaks. | Combined Ex. 1 (leak), Combined Ex. 3 (RefCell panic) |
+| **"Rust cannot leak memory."**                              | Strong `Rc` cycles never drop to zero → leaked allocations. Rust has no GC to detect or collect them.                                           | Combined Ex. 1; Rc section Ex. 1 (shared tails)    |
+| **"You don't need smart pointers in Rust."**                | Smart pointers are central to building recursive, shared, or mutable shared data structures.                                                    | All sections                                       |
+| **"Rust forbids all shared mutability."**                   | It forbids unsafe shared mutability statically; you can opt into interior mutability via `RefCell`, `Mutex`, etc.                              | RefCell Ex. 1–3; Combined Ex. 3                    |
+| **"`Rc<RefCell<_>` is always safe."**                       | It’s flexible but shifts borrow checks to runtime; misuse leads to panics. Use carefully and document invariants.                              | RefCell Ex. 2–3; Combined Ex. 3                    |
+| **"Rust code is too rigid for graphs and complex structures."** | Use `Rc`, `Weak`, and `RefCell` to model DAGs, graphs, and shared trees safely (with care).                                                     | Rc Ex. 2; Combined Ex. 2                           |
+| **"Avoiding `unsafe` means you can’t get into trouble."**   | You can still leak memory, panic, or deadlock using only safe abstractions incorrectly.                                                         | Combined Ex. 1 & 3                                 |
+| **"Rust never panics unless you call `panic!()`."**         | Many standard types (like `RefCell`) panic on contract violations (e.g. double mutable borrow).                                                 | RefCell Ex. 1–3; Combined Ex. 3                    |
+
+---
+
 ## How to run a kata
 All katas share the same structure:
 ```

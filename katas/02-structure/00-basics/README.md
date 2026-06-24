@@ -76,6 +76,10 @@ Master the basics about structure handling in Rust
 
 Resolved exercises : [solutions](solutions/main.rs)
 
+## Domains
+
+`Structs` `Enums` `Traits` `Pattern Matching` `Vectors` `Strings`
+
 ## How to run a kata
 All katas share the same structure:
 ```

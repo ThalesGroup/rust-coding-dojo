@@ -1,4 +1,4 @@
-/**
+/*
  * Section 1 : Box Smart Pointers
  * 
  * - *Exercise 1:* Define an enum `List` to implement a singly linked list of integers.

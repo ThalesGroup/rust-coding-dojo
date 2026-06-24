@@ -28,6 +28,10 @@ cargo run
 cargo tests
 ```
 
+## Domains
+
+`Basics` `Structs` `Traits` `Display` `Pattern Matching`
+
 ## How to run a kata
 All katas share the same structure:
 ```

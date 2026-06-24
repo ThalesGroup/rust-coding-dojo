@@ -123,6 +123,10 @@ Below are some common misconceptions (“myths”) about Rust, contrasted with w
 
 ---
 
+## Domains
+
+`Ownership` `Box` `Rc` `RefCell` `Interior Mutability` `Memory Management`
+
 ## How to run a kata
 All katas share the same structure:
 ```
@@ -131,8 +135,8 @@ All katas share the same structure:
    |- bin
       |- exercise_1.rs
       |- exercise_2.rs
-   main.rs
-   ...
+    main.rs
+    ...
 |- solutions
    |- exercise_1.rs
    |- exercise_2.rs

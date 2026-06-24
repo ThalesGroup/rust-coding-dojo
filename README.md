@@ -1,7 +1,41 @@
 # Welcome in Rust coding dojo repository !
 
+![Rust Coding Dojo Banner](banner.png)
+
+<p align="center">
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml"><img src="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml/badge.svg?style=flat-square" alt="CI"></a><br>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/msrv.yml"><img src="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/msrv.yml/badge.svg?style=flat-square" alt="MSRV Workflow"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/deny.yml"><img src="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/deny.yml/badge.svg?style=flat-square" alt="Deny Workflow"></a><br>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/nightly.yml"><img src="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/nightly.yml/badge.svg?style=flat-square" alt="Nightly Workflow"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/release.yml"><img src="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/release.yml/badge.svg?style=flat-square" alt="Release Workflow"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/releases"><img src="https://img.shields.io/github/v/release/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Release"></a><br>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/commits/main/"><img src="https://img.shields.io/github/commits-since/NicolasPayneauT0132431/rust-coding-dojo/v0.1.0?style=flat-square" alt="Commits Since Release"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="License"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/changelog-CHANGELOG.md-blue?style=flat-square" alt="Changelog"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/commits/main"><img src="https://img.shields.io/github/last-commit/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Last Commit"></a><br>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo"><img src="https://img.shields.io/github/repo-size/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Repo Size"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/graphs/contributors"><img src="https://img.shields.io/github/contributors/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Contributors"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo"><img src="https://img.shields.io/github/languages/top/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Top Language"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo"><img src="https://img.shields.io/github/languages/count/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Language Count"></a>
+  <img src="https://img.shields.io/badge/Cargo%20Workspace-16%20katas-6f42c1?style=flat-square" alt="Workspace"><br>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/issues"><img src="https://img.shields.io/github/issues/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Open Issues"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Closed Issues"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/pulls"><img src="https://img.shields.io/github/issues-pr/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Open PRs"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/pulls?q=is%3Apr+is%3Aclosed"><img src="https://img.shields.io/github/issues-pr-closed/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Closed PRs"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/stargazers"><img src="https://img.shields.io/github/stars/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Stars"></a>
+  <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/network/members"><img src="https://img.shields.io/github/forks/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square" alt="Forks"></a><br>
+  <img src="https://img.shields.io/badge/Tracks-setup%20%7C%20starter%20%7C%20structure%20%7C%20advanced-0a7ea4?style=flat-square" alt="Tracks">
+  <img src="https://img.shields.io/badge/Rust-Edition%202021-dea584?style=flat-square&logo=rust" alt="Rust Edition">
+  <img src="https://img.shields.io/badge/MSRV-1.75.0-informational?style=flat-square" alt="MSRV">
+  <img src="https://img.shields.io/badge/CI-Solutions%20validated-success?style=flat-square" alt="CI Scope">
+</p>
+
 This place is intended to provide resources, documentation and templates to organize coding dojo sessions about Rust language.
 Feel free to open an issue if you wish to add a new one, update an existing one or if you have any question.
+
+## Repository Summary
+
+![Repository Summary](repo_summary.png)
 
 ## Rust Katas
 
@@ -35,6 +69,39 @@ The kata may consist in a single program with gaps, then we put the program sour
 
 If the kata consists in several small exercise programs, we put all the exercises in a `src/bin` folder at kata's root.
 We can just run the exercise by calling `cargo run --bin <exercise_n>` to run the targeted exercise, without needing the others to compile, or to comment anything.
+
+## Development
+
+All katas are organized as a Cargo workspace. You can run common commands from the repository root:
+
+```bash
+# Build all katas
+cargo build --workspace
+
+# Run all tests
+cargo test --workspace
+
+# Run linter
+cargo clippy --workspace
+
+# Format code
+cargo fmt --all
+```
+
+## CI Quality Automation
+
+### Automatic checks (run automatically)
+
+The **CI** workflow is activated automatically on:
+
+- push to `main`
+- pull requests targeting `main`
+
+It enforces quality gates:
+
+- `rustfmt --check` on changed `.rs` files in each push/PR
+- `cargo clippy --workspace --exclude ownership-borrowing`
+- `cargo doc --workspace --no-deps --exclude ownership-borrowing` with `RUSTDOCFLAGS="-D warnings"`
 
 ## Contributing
 

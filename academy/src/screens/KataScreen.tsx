@@ -5,7 +5,7 @@ import { askFerris, explainCode, reviewCode } from '../llm/ferris'
 import type { ChatMessage } from '../types'
 import { EditorView } from '@codemirror/view'
 import { EditorState } from '@codemirror/state'
-import { basicSetup } from '@codemirror/basic-setup'
+import { basicSetup } from 'codemirror'
 import { rust } from '@codemirror/lang-rust'
 import { oneDark } from '@codemirror/theme-one-dark'
 

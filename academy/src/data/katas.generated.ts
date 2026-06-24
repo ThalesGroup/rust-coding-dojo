@@ -23,7 +23,8 @@ Your mission is to help a quirky character named Link on his epic adventure thro
     starterCode: `fn main() {
     // See README.md
     todo!()
-}`,
+}
+`,
     solutionCode: `// Rustward sword: The Great Programming Quest
 
 fn main() {
@@ -64,7 +65,8 @@ fn defeat_beast(health: i32, stamina: f32) -> String {
     } else {
         "Link is no match for the beast!".to_string()
     }
-}`,
+}
+`,
     hints: [
       `💡 Regarde le README.md dans \`katas/01-starter/00-rustward-sword/\` pour les consignes.`,
       `💡 Consulte la solution dans \`katas/01-starter/00-rustward-sword/solutions/\` si tu bloques.`
@@ -620,7 +622,10 @@ mod tests {
     fn number_0_is_invalid() {
         let input = 0;
         let output = Roman::from(input).to_string();
-        println!("Wrong output: {} (Should have failed because the input (0) is invalid.)", output);
+        println!(
+            "Wrong output: {} (Should have failed because the input (0) is invalid.)",
+            output
+        );
     }
 }
 `,
@@ -646,8 +651,7 @@ In this kata you will develop a simple CLI (Command Line interface) Reverse Poli
     tests: [
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
     ],
-    starterCode: `
-pub mod cli {
+    starterCode: `pub mod cli {
     pub fn print_header() {
         clear_terminal_screen();
         println!("");
@@ -682,7 +686,9 @@ pub mod cli {
     }
 
     pub fn print_available_commands() {
-        println!("Input any floating point number. e.g. \\"123.45\\" for it to be added to the LIFO.");
+        println!(
+            "Input any floating point number. e.g. \\"123.45\\" for it to be added to the LIFO."
+        );
         println!("\\"+\\" to add the two last items on the LIFO.");
         println!("\\"-\\" to substract the two last items on the LIFO.");
         println!("\\"*\\" to multiply the two last items on the LIFO.");
@@ -695,6 +701,7 @@ pub mod cli {
         print!("{esc}c", esc = 27 as char);
     }
 }
+
 
 // Text - Based RPN calculator
 // RPN : https://en.wikipedia.org/wiki/Reverse_Polish_notation
@@ -728,9 +735,9 @@ pub mod cli {
 
 pub mod cli_prints;
 pub mod rpn_stack;
-use std::{io::Write, process::exit};
-use crate::rpn_stack::RPNStack;
 use crate::cli_prints::cli;
+use crate::rpn_stack::RPNStack;
+use std::{io::Write, process::exit};
 
 pub fn print_header() {
     // TODO 1: Print a welcoming message to the user on the command line
@@ -743,12 +750,11 @@ fn verify_operands(lifo: &RPNStack) -> bool {
     return false;
 }
 
-
 fn get_rpn_calculator_version() -> String {
-    let dot:char = '.';
-    let major_version:&str = "1";
-    let minor_version:Vec<u8> = vec![240, 159, 146, 150]; // Hint '💖';
-    let patch_version:u8 = 12;
+    let dot: char = '.';
+    let major_version: &str = "1";
+    let minor_version: Vec<u8> = vec![240, 159, 146, 150]; // Hint '💖';
+    let patch_version: u8 = 12;
     // TODO 5: Compute the version number of the RPN_Calculator major.minor.patch and return it
     return "1.0".to_string();
 }
@@ -775,7 +781,13 @@ fn main() {
         // Select operation from input
         match get_user_input() {
             Ok(inputs) => {
-                apply_inputs_to_stack_and_update_loop_controls(inputs, &mut stack, &mut continue_looping, &mut is_showing_commands, &mut first_time_running);
+                apply_inputs_to_stack_and_update_loop_controls(
+                    inputs,
+                    &mut stack,
+                    &mut continue_looping,
+                    &mut is_showing_commands,
+                    &mut first_time_running,
+                );
             } // end of string processing
             Err(_error) => {
                 cli::print_error_msg();
@@ -789,18 +801,23 @@ fn main() {
 }
 
 fn get_user_input() -> Result<String, std::io::Error> {
-    print!("{} ",get_rpn_calculator_version());
+    print!("{} ", get_rpn_calculator_version());
     print!("> ");
     std::io::stdout().flush().unwrap(); // To make sure the prompt is displayed before stdin is read.
-    // TODO 8: read from the CLI input using the read_line methode from the stdin reference obtained via the std::io prelude into a buffer
-    // return a Result<String, std::io::Error> based on what you read.
-    // There should be no warning at compile time ;)
-    // Hint : you will need a match statement, see the main function for an example
+                                        // TODO 8: read from the CLI input using the read_line methode from the stdin reference obtained via the std::io prelude into a buffer
+                                        // return a Result<String, std::io::Error> based on what you read.
+                                        // There should be no warning at compile time ;)
+                                        // Hint : you will need a match statement, see the main function for an example
     return Ok("q".to_string());
 }
 
-
-fn apply_inputs_to_stack_and_update_loop_controls(inputs: String, stack:&mut RPNStack, continue_looping:&mut bool, is_showing_commands: &mut bool, first_time_running: &mut bool) {
+fn apply_inputs_to_stack_and_update_loop_controls(
+    inputs: String,
+    stack: &mut RPNStack,
+    continue_looping: &mut bool,
+    is_showing_commands: &mut bool,
+    first_time_running: &mut bool,
+) {
     // Cast inputs
     if inputs.trim().eq_ignore_ascii_case("+") {
         // Do the add
@@ -860,6 +877,7 @@ fn apply_inputs_to_stack_and_update_loop_controls(inputs: String, stack:&mut RPN
     }
 }
 
+
 pub struct RPNStack {
     lifo: Vec<f64>,
 }
@@ -894,8 +912,7 @@ impl RPNStack {
     }
 }
 `,
-    solutionCode: `
-pub mod cli {
+    solutionCode: `pub mod cli {
     pub fn print_header() {
         clear_terminal_screen();
         println!("");
@@ -930,7 +947,9 @@ pub mod cli {
     }
 
     pub fn print_available_commands() {
-        println!("Input any floating point number. e.g. \\"123.45\\" for it to be added to the LIFO.");
+        println!(
+            "Input any floating point number. e.g. \\"123.45\\" for it to be added to the LIFO."
+        );
         println!("\\"+\\" to add the two last items on the LIFO.");
         println!("\\"-\\" to substract the two last items on the LIFO.");
         println!("\\"*\\" to multiply the two last items on the LIFO.");
@@ -943,6 +962,7 @@ pub mod cli {
         print!("{esc}c", esc = 27 as char);
     }
 }
+
 
 // Text - Based RPN calculator
 // RPN : https://en.wikipedia.org/wiki/Reverse_Polish_notation
@@ -976,9 +996,9 @@ pub mod cli {
 
 pub mod cli_prints;
 pub mod rpn_stack;
-use std::{io::Write, process::exit};
-use crate::rpn_stack::RPNStack;
 use crate::cli_prints::cli;
+use crate::rpn_stack::RPNStack;
+use std::{io::Write, process::exit};
 
 pub fn print_header() {
     cli::clear_terminal_screen();
@@ -996,13 +1016,12 @@ fn verify_operands(lifo: &RPNStack) -> bool {
     lifo.length() >= 2
 }
 
-
 fn get_rpn_calculator_version() -> String {
-    let dot:char = '.';
-    let major_version:&str = "1";
-    let minor_version:Vec<u8> = vec![240, 159, 146, 150]; // Hint '💖';
-    let patch_version:u8 = 12;
-    let mut version:String = String::from(major_version);
+    let dot: char = '.';
+    let major_version: &str = "1";
+    let minor_version: Vec<u8> = vec![240, 159, 146, 150]; // Hint '💖';
+    let patch_version: u8 = 12;
+    let mut version: String = String::from(major_version);
     version.push(dot);
     version.push_str(&String::from_utf8(minor_version).unwrap());
     version.push(dot);
@@ -1011,7 +1030,7 @@ fn get_rpn_calculator_version() -> String {
 }
 
 fn get_user_input() -> Result<String, std::io::Error> {
-    print!("{} ",get_rpn_calculator_version());
+    print!("{} ", get_rpn_calculator_version());
     print!("> ");
     std::io::stdout().flush().unwrap(); // To make sure the prompt is displayed before stdin is read.
     let mut buffer = String::new();
@@ -1050,7 +1069,13 @@ fn main() {
         // Select operation from input
         match get_user_input() {
             Ok(inputs) => {
-                apply_inputs_to_stack_and_update_loop_controls(inputs, &mut stack, &mut continue_looping, &mut is_showing_commands, &mut first_time_running);
+                apply_inputs_to_stack_and_update_loop_controls(
+                    inputs,
+                    &mut stack,
+                    &mut continue_looping,
+                    &mut is_showing_commands,
+                    &mut first_time_running,
+                );
             } // end of string processing
             Err(_error) => {
                 cli::print_error_msg();
@@ -1062,7 +1087,13 @@ fn main() {
     exit(0);
 }
 
-fn apply_inputs_to_stack_and_update_loop_controls(inputs: String, stack:&mut RPNStack, continue_looping:&mut bool, is_showing_commands: &mut bool, first_time_running: &mut bool) {
+fn apply_inputs_to_stack_and_update_loop_controls(
+    inputs: String,
+    stack: &mut RPNStack,
+    continue_looping: &mut bool,
+    is_showing_commands: &mut bool,
+    first_time_running: &mut bool,
+) {
     // Cast inputs
     if inputs.trim().eq_ignore_ascii_case("+") {
         // Do the add
@@ -1144,6 +1175,7 @@ fn apply_inputs_to_stack_and_update_loop_controls(inputs: String, stack:&mut RPN
     }
 }
 
+
 pub struct RPNStack {
     lifo: Vec<f64>,
 }
@@ -1199,7 +1231,7 @@ TBC`,
       { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `struct Container {
-    str: String
+    str: String,
 }
 
 impl Drop for Container {
@@ -1215,14 +1247,13 @@ fn consume(str_consumed: Container) {
 fn main() {
     let str_1 = String::from("string");
 
-    let container = Container {
-        str: str_1
-    };
+    let container = Container { str: str_1 };
 
     println!("Before function call");
     consume(container);
     println!("End of main scope");
 }
+
 
 // Instruction: Make the program compiling and add the line of code to multiply the element by two
 
@@ -1231,7 +1262,6 @@ fn mul_two(buffer_s: [i32]) {
         // multiply the element by two
     }
 }
-
 
 fn main() {
     let mut buffer_s = [1, 23, 41, 83, 40, 91, 10];
@@ -1273,8 +1303,7 @@ fn main() {
 
 // Instruction: Make the program compiling and implement borrowing into return_vec function without using a return
 
-fn return_vec(v: Vec<i32>) -> Vec<i32>
-{
+fn return_vec(v: Vec<i32>) -> Vec<i32> {
     v.sort();
     v
 }
@@ -1324,28 +1353,30 @@ fn main() {
     println!("{}", longest(alice, bob));
 }
 
+
 #[derive(Debug)]
 struct Person {
-    name: &str // error: expected lifetime parameter
+    name: &str, // error: expected lifetime parameter
 }
 
 fn main() {
     let alice = Person { name: "Alice" };
 
     println!("alice: {:?}", alice);
-}`,
+}
+`,
     solutionCode: `// Instruction: Make the program compiling and add the line of code to multiply the element by two
 
-fn mul_two(buffer_s: &mut [i32]) { // We use '&' to use a reference and "mut" to specify that the variable is mutable
+fn mul_two(buffer_s: &mut [i32]) {
+    // We use '&' to use a reference and "mut" to specify that the variable is mutable
     for element in buffer_s {
         *element *= 2; // Unreferencing the variable to update its value
     }
 }
 
-
 fn main() {
     let mut buffer_s = [1, 23, 41, 83, 40, 91, 10];
-    mul_two(&mut buffer_s); // We indicate it's a reference and it's mutable 
+    mul_two(&mut buffer_s); // We indicate it's a reference and it's mutable
     println!("{:?}", buffer_s);
 }
 
@@ -1365,17 +1396,20 @@ fn main() {
 // We enter into the rule of the number of references, where if we have a mutable variable, only one reference is allowe
 // By moving *y += 100 to line 5, the compiler sees that after this line y is no longer used, so we can modify z with complete peacefully.
 
+
 // Instruction: Make the program compiling
 
-fn borrowing(element_vec: &String) // we pass the reference and precise also the type which is a String 
+fn borrowing(element_vec: &String)
+// we pass the reference and precise also the type which is a String
 {
     println!("{}", element_vec);
 }
 
 fn main() {
-    let vec: Vec<String> = vec![String::from("Embedded"), 
-        String::from("System"), 
-        String::from("Software")
+    let vec: Vec<String> = vec![
+        String::from("Embedded"),
+        String::from("System"),
+        String::from("Software"),
     ];
     borrowing(&vec[1]); // we pass the reference of the vector element
 
@@ -1384,10 +1418,11 @@ fn main() {
     }
 }
 
+
 // Instruction: Make the program compiling and implement borrowing into return_vec function without using a return
 
-
-fn return_vec(v: &mut Vec<i32>) // Sort() changes the vector so must specify it is a mut and of course its reference for the borrowing
+fn return_vec(v: &mut Vec<i32>)
+// Sort() changes the vector so must specify it is a mut and of course its reference for the borrowing
 {
     v.sort();
 }
@@ -1406,7 +1441,6 @@ fn main() {
 
     string_uppercase(&mut data); // We change the order so the move operation into get_char is performed at the end
     get_char(data);
-
 }
 
 // Should not take ownership
@@ -1450,6 +1484,7 @@ fn string_uppercase(data: &mut String) {
  * The exercises in this coding dojo are designed to progressively increase in difficulty.
  */
 
+
 /*
  * Section 1 : Introduction
  * - *Exercise 1:* Define an Enum BookType with some kinds like \`comic\`, \`sf\`, \`novel\` and \`programming\`.
@@ -1462,11 +1497,12 @@ fn string_uppercase(data: &mut String) {
  * The exercises in this coding dojo are designed to progressively increase in difficulty.
  */
 
-mod introduction;
-mod string;
-mod pattern_matching;
-mod traits;
+
 mod combined;
+mod introduction;
+mod pattern_matching;
+mod string;
+mod traits;
 
 fn main() {
     todo!()
@@ -1483,6 +1519,7 @@ fn main() {
  * The exercises in this coding dojo are designed to progressively increase in difficulty.
  */
 
+
 /*
  * Section 2 : String and Vector
  * - *Exercise 1:* Given a string, count the number of vowels (a, e, i, o, u) and print the result.
@@ -1493,6 +1530,7 @@ fn main() {
  * The exercises in this coding dojo are designed to progressively increase in difficulty.
  */
 
+
 /*
  * Section 4 : Basics of Traits
  * - *Exercise 1:* Define a trait \`MathOperation\` with a method to perform a basic arithmetic operation (addition, subtraction, multiplication, etc.). Implement the trait for a custom struct.
@@ -1501,7 +1539,8 @@ fn main() {
  *
  * Define in this module the types, methods and function and use them in \`main.rs\`.
  * The exercises in this coding dojo are designed to progressively increase in difficulty.
- */`,
+ */
+`,
     solutionCode: `/**
  * Section 5 : Combined Exercise
  * - *Exercise 1:* Build a program that manages a list of employees. Each employee has a name, age, and job title (an num). Implement sorting based on age and display the sorted list. Make the struct Employee implements the trait Display.
@@ -1526,7 +1565,11 @@ pub struct Employee {
 // Implement Display trait for Employee
 impl fmt::Display for Employee {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "Name: {}, Age: {}, Job Title: {}, Salary: {}", self.name, self.age, self.job_title, self.salary)
+        write!(
+            f,
+            "Name: {}, Age: {}, Job Title: {}, Salary: {}",
+            self.name, self.age, self.job_title, self.salary
+        )
     }
 }
 
@@ -1577,7 +1620,7 @@ pub struct Book {
     pub title: String,
     pub author: String,
     pub publication_year: u32,
-    pub book_type: BookType
+    pub book_type: BookType,
 }
 
 // Section 1: Introduction - Exercise 3
@@ -1588,7 +1631,10 @@ pub struct Library {
 impl Library {
     pub fn display_books(&self) {
         for book in &self.books {
-            println!("Title: {}, Author: {}, Year: {}, Type: {:?}", book.title, book.author, book.publication_year, book.book_type);
+            println!(
+                "Title: {}, Author: {}, Year: {}, Type: {:?}",
+                book.title, book.author, book.publication_year, book.book_type
+            );
         }
     }
 }
@@ -1600,20 +1646,21 @@ impl Book {
     }
 }
 
+
+use crate::combined::{CompetenceMatrix, Employee, Promotable};
+use crate::introduction::{Book, BookType, Library};
+use crate::pattern_matching::{categorize_numbers, is_prime, Shape};
+use crate::string::{count_vowels, longest_word, merge_and_remove_duplicates};
+use crate::traits::{display_elements, Calculator, CustomStruct, MathOperation, Sortable};
 use std::collections::HashMap;
 use std::error::Error;
 use std::f32::consts;
-use crate::combined::{CompetenceMatrix, Employee, Promotable};
-use crate::introduction::{BookType, Book, Library};
-use crate::pattern_matching::{categorize_numbers, is_prime, Shape};
-use crate::string::{count_vowels, longest_word, merge_and_remove_duplicates};
-use crate::traits::{Calculator, CustomStruct, display_elements, MathOperation, Sortable};
 
+mod combined;
 mod introduction;
+mod pattern_matching;
 mod string;
 mod traits;
-mod pattern_matching;
-mod combined;
 
 fn main() {
     // Section 1: Introduction - Exercise 2
@@ -1648,7 +1695,10 @@ fn main() {
 
     // Display Book Details
     println!("Book 1 Details:");
-    println!("Title: {}, Author: {}, Year: {}, Type: {:?}", book1.title, book1.author, book1.publication_year, book1.book_type);
+    println!(
+        "Title: {}, Author: {}, Year: {}, Type: {:?}",
+        book1.title, book1.author, book1.publication_year, book1.book_type
+    );
     println!("Age of Book 1: {} years", age);
 
     // Display Library Books
@@ -1704,15 +1754,32 @@ fn main() {
     display_elements(display_elements_vector);
 
     // Section 4: Basics of Traits - Exercise 3
-    let mut custom_struct = CustomStruct { numbers: vec![3, 1, 4, 1, 5, 9] };
+    let mut custom_struct = CustomStruct {
+        numbers: vec![3, 1, 4, 1, 5, 9],
+    };
     custom_struct.sort();
     println!("Sorted Numbers: {:?}", custom_struct.numbers);
 
     // Section 5: Combined Exercise - Exercise 1
     let mut employees = vec![
-        Employee { name: String::from("Alice"), age: 30, job_title: String::from("Manager"), salary: 80000.0 },
-        Employee { name: String::from("Bob"), age: 28, job_title: String::from("Senior Engineer"), salary: 75000.0 },
-        Employee { name: String::from("Charlie"), age: 35, job_title: String::from("Junior Engineer"), salary: 60000.0 },
+        Employee {
+            name: String::from("Alice"),
+            age: 30,
+            job_title: String::from("Manager"),
+            salary: 80000.0,
+        },
+        Employee {
+            name: String::from("Bob"),
+            age: 28,
+            job_title: String::from("Senior Engineer"),
+            salary: 75000.0,
+        },
+        Employee {
+            name: String::from("Charlie"),
+            age: 35,
+            job_title: String::from("Junior Engineer"),
+            salary: 60000.0,
+        },
     ];
 
     // Sort employees by age
@@ -1720,7 +1787,6 @@ fn main() {
 
     // Section 5: Combined Exercise - Exercise 2
     // Promote employees
-
 
     // Section 5: Combined Exercise - Exercise 3
     // Create competence matrix with skills
@@ -1792,6 +1858,7 @@ impl Shape {
     }
 }
 
+
 /**
  * Section 2 : String and Vector
  * - *Exercise 1:* Given a string, count the number of vowels (a, e, i, o, u) and print the result.
@@ -1804,7 +1871,10 @@ impl Shape {
 
 // Section 2: Strings and Vectors - Exercise 1
 pub fn count_vowels(input_string: &str) -> usize {
-    input_string.chars().filter(|&c| "aeiouAEIOU".contains(c)).count()
+    input_string
+        .chars()
+        .filter(|&c| "aeiouAEIOU".contains(c))
+        .count()
 }
 
 // Section 2: Strings and Vectors - Exercise 2
@@ -1817,7 +1887,10 @@ pub fn merge_and_remove_duplicates(mut vec1: Vec<i32>, mut vec2: Vec<i32>) -> Ve
 
 // Section 2: Strings and Vectors - Exercise 3
 pub fn longest_word(sentence: &str) -> &str {
-    sentence.split_whitespace().max_by_key(|&word| word.len()).unwrap_or("")
+    sentence
+        .split_whitespace()
+        .max_by_key(|&word| word.len())
+        .unwrap_or("")
 }
 
 
@@ -1863,7 +1936,8 @@ impl Sortable for CustomStruct {
     fn sort(&mut self) {
         self.numbers.sort();
     }
-}`,
+}
+`,
     hints: [
       `💡 Regarde le README.md dans \`katas/02-structure/00-basics/\` pour les consignes.`
     ],
@@ -1884,7 +1958,7 @@ impl Sortable for CustomStruct {
     ],
     starterCode: `/*
  * Section 1 : Box Smart Pointers
- * 
+ *
  * - *Exercise 1:* Define an enum \`List\` to implement a singly linked list of integers.
  *     - Use \`Box\` to enable recursive types.
  *     - Implement a method \`prepend\` to add elements to the front of the list.
@@ -1904,9 +1978,10 @@ impl Sortable for CustomStruct {
  * The exercises in this coding dojo are designed to explore real use-cases for Box in Rust.
  */
 
+
 /*
  * Section 4 : Rc + RefCell Combined
- * 
+ *
  * - *Exercise 1:* Implement a bidirectional \`Person\` struct using \`Rc<RefCell<T>>\`.
  *     - Each \`Person\` has a name and an optional \`friend\`.
  *     - Use \`Rc<RefCell<Person>>\` to allow two persons to point to each other.
@@ -1924,20 +1999,22 @@ impl Sortable for CustomStruct {
  * These exercises show both the power and the pitfalls of combining Rc and RefCell in Rust.
  */
 
+
 #![allow(clippy::duplicate_mod)]
 
 mod r#box;
+mod combined;
 mod rc;
 mod refcell;
-mod combined;
 
 fn main() {
     todo!()
 }
 
+
 /*
  * Section 2 : Rc & Shared Ownership
- * 
+ *
  * - *Exercise 1:* Define an enum \`RcList\` to implement a singly linked list of integers.
  *     - Use \`Rc\` to enable shared ownership of list tails.
  *     - Create multiple lists that share the same suffix.
@@ -1957,9 +2034,10 @@ fn main() {
  * The exercises in this coding dojo are designed to explore real use-cases for Rc in Rust.
  */
 
+
 /*
  * Section 3 : RefCell & Interior Mutability
- * 
+ *
  * - *Exercise 1:* Define a struct \`Counter\` that wraps an integer inside a \`RefCell<i32>\`.
  *     - Implement methods \`increment\`, \`get\`, and \`reset\`.
  *     - Demonstrate how interior mutability allows mutation through an immutable reference.
@@ -1976,10 +2054,11 @@ fn main() {
  *
  * Define in this module the types, methods, and functions, and use them in \`main.rs\`.
  * The exercises in this coding dojo are designed to explore real use-cases for RefCell in Rust.
- */`,
+ */
+`,
     solutionCode: `/**
  * Section 1 : Box Smart Pointers
- * 
+ *
  * - *Exercise 1:* Define an enum \`List\` to implement a singly linked list of integers.
  *     - Use \`Box\` to enable recursive types.
  *     - Implement a method \`prepend\` to add elements to the front of the list.
@@ -2087,7 +2166,7 @@ pub struct MyRc<T> {
     count: usize,
 }
 
-impl<T : Copy> MyRc<T> {
+impl<T: Copy> MyRc<T> {
     pub fn new(value: T) -> Self {
         MyRc {
             value: Box::new(value),
@@ -2114,7 +2193,7 @@ impl<T : Copy> MyRc<T> {
 
 /**
  * Section 4 : Rc + RefCell Combined
- * 
+ *
  * - *Exercise 1:* Implement a bidirectional \`Person\` struct using \`Rc<RefCell<T>>\`.
  *     - Each \`Person\` has a name and an optional \`friend\`.
  *     - Use \`Rc<RefCell<Person>>\` to allow two persons to point to each other.
@@ -2131,88 +2210,87 @@ impl<T : Copy> MyRc<T> {
  *
  * These exercises show both the power and the pitfalls of combining Rc and RefCell in Rust.
  */
+use std::cell::RefCell;
+use std::panic;
+use std::rc::{Rc, Weak};
 
- use std::cell::RefCell;
- use std::rc::{Rc, Weak};
- use std::panic;
- 
- 
- // Section 4 : Rc + RefCell Combined - Exercise 1
- 
- #[derive(Debug)]
- pub struct Person {
-     pub name: String,
-     pub friend: RefCell<Option<Rc<Person>>>,
- }
- 
- impl Person {
-     pub fn new(name: &str) -> Rc<Self> {
-         Rc::new(Person {
-             name: name.to_string(),
-             friend: RefCell::new(None),
-         })
-     }
- 
-     pub fn befriend(a: &Rc<Person>, b: &Rc<Person>) {
-         *a.friend.borrow_mut() = Some(Rc::clone(b));
-         *b.friend.borrow_mut() = Some(Rc::clone(a));
-     }
- }
- 
- // Section 4 : Rc + RefCell Combined - Exercise 2
- 
- #[derive(Debug)]
- pub struct GraphNode {
-     pub name: String,
-     pub neighbors: RefCell<Vec<Weak<GraphNode>>>,
- }
- 
- impl GraphNode {
-     pub fn new(name: &str) -> Rc<Self> {
-         Rc::new(GraphNode {
-             name: name.to_string(),
-             neighbors: RefCell::new(vec![]),
-         })
-     }
- 
-     pub fn connect(a: &Rc<Self>, b: &Rc<Self>) {
-         a.neighbors.borrow_mut().push(Rc::downgrade(b));
-         b.neighbors.borrow_mut().push(Rc::downgrade(a));
-     }
- 
-     pub fn print_neighbors(&self) {
-         for weak in self.neighbors.borrow().iter() {
-             if let Some(neigh) = weak.upgrade() {
-                 println!("{} is connected to {}", self.name, neigh.name);
-             }
-         }
-     }
- }
- 
- // Section 4 : Rc + RefCell Combined - Exercise 3
- 
- pub struct Trap {
-     value: RefCell<i32>,
- }
- 
- impl Trap {
-     pub fn new(x: i32) -> Self {
-         Trap {
-             value: RefCell::new(x),
-         }
-     }
- 
-     pub fn double_mut_borrow(&self) {
-         let _first = self.value.borrow_mut();
-         let _second = self.value.borrow_mut(); // PANIC at the execution
-     }
- }
- 
- pub fn run_trap() {
-     let trap = Trap::new(10);
-     // This will crash the program with a panic, but that's the point
-     trap.double_mut_borrow();
- }
+// Section 4 : Rc + RefCell Combined - Exercise 1
+
+#[derive(Debug)]
+pub struct Person {
+    pub name: String,
+    pub friend: RefCell<Option<Rc<Person>>>,
+}
+
+impl Person {
+    pub fn new(name: &str) -> Rc<Self> {
+        Rc::new(Person {
+            name: name.to_string(),
+            friend: RefCell::new(None),
+        })
+    }
+
+    pub fn befriend(a: &Rc<Person>, b: &Rc<Person>) {
+        *a.friend.borrow_mut() = Some(Rc::clone(b));
+        *b.friend.borrow_mut() = Some(Rc::clone(a));
+    }
+}
+
+// Section 4 : Rc + RefCell Combined - Exercise 2
+
+#[derive(Debug)]
+pub struct GraphNode {
+    pub name: String,
+    pub neighbors: RefCell<Vec<Weak<GraphNode>>>,
+}
+
+impl GraphNode {
+    pub fn new(name: &str) -> Rc<Self> {
+        Rc::new(GraphNode {
+            name: name.to_string(),
+            neighbors: RefCell::new(vec![]),
+        })
+    }
+
+    pub fn connect(a: &Rc<Self>, b: &Rc<Self>) {
+        a.neighbors.borrow_mut().push(Rc::downgrade(b));
+        b.neighbors.borrow_mut().push(Rc::downgrade(a));
+    }
+
+    pub fn print_neighbors(&self) {
+        for weak in self.neighbors.borrow().iter() {
+            if let Some(neigh) = weak.upgrade() {
+                println!("{} is connected to {}", self.name, neigh.name);
+            }
+        }
+    }
+}
+
+// Section 4 : Rc + RefCell Combined - Exercise 3
+
+pub struct Trap {
+    value: RefCell<i32>,
+}
+
+impl Trap {
+    pub fn new(x: i32) -> Self {
+        Trap {
+            value: RefCell::new(x),
+        }
+    }
+
+    pub fn double_mut_borrow(&self) {
+        let _first = self.value.borrow_mut();
+        let _second = self.value.borrow_mut(); // PANIC at the execution
+    }
+}
+
+pub fn run_trap() {
+    let trap = Trap::new(10);
+    // This will crash the program with a panic, but that's the point
+    trap.double_mut_borrow();
+}
+
 
 use crate::r#box::{List, TreeNode, MyRc};
 use crate::rc::{RcList, TreeNode1}
@@ -2455,7 +2533,7 @@ pub fn demo_rc_counts() {
 
 /**
  * Section 3 : RefCell & Interior Mutability
- * 
+ *
  * - *Exercise 1:* Define a struct \`Counter\` that wraps an integer inside a \`RefCell<i32>\`.
  *     - Implement methods \`increment\`, \`get\`, and \`reset\`.
  *     - Demonstrate how interior mutability allows mutation through an immutable reference.
@@ -2473,7 +2551,6 @@ pub fn demo_rc_counts() {
  * Define in this module the types, methods, and functions, and use them in \`main.rs\`.
  * The exercises in this coding dojo are designed to explore real use-cases for RefCell in Rust.
  */
-
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -2526,7 +2603,6 @@ impl SharedLog {
         }
     }
 }
-
 
 // Section 3 RefCell & Interior Mutability - Exercise 3
 

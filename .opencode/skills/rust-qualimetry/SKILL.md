@@ -73,7 +73,7 @@ wsl wc -l /tmp/clippy-report.json
 ## Créer un projet SonarQube et un token
 
 ```powershell
-$TOKEN = "squ_d0491e57cd5ca0d91cb7a034abd78cbc274bf5e5"   # token admin local
+$TOKEN = "<ADMIN_TOKEN>"   # token admin local
 
 # Créer un projet (remplacer my-kata-key et My Kata)
 wsl curl -s -X POST -H "Authorization: Bearer $TOKEN" `
@@ -141,7 +141,7 @@ Start-Sleep -Seconds 60
 Set-Location katas\01-starter\04-fizzbuzz
 
 # 3. Créer le projet SonarQube
-$ADMIN_TOKEN = "squ_d0491e57cd5ca0d91cb7a034abd78cbc274bf5e5"
+$ADMIN_TOKEN = "<ADMIN_TOKEN>"
 wsl curl -s -X POST -H "Authorization: Bearer $ADMIN_TOKEN" `
   "http://172.17.0.1:9000/api/projects/create" `
   --data "project=fizzbuzz&name=FizzBuzz"
@@ -185,7 +185,7 @@ wsl docker restart sonarqube
 | Problème | Solution |
 |----------|----------|
 | `Connection refused` sur localhost:9000 | `wsl docker start sonarqube` et attendre 60s |
-| `401 Unauthorized` | Utiliser le token admin `squ_d0491e57cd5ca0d91cb7a034abd78cbc274bf5e5` |
+| `401 Unauthorized` | Utiliser le token admin `<ADMIN_TOKEN>` |
 | Plugin Rust absent | Réinstaller le plugin (voir section ci-dessus) |
 | Quality Gate rouge sur couverture | Ajouter `-Dsonar.coverage.exclusions=**` ou générer les rapports de couverture avec `cargo tarpaulin` |
 | `No files to analyze` | Vérifier `sonar.sources=src` et être dans le bon répertoire |
@@ -198,4 +198,4 @@ wsl docker restart sonarqube
 - **Plugin community-rust** : https://github.com/C4tWithShell/community-rust
 - **sonar-scanner Docker** : `sonarsource/sonar-scanner-cli:latest`
 - **Cargo Tarpaulin** (couverture) : `cargo install cargo-tarpaulin`
-- **Token admin** : `squ_d0491e57cd5ca0d91cb7a034abd78cbc274bf5e5`
+- **Token admin** : `<ADMIN_TOKEN>`

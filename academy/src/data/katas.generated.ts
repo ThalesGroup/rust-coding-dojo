@@ -7,10 +7,10 @@ export const KATAS: Kata[] = [
     title: 'Rustward sword: The Great Programming Quest',
     titleEn: 'Rustward sword: The Great Programming Quest',
     number: 1,
-    total: 6,
+    total: 36,
     difficulty: 'facile',
     concept: 'bases',
-    xpReward: 25,
+    xpReward: 30,
     description: `Welcome, brave adventurer, to the land of Rust! Your quest awaits, but before you embark on your journey, you must prove your worth by mastering the fundamentals of Rust programming.
 
 Your mission is to help a quirky character named Link on his epic adventure through the Link Forest and to complete various basic challenges.
@@ -77,7 +77,7 @@ fn defeat_beast(health: i32, stamina: f32) -> String {
     title: 'Roman Numerals',
     titleEn: 'Roman Numerals',
     number: 2,
-    total: 6,
+    total: 36,
     difficulty: 'facile',
     concept: 'bases',
     xpReward: 30,
@@ -639,10 +639,10 @@ mod tests {
     title: 'Text Based RPN calculator',
     titleEn: 'Text Based RPN calculator',
     number: 3,
-    total: 6,
+    total: 36,
     difficulty: 'facile',
     concept: 'bases',
-    xpReward: 35,
+    xpReward: 30,
     description: `RPN : https://en.wikipedia.org/wiki/Reverse_Polish_notation
 
 Build a text based Reverse Polish Notation (RPN) calculator.
@@ -1220,10 +1220,10 @@ impl RPNStack {
     title: 'Ownership Borrowing',
     titleEn: 'Ownership Borrowing',
     number: 4,
-    total: 6,
+    total: 36,
     difficulty: 'moyen',
     concept: 'ownership',
-    xpReward: 45,
+    xpReward: 50,
     description: `TBC
 
 TBC`,
@@ -1461,14 +1461,1557 @@ fn string_uppercase(data: &mut String) {
     ],
   },
   {
+    id: 'kata-01-starter-04-fizzbuzz',
+    title: 'FizzBuzz',
+    titleEn: 'FizzBuzz',
+    number: 5,
+    total: 36,
+    difficulty: 'facile',
+    concept: 'bases',
+    xpReward: 30,
+    description: `This kata is based on [FizzBuzz from Coding Dojo](https://codingdojo.org/kata/FizzBuzz/).
+
+Implement the \`fizz_buzz\` function that returns the appropriate string for each number.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO 1: Implement the fizz_buzz function that takes a u32 and returns a String.
+// - For multiples of 3, return "Fizz"
+// - For multiples of 5, return "Buzz"
+// - For multiples of both 3 and 5, return "FizzBuzz"
+// - Otherwise, return the number as a string
+fn fizz_buzz(n: u32) -> String {
+    todo!("Implement fizz_buzz")
+}
+
+fn main() {
+    for i in 1..=100 {
+        println!("{}", fizz_buzz(i));
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_1_returns_1() {
+        assert_eq!(fizz_buzz(1), "1");
+    }
+
+    #[test]
+    fn test_3_returns_fizz() {
+        assert_eq!(fizz_buzz(3), "Fizz");
+    }
+
+    #[test]
+    fn test_5_returns_buzz() {
+        assert_eq!(fizz_buzz(5), "Buzz");
+    }
+
+    #[test]
+    fn test_15_returns_fizzbuzz() {
+        assert_eq!(fizz_buzz(15), "FizzBuzz");
+    }
+
+    #[test]
+    fn test_30_returns_fizzbuzz() {
+        assert_eq!(fizz_buzz(30), "FizzBuzz");
+    }
+}
+`,
+    solutionCode: `fn fizz_buzz(n: u32) -> String {
+    match (n % 3, n % 5) {
+        (0, 0) => "FizzBuzz".to_string(),
+        (0, _) => "Fizz".to_string(),
+        (_, 0) => "Buzz".to_string(),
+        _ => n.to_string(),
+    }
+}
+
+fn main() {
+    for i in 1..=100 {
+        println!("{}", fizz_buzz(i));
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_1_returns_1() {
+        assert_eq!(fizz_buzz(1), "1");
+    }
+
+    #[test]
+    fn test_3_returns_fizz() {
+        assert_eq!(fizz_buzz(3), "Fizz");
+    }
+
+    #[test]
+    fn test_5_returns_buzz() {
+        assert_eq!(fizz_buzz(5), "Buzz");
+    }
+
+    #[test]
+    fn test_15_returns_fizzbuzz() {
+        assert_eq!(fizz_buzz(15), "FizzBuzz");
+    }
+
+    #[test]
+    fn test_30_returns_fizzbuzz() {
+        assert_eq!(fizz_buzz(30), "FizzBuzz");
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/01-starter/04-fizzbuzz/\` pour les consignes.`,
+      `💡 Consulte la solution dans \`katas/01-starter/04-fizzbuzz/solutions/\` si tu bloques.`
+    ],
+  },
+  {
+    id: 'kata-01-starter-05-leap-years',
+    title: 'Leap Years',
+    titleEn: 'Leap Years',
+    number: 6,
+    total: 36,
+    difficulty: 'facile',
+    concept: 'bases',
+    xpReward: 30,
+    description: `This kata is based on [Leap Years from Coding Dojo](https://codingdojo.org/kata/LeapYears/).
+
+Implement the \`is_leap_year\` function that returns true if a given year is a leap year.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO 1: Implement the is_leap_year function that takes a u32 year and returns a bool.
+// Rules:
+// - All years divisible by 400 ARE leap years
+// - All years divisible by 100 but not by 400 are NOT leap years
+// - All years divisible by 4 but not by 100 ARE leap years
+// - All years not divisible by 4 are NOT leap years
+fn is_leap_year(year: u32) -> bool {
+    todo!("Implement is_leap_year")
+}
+
+fn main() {
+    let test_years = [1900, 2000, 2004, 2008, 2012, 2016, 2020, 2024, 2100];
+    for year in test_years {
+        println!(
+            "{}: {}",
+            year,
+            if is_leap_year(year) {
+                "leap year"
+            } else {
+                "not leap year"
+            }
+        );
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn year_2000_is_leap() {
+        assert!(is_leap_year(2000));
+    }
+
+    #[test]
+    fn year_1700_is_not_leap() {
+        assert!(!is_leap_year(1700));
+    }
+
+    #[test]
+    fn year_2008_is_leap() {
+        assert!(is_leap_year(2008));
+    }
+
+    #[test]
+    fn year_2017_is_not_leap() {
+        assert!(!is_leap_year(2017));
+    }
+
+    #[test]
+    fn year_2100_is_not_leap() {
+        assert!(!is_leap_year(2100));
+    }
+}
+`,
+    solutionCode: `fn is_leap_year(year: u32) -> bool {
+    if year % 400 == 0 {
+        true
+    } else if year % 100 == 0 {
+        false
+    } else if year % 4 == 0 {
+        true
+    } else {
+        false
+    }
+}
+
+fn main() {
+    let test_years = [1900, 2000, 2004, 2008, 2012, 2016, 2020, 2024, 2100];
+    for year in test_years {
+        println!(
+            "{}: {}",
+            year,
+            if is_leap_year(year) {
+                "leap year"
+            } else {
+                "not leap year"
+            }
+        );
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn year_2000_is_leap() {
+        assert!(is_leap_year(2000));
+    }
+
+    #[test]
+    fn year_1700_is_not_leap() {
+        assert!(!is_leap_year(1700));
+    }
+
+    #[test]
+    fn year_2008_is_leap() {
+        assert!(is_leap_year(2008));
+    }
+
+    #[test]
+    fn year_2017_is_not_leap() {
+        assert!(!is_leap_year(2017));
+    }
+
+    #[test]
+    fn year_2100_is_not_leap() {
+        assert!(!is_leap_year(2100));
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/01-starter/05-leap-years/\` pour les consignes.`,
+      `💡 Consulte la solution dans \`katas/01-starter/05-leap-years/solutions/\` si tu bloques.`
+    ],
+  },
+  {
+    id: 'kata-01-starter-06-bowling',
+    title: 'Bowling',
+    titleEn: 'Bowling',
+    number: 7,
+    total: 36,
+    difficulty: 'facile',
+    concept: 'bases',
+    xpReward: 30,
+    description: `This kata is based on [Bowling from Coding Dojo](https://codingdojo.org/kata/Bowling/).
+
+Implement the \`score\` function that takes a sequence of rolls and returns the total score.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// A game of bowling consists of 10 frames.
+// Each roll knocks down 0-10 pins.
+// Each element in the \`rolls\` vector represents one roll.
+
+// TODO 1: Implement the score function that calculates the total score from a list of rolls.
+// - Spare: 10 + next roll bonus
+// - Strike: 10 + next two rolls bonus
+// - Otherwise: sum of two rolls in the frame
+
+fn score(rolls: &[u32]) -> u32 {
+    todo!("Implement the bowling score calculation")
+}
+
+fn main() {
+    // Perfect game: 12 strikes = 300
+    let perfect: Vec<u32> = vec![10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+    println!("Perfect game score: {}", score(&perfect));
+
+    // All spares with 5: 21 rolls = 150
+    let all_spares: Vec<u32> = vec![
+        5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+    ];
+    println!("All spares score: {}", score(&all_spares));
+
+    // All gutter balls: 20 rolls of 0 = 0
+    let gutter: Vec<u32> = vec![0; 20];
+    println!("Gutter game score: {}", score(&gutter));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_gutter_game() {
+        assert_eq!(score(&vec![0; 20]), 0);
+    }
+
+    #[test]
+    fn test_all_ones() {
+        assert_eq!(score(&vec![1; 20]), 20);
+    }
+
+    #[test]
+    fn test_one_spare() {
+        // 5,5(spare) + 3,0... = 10+3 + 3 = 16 for first two frames
+        let mut rolls = vec![5, 5, 3];
+        rolls.extend(vec![0; 17]);
+        assert_eq!(score(&rolls), 16);
+    }
+
+    #[test]
+    fn test_one_strike() {
+        // 10(strike) + 3,4 = 10+3+4 + 3+4 = 24
+        let mut rolls = vec![10, 3, 4];
+        rolls.extend(vec![0; 16]);
+        assert_eq!(score(&rolls), 24);
+    }
+
+    #[test]
+    fn test_perfect_game() {
+        assert_eq!(score(&vec![10; 12]), 300);
+    }
+}
+`,
+    solutionCode: `fn score(rolls: &[u32]) -> u32 {
+    let mut total = 0;
+    let mut roll_index = 0;
+
+    for _frame in 0..10 {
+        if rolls[roll_index] == 10 {
+            // Strike
+            total += 10 + rolls[roll_index + 1] + rolls[roll_index + 2];
+            roll_index += 1;
+        } else if rolls[roll_index] + rolls[roll_index + 1] == 10 {
+            // Spare
+            total += 10 + rolls[roll_index + 2];
+            roll_index += 2;
+        } else {
+            // Open frame
+            total += rolls[roll_index] + rolls[roll_index + 1];
+            roll_index += 2;
+        }
+    }
+
+    total
+}
+
+fn main() {
+    let perfect: Vec<u32> = vec![10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+    println!("Perfect game score: {}", score(&perfect));
+
+    let all_spares: Vec<u32> = vec![
+        5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+    ];
+    println!("All spares score: {}", score(&all_spares));
+
+    let gutter: Vec<u32> = vec![0; 20];
+    println!("Gutter game score: {}", score(&gutter));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_gutter_game() {
+        assert_eq!(score(&vec![0; 20]), 0);
+    }
+
+    #[test]
+    fn test_all_ones() {
+        assert_eq!(score(&vec![1; 20]), 20);
+    }
+
+    #[test]
+    fn test_one_spare() {
+        let mut rolls = vec![5, 5, 3];
+        rolls.extend(vec![0; 17]);
+        assert_eq!(score(&rolls), 16);
+    }
+
+    #[test]
+    fn test_one_strike() {
+        let mut rolls = vec![10, 3, 4];
+        rolls.extend(vec![0; 16]);
+        assert_eq!(score(&rolls), 24);
+    }
+
+    #[test]
+    fn test_perfect_game() {
+        assert_eq!(score(&vec![10; 12]), 300);
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/01-starter/06-bowling/\` pour les consignes.`,
+      `💡 Consulte la solution dans \`katas/01-starter/06-bowling/solutions/\` si tu bloques.`
+    ],
+  },
+  {
+    id: 'kata-01-starter-07-string-calculator',
+    title: 'String Calculator',
+    titleEn: 'String Calculator',
+    number: 8,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'bases',
+    xpReward: 50,
+    description: `This kata is based on [String Calculator from Coding Dojo](https://codingdojo.org/kata/StringCalculator/).
+
+Implement the \`add\` function that takes a string and returns a Result containing the sum or an error message.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO 1: Implement the add function that takes a string of comma-separated numbers and returns their sum as a Result.
+// Steps to implement:
+// - Handle empty string (return 0)
+// - Handle 1 or 2 numbers separated by comma
+// - Handle unknown number of numbers
+// - Handle newlines as separators
+// - Handle custom delimiter: "//[delimiter]\\n[numbers]"
+// - Reject negative numbers: return Err with message listing all negative numbers found
+
+fn add(numbers: &str) -> Result<i32, String> {
+    todo!("Implement the string calculator add function")
+}
+
+fn main() {
+    let test_cases = [
+        "",
+        "1",
+        "1,2",
+        "1,2,3,4,5",
+        "1\\n2,3",
+        "//;\\n1;2",
+        "//|\\n1|2|3",
+    ];
+
+    for input in test_cases {
+        match add(input) {
+            Ok(sum) => println!("add(\\"{}\\") = {}", input, sum),
+            Err(e) => println!("add(\\"{}\\") = Error: {}", input, e),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_string_returns_zero() {
+        assert_eq!(add(""), Ok(0));
+    }
+
+    #[test]
+    fn single_number_returns_itself() {
+        assert_eq!(add("1"), Ok(1));
+    }
+
+    #[test]
+    fn two_numbers_comma_separated() {
+        assert_eq!(add("1,2"), Ok(3));
+    }
+
+    #[test]
+    fn multiple_numbers() {
+        assert_eq!(add("1,2,3,4,5"), Ok(15));
+    }
+
+    #[test]
+    fn newline_as_separator() {
+        assert_eq!(add("1\\n2,3"), Ok(6));
+    }
+
+    #[test]
+    fn custom_delimiter() {
+        assert_eq!(add("//;\\n1;2"), Ok(3));
+    }
+
+    #[test]
+    fn negative_number_is_rejected() {
+        assert!(add("-1,2").is_err());
+    }
+
+    #[test]
+    fn multiple_negatives_listed_in_error() {
+        let result = add("2,-4,-5");
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("-4"));
+        assert!(err.contains("-5"));
+    }
+}
+`,
+    solutionCode: `fn add(numbers: &str) -> Result<i32, String> {
+    if numbers.is_empty() {
+        return Ok(0);
+    }
+
+    let (delimiter, rest) = if numbers.starts_with("//") {
+        let parts: Vec<&str> = numbers.splitn(2, '\\n').collect();
+        let delim = &parts[0][2..];
+        (delim.to_string(), parts[1].to_string())
+    } else {
+        (",".to_string(), numbers.to_string())
+    };
+
+    let normalized = rest.replace('\\n', &delimiter);
+    let parts: Vec<&str> = normalized.split(&delimiter).collect();
+
+    let mut sum = 0;
+    let mut negatives = Vec::new();
+
+    for part in parts {
+        if part.is_empty() {
+            continue;
+        }
+        let num: i32 = part
+            .parse()
+            .map_err(|_| format!("Invalid number: {}", part))?;
+        if num < 0 {
+            negatives.push(num);
+        }
+        sum += num;
+    }
+
+    if !negatives.is_empty() {
+        let neg_list: Vec<String> = negatives.iter().map(|n| n.to_string()).collect();
+        return Err(format!("Negative not allowed : {}", neg_list.join(", ")));
+    }
+
+    Ok(sum)
+}
+
+fn main() {
+    let test_cases = [
+        "",
+        "1",
+        "1,2",
+        "1,2,3,4,5",
+        "1\\n2,3",
+        "//;\\n1;2",
+        "//|\\n1|2|3",
+    ];
+
+    for input in test_cases {
+        match add(input) {
+            Ok(sum) => println!("add(\\"{}\\") = {}", input, sum),
+            Err(e) => println!("add(\\"{}\\") = Error: {}", input, e),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_string_returns_zero() {
+        assert_eq!(add(""), Ok(0));
+    }
+
+    #[test]
+    fn single_number_returns_itself() {
+        assert_eq!(add("1"), Ok(1));
+    }
+
+    #[test]
+    fn two_numbers_comma_separated() {
+        assert_eq!(add("1,2"), Ok(3));
+    }
+
+    #[test]
+    fn multiple_numbers() {
+        assert_eq!(add("1,2,3,4,5"), Ok(15));
+    }
+
+    #[test]
+    fn newline_as_separator() {
+        assert_eq!(add("1\\n2,3"), Ok(6));
+    }
+
+    #[test]
+    fn custom_delimiter() {
+        assert_eq!(add("//;\\n1;2"), Ok(3));
+    }
+
+    #[test]
+    fn negative_number_is_rejected() {
+        assert!(add("-1,2").is_err());
+    }
+
+    #[test]
+    fn multiple_negatives_listed_in_error() {
+        let result = add("2,-4,-5");
+        assert!(result.is_err());
+        let err = result.unwrap_err();
+        assert!(err.contains("-4"));
+        assert!(err.contains("-5"));
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/01-starter/07-string-calculator/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-01-starter-08-tennis',
+    title: 'Tennis',
+    titleEn: 'Tennis',
+    number: 9,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'bases',
+    xpReward: 50,
+    description: `This kata is based on [Tennis from Coding Dojo](https://codingdojo.org/kata/Tennis/).
+
+Implement a Tennis struct with \`point_won\` and \`score\` methods.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO 1: Implement the Tennis struct and its methods.
+// - new() creates a game with both players at 0
+// - point_won(player: &str) records a point for "player1" or "player2"
+// - score() returns the current score as a String:
+//   - "love - love", "15 - love", "15 - 15", "30 - 15", etc.
+//   - "deuce" when both have 40
+//   - "advantage player1" or "advantage player2"
+//   - "player1 wins" or "player2 wins"
+
+pub struct Tennis {
+    // TODO: Add fields
+}
+
+impl Tennis {
+    pub fn new() -> Self {
+        todo!("Create a new tennis game")
+    }
+
+    pub fn point_won(&mut self, player: &str) {
+        todo!("Record a point for the given player")
+    }
+
+    pub fn score(&self) -> String {
+        todo!("Return the current score")
+    }
+}
+
+fn main() {
+    let mut game = Tennis::new();
+    game.point_won("player1");
+    println!("{}", game.score());
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn new_game_score_is_love_all() {
+        let game = Tennis::new();
+        assert_eq!(game.score(), "love - love");
+    }
+
+    #[test]
+    fn player1_scores_first_point() {
+        let mut game = Tennis::new();
+        game.point_won("player1");
+        assert_eq!(game.score(), "15 - love");
+    }
+
+    #[test]
+    fn deuce_when_both_have_40() {
+        let mut game = Tennis::new();
+        for _ in 0..3 {
+            game.point_won("player1");
+            game.point_won("player2");
+        }
+        assert_eq!(game.score(), "deuce");
+    }
+
+    #[test]
+    fn advantage_after_deuce() {
+        let mut game = Tennis::new();
+        for _ in 0..3 {
+            game.point_won("player1");
+            game.point_won("player2");
+        }
+        game.point_won("player1");
+        assert_eq!(game.score(), "advantage player1");
+    }
+
+    #[test]
+    fn win_after_advantage() {
+        let mut game = Tennis::new();
+        for _ in 0..3 {
+            game.point_won("player1");
+            game.point_won("player2");
+        }
+        game.point_won("player1");
+        game.point_won("player1");
+        assert_eq!(game.score(), "player1 wins");
+    }
+
+    #[test]
+    fn back_to_deuce_after_losing_advantage() {
+        let mut game = Tennis::new();
+        for _ in 0..3 {
+            game.point_won("player1");
+            game.point_won("player2");
+        }
+        game.point_won("player1");
+        game.point_won("player2");
+        assert_eq!(game.score(), "deuce");
+    }
+}
+`,
+    solutionCode: `pub struct Tennis {
+    player1_points: u32,
+    player2_points: u32,
+}
+
+impl Tennis {
+    pub fn new() -> Self {
+        Tennis {
+            player1_points: 0,
+            player2_points: 0,
+        }
+    }
+
+    pub fn point_won(&mut self, player: &str) {
+        match player {
+            "player1" => self.player1_points += 1,
+            "player2" => self.player2_points += 1,
+            _ => {}
+        }
+    }
+
+    pub fn score(&self) -> String {
+        let score_names = ["love", "15", "30", "40"];
+
+        if self.player1_points >= 4 || self.player2_points >= 4 {
+            let diff = self.player1_points as i32 - self.player2_points as i32;
+            match diff {
+                0 => "deuce".to_string(),
+                1 => "advantage player1".to_string(),
+                -1 => "advantage player2".to_string(),
+                d if d >= 2 => "player1 wins".to_string(),
+                _ => "player2 wins".to_string(),
+            }
+        } else if self.player1_points == 3 && self.player2_points == 3 {
+            "deuce".to_string()
+        } else {
+            format!(
+                "{} - {}",
+                score_names[self.player1_points as usize],
+                score_names[self.player2_points as usize]
+            )
+        }
+    }
+}
+
+fn main() {
+    let mut game = Tennis::new();
+    game.point_won("player1");
+    println!("{}", game.score());
+    game.point_won("player2");
+    println!("{}", game.score());
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn new_game_score_is_love_all() {
+        let game = Tennis::new();
+        assert_eq!(game.score(), "love - love");
+    }
+
+    #[test]
+    fn player1_scores_first_point() {
+        let mut game = Tennis::new();
+        game.point_won("player1");
+        assert_eq!(game.score(), "15 - love");
+    }
+
+    #[test]
+    fn deuce_when_both_have_40() {
+        let mut game = Tennis::new();
+        for _ in 0..3 {
+            game.point_won("player1");
+            game.point_won("player2");
+        }
+        assert_eq!(game.score(), "deuce");
+    }
+
+    #[test]
+    fn advantage_after_deuce() {
+        let mut game = Tennis::new();
+        for _ in 0..3 {
+            game.point_won("player1");
+            game.point_won("player2");
+        }
+        game.point_won("player1");
+        assert_eq!(game.score(), "advantage player1");
+    }
+
+    #[test]
+    fn win_after_advantage() {
+        let mut game = Tennis::new();
+        for _ in 0..3 {
+            game.point_won("player1");
+            game.point_won("player2");
+        }
+        game.point_won("player1");
+        game.point_won("player1");
+        assert_eq!(game.score(), "player1 wins");
+    }
+
+    #[test]
+    fn back_to_deuce_after_losing_advantage() {
+        let mut game = Tennis::new();
+        for _ in 0..3 {
+            game.point_won("player1");
+            game.point_won("player2");
+        }
+        game.point_won("player1");
+        game.point_won("player2");
+        assert_eq!(game.score(), "deuce");
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/01-starter/08-tennis/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-01-starter-09-foobaqix',
+    title: 'FooBarQix',
+    titleEn: 'FooBarQix',
+    number: 10,
+    total: 36,
+    difficulty: 'facile',
+    concept: 'bases',
+    xpReward: 30,
+    description: `This kata is based on [FooBarQix from Coding Dojo](https://codingdojo.org/kata/FooBarQix/).
+
+Implement \`compute(n: u32) -&gt; String\` combining divisibility rules and digit scanning.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO 1: Implement compute(n: u32) -> String
+// Rules:
+// - If n is divisible by 3, append "Foo"
+// - If n is divisible by 5, append "Bar"
+// - If n is divisible by 7, append "Qix"
+// - For each digit 3 in n, append "Foo"
+// - For each digit 5 in n, append "Bar"
+// - For each digit 7 in n, append "Qix"
+// - If none of the above applies, return n as string
+// Examples: 3 -> "FooFoo", 5 -> "BarBar", 15 -> "FooBarBar", 33 -> "FooFooFoo"
+
+fn compute(n: u32) -> String {
+    todo!("Implement compute")
+}
+
+fn main() {
+    for i in 1..=20 {
+        println!("{} => {}", i, compute(i));
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_1_returns_1() {
+        assert_eq!(compute(1), "1");
+    }
+
+    #[test]
+    fn test_3_returns_foofoo() {
+        assert_eq!(compute(3), "FooFoo");
+    }
+
+    #[test]
+    fn test_5_returns_barbar() {
+        assert_eq!(compute(5), "BarBar");
+    }
+
+    #[test]
+    fn test_7_returns_qixqix() {
+        assert_eq!(compute(7), "QixQix");
+    }
+
+    #[test]
+    fn test_15_returns_foobarbar() {
+        assert_eq!(compute(15), "FooBarBar");
+    }
+
+    #[test]
+    fn test_21_returns_fooqix() {
+        assert_eq!(compute(21), "FooQix");
+    }
+
+    #[test]
+    fn test_33_returns_foofoofoo() {
+        assert_eq!(compute(33), "FooFooFoo");
+    }
+}
+`,
+    solutionCode: `fn compute(n: u32) -> String {
+    let div_part = {
+        let mut s = String::new();
+        if n % 3 == 0 {
+            s.push_str("Foo");
+        }
+        if n % 5 == 0 {
+            s.push_str("Bar");
+        }
+        if n % 7 == 0 {
+            s.push_str("Qix");
+        }
+        s
+    };
+
+    let digit_part: String = n
+        .to_string()
+        .chars()
+        .map(|c| match c {
+            '3' => "Foo",
+            '5' => "Bar",
+            '7' => "Qix",
+            _ => "",
+        })
+        .collect();
+
+    let result = format!("{}{}", div_part, digit_part);
+    if result.is_empty() {
+        n.to_string()
+    } else {
+        result
+    }
+}
+
+fn main() {
+    for i in 1..=20 {
+        println!("{} => {}", i, compute(i));
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_1_returns_1() {
+        assert_eq!(compute(1), "1");
+    }
+    #[test]
+    fn test_3_returns_foofoo() {
+        assert_eq!(compute(3), "FooFoo");
+    }
+    #[test]
+    fn test_5_returns_barbar() {
+        assert_eq!(compute(5), "BarBar");
+    }
+    #[test]
+    fn test_7_returns_qixqix() {
+        assert_eq!(compute(7), "QixQix");
+    }
+    #[test]
+    fn test_15_returns_foobarbar() {
+        assert_eq!(compute(15), "FooBarBar");
+    }
+    #[test]
+    fn test_21_returns_fooqix() {
+        assert_eq!(compute(21), "FooQix");
+    }
+    #[test]
+    fn test_33_returns_foofoofoo() {
+        assert_eq!(compute(33), "FooFooFoo");
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/01-starter/09-foobaqix/\` pour les consignes.`,
+      `💡 Consulte la solution dans \`katas/01-starter/09-foobaqix/solutions/\` si tu bloques.`
+    ],
+  },
+  {
+    id: 'kata-01-starter-10-nim-game',
+    title: 'NimGame',
+    titleEn: 'NimGame',
+    number: 11,
+    total: 36,
+    difficulty: 'facile',
+    concept: 'bases',
+    xpReward: 30,
+    description: `This kata is based on [Nim from Coding Dojo](https://codingdojo.org/kata/Nim/).
+
+Implement \`nim_winner(sticks: u32) -&gt; &'static str\` that returns \`"Player 1"\` or \`"Player 2"\` (the winner with optimal play).`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO 1: Implement nim_winner(sticks: u32) -> &'static str
+// Rules:
+// - Players alternate turns, each removes 1, 2, or 3 sticks
+// - The player who takes the LAST stick LOSES
+// - Return which player wins with optimal play ("Player 1" or "Player 2")
+// Hint: Think about multiples of 4 — what happens when the pile is exactly 1?
+
+fn nim_winner(sticks: u32) -> &'static str {
+    todo!("Implement nim_winner")
+}
+
+fn main() {
+    for s in 1..=15 {
+        println!("{} sticks -> {} wins", s, nim_winner(s));
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn one_stick_player1_loses() {
+        assert_eq!(nim_winner(1), "Player 2");
+    }
+
+    #[test]
+    fn two_sticks_player1_wins() {
+        assert_eq!(nim_winner(2), "Player 1");
+    }
+
+    #[test]
+    fn four_sticks_player1_loses() {
+        assert_eq!(nim_winner(4), "Player 1");
+    }
+
+    #[test]
+    fn five_sticks_player2_wins() {
+        assert_eq!(nim_winner(5), "Player 2");
+    }
+
+    #[test]
+    fn ten_sticks() {
+        assert_eq!(nim_winner(10), "Player 1");
+    }
+}
+`,
+    solutionCode: `fn nim_winner(sticks: u32) -> &'static str {
+    // With the "last stick loses" rule and max 3 sticks per turn:
+    // Positions divisible by (max_take + 1) = 4 are losing for the current player.
+    // sticks % 4 == 1 means the current player is forced to take 1,
+    // leaving a multiple of 4 for the opponent -> they lose.
+    if sticks % 4 == 1 {
+        "Player 2"
+    } else {
+        "Player 1"
+    }
+}
+
+fn main() {
+    for s in 1..=15 {
+        println!("{} sticks -> {} wins", s, nim_winner(s));
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn one_stick_player1_loses() {
+        assert_eq!(nim_winner(1), "Player 2");
+    }
+
+    #[test]
+    fn two_sticks_player1_wins() {
+        assert_eq!(nim_winner(2), "Player 1");
+    }
+
+    #[test]
+    fn four_sticks_player1_loses() {
+        assert_eq!(nim_winner(4), "Player 1");
+    }
+
+    #[test]
+    fn five_sticks_player2_wins() {
+        assert_eq!(nim_winner(5), "Player 2");
+    }
+
+    #[test]
+    fn ten_sticks() {
+        assert_eq!(nim_winner(10), "Player 1");
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/01-starter/10-nim-game/\` pour les consignes.`,
+      `💡 Consulte la solution dans \`katas/01-starter/10-nim-game/solutions/\` si tu bloques.`
+    ],
+  },
+  {
+    id: 'kata-01-starter-11-word-wrap',
+    title: 'WordWrap',
+    titleEn: 'WordWrap',
+    number: 12,
+    total: 36,
+    difficulty: 'facile',
+    concept: 'bases',
+    xpReward: 30,
+    description: `This kata is based on [WordWrap from Coding Dojo](https://codingdojo.org/kata/WordWrap/).
+
+Implement \`wrap(text: &str, column: usize) -&gt; String\` that correctly wraps text at the given column width.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement wrap(text: &str, column: usize) -> String
+// Rules:
+// - Insert newlines so no line exceeds \`column\` characters
+// - Break at word boundaries (spaces) whenever possible
+// - If a single word is longer than column, break it mid-word
+
+fn wrap(text: &str, column: usize) -> String {
+    todo!("Implement word wrap")
+}
+
+fn main() {
+    let text = "The quick brown fox jumps over the lazy dog";
+    println!("{}", wrap(text, 15));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_string() {
+        assert_eq!(wrap("", 10), "");
+    }
+
+    #[test]
+    fn shorter_than_column() {
+        assert_eq!(wrap("hello", 10), "hello");
+    }
+
+    #[test]
+    fn exactly_at_column() {
+        assert_eq!(wrap("hello", 5), "hello");
+    }
+
+    #[test]
+    fn wrap_at_word_boundary() {
+        assert_eq!(wrap("hello world", 5), "hello\\nworld");
+    }
+
+    #[test]
+    fn wrap_multiple_words() {
+        assert_eq!(wrap("the quick brown", 10), "the quick\\nbrown");
+    }
+
+    #[test]
+    fn long_single_word() {
+        assert_eq!(wrap("abcdefghij", 5), "abcde\\nfghij");
+    }
+}
+`,
+    solutionCode: `fn wrap(text: &str, column: usize) -> String {
+    if text.is_empty() || column == 0 {
+        return text.to_string();
+    }
+    let mut result = String::new();
+    let mut remaining = text;
+    loop {
+        if remaining.len() <= column {
+            result.push_str(remaining);
+            break;
+        }
+        // Find last space within column chars
+        let slice = &remaining[..column];
+        if let Some(pos) = slice.rfind(' ') {
+            result.push_str(&remaining[..pos]);
+            result.push('\\n');
+            remaining = remaining[pos + 1..].trim_start();
+        } else {
+            // No space found: hard break at column
+            result.push_str(&remaining[..column]);
+            result.push('\\n');
+            remaining = &remaining[column..];
+        }
+    }
+    result
+}
+
+fn main() {
+    let text = "The quick brown fox jumps over the lazy dog";
+    println!("{}", wrap(text, 15));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_string() {
+        assert_eq!(wrap("", 10), "");
+    }
+
+    #[test]
+    fn shorter_than_column() {
+        assert_eq!(wrap("hello", 10), "hello");
+    }
+
+    #[test]
+    fn exactly_at_column() {
+        assert_eq!(wrap("hello", 5), "hello");
+    }
+
+    #[test]
+    fn wrap_at_word_boundary() {
+        assert_eq!(wrap("hello world", 5), "hello\\nworld");
+    }
+
+    #[test]
+    fn wrap_multiple_words() {
+        assert_eq!(wrap("the quick brown", 10), "the quick\\nbrown");
+    }
+
+    #[test]
+    fn long_single_word() {
+        assert_eq!(wrap("abcdefghij", 5), "abcde\\nfghij");
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/01-starter/11-word-wrap/\` pour les consignes.`,
+      `💡 Consulte la solution dans \`katas/01-starter/11-word-wrap/solutions/\` si tu bloques.`
+    ],
+  },
+  {
+    id: 'kata-01-starter-12-number-to-lcd',
+    title: 'NumberToLCD',
+    titleEn: 'NumberToLCD',
+    number: 13,
+    total: 36,
+    difficulty: 'facile',
+    concept: 'bases',
+    xpReward: 30,
+    description: `This kata is based on [NumberToLCD from Coding Dojo](https://codingdojo.org/kata/NumberToLCD/).
+
+Implement \`to_lcd(number: &str) -&gt; String\` returning the 3-line LCD representation of the input number string, with lines separated by \`\\n\`.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement to_lcd(number: &str) -> String
+// Each digit is 3 characters wide, represented on 3 lines.
+// Digits (each 3 chars wide, top/middle/bottom row):
+//  0: " _ ", "| |", "|_|"
+//  1: "   ", "  |", "  |"
+//  2: " _ ", " _|", "|_ "
+//  3: " _ ", " _|", " _|"
+//  4: "   ", "|_|", "  |"
+//  5: " _ ", "|_ ", " _|"
+//  6: " _ ", "|_ ", "|_|"
+//  7: " _ ", "  |", "  |"
+//  8: " _ ", "|_|", "|_|"
+//  9: " _ ", "|_|", " _|"
+//
+// Output: 3 lines joined by '\\n', each line being the concatenation of each digit's row.
+
+fn to_lcd(number: &str) -> String {
+    todo!("Implement to_lcd")
+}
+
+fn main() {
+    println!("{}", to_lcd("1234567890"));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn single_zero() {
+        assert_eq!(to_lcd("0"), " _ \\n| |\\n|_|");
+    }
+
+    #[test]
+    fn single_one() {
+        assert_eq!(to_lcd("1"), "   \\n  |\\n  |");
+    }
+
+    #[test]
+    fn single_two() {
+        assert_eq!(to_lcd("2"), " _ \\n _|\\n|_ ");
+    }
+
+    #[test]
+    fn multi_digit() {
+        let result = to_lcd("12");
+        assert!(result.contains("  |"));
+    }
+}
+`,
+    solutionCode: `fn to_lcd(number: &str) -> String {
+    let digits = [
+        [" _ ", "| |", "|_|"], // 0
+        ["   ", "  |", "  |"], // 1
+        [" _ ", " _|", "|_ "], // 2
+        [" _ ", " _|", " _|"], // 3
+        ["   ", "|_|", "  |"], // 4
+        [" _ ", "|_ ", " _|"], // 5
+        [" _ ", "|_ ", "|_|"], // 6
+        [" _ ", "  |", "  |"], // 7
+        [" _ ", "|_|", "|_|"], // 8
+        [" _ ", "|_|", " _|"], // 9
+    ];
+    let nums: Vec<usize> = number
+        .chars()
+        .filter_map(|c| c.to_digit(10).map(|d| d as usize))
+        .collect();
+    (0..3)
+        .map(|row| {
+            nums.iter()
+                .map(|&d| digits[d][row])
+                .collect::<Vec<_>>()
+                .join("")
+        })
+        .collect::<Vec<_>>()
+        .join("\\n")
+}
+
+fn main() {
+    println!("{}", to_lcd("1234567890"));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn single_zero() {
+        assert_eq!(to_lcd("0"), " _ \\n| |\\n|_|");
+    }
+
+    #[test]
+    fn single_one() {
+        assert_eq!(to_lcd("1"), "   \\n  |\\n  |");
+    }
+
+    #[test]
+    fn single_two() {
+        assert_eq!(to_lcd("2"), " _ \\n _|\\n|_ ");
+    }
+
+    #[test]
+    fn multi_digit() {
+        let result = to_lcd("12");
+        assert!(result.contains("  |"));
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/01-starter/12-number-to-lcd/\` pour les consignes.`,
+      `💡 Consulte la solution dans \`katas/01-starter/12-number-to-lcd/solutions/\` si tu bloques.`
+    ],
+  },
+  {
+    id: 'kata-01-starter-13-greed',
+    title: 'Greed',
+    titleEn: 'Greed',
+    number: 14,
+    total: 36,
+    difficulty: 'facile',
+    concept: 'generics',
+    xpReward: 30,
+    description: `This kata is based on [Greed from Coding Dojo](https://codingdojo.org/kata/Greed/).
+
+Implement \`score(dice: &[u32]) -&gt; u32\` that computes the total score for a given set of dice.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement score(dice: &[u32]) -> u32
+// Scoring rules:
+// - Single 1  = 100
+// - Single 5  = 50
+// - Triple 1s = 1000
+// - Triple ns (n != 1) = n * 100
+// - Four/five/six of a kind = triple score * 2^(count - 3)
+// Examples:
+//   [1, 1, 1, 5, 1] -> 1150   (triple 1 = 1000, one extra 1 = 100, one 5 = 50)
+//   [2, 3, 4, 6, 2] -> 0
+
+fn score(dice: &[u32]) -> u32 {
+    todo!("Implement score")
+}
+
+fn main() {
+    println!("Score of [1,1,1,5,1]: {}", score(&[1, 1, 1, 5, 1]));
+    println!("Score of [2,3,4,6,2]: {}", score(&[2, 3, 4, 6, 2]));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_dice() {
+        assert_eq!(score(&[]), 0);
+    }
+
+    #[test]
+    fn single_5() {
+        assert_eq!(score(&[5]), 50);
+    }
+
+    #[test]
+    fn single_1() {
+        assert_eq!(score(&[1]), 100);
+    }
+
+    #[test]
+    fn triple_1() {
+        assert_eq!(score(&[1, 1, 1]), 1000);
+    }
+
+    #[test]
+    fn triple_2() {
+        assert_eq!(score(&[2, 2, 2]), 200);
+    }
+
+    #[test]
+    fn triple_5() {
+        assert_eq!(score(&[5, 5, 5]), 500);
+    }
+
+    #[test]
+    fn mixed() {
+        assert_eq!(score(&[1, 1, 1, 5, 1]), 1150);
+    }
+
+    #[test]
+    fn no_score() {
+        assert_eq!(score(&[2, 3, 4, 6]), 0);
+    }
+}
+`,
+    solutionCode: `fn score(dice: &[u32]) -> u32 {
+    let mut counts = [0u32; 7];
+    for &d in dice {
+        if d >= 1 && d <= 6 {
+            counts[d as usize] += 1;
+        }
+    }
+    let mut total = 0;
+    for face in 1u32..=6 {
+        let c = counts[face as usize];
+        if c >= 3 {
+            let triple = if face == 1 { 1000 } else { face * 100 };
+            total += triple * 2u32.pow(c - 3);
+        } else {
+            if face == 1 {
+                total += c * 100;
+            }
+            if face == 5 {
+                total += c * 50;
+            }
+        }
+    }
+    total
+}
+
+fn main() {
+    println!("Score of [1,1,1,5,1]: {}", score(&[1, 1, 1, 5, 1]));
+    println!("Score of [2,3,4,6,2]: {}", score(&[2, 3, 4, 6, 2]));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_dice() {
+        assert_eq!(score(&[]), 0);
+    }
+
+    #[test]
+    fn single_5() {
+        assert_eq!(score(&[5]), 50);
+    }
+
+    #[test]
+    fn single_1() {
+        assert_eq!(score(&[1]), 100);
+    }
+
+    #[test]
+    fn triple_1() {
+        assert_eq!(score(&[1, 1, 1]), 1000);
+    }
+
+    #[test]
+    fn triple_2() {
+        assert_eq!(score(&[2, 2, 2]), 200);
+    }
+
+    #[test]
+    fn triple_5() {
+        assert_eq!(score(&[5, 5, 5]), 500);
+    }
+
+    #[test]
+    fn mixed() {
+        assert_eq!(score(&[1, 1, 1, 5, 1]), 1150);
+    }
+
+    #[test]
+    fn no_score() {
+        assert_eq!(score(&[2, 3, 4, 6]), 0);
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/01-starter/13-greed/\` pour les consignes.`,
+      `💡 Consulte la solution dans \`katas/01-starter/13-greed/solutions/\` si tu bloques.`
+    ],
+  },
+  {
     id: 'kata-02-structure-00-basics',
     title: '00-basics',
     titleEn: '',
-    number: 5,
-    total: 6,
-    difficulty: 'moyen',
+    number: 15,
+    total: 36,
+    difficulty: 'facile',
     concept: 'structs',
-    xpReward: 50,
+    xpReward: 30,
     description: `Consulte le README.md du kata dans le dossier \`katas/02-structure/00-basics/\``,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
@@ -1946,11 +3489,11 @@ impl Sortable for CustomStruct {
     id: 'kata-02-structure-01-smart-pointers',
     title: 'Smart Pointers',
     titleEn: 'Smart Pointers',
-    number: 6,
-    total: 6,
-    difficulty: 'difficile',
+    number: 16,
+    total: 36,
+    difficulty: 'moyen',
     concept: 'structs',
-    xpReward: 55,
+    xpReward: 50,
     description: `### Ownership and Memory Management`,
     tests: [
       { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
@@ -2643,6 +4186,4823 @@ impl TreeNode2 {
     hints: [
       `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
       `💡 Les fichiers solutions dans \`katas/02-structure/01-smart-pointers/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-02-game-of-life',
+    title: 'Game of Life',
+    titleEn: 'Game of Life',
+    number: 17,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'structs',
+    xpReward: 50,
+    description: `This kata is based on [Game of Life from Coding Dojo](https://codingdojo.org/kata/GameOfLife/).
+
+Implement the Game of Life grid and the \`next_generation\` function.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement the Grid structure for Conway's Game of Life.
+// The grid is a 2D vector of booleans (true = alive, false = dead).
+// Implement:
+// - new(rows: usize, cols: usize) -> creates an empty grid
+// - from_pattern(pattern: &str) -> parses a string pattern (* for alive, . for dead)
+// - count_neighbours(row: usize, col: usize) -> counts live neighbours (max 8)
+// - get(row: usize, col: usize) -> returns cell state
+// - set(row: usize, col: usize, alive: bool) -> sets cell state
+// - rows() and cols() -> dimensions
+
+pub struct Grid {
+    // TODO: Add fields
+}
+
+impl Grid {
+    pub fn new(rows: usize, cols: usize) -> Self {
+        todo!("Create a new empty grid")
+    }
+
+    pub fn from_pattern(pattern: &str) -> Self {
+        todo!("Parse pattern (* for alive, . for dead)")
+    }
+
+    pub fn rows(&self) -> usize {
+        todo!("Return number of rows")
+    }
+
+    pub fn cols(&self) -> usize {
+        todo!("Return number of columns")
+    }
+
+    pub fn get(&self, row: usize, col: usize) -> bool {
+        todo!("Get cell state")
+    }
+
+    pub fn set(&mut self, row: usize, col: usize, alive: bool) {
+        todo!("Set cell state")
+    }
+
+    pub fn count_neighbours(&self, row: usize, col: usize) -> u32 {
+        todo!("Count live neighbours")
+    }
+}
+
+impl std::fmt::Display for Grid {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        todo!("Display the grid (* for alive, . for dead)")
+    }
+}
+
+
+use crate::grid::Grid;
+
+// TODO: Implement the next_generation function.
+// Rules:
+// 1. Live cell with < 2 live neighbours -> dies
+// 2. Live cell with > 3 live neighbours -> dies
+// 3. Live cell with 2 or 3 live neighbours -> lives
+// 4. Dead cell with exactly 3 live neighbours -> becomes alive
+
+pub fn next_generation(grid: &Grid) -> Grid {
+    todo!("Compute the next generation")
+}
+
+
+mod grid;
+mod life;
+
+fn main() {
+    let pattern = "........\\n....*...\\n...**...\\n........\\n";
+    let grid = grid::Grid::from_pattern(pattern);
+    println!("Generation 1:\\n{}", grid);
+    let next = life::next_generation(&grid);
+    println!("Generation 2:\\n{}", next);
+}
+`,
+    solutionCode: `pub struct Grid {
+    cells: Vec<Vec<bool>>,
+    rows: usize,
+    cols: usize,
+}
+
+impl Grid {
+    pub fn new(rows: usize, cols: usize) -> Self {
+        Grid {
+            cells: vec![vec![false; cols]; rows],
+            rows,
+            cols,
+        }
+    }
+
+    pub fn from_pattern(pattern: &str) -> Self {
+        let lines: Vec<&str> = pattern.trim().lines().collect();
+        let rows = lines.len();
+        let cols = lines[0].len();
+        let mut grid = Grid::new(rows, cols);
+        for (r, line) in lines.iter().enumerate() {
+            for (c, ch) in line.chars().enumerate() {
+                grid.set(r, c, ch == '*');
+            }
+        }
+        grid
+    }
+
+    pub fn rows(&self) -> usize {
+        self.rows
+    }
+
+    pub fn cols(&self) -> usize {
+        self.cols
+    }
+
+    pub fn get(&self, row: usize, col: usize) -> bool {
+        self.cells[row][col]
+    }
+
+    pub fn set(&mut self, row: usize, col: usize, alive: bool) {
+        self.cells[row][col] = alive;
+    }
+
+    pub fn count_neighbours(&self, row: usize, col: usize) -> u32 {
+        let mut count = 0;
+        for dr in [-1i32, 0, 1] {
+            for dc in [-1i32, 0, 1] {
+                if dr == 0 && dc == 0 {
+                    continue;
+                }
+                let nr = row as i32 + dr;
+                let nc = col as i32 + dc;
+                if nr >= 0 && nr < self.rows as i32 && nc >= 0 && nc < self.cols as i32 {
+                    if self.get(nr as usize, nc as usize) {
+                        count += 1;
+                    }
+                }
+            }
+        }
+        count
+    }
+}
+
+impl std::fmt::Display for Grid {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        for row in 0..self.rows {
+            for col in 0..self.cols {
+                write!(f, "{}", if self.get(row, col) { '*' } else { '.' })?;
+            }
+            writeln!(f)?;
+        }
+        Ok(())
+    }
+}
+
+
+use crate::grid::Grid;
+
+pub fn next_generation(grid: &Grid) -> Grid {
+    let mut next = Grid::new(grid.rows(), grid.cols());
+
+    for row in 0..grid.rows() {
+        for col in 0..grid.cols() {
+            let neighbours = grid.count_neighbours(row, col);
+            let alive = match (grid.get(row, col), neighbours) {
+                (true, n) if n < 2 => false,
+                (true, n) if n > 3 => false,
+                (true, _) => true,
+                (false, 3) => true,
+                _ => false,
+            };
+            next.set(row, col, alive);
+        }
+    }
+
+    next
+}
+
+
+mod grid;
+mod life;
+
+fn main() {
+    let pattern = "........\\n....*...\\n...**...\\n........\\n";
+    let grid = grid::Grid::from_pattern(pattern);
+    println!("Generation 1:\\n{}", grid);
+    let next = life::next_generation(&grid);
+    println!("Generation 2:\\n{}", next);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn blinker_oscillates() {
+        let pattern = ".....\\n..*..\\n..*..\\n..*..\\n.....\\n";
+        let grid = grid::Grid::from_pattern(pattern);
+        let gen2 = life::next_generation(&grid);
+        let gen3 = life::next_generation(&gen2);
+        // Blinker should return to original after 2 generations
+        for r in 0..grid.rows() {
+            for c in 0..grid.cols() {
+                assert_eq!(gen3.get(r, c), grid.get(r, c));
+            }
+        }
+    }
+
+    #[test]
+    fn block_stays_stable() {
+        let pattern = "....\\n.**.\\n.**.\\n....\\n";
+        let grid = grid::Grid::from_pattern(pattern);
+        let next = life::next_generation(&grid);
+        for r in 0..grid.rows() {
+            for c in 0..grid.cols() {
+                assert_eq!(next.get(r, c), grid.get(r, c));
+            }
+        }
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/02-game-of-life/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-03-minesweeper',
+    title: 'Minesweeper',
+    titleEn: 'Minesweeper',
+    number: 18,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'structs',
+    xpReward: 50,
+    description: `This kata is based on [Minesweeper from Coding Dojo](https://codingdojo.org/kata/Minesweeper/).
+
+Implement a function that takes a minefield and returns the annotated field with mine counts.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement the annotate function that takes a minefield (Vec<&str> or Vec<String>)
+// and returns the annotated field where each safe square '.' is replaced by a digit
+// indicating the number of adjacent mines.
+//
+// Example:
+// Input:  ["*...", "....", ".*..", "...."]
+// Output: ["*100", "2210", "1*10", "1110"]
+//
+// Each square can have at most 8 adjacent squares.
+
+fn annotate(field: &[String]) -> Vec<String> {
+    todo!("Implement the minesweeper annotate function")
+}
+
+fn main() {
+    let field = vec![
+        "*...".to_string(),
+        "....".to_string(),
+        ".*..".to_string(),
+        "....".to_string(),
+    ];
+    let result = annotate(&field);
+    for line in result {
+        println!("{}", line);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn no_mines() {
+        let field = vec!["...".to_string(), "...".to_string(), "...".to_string()];
+        let expected = vec!["000".to_string(), "000".to_string(), "000".to_string()];
+        assert_eq!(annotate(&field), expected);
+    }
+
+    #[test]
+    fn single_mine_in_center() {
+        let field = vec!["...".to_string(), ".*.".to_string(), "...".to_string()];
+        let expected = vec!["111".to_string(), "1*1".to_string(), "111".to_string()];
+        assert_eq!(annotate(&field), expected);
+    }
+
+    #[test]
+    fn field_from_kata_description() {
+        let field = vec![
+            "*...".to_string(),
+            "....".to_string(),
+            ".*..".to_string(),
+            "....".to_string(),
+        ];
+        let expected = vec![
+            "*100".to_string(),
+            "2210".to_string(),
+            "1*10".to_string(),
+            "1110".to_string(),
+        ];
+        assert_eq!(annotate(&field), expected);
+    }
+
+    #[test]
+    fn multiple_mines() {
+        let field = vec![
+            "**...".to_string(),
+            ".....".to_string(),
+            ".*...".to_string(),
+        ];
+        let expected = vec![
+            "**100".to_string(),
+            "33200".to_string(),
+            "1*100".to_string(),
+        ];
+        assert_eq!(annotate(&field), expected);
+    }
+}
+`,
+    solutionCode: `fn annotate(field: &[String]) -> Vec<String> {
+    let rows = field.len();
+    if rows == 0 {
+        return vec![];
+    }
+    let cols = field[0].len();
+
+    let mut result = Vec::new();
+
+    for row in 0..rows {
+        let mut new_row = String::new();
+        for col in 0..cols {
+            if field[row].as_bytes()[col] == b'*' {
+                new_row.push('*');
+            } else {
+                let mut count = 0u8;
+                for dr in [-1i32, 0, 1] {
+                    for dc in [-1i32, 0, 1] {
+                        if dr == 0 && dc == 0 {
+                            continue;
+                        }
+                        let nr = row as i32 + dr;
+                        let nc = col as i32 + dc;
+                        if nr >= 0 && nr < rows as i32 && nc >= 0 && nc < cols as i32 {
+                            if field[nr as usize].as_bytes()[nc as usize] == b'*' {
+                                count += 1;
+                            }
+                        }
+                    }
+                }
+                new_row.push((count + b'0') as char);
+            }
+        }
+        result.push(new_row);
+    }
+
+    result
+}
+
+fn main() {
+    let field = vec![
+        "*...".to_string(),
+        "....".to_string(),
+        ".*..".to_string(),
+        "....".to_string(),
+    ];
+    let result = annotate(&field);
+    for line in result {
+        println!("{}", line);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn no_mines() {
+        let field = vec!["...".to_string(), "...".to_string(), "...".to_string()];
+        let expected = vec!["000".to_string(), "000".to_string(), "000".to_string()];
+        assert_eq!(annotate(&field), expected);
+    }
+
+    #[test]
+    fn single_mine_in_center() {
+        let field = vec!["...".to_string(), ".*.".to_string(), "...".to_string()];
+        let expected = vec!["111".to_string(), "1*1".to_string(), "111".to_string()];
+        assert_eq!(annotate(&field), expected);
+    }
+
+    #[test]
+    fn field_from_kata_description() {
+        let field = vec![
+            "*...".to_string(),
+            "....".to_string(),
+            ".*..".to_string(),
+            "....".to_string(),
+        ];
+        let expected = vec![
+            "*100".to_string(),
+            "2210".to_string(),
+            "1*10".to_string(),
+            "1110".to_string(),
+        ];
+        assert_eq!(annotate(&field), expected);
+    }
+
+    #[test]
+    fn multiple_mines() {
+        let field = vec![
+            "**...".to_string(),
+            ".....".to_string(),
+            ".*...".to_string(),
+        ];
+        let expected = vec![
+            "**100".to_string(),
+            "33200".to_string(),
+            "1*100".to_string(),
+        ];
+        assert_eq!(annotate(&field), expected);
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/03-minesweeper/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-04-poker-hands',
+    title: 'Poker Hands',
+    titleEn: 'Poker Hands',
+    number: 19,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'structs',
+    xpReward: 50,
+    description: `This kata is based on [Poker Hands from Coding Dojo](https://codingdojo.org/kata/PokerHands/).
+
+Implement a poker hand comparator that determines which hand wins.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement Card and Suit types
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+pub enum Suit {
+    Clubs,
+    Diamonds,
+    Hearts,
+    Spades,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct Card {
+    pub value: u8, // 2..=14 (Ace = 14)
+    pub suit: Suit,
+}
+
+impl Card {
+    pub fn new(value: u8, suit: Suit) -> Self {
+        todo!("Create a new card")
+    }
+
+    pub fn from_str(s: &str) -> Self {
+        todo!("Parse a card like '2H', 'TD', 'JC', 'QH', 'KS', 'AD'")
+    }
+}
+
+// Cards are ordered by value for sorting
+impl PartialOrd for Card {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ord for Card {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        todo!("Compare cards by value")
+    }
+}
+
+
+use crate::hand::Hand;
+
+// TODO: Compare two poker hands
+
+#[derive(Debug, PartialEq, Eq)]
+pub enum Winner {
+    Black,
+    White,
+    Tie,
+}
+
+pub fn compare(black: &Hand, white: &Hand) -> Winner {
+    todo!("Compare two hands and return the winner")
+}
+
+pub fn describe_winner(black: &Hand, white: &Hand) -> String {
+    todo!("Return a human-readable description of the result")
+}
+
+
+use crate::card::Card;
+
+// TODO: Implement Hand ranking
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+pub enum HandRank {
+    HighCard = 0,
+    Pair = 1,
+    TwoPairs = 2,
+    ThreeOfAKind = 3,
+    Straight = 4,
+    Flush = 5,
+    FullHouse = 6,
+    FourOfAKind = 7,
+    StraightFlush = 8,
+}
+
+#[derive(Debug, Clone)]
+pub struct Hand {
+    pub cards: Vec<Card>,
+    pub rank: HandRank,
+    // Tie-breaking values (e.g., pair values, high cards in order)
+    pub tie_breakers: Vec<u8>,
+}
+
+impl Hand {
+    pub fn from_cards(cards: Vec<Card>) -> Self {
+        todo!("Evaluate a hand of 5 cards and determine its rank")
+    }
+
+    pub fn from_str(s: &str) -> Self {
+        todo!("Parse a hand from a string like '2H 3D 5S 9C KD'")
+    }
+}
+
+
+mod card;
+mod compare;
+mod hand;
+
+fn main() {
+    let tests = [
+        "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH",
+        "Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S",
+        "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH",
+        "Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH",
+    ];
+
+    for test in tests {
+        let parts: Vec<&str> = test.split("  ").collect();
+        let black_str = parts[0].strip_prefix("Black: ").unwrap();
+        let white_str = parts[1].strip_prefix("White: ").unwrap();
+
+        let black = hand::Hand::from_str(black_str);
+        let white = hand::Hand::from_str(white_str);
+        println!("{}", compare::describe_winner(&black, &white));
+    }
+}
+`,
+    solutionCode: `#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+pub enum Suit {
+    Clubs,
+    Diamonds,
+    Hearts,
+    Spades,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct Card {
+    pub value: u8,
+    pub suit: Suit,
+}
+
+impl Card {
+    pub fn new(value: u8, suit: Suit) -> Self {
+        Card { value, suit }
+    }
+
+    pub fn from_str(s: &str) -> Self {
+        let bytes = s.as_bytes();
+        let value = match bytes[0] {
+            b'2'..=b'9' => bytes[0] - b'0',
+            b'T' => 10,
+            b'J' => 11,
+            b'Q' => 12,
+            b'K' => 13,
+            b'A' => 14,
+            _ => panic!("Invalid card value: {}", s),
+        };
+        let suit = match bytes[1] {
+            b'C' => Suit::Clubs,
+            b'D' => Suit::Diamonds,
+            b'H' => Suit::Hearts,
+            b'S' => Suit::Spades,
+            _ => panic!("Invalid suit: {}", s),
+        };
+        Card { value, suit }
+    }
+}
+
+impl PartialOrd for Card {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ord for Card {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        self.value.cmp(&other.value)
+    }
+}
+
+
+use crate::hand::{Hand, HandRank};
+use std::cmp::Ordering;
+
+#[derive(Debug, PartialEq, Eq)]
+pub enum Winner {
+    Black,
+    White,
+    Tie,
+}
+
+pub fn compare(black: &Hand, white: &Hand) -> Winner {
+    let rank_cmp = (black.rank as u8).cmp(&(white.rank as u8));
+    match rank_cmp {
+        Ordering::Greater => Winner::Black,
+        Ordering::Less => Winner::White,
+        Ordering::Equal => {
+            for (b, w) in black.tie_breakers.iter().zip(white.tie_breakers.iter()) {
+                match b.cmp(w) {
+                    Ordering::Greater => return Winner::Black,
+                    Ordering::Less => return Winner::White,
+                    Ordering::Equal => continue,
+                }
+            }
+            Winner::Tie
+        }
+    }
+}
+
+pub fn describe_winner(black: &Hand, white: &Hand) -> String {
+    let result = compare(black, white);
+    let rank_names = [
+        "high card",
+        "pair",
+        "two pairs",
+        "three of a kind",
+        "straight",
+        "flush",
+        "full house",
+        "four of a kind",
+        "straight flush",
+    ];
+    match result {
+        Winner::Black => format!(
+            "Black wins. - with {}: {:?}",
+            rank_names[black.rank as usize], black.tie_breakers
+        ),
+        Winner::White => format!(
+            "White wins. - with {}: {:?}",
+            rank_names[white.rank as usize], white.tie_breakers
+        ),
+        Winner::Tie => "Tie.".to_string(),
+    }
+}
+
+
+use crate::card::{Card, Suit};
+use std::collections::HashMap;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+pub enum HandRank {
+    HighCard = 0,
+    Pair = 1,
+    TwoPairs = 2,
+    ThreeOfAKind = 3,
+    Straight = 4,
+    Flush = 5,
+    FullHouse = 6,
+    FourOfAKind = 7,
+    StraightFlush = 8,
+}
+
+#[derive(Debug, Clone)]
+pub struct Hand {
+    pub cards: Vec<Card>,
+    pub rank: HandRank,
+    pub tie_breakers: Vec<u8>,
+}
+
+impl Hand {
+    pub fn from_cards(mut cards: Vec<Card>) -> Self {
+        cards.sort_by(|a, b| b.cmp(a));
+
+        let is_flush = cards.windows(2).all(|w| w[0].suit == w[1].suit);
+        let is_straight = cards.windows(2).all(|w| w[0].value == w[1].value + 1)
+            || (cards.iter().map(|c| c.value).collect::<Vec<_>>() == vec![14, 5, 4, 3, 2]);
+
+        let mut counts: HashMap<u8, u8> = HashMap::new();
+        for card in &cards {
+            *counts.entry(card.value).or_insert(0) += 1;
+        }
+        let mut freq: Vec<(u8, u8)> = counts.into_iter().map(|(v, c)| (c, v)).collect();
+        freq.sort_by(|a, b| b.0.cmp(&a.0).then(b.1.cmp(&a.1)));
+
+        let (rank, tie_breakers) = if is_flush && is_straight {
+            let high = if cards.iter().map(|c| c.value).collect::<Vec<_>>() == vec![14, 5, 4, 3, 2]
+            {
+                5
+            } else {
+                cards[0].value
+            };
+            (HandRank::StraightFlush, vec![high])
+        } else if freq[0].0 == 4 {
+            (HandRank::FourOfAKind, vec![freq[0].1, freq[1].1])
+        } else if freq[0].0 == 3 && freq[1].0 == 2 {
+            (HandRank::FullHouse, vec![freq[0].1, freq[1].1])
+        } else if is_flush {
+            let values: Vec<u8> = cards.iter().map(|c| c.value).collect();
+            (HandRank::Flush, values)
+        } else if is_straight {
+            let high = if cards.iter().map(|c| c.value).collect::<Vec<_>>() == vec![14, 5, 4, 3, 2]
+            {
+                5
+            } else {
+                cards[0].value
+            };
+            (HandRank::Straight, vec![high])
+        } else if freq[0].0 == 3 {
+            let kickers: Vec<u8> = freq.iter().skip(1).map(|(_, v)| *v).collect();
+            let mut tb = vec![freq[0].1];
+            tb.extend(kickers);
+            (HandRank::ThreeOfAKind, tb)
+        } else if freq[0].0 == 2 && freq[1].0 == 2 {
+            let kicker = freq[2].1;
+            let mut tb = vec![freq[0].1.max(freq[1].1), freq[0].1.min(freq[1].1), kicker];
+            (HandRank::TwoPairs, tb)
+        } else if freq[0].0 == 2 {
+            let kickers: Vec<u8> = freq.iter().skip(1).map(|(_, v)| *v).collect();
+            let mut tb = vec![freq[0].1];
+            tb.extend(kickers);
+            (HandRank::Pair, tb)
+        } else {
+            let values: Vec<u8> = cards.iter().map(|c| c.value).collect();
+            (HandRank::HighCard, values)
+        };
+
+        Hand {
+            cards,
+            rank,
+            tie_breakers,
+        }
+    }
+
+    pub fn from_str(s: &str) -> Self {
+        let cards: Vec<Card> = s.split_whitespace().map(Card::from_str).collect();
+        Hand::from_cards(cards)
+    }
+}
+
+
+mod card;
+mod compare;
+mod hand;
+
+fn main() {
+    let tests = [
+        "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH",
+        "Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S",
+        "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH",
+        "Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH",
+    ];
+
+    for test in tests {
+        let parts: Vec<&str> = test.split("  ").collect();
+        let black_str = parts[0].strip_prefix("Black: ").unwrap();
+        let white_str = parts[1].strip_prefix("White: ").unwrap();
+
+        let black = hand::Hand::from_str(black_str);
+        let white = hand::Hand::from_str(white_str);
+        println!("{}", compare::describe_winner(&black, &white));
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn high_card_ace_wins() {
+        let black = hand::Hand::from_str("2H 3D 5S 9C KD");
+        let white = hand::Hand::from_str("2C 3H 4S 8C AH");
+        assert_eq!(compare::compare(&black, &white), compare::Winner::White);
+    }
+
+    #[test]
+    fn full_house_beats_flush() {
+        let black = hand::Hand::from_str("2H 4S 4C 2D 4H");
+        let white = hand::Hand::from_str("2S 8S AS QS 3S");
+        assert_eq!(compare::compare(&black, &white), compare::Winner::Black);
+    }
+
+    #[test]
+    fn high_card_nine_wins() {
+        let black = hand::Hand::from_str("2H 3D 5S 9C KD");
+        let white = hand::Hand::from_str("2C 3H 4S 8C KH");
+        assert_eq!(compare::compare(&black, &white), compare::Winner::Black);
+    }
+
+    #[test]
+    fn identical_hands_tie() {
+        let black = hand::Hand::from_str("2H 3D 5S 9C KD");
+        let white = hand::Hand::from_str("2D 3H 5C 9S KH");
+        assert_eq!(compare::compare(&black, &white), compare::Winner::Tie);
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/04-poker-hands/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-05-diamond',
+    title: 'Diamond',
+    titleEn: 'Diamond',
+    number: 20,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'structs',
+    xpReward: 50,
+    description: `This kata is based on [Diamond from Coding Dojo](https://codingdojo.org/kata/Diamond/).
+
+Implement the \`diamond\` function that returns a vector of strings representing the diamond shape.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement the diamond function that takes a char (A-Z) and returns
+// a vector of strings representing the diamond shape.
+//
+// Example: diamond('C') returns:
+// vec!["  A", " B B", "C   C", " B B", "  A"]
+
+fn diamond(c: char) -> Vec<String> {
+    todo!("Implement the diamond function")
+}
+
+fn main() {
+    for c in 'A'..='E' {
+        println!("diamond('{}'):", c);
+        for line in diamond(c) {
+            println!("{}", line);
+        }
+        println!();
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn diamond_a() {
+        assert_eq!(diamond('A'), vec!["A"]);
+    }
+
+    #[test]
+    fn diamond_b() {
+        assert_eq!(diamond('B'), vec![" A", "B B", " A"]);
+    }
+
+    #[test]
+    fn diamond_c() {
+        assert_eq!(diamond('C'), vec!["  A", " B B", "C   C", " B B", "  A"]);
+    }
+
+    #[test]
+    fn diamond_d_lines_count() {
+        let d = diamond('D');
+        assert_eq!(d.len(), 7); // 2*n - 1 where n = 4 for 'D'
+    }
+
+    #[test]
+    fn diamond_e_first_line_has_padding() {
+        let d = diamond('E');
+        assert!(d[0].starts_with("    A"));
+    }
+}
+`,
+    solutionCode: `fn diamond(c: char) -> Vec<String> {
+    let n = (c as u8 - b'A') as usize;
+    let size = 2 * n + 1;
+    let mut result = Vec::new();
+
+    for i in 0..size {
+        let row = if i <= n { i } else { size - 1 - i };
+        let letter = (b'A' + row as u8) as char;
+        let outer_padding = n - row;
+        let left = " ".repeat(outer_padding) + &letter.to_string();
+
+        if row == 0 {
+            result.push(left);
+        } else {
+            let inner_padding = 2 * row - 1;
+            let right = " ".repeat(inner_padding) + &letter.to_string();
+            result.push(left + &right);
+        }
+    }
+
+    result
+}
+
+fn main() {
+    for c in 'A'..='E' {
+        println!("diamond('{}'):", c);
+        for line in diamond(c) {
+            println!("{}", line);
+        }
+        println!();
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn diamond_a() {
+        assert_eq!(diamond('A'), vec!["A"]);
+    }
+
+    #[test]
+    fn diamond_b() {
+        assert_eq!(diamond('B'), vec![" A", "B B", " A"]);
+    }
+
+    #[test]
+    fn diamond_c() {
+        assert_eq!(diamond('C'), vec!["  A", " B B", "C   C", " B B", "  A"]);
+    }
+
+    #[test]
+    fn diamond_d_lines_count() {
+        let d = diamond('D');
+        assert_eq!(d.len(), 7);
+    }
+
+    #[test]
+    fn diamond_e_first_line_has_padding() {
+        let d = diamond('E');
+        assert!(d[0].starts_with("    A"));
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/05-diamond/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-06-yahtzee',
+    title: 'Yahtzee',
+    titleEn: 'Yahtzee',
+    number: 21,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'structs',
+    xpReward: 50,
+    description: `This kata is based on [Yahtzee from Coding Dojo](https://codingdojo.org/kata/Yahtzee/).
+
+Implement \`score(dice: &[u32; 5], category: Category) -&gt; u32\` for all scoring categories.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement the Yahtzee scoring system
+// Categories: Ones, Twos, ..., Sixes = sum of matching dice
+// Pair = sum of highest pair, TwoPairs = sum of two pairs
+// ThreeOfAKind = sum of three matching, FourOfAKind = sum of four matching
+// SmallStraight = 1+2+3+4+5 = 15, LargeStraight = 2+3+4+5+6 = 20
+// FullHouse = sum of all dice (3+2 matching), Chance = sum of all dice
+// Yahtzee = 50 (all five dice same)
+
+#[derive(Debug, Clone, Copy)]
+pub enum Category {
+    Ones,
+    Twos,
+    Threes,
+    Fours,
+    Fives,
+    Sixes,
+    Pair,
+    TwoPairs,
+    ThreeOfAKind,
+    FourOfAKind,
+    SmallStraight,
+    LargeStraight,
+    FullHouse,
+    Chance,
+    Yahtzee,
+}
+
+pub fn score(dice: &[u32; 5], category: Category) -> u32 {
+    todo!("Implement score for each category")
+}
+
+fn main() {
+    let dice = [2, 3, 4, 5, 6];
+    println!("Large straight: {}", score(&dice, Category::LargeStraight));
+    let dice2 = [1, 1, 2, 3, 1];
+    println!("Three of a kind: {}", score(&dice2, Category::ThreeOfAKind));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn ones_counts_ones() {
+        assert_eq!(score(&[1, 1, 2, 3, 4], Category::Ones), 2);
+    }
+    #[test]
+    fn pair_returns_highest_pair() {
+        assert_eq!(score(&[3, 3, 5, 5, 2], Category::Pair), 10);
+    }
+    #[test]
+    fn two_pairs() {
+        assert_eq!(score(&[3, 3, 5, 5, 2], Category::TwoPairs), 16);
+    }
+    #[test]
+    fn three_of_a_kind() {
+        assert_eq!(score(&[3, 3, 3, 2, 1], Category::ThreeOfAKind), 9);
+    }
+    #[test]
+    fn four_of_a_kind() {
+        assert_eq!(score(&[3, 3, 3, 3, 1], Category::FourOfAKind), 12);
+    }
+    #[test]
+    fn small_straight() {
+        assert_eq!(score(&[1, 2, 3, 4, 5], Category::SmallStraight), 15);
+    }
+    #[test]
+    fn large_straight() {
+        assert_eq!(score(&[2, 3, 4, 5, 6], Category::LargeStraight), 20);
+    }
+    #[test]
+    fn full_house() {
+        assert_eq!(score(&[3, 3, 3, 2, 2], Category::FullHouse), 13);
+    }
+    #[test]
+    fn yahtzee() {
+        assert_eq!(score(&[4, 4, 4, 4, 4], Category::Yahtzee), 50);
+    }
+    #[test]
+    fn chance() {
+        assert_eq!(score(&[1, 2, 3, 4, 5], Category::Chance), 15);
+    }
+}
+`,
+    solutionCode: `#[derive(Debug, Clone, Copy)]
+pub enum Category {
+    Ones,
+    Twos,
+    Threes,
+    Fours,
+    Fives,
+    Sixes,
+    Pair,
+    TwoPairs,
+    ThreeOfAKind,
+    FourOfAKind,
+    SmallStraight,
+    LargeStraight,
+    FullHouse,
+    Chance,
+    Yahtzee,
+}
+
+pub fn score(dice: &[u32; 5], category: Category) -> u32 {
+    let mut counts = [0u32; 7];
+    for &d in dice {
+        if d <= 6 {
+            counts[d as usize] += 1;
+        }
+    }
+
+    match category {
+        Category::Ones => counts[1] * 1,
+        Category::Twos => counts[2] * 2,
+        Category::Threes => counts[3] * 3,
+        Category::Fours => counts[4] * 4,
+        Category::Fives => counts[5] * 5,
+        Category::Sixes => counts[6] * 6,
+        Category::Chance => dice.iter().sum(),
+        Category::Yahtzee => {
+            if counts.iter().any(|&c| c == 5) {
+                50
+            } else {
+                0
+            }
+        }
+        Category::Pair => (1..=6)
+            .rev()
+            .find(|&f| counts[f] >= 2)
+            .map(|f| f as u32 * 2)
+            .unwrap_or(0),
+        Category::TwoPairs => {
+            let pairs: Vec<u32> = (1..=6)
+                .rev()
+                .filter(|&f| counts[f] >= 2)
+                .map(|f| f as u32)
+                .collect();
+            if pairs.len() >= 2 {
+                pairs[0] * 2 + pairs[1] * 2
+            } else {
+                0
+            }
+        }
+        Category::ThreeOfAKind => (1..=6)
+            .find(|&f| counts[f] >= 3)
+            .map(|f| f as u32 * 3)
+            .unwrap_or(0),
+        Category::FourOfAKind => (1..=6)
+            .find(|&f| counts[f] >= 4)
+            .map(|f| f as u32 * 4)
+            .unwrap_or(0),
+        Category::SmallStraight => {
+            if counts[1..=5].iter().all(|&c| c >= 1) {
+                15
+            } else {
+                0
+            }
+        }
+        Category::LargeStraight => {
+            if counts[2..=6].iter().all(|&c| c >= 1) {
+                20
+            } else {
+                0
+            }
+        }
+        Category::FullHouse => {
+            let has_three = (1..=6).any(|f| counts[f] == 3);
+            let has_two = (1..=6).any(|f| counts[f] == 2);
+            if has_three && has_two {
+                dice.iter().sum()
+            } else {
+                0
+            }
+        }
+    }
+}
+
+fn main() {
+    println!(
+        "Large straight: {}",
+        score(&[2, 3, 4, 5, 6], Category::LargeStraight)
+    );
+    println!(
+        "Three of a kind: {}",
+        score(&[1, 1, 1, 3, 1], Category::ThreeOfAKind)
+    );
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn ones_counts_ones() {
+        assert_eq!(score(&[1, 1, 2, 3, 4], Category::Ones), 2);
+    }
+    #[test]
+    fn pair_returns_highest_pair() {
+        assert_eq!(score(&[3, 3, 5, 5, 2], Category::Pair), 10);
+    }
+    #[test]
+    fn two_pairs() {
+        assert_eq!(score(&[3, 3, 5, 5, 2], Category::TwoPairs), 16);
+    }
+    #[test]
+    fn three_of_a_kind() {
+        assert_eq!(score(&[3, 3, 3, 2, 1], Category::ThreeOfAKind), 9);
+    }
+    #[test]
+    fn four_of_a_kind() {
+        assert_eq!(score(&[3, 3, 3, 3, 1], Category::FourOfAKind), 12);
+    }
+    #[test]
+    fn small_straight() {
+        assert_eq!(score(&[1, 2, 3, 4, 5], Category::SmallStraight), 15);
+    }
+    #[test]
+    fn large_straight() {
+        assert_eq!(score(&[2, 3, 4, 5, 6], Category::LargeStraight), 20);
+    }
+    #[test]
+    fn full_house() {
+        assert_eq!(score(&[3, 3, 3, 2, 2], Category::FullHouse), 13);
+    }
+    #[test]
+    fn yahtzee() {
+        assert_eq!(score(&[4, 4, 4, 4, 4], Category::Yahtzee), 50);
+    }
+    #[test]
+    fn chance() {
+        assert_eq!(score(&[1, 2, 3, 4, 5], Category::Chance), 15);
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/06-yahtzee/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-07-berlin-clock',
+    title: 'Berlin Clock',
+    titleEn: 'Berlin Clock',
+    number: 22,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'structs',
+    xpReward: 50,
+    description: `This kata is based on [Berlin Clock from Coding Dojo](https://codingdojo.org/kata/BerlinClock/).
+
+Implement \`berlin_clock(time: &str) -&gt; String\` that converts a time to its Berlin Clock representation.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement berlin_clock(time: &str) -> String
+// Input: "HH:MM:SS"
+// Output: 5 rows separated by newline:
+// Row 1: "Y" if seconds even, "O" if odd
+// Row 2: 4 lamps, each = 5h (R if lit, O if not)
+// Row 3: 4 lamps, each = 1h (R if lit, O if not)
+// Row 4: 11 lamps, each = 5min (Y if lit, R at pos 3/6/9, O if not)
+// Row 5: 4 lamps, each = 1min (Y if lit, O if not)
+
+fn berlin_clock(time: &str) -> String {
+    todo!("Implement Berlin Clock")
+}
+
+fn main() {
+    println!("{}", berlin_clock("13:17:01"));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn midnight() {
+        let result = berlin_clock("00:00:00");
+        let rows: Vec<&str> = result.lines().collect();
+        assert_eq!(rows[0], "Y"); // seconds even
+        assert_eq!(rows[1], "OOOO");
+        assert_eq!(rows[2], "OOOO");
+        assert_eq!(rows[3], "OOOOOOOOOOO");
+        assert_eq!(rows[4], "OOOO");
+    }
+
+    #[test]
+    fn thirteen_seventeen_one() {
+        let result = berlin_clock("13:17:01");
+        let rows: Vec<&str> = result.lines().collect();
+        assert_eq!(rows[0], "O"); // odd seconds
+        assert_eq!(rows[1], "RROO"); // 13h -> 2*5h lit
+        assert_eq!(rows[2], "RRRO"); // 13h -> 3*1h lit
+        assert_eq!(rows[3], "YYROOOOOOOO"); // 17min -> 3*5min, pos 3 is R
+        assert_eq!(rows[4], "YYOO"); // 17min -> 2*1min
+    }
+}
+`,
+    solutionCode: `fn berlin_clock(time: &str) -> String {
+    let parts: Vec<u32> = time.split(':').map(|s| s.parse().unwrap()).collect();
+    let (h, m, s) = (parts[0], parts[1], parts[2]);
+
+    let row1 = if s % 2 == 0 { "Y" } else { "O" };
+
+    let row2: String = (0..4).map(|i| if i < h / 5 { 'R' } else { 'O' }).collect();
+    let row3: String = (0..4).map(|i| if i < h % 5 { 'R' } else { 'O' }).collect();
+
+    let row4: String = (1..=11)
+        .map(|i| {
+            if i <= m / 5 {
+                if i % 3 == 0 {
+                    'R'
+                } else {
+                    'Y'
+                }
+            } else {
+                'O'
+            }
+        })
+        .collect();
+
+    let row5: String = (0..4).map(|i| if i < m % 5 { 'Y' } else { 'O' }).collect();
+
+    format!("{}\\n{}\\n{}\\n{}\\n{}", row1, row2, row3, row4, row5)
+}
+
+fn main() {
+    println!("{}", berlin_clock("13:17:01"));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn midnight() {
+        let result = berlin_clock("00:00:00");
+        let rows: Vec<&str> = result.lines().collect();
+        assert_eq!(rows[0], "Y");
+        assert_eq!(rows[1], "OOOO");
+        assert_eq!(rows[2], "OOOO");
+        assert_eq!(rows[3], "OOOOOOOOOOO");
+        assert_eq!(rows[4], "OOOO");
+    }
+
+    #[test]
+    fn thirteen_seventeen_one() {
+        let result = berlin_clock("13:17:01");
+        let rows: Vec<&str> = result.lines().collect();
+        assert_eq!(rows[0], "O");
+        assert_eq!(rows[1], "RROO");
+        assert_eq!(rows[2], "RRRO");
+        assert_eq!(rows[3], "YYROOOOOOOO");
+        assert_eq!(rows[4], "YYOO");
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/07-berlin-clock/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-08-gilded-rose',
+    title: 'Gilded Rose',
+    titleEn: 'Gilded Rose',
+    number: 23,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'traits',
+    xpReward: 50,
+    description: `This kata is based on [Gilded Rose from Coding Dojo](https://codingdojo.org/kata/gilded-rose/).
+
+Refactor the legacy \`update_quality\` function to be clean and readable, then extend it to support "Conjured" items.`,
+    tests: [
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// This is the legacy code of the Gilded Rose inn.
+// TODO 1: Write tests to characterize existing behavior (Characterization Tests)
+// TODO 2: Refactor update_quality to be clean and readable
+// TODO 3: Add support for "Conjured" items (degrade 2x as fast as normal items)
+
+#[derive(Debug, Clone)]
+pub struct Item {
+    pub name: String,
+    pub sell_in: i32,
+    pub quality: i32,
+}
+
+impl Item {
+    pub fn new(name: &str, sell_in: i32, quality: i32) -> Self {
+        Item {
+            name: name.to_string(),
+            sell_in,
+            quality,
+        }
+    }
+}
+
+pub fn update_quality(items: &mut Vec<Item>) {
+    for item in items.iter_mut() {
+        if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert" {
+            if item.quality > 0 {
+                if item.name != "Sulfuras, Hand of Ragnaros" {
+                    item.quality -= 1;
+                }
+            }
+        } else {
+            if item.quality < 50 {
+                item.quality += 1;
+                if item.name == "Backstage passes to a TAFKAL80ETC concert" {
+                    if item.sell_in < 11 {
+                        if item.quality < 50 {
+                            item.quality += 1;
+                        }
+                    }
+                    if item.sell_in < 6 {
+                        if item.quality < 50 {
+                            item.quality += 1;
+                        }
+                    }
+                }
+            }
+        }
+        if item.name != "Sulfuras, Hand of Ragnaros" {
+            item.sell_in -= 1;
+        }
+        if item.sell_in < 0 {
+            if item.name != "Aged Brie" {
+                if item.name != "Backstage passes to a TAFKAL80ETC concert" {
+                    if item.quality > 0 {
+                        if item.name != "Sulfuras, Hand of Ragnaros" {
+                            item.quality -= 1;
+                        }
+                    }
+                } else {
+                    item.quality -= item.quality;
+                }
+            } else {
+                if item.quality < 50 {
+                    item.quality += 1;
+                }
+            }
+        }
+    }
+}
+
+fn main() {
+    let mut items = vec![
+        Item::new("+5 Dexterity Vest", 10, 20),
+        Item::new("Aged Brie", 2, 0),
+        Item::new("Elixir of the Mongoose", 5, 7),
+        Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+        Item::new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+        Item::new("Conjured Mana Cake", 3, 6), // TODO 3
+    ];
+    update_quality(&mut items);
+    for item in &items {
+        println!("{:?}", item);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn normal_item_degrades() {
+        let mut items = vec![Item::new("foo", 5, 10)];
+        update_quality(&mut items);
+        assert_eq!(items[0].quality, 9);
+        assert_eq!(items[0].sell_in, 4);
+    }
+
+    #[test]
+    fn quality_never_negative() {
+        let mut items = vec![Item::new("foo", 5, 0)];
+        update_quality(&mut items);
+        assert_eq!(items[0].quality, 0);
+    }
+
+    #[test]
+    fn aged_brie_increases() {
+        let mut items = vec![Item::new("Aged Brie", 5, 10)];
+        update_quality(&mut items);
+        assert_eq!(items[0].quality, 11);
+    }
+
+    #[test]
+    fn sulfuras_unchanged() {
+        let mut items = vec![Item::new("Sulfuras, Hand of Ragnaros", 0, 80)];
+        update_quality(&mut items);
+        assert_eq!(items[0].quality, 80);
+        assert_eq!(items[0].sell_in, 0);
+    }
+
+    #[test]
+    fn backstage_pass_drops_to_zero_after_concert() {
+        let mut items = vec![Item::new(
+            "Backstage passes to a TAFKAL80ETC concert",
+            0,
+            20,
+        )];
+        update_quality(&mut items);
+        assert_eq!(items[0].quality, 0);
+    }
+}
+`,
+    solutionCode: `#[derive(Debug, Clone)]
+pub struct Item {
+    pub name: String,
+    pub sell_in: i32,
+    pub quality: i32,
+}
+
+impl Item {
+    pub fn new(name: &str, sell_in: i32, quality: i32) -> Self {
+        Item {
+            name: name.to_string(),
+            sell_in,
+            quality,
+        }
+    }
+}
+
+pub fn update_quality(items: &mut Vec<Item>) {
+    for item in items.iter_mut() {
+        match item.name.as_str() {
+            "Sulfuras, Hand of Ragnaros" => {}
+            "Aged Brie" => {
+                item.sell_in -= 1;
+                item.quality = (item.quality + if item.sell_in < 0 { 2 } else { 1 }).min(50);
+            }
+            "Backstage passes to a TAFKAL80ETC concert" => {
+                item.sell_in -= 1;
+                item.quality = if item.sell_in < 0 {
+                    0
+                } else {
+                    let inc = if item.sell_in < 5 {
+                        3
+                    } else if item.sell_in < 10 {
+                        2
+                    } else {
+                        1
+                    };
+                    (item.quality + inc).min(50)
+                };
+            }
+            name if name.starts_with("Conjured") => {
+                item.sell_in -= 1;
+                let deg = if item.sell_in < 0 { 4 } else { 2 };
+                item.quality = (item.quality - deg).max(0);
+            }
+            _ => {
+                item.sell_in -= 1;
+                let deg = if item.sell_in < 0 { 2 } else { 1 };
+                item.quality = (item.quality - deg).max(0);
+            }
+        }
+    }
+}
+
+fn main() {
+    let mut items = vec![
+        Item::new("+5 Dexterity Vest", 10, 20),
+        Item::new("Aged Brie", 2, 0),
+        Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+        Item::new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+        Item::new("Conjured Mana Cake", 3, 6),
+    ];
+    update_quality(&mut items);
+    for item in &items {
+        println!("{:?}", item);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn normal_item_degrades() {
+        let mut i = vec![Item::new("foo", 5, 10)];
+        update_quality(&mut i);
+        assert_eq!(i[0].quality, 9);
+    }
+
+    #[test]
+    fn quality_never_negative() {
+        let mut i = vec![Item::new("foo", 5, 0)];
+        update_quality(&mut i);
+        assert_eq!(i[0].quality, 0);
+    }
+
+    #[test]
+    fn aged_brie_increases() {
+        let mut i = vec![Item::new("Aged Brie", 5, 10)];
+        update_quality(&mut i);
+        assert_eq!(i[0].quality, 11);
+    }
+
+    #[test]
+    fn sulfuras_unchanged() {
+        let mut i = vec![Item::new("Sulfuras, Hand of Ragnaros", 0, 80)];
+        update_quality(&mut i);
+        assert_eq!(i[0].quality, 80);
+        assert_eq!(i[0].sell_in, 0);
+    }
+
+    #[test]
+    fn backstage_drops_after_concert() {
+        let mut i = vec![Item::new(
+            "Backstage passes to a TAFKAL80ETC concert",
+            0,
+            20,
+        )];
+        update_quality(&mut i);
+        assert_eq!(i[0].quality, 0);
+    }
+
+    #[test]
+    fn conjured_degrades_double() {
+        let mut i = vec![Item::new("Conjured Mana Cake", 5, 10)];
+        update_quality(&mut i);
+        assert_eq!(i[0].quality, 8);
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/08-gilded-rose/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-09-range',
+    title: 'Range',
+    titleEn: 'Range',
+    number: 24,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'generics',
+    xpReward: 50,
+    description: `This kata is based on [Range from Coding Dojo](https://codingdojo.org/kata/Range/).
+
+Implement a \`Range\` struct using \`Bound::Open(i32)\` and \`Bound::Closed(i32)\` enum variants, with all five range operations.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement integer range with open/closed bounds
+// Notation: [a,b) = closed start, open end
+// Closed bound includes the endpoint, Open bound excludes it
+//
+// Examples:
+// [2,6) contains 2, 3, 4, 5 but NOT 6
+// [2,5] contains 2, 3, 4, 5
+
+#[derive(Debug, Clone, Copy)]
+pub enum Bound {
+    Open(i32),   // exclusive
+    Closed(i32), // inclusive
+}
+
+#[derive(Debug, Clone)]
+pub struct Range {
+    pub start: Bound,
+    pub end: Bound,
+}
+
+impl Range {
+    pub fn new(start: Bound, end: Bound) -> Self {
+        todo!("Create range")
+    }
+
+    pub fn contains_point(&self, point: i32) -> bool {
+        todo!("Check if point is in range")
+    }
+
+    pub fn get_all_points(&self) -> Vec<i32> {
+        todo!("Return all integer points in range")
+    }
+
+    pub fn endpoints(&self) -> (i32, i32) {
+        todo!("Return (first, last) included points")
+    }
+
+    pub fn contains_range(&self, other: &Range) -> bool {
+        todo!("Check if self fully contains other")
+    }
+
+    pub fn overlaps_range(&self, other: &Range) -> bool {
+        todo!("Check if self overlaps with other")
+    }
+}
+
+fn main() {
+    let r = Range::new(Bound::Closed(2), Bound::Open(6));
+    println!("Points: {:?}", r.get_all_points());
+    println!("Contains 3: {}", r.contains_point(3));
+    println!("Contains 6: {}", r.contains_point(6));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn closed_open_contains() {
+        let r = Range::new(Bound::Closed(2), Bound::Open(6));
+        assert!(r.contains_point(2));
+        assert!(r.contains_point(5));
+        assert!(!r.contains_point(6));
+    }
+
+    #[test]
+    fn get_all_points() {
+        let r = Range::new(Bound::Closed(2), Bound::Open(6));
+        assert_eq!(r.get_all_points(), vec![2, 3, 4, 5]);
+    }
+
+    #[test]
+    fn endpoints() {
+        let r = Range::new(Bound::Closed(2), Bound::Open(6));
+        assert_eq!(r.endpoints(), (2, 5));
+    }
+
+    #[test]
+    fn contains_range() {
+        let outer = Range::new(Bound::Closed(2), Bound::Open(10));
+        let inner = Range::new(Bound::Closed(3), Bound::Closed(5));
+        assert!(outer.contains_range(&inner));
+    }
+
+    #[test]
+    fn overlaps_range() {
+        let a = Range::new(Bound::Closed(2), Bound::Open(6));
+        let b = Range::new(Bound::Closed(4), Bound::Open(10));
+        assert!(a.overlaps_range(&b));
+    }
+
+    #[test]
+    fn no_overlap() {
+        let a = Range::new(Bound::Closed(2), Bound::Open(5));
+        let b = Range::new(Bound::Closed(7), Bound::Open(10));
+        assert!(!a.overlaps_range(&b));
+    }
+}
+`,
+    solutionCode: `#[derive(Debug, Clone, Copy)]
+pub enum Bound {
+    Open(i32),   // exclusive
+    Closed(i32), // inclusive
+}
+
+#[derive(Debug, Clone)]
+pub struct Range {
+    pub start: Bound,
+    pub end: Bound,
+}
+
+impl Range {
+    pub fn new(start: Bound, end: Bound) -> Self {
+        Range { start, end }
+    }
+
+    fn lower(&self) -> i32 {
+        match self.start {
+            Bound::Closed(v) => v,
+            Bound::Open(v) => v + 1,
+        }
+    }
+
+    fn upper(&self) -> i32 {
+        match self.end {
+            Bound::Closed(v) => v,
+            Bound::Open(v) => v - 1,
+        }
+    }
+
+    pub fn contains_point(&self, point: i32) -> bool {
+        point >= self.lower() && point <= self.upper()
+    }
+
+    pub fn get_all_points(&self) -> Vec<i32> {
+        (self.lower()..=self.upper()).collect()
+    }
+
+    pub fn endpoints(&self) -> (i32, i32) {
+        (self.lower(), self.upper())
+    }
+
+    pub fn contains_range(&self, other: &Range) -> bool {
+        other.lower() >= self.lower() && other.upper() <= self.upper()
+    }
+
+    pub fn overlaps_range(&self, other: &Range) -> bool {
+        self.lower() <= other.upper() && other.lower() <= self.upper()
+    }
+}
+
+fn main() {
+    let r = Range::new(Bound::Closed(2), Bound::Open(6));
+    println!("Points: {:?}", r.get_all_points());
+    println!("Contains 3: {}", r.contains_point(3));
+    println!("Contains 6: {}", r.contains_point(6));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn closed_open_contains() {
+        let r = Range::new(Bound::Closed(2), Bound::Open(6));
+        assert!(r.contains_point(2));
+        assert!(r.contains_point(5));
+        assert!(!r.contains_point(6));
+    }
+
+    #[test]
+    fn get_all_points() {
+        let r = Range::new(Bound::Closed(2), Bound::Open(6));
+        assert_eq!(r.get_all_points(), vec![2, 3, 4, 5]);
+    }
+
+    #[test]
+    fn endpoints() {
+        let r = Range::new(Bound::Closed(2), Bound::Open(6));
+        assert_eq!(r.endpoints(), (2, 5));
+    }
+
+    #[test]
+    fn contains_range() {
+        let outer = Range::new(Bound::Closed(2), Bound::Open(10));
+        let inner = Range::new(Bound::Closed(3), Bound::Closed(5));
+        assert!(outer.contains_range(&inner));
+    }
+
+    #[test]
+    fn overlaps_range() {
+        let a = Range::new(Bound::Closed(2), Bound::Open(6));
+        let b = Range::new(Bound::Closed(4), Bound::Open(10));
+        assert!(a.overlaps_range(&b));
+    }
+
+    #[test]
+    fn no_overlap() {
+        let a = Range::new(Bound::Closed(2), Bound::Open(5));
+        let b = Range::new(Bound::Closed(7), Bound::Open(10));
+        assert!(!a.overlaps_range(&b));
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/09-range/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-10-birthday-greetings',
+    title: 'Birthday Greetings',
+    titleEn: 'Birthday Greetings',
+    number: 25,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'concurrency',
+    xpReward: 50,
+    description: `This kata is based on [Birthday Greetings from Coding Dojo](https://codingdojo.org/kata/birthday-greetings/).
+
+Implement \`BirthdayService\` using traits for \`FriendRepository\` (input port) and \`EmailSender\` (output port), with in-memory test doubles to verify behavior without real I/O.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement Birthday Greetings with Hexagonal Architecture
+//
+// 1. Define a Friend struct with name, birthdate (month, day), email
+// 2. Define a FriendRepository trait with: fn find_all(&self) -> Vec<Friend>
+// 3. Define an EmailSender trait with: fn send(&self, to: &str, subject: &str, body: &str)
+// 4. Implement BirthdayService::send_greetings(month: u32, day: u32) that:
+//    - Gets all friends from the repository
+//    - Filters those whose birthday matches today (month, day)
+//    - Sends each a greeting email via the sender
+// 5. In tests, use in-memory implementations (test doubles)
+
+#[derive(Debug, Clone)]
+pub struct Friend {
+    pub name: String,
+    pub birth_month: u32,
+    pub birth_day: u32,
+    pub email: String,
+}
+
+pub trait FriendRepository {
+    fn find_all(&self) -> Vec<Friend>;
+}
+
+pub trait EmailSender {
+    fn send(&self, to: &str, subject: &str, body: &str);
+}
+
+pub struct BirthdayService<R: FriendRepository, S: EmailSender> {
+    repository: R,
+    sender: S,
+}
+
+impl<R: FriendRepository, S: EmailSender> BirthdayService<R, S> {
+    pub fn new(repository: R, sender: S) -> Self {
+        todo!("Create service")
+    }
+
+    pub fn send_greetings(&self, month: u32, day: u32) {
+        todo!("Find friends with birthday on (month, day) and send emails")
+    }
+}
+
+fn main() {
+    println!("See tests for usage with test doubles");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::cell::RefCell;
+
+    struct InMemoryRepo {
+        friends: Vec<Friend>,
+    }
+    impl FriendRepository for InMemoryRepo {
+        fn find_all(&self) -> Vec<Friend> {
+            self.friends.clone()
+        }
+    }
+
+    struct SpySender {
+        sent: RefCell<Vec<String>>,
+    }
+    impl EmailSender for SpySender {
+        fn send(&self, to: &str, _subject: &str, _body: &str) {
+            self.sent.borrow_mut().push(to.to_string());
+        }
+    }
+
+    #[test]
+    fn sends_greeting_to_birthday_friend() {
+        let repo = InMemoryRepo {
+            friends: vec![
+                Friend {
+                    name: "John".to_string(),
+                    birth_month: 10,
+                    birth_day: 8,
+                    email: "john@example.com".to_string(),
+                },
+                Friend {
+                    name: "Mary".to_string(),
+                    birth_month: 9,
+                    birth_day: 11,
+                    email: "mary@example.com".to_string(),
+                },
+            ],
+        };
+        let sender = SpySender {
+            sent: RefCell::new(vec![]),
+        };
+        let service = BirthdayService::new(repo, sender);
+        service.send_greetings(10, 8);
+        // Should send to john, not mary
+        todo!("Assert sender received email to john@example.com")
+    }
+
+    #[test]
+    fn no_birthday_today_sends_nothing() {
+        let repo = InMemoryRepo {
+            friends: vec![Friend {
+                name: "John".to_string(),
+                birth_month: 10,
+                birth_day: 8,
+                email: "john@example.com".to_string(),
+            }],
+        };
+        let sender = SpySender {
+            sent: RefCell::new(vec![]),
+        };
+        let service = BirthdayService::new(repo, sender);
+        service.send_greetings(1, 1);
+        todo!("Assert no emails sent")
+    }
+}
+`,
+    solutionCode: `#[derive(Debug, Clone)]
+pub struct Friend {
+    pub name: String,
+    pub birth_month: u32,
+    pub birth_day: u32,
+    pub email: String,
+}
+
+pub trait FriendRepository {
+    fn find_all(&self) -> Vec<Friend>;
+}
+
+pub trait EmailSender {
+    fn send(&self, to: &str, subject: &str, body: &str);
+}
+
+pub struct BirthdayService<R: FriendRepository, S: EmailSender> {
+    repository: R,
+    sender: S,
+}
+
+impl<R: FriendRepository, S: EmailSender> BirthdayService<R, S> {
+    pub fn new(repository: R, sender: S) -> Self {
+        BirthdayService { repository, sender }
+    }
+
+    pub fn send_greetings(&self, month: u32, day: u32) {
+        for friend in self.repository.find_all() {
+            if friend.birth_month == month && friend.birth_day == day {
+                self.sender.send(
+                    &friend.email,
+                    "Happy Birthday!",
+                    &format!("Happy Birthday, dear {}!", friend.name),
+                );
+            }
+        }
+    }
+}
+
+fn main() {
+    println!("See tests for usage with test doubles");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::cell::RefCell;
+
+    struct InMemoryRepo {
+        friends: Vec<Friend>,
+    }
+    impl FriendRepository for InMemoryRepo {
+        fn find_all(&self) -> Vec<Friend> {
+            self.friends.clone()
+        }
+    }
+
+    struct SpySender {
+        sent: RefCell<Vec<String>>,
+    }
+    impl EmailSender for SpySender {
+        fn send(&self, to: &str, _: &str, _: &str) {
+            self.sent.borrow_mut().push(to.to_string());
+        }
+    }
+
+    fn make_friend(name: &str, month: u32, day: u32) -> Friend {
+        Friend {
+            name: name.to_string(),
+            birth_month: month,
+            birth_day: day,
+            email: format!("{}@example.com", name.to_lowercase()),
+        }
+    }
+
+    #[test]
+    fn sends_greeting_to_birthday_friend() {
+        let repo = InMemoryRepo {
+            friends: vec![make_friend("John", 10, 8), make_friend("Mary", 9, 11)],
+        };
+        let sender = SpySender {
+            sent: RefCell::new(vec![]),
+        };
+        let service = BirthdayService::new(repo, sender);
+        service.send_greetings(10, 8);
+        let sent = service.sender.sent.borrow();
+        assert_eq!(sent.len(), 1);
+        assert_eq!(sent[0], "john@example.com");
+    }
+
+    #[test]
+    fn no_birthday_sends_nothing() {
+        let repo = InMemoryRepo {
+            friends: vec![make_friend("John", 10, 8)],
+        };
+        let sender = SpySender {
+            sent: RefCell::new(vec![]),
+        };
+        let service = BirthdayService::new(repo, sender);
+        service.send_greetings(1, 1);
+        assert!(service.sender.sent.borrow().is_empty());
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/10-birthday-greetings/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-11-wallet',
+    title: 'Wallet',
+    titleEn: 'Wallet',
+    number: 26,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'structs',
+    xpReward: 50,
+    description: `This kata is based on [Wallet from Coding Dojo](https://codingdojo.org/kata/Wallet/).
+
+Implement \`Wallet\`, \`Stock\`, \`StockType\` and the \`RateProvider\` trait. The main method is \`wallet.value(currency: &StockType, provider: &impl RateProvider) -&gt; f64\`, which sums all stock values converted to the target currency.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement Wallet valuation system
+//
+// 1. Define StockType enum: Petroleum, Euro, Bitcoin, Dollar
+// 2. Define Stock { quantity: f64, stock_type: StockType }
+// 3. Define Wallet { stocks: Vec<Stock> }
+// 4. Define RateProvider trait: fn rate(from: &StockType, to: &StockType) -> f64
+// 5. Implement Wallet::value(currency: &StockType, provider: &impl RateProvider) -> f64
+
+#[derive(Debug, Clone, PartialEq)]
+pub enum StockType {
+    Petroleum,
+    Euro,
+    Bitcoin,
+    Dollar,
+}
+
+#[derive(Debug, Clone)]
+pub struct Stock {
+    pub quantity: f64,
+    pub stock_type: StockType,
+}
+
+#[derive(Debug, Clone)]
+pub struct Wallet {
+    pub stocks: Vec<Stock>,
+}
+
+pub trait RateProvider {
+    fn rate(&self, from: &StockType, to: &StockType) -> f64;
+}
+
+impl Wallet {
+    pub fn new() -> Self {
+        Wallet { stocks: vec![] }
+    }
+
+    pub fn add(&mut self, stock: Stock) {
+        self.stocks.push(stock);
+    }
+
+    pub fn value(&self, currency: &StockType, provider: &impl RateProvider) -> f64 {
+        todo!("Sum all stocks converted to currency")
+    }
+}
+
+fn main() {
+    println!("See tests");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    struct FixedRateProvider;
+
+    impl RateProvider for FixedRateProvider {
+        fn rate(&self, from: &StockType, to: &StockType) -> f64 {
+            match (from, to) {
+                (StockType::Dollar, StockType::Euro) => 0.9,
+                (StockType::Euro, StockType::Euro) => 1.0,
+                (StockType::Bitcoin, StockType::Euro) => 30_000.0,
+                (StockType::Petroleum, StockType::Euro) => 80.0,
+                _ => 1.0,
+            }
+        }
+    }
+
+    #[test]
+    fn single_euro_stock() {
+        let mut w = Wallet::new();
+        w.add(Stock {
+            quantity: 100.0,
+            stock_type: StockType::Euro,
+        });
+        assert!((w.value(&StockType::Euro, &FixedRateProvider) - 100.0).abs() < 0.001);
+    }
+
+    #[test]
+    fn mixed_stocks() {
+        let mut w = Wallet::new();
+        w.add(Stock {
+            quantity: 5.0,
+            stock_type: StockType::Dollar,
+        });
+        w.add(Stock {
+            quantity: 10.0,
+            stock_type: StockType::Euro,
+        });
+        let val = w.value(&StockType::Euro, &FixedRateProvider);
+        assert!((val - 14.5).abs() < 0.001); // 5*0.9 + 10*1.0
+    }
+
+    #[test]
+    fn bitcoin_conversion() {
+        let mut w = Wallet::new();
+        w.add(Stock {
+            quantity: 0.5,
+            stock_type: StockType::Bitcoin,
+        });
+        let val = w.value(&StockType::Euro, &FixedRateProvider);
+        assert!((val - 15_000.0).abs() < 0.001);
+    }
+
+    #[test]
+    fn empty_wallet() {
+        let w = Wallet::new();
+        assert!((w.value(&StockType::Euro, &FixedRateProvider) - 0.0).abs() < 0.001);
+    }
+}
+`,
+    solutionCode: `#[derive(Debug, Clone, PartialEq)]
+pub enum StockType {
+    Petroleum,
+    Euro,
+    Bitcoin,
+    Dollar,
+}
+
+#[derive(Debug, Clone)]
+pub struct Stock {
+    pub quantity: f64,
+    pub stock_type: StockType,
+}
+
+#[derive(Debug, Clone)]
+pub struct Wallet {
+    pub stocks: Vec<Stock>,
+}
+
+pub trait RateProvider {
+    fn rate(&self, from: &StockType, to: &StockType) -> f64;
+}
+
+impl Wallet {
+    pub fn new() -> Self {
+        Wallet { stocks: vec![] }
+    }
+
+    pub fn add(&mut self, stock: Stock) {
+        self.stocks.push(stock);
+    }
+
+    pub fn value(&self, currency: &StockType, provider: &impl RateProvider) -> f64 {
+        self.stocks
+            .iter()
+            .map(|s| s.quantity * provider.rate(&s.stock_type, currency))
+            .sum()
+    }
+}
+
+fn main() {
+    println!("See tests");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    struct FixedRateProvider;
+
+    impl RateProvider for FixedRateProvider {
+        fn rate(&self, from: &StockType, to: &StockType) -> f64 {
+            match (from, to) {
+                (StockType::Dollar, StockType::Euro) => 0.9,
+                (StockType::Euro, StockType::Euro) => 1.0,
+                (StockType::Bitcoin, StockType::Euro) => 30_000.0,
+                (StockType::Petroleum, StockType::Euro) => 80.0,
+                _ => 1.0,
+            }
+        }
+    }
+
+    #[test]
+    fn single_euro_stock() {
+        let mut w = Wallet::new();
+        w.add(Stock {
+            quantity: 100.0,
+            stock_type: StockType::Euro,
+        });
+        assert!((w.value(&StockType::Euro, &FixedRateProvider) - 100.0).abs() < 0.001);
+    }
+
+    #[test]
+    fn mixed_stocks() {
+        let mut w = Wallet::new();
+        w.add(Stock {
+            quantity: 5.0,
+            stock_type: StockType::Dollar,
+        });
+        w.add(Stock {
+            quantity: 10.0,
+            stock_type: StockType::Euro,
+        });
+        assert!((w.value(&StockType::Euro, &FixedRateProvider) - 14.5).abs() < 0.001);
+    }
+
+    #[test]
+    fn bitcoin_conversion() {
+        let mut w = Wallet::new();
+        w.add(Stock {
+            quantity: 0.5,
+            stock_type: StockType::Bitcoin,
+        });
+        assert!((w.value(&StockType::Euro, &FixedRateProvider) - 15_000.0).abs() < 0.001);
+    }
+
+    #[test]
+    fn empty_wallet() {
+        let w = Wallet::new();
+        assert!((w.value(&StockType::Euro, &FixedRateProvider) - 0.0).abs() < 0.001);
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/11-wallet/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-12-trading-card-game',
+    title: 'Trading Card Game',
+    titleEn: 'Trading Card Game',
+    number: 27,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'traits',
+    xpReward: 50,
+    description: `This kata is based on [Trading Card Game from Coding Dojo](https://codingdojo.org/kata/TradingCardGame/).
+
+Implement \`Player\` and \`Game\` structs with turn-based gameplay: \`start_turn\`, \`draw\`, \`can_play\`, \`play_card\`, and \`check_winner\`.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement a two-player Trading Card Game
+//
+// Player:
+// - health: i32 (starts 30)
+// - mana: u32 (current mana, starts 0)
+// - mana_slots: u32 (max mana, starts 0, increases each turn up to 10)
+// - hand: Vec<u32> (cards in hand)
+// - deck: Vec<u32> (remaining deck)
+//
+// Game turn:
+// 1. Active player gets +1 mana_slot (max 10)
+// 2. Active player's mana refills to mana_slots
+// 3. Active player draws a card:
+//    - If deck empty: take 1 damage (Bleeding Out)
+//    - If hand would exceed 5: discard drawn card (Overload)
+// 4. Active player can play cards (spend mana, deal damage to opponent)
+// 5. If opponent health <= 0: active player wins
+
+#[derive(Debug, Clone)]
+pub struct Player {
+    pub health: i32,
+    pub mana: u32,
+    pub mana_slots: u32,
+    pub hand: Vec<u32>,
+    pub deck: Vec<u32>,
+}
+
+impl Player {
+    pub fn new() -> Self {
+        let deck = vec![0, 0, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6, 6, 7, 8];
+        todo!("Shuffle deck and draw initial 3 cards")
+    }
+
+    pub fn draw(&mut self) {
+        todo!("Draw one card, apply Bleeding Out and Overload rules")
+    }
+
+    pub fn start_turn(&mut self) {
+        todo!("Increase mana slot (max 10), refill mana, draw card")
+    }
+
+    pub fn can_play(&self, card: u32) -> bool {
+        todo!("Check if player has enough mana to play the card")
+    }
+
+    pub fn play_card(&mut self, card_index: usize) -> u32 {
+        todo!("Remove card from hand, spend mana, return card cost (= damage dealt)")
+    }
+}
+
+#[derive(Debug)]
+pub enum GameResult {
+    Player1Wins,
+    Player2Wins,
+    Ongoing,
+}
+
+#[derive(Debug)]
+pub struct Game {
+    pub player1: Player,
+    pub player2: Player,
+    pub active_player: u8, // 1 or 2
+}
+
+impl Game {
+    pub fn new() -> Self {
+        todo!("Create game with two players, active_player starts at 1")
+    }
+
+    pub fn check_winner(&self) -> GameResult {
+        todo!("Return Player1Wins, Player2Wins, or Ongoing based on health values")
+    }
+}
+
+fn main() {
+    println!("See tests for game simulation");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn player_starts_with_30_health() {
+        let p = Player::new();
+        assert_eq!(p.health, 30);
+    }
+
+    #[test]
+    fn player_starts_with_zero_mana() {
+        let p = Player::new();
+        assert_eq!(p.mana, 0);
+        assert_eq!(p.mana_slots, 0);
+    }
+
+    #[test]
+    fn player_starts_with_three_cards_in_hand() {
+        let p = Player::new();
+        assert_eq!(p.hand.len(), 3);
+    }
+
+    #[test]
+    fn bleeding_out_damages_player() {
+        let mut p = Player::new();
+        p.deck.clear();
+        let health_before = p.health;
+        p.draw();
+        assert_eq!(p.health, health_before - 1);
+    }
+
+    #[test]
+    fn overload_discards_when_hand_full() {
+        let mut p = Player::new();
+        p.hand = vec![1, 2, 3, 4, 5]; // full hand (5 cards)
+        p.deck = vec![3];
+        let hand_size_before = p.hand.len();
+        p.draw();
+        assert_eq!(p.hand.len(), hand_size_before); // card discarded, size unchanged
+    }
+
+    #[test]
+    fn playing_card_deals_damage() {
+        let mut game = Game::new();
+        game.player1.mana = 5;
+        game.player1.hand = vec![3];
+        let damage = game.player1.play_card(0);
+        assert_eq!(damage, 3);
+        assert_eq!(game.player1.mana, 2);
+    }
+
+    #[test]
+    fn game_is_ongoing_at_start() {
+        let game = Game::new();
+        assert!(matches!(game.check_winner(), GameResult::Ongoing));
+    }
+}
+`,
+    solutionCode: `#[derive(Debug, Clone)]
+pub struct Player {
+    pub health: i32,
+    pub mana: u32,
+    pub mana_slots: u32,
+    pub hand: Vec<u32>,
+    pub deck: Vec<u32>,
+}
+
+impl Player {
+    pub fn new() -> Self {
+        let deck = vec![
+            0u32, 0, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6, 6, 7, 8,
+        ];
+        let mut p = Player {
+            health: 30,
+            mana: 0,
+            mana_slots: 0,
+            hand: vec![],
+            deck,
+        };
+        // Draw initial 3 cards (no shuffle for determinism in tests)
+        for _ in 0..3 {
+            p.draw_initial();
+        }
+        p
+    }
+
+    fn draw_initial(&mut self) {
+        if let Some(card) = self.deck.pop() {
+            if self.hand.len() < 5 {
+                self.hand.push(card);
+            }
+        }
+    }
+
+    pub fn draw(&mut self) {
+        if self.deck.is_empty() {
+            // Bleeding Out: no card to draw, take 1 damage
+            self.health -= 1;
+        } else {
+            let card = self.deck.pop().unwrap();
+            if self.hand.len() < 5 {
+                self.hand.push(card);
+            }
+            // else: Overload — card exceeds hand limit and is discarded
+        }
+    }
+
+    pub fn start_turn(&mut self) {
+        self.mana_slots = (self.mana_slots + 1).min(10);
+        self.mana = self.mana_slots;
+        self.draw();
+    }
+
+    pub fn can_play(&self, card: u32) -> bool {
+        self.mana >= card
+    }
+
+    pub fn play_card(&mut self, card_index: usize) -> u32 {
+        let card = self.hand.remove(card_index);
+        self.mana -= card;
+        card // card cost = damage dealt to opponent
+    }
+}
+
+#[derive(Debug)]
+pub enum GameResult {
+    Player1Wins,
+    Player2Wins,
+    Ongoing,
+}
+
+#[derive(Debug)]
+pub struct Game {
+    pub player1: Player,
+    pub player2: Player,
+    pub active_player: u8,
+}
+
+impl Game {
+    pub fn new() -> Self {
+        Game {
+            player1: Player::new(),
+            player2: Player::new(),
+            active_player: 1,
+        }
+    }
+
+    pub fn check_winner(&self) -> GameResult {
+        if self.player1.health <= 0 {
+            GameResult::Player2Wins
+        } else if self.player2.health <= 0 {
+            GameResult::Player1Wins
+        } else {
+            GameResult::Ongoing
+        }
+    }
+}
+
+fn main() {
+    println!("See tests for game simulation");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn player_starts_with_30_health() {
+        assert_eq!(Player::new().health, 30);
+    }
+
+    #[test]
+    fn player_starts_with_zero_mana() {
+        let p = Player::new();
+        assert_eq!(p.mana, 0);
+        assert_eq!(p.mana_slots, 0);
+    }
+
+    #[test]
+    fn player_starts_with_three_cards_in_hand() {
+        assert_eq!(Player::new().hand.len(), 3);
+    }
+
+    #[test]
+    fn bleeding_out_damages_player() {
+        let mut p = Player::new();
+        p.deck.clear();
+        let h = p.health;
+        p.draw();
+        assert_eq!(p.health, h - 1);
+    }
+
+    #[test]
+    fn overload_discards_when_hand_full() {
+        let mut p = Player::new();
+        p.hand = vec![1, 2, 3, 4, 5];
+        p.deck = vec![3];
+        let sz = p.hand.len();
+        p.draw();
+        assert_eq!(p.hand.len(), sz);
+    }
+
+    #[test]
+    fn playing_card_deals_damage() {
+        let mut game = Game::new();
+        game.player1.mana = 5;
+        game.player1.hand = vec![3];
+        let dmg = game.player1.play_card(0);
+        assert_eq!(dmg, 3);
+        assert_eq!(game.player1.mana, 2);
+    }
+
+    #[test]
+    fn game_is_ongoing_at_start() {
+        let game = Game::new();
+        assert!(matches!(game.check_winner(), GameResult::Ongoing));
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/12-trading-card-game/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-13-social-network',
+    title: 'Social Network',
+    titleEn: 'Social Network',
+    number: 28,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'structs',
+    xpReward: 50,
+    description: `This kata is based on [Social Network from Coding Dojo](https://codingdojo.org/kata/social-network/).
+
+Implement \`SocialNetwork\` with \`post\`, \`read\`, \`follow\`, and \`wall\` methods. The design should keep business logic decoupled from I/O concerns, making it fully testable without any external dependencies.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement a simple social network
+//
+// Commands:
+// - post(user, message): user publishes a message
+// - read(user) -> Vec<String>: returns user's messages (newest first)
+// - follow(user, other): user subscribes to other's messages
+// - wall(user) -> Vec<String>: returns user's messages + all followed users' messages (newest first)
+
+use std::collections::HashMap;
+
+#[derive(Debug, Clone)]
+pub struct Post {
+    pub author: String,
+    pub message: String,
+    pub timestamp: u64, // monotonically increasing counter
+}
+
+#[derive(Debug, Default)]
+pub struct SocialNetwork {
+    posts: Vec<Post>,
+    following: HashMap<String, Vec<String>>,
+    clock: u64,
+}
+
+impl SocialNetwork {
+    pub fn new() -> Self {
+        Default::default()
+    }
+
+    pub fn post(&mut self, user: &str, message: &str) {
+        todo!("Store message for user with an incremented timestamp")
+    }
+
+    pub fn read(&self, user: &str) -> Vec<String> {
+        todo!("Return user's messages ordered newest first")
+    }
+
+    pub fn follow(&mut self, user: &str, other: &str) {
+        todo!("Register that user subscribes to other's messages")
+    }
+
+    pub fn wall(&self, user: &str) -> Vec<String> {
+        todo!("Return user's own messages + all followed users' messages, newest first")
+    }
+}
+
+fn main() {
+    println!("See tests");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn post_and_read() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Alice", "Hello world");
+        let msgs = sn.read("Alice");
+        assert_eq!(msgs, vec!["Hello world"]);
+    }
+
+    #[test]
+    fn read_empty_user() {
+        let sn = SocialNetwork::new();
+        assert!(sn.read("Alice").is_empty());
+    }
+
+    #[test]
+    fn read_returns_newest_first() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Alice", "first");
+        sn.post("Alice", "second");
+        assert_eq!(sn.read("Alice"), vec!["second", "first"]);
+    }
+
+    #[test]
+    fn wall_includes_own_messages() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Alice", "Alice post");
+        let wall = sn.wall("Alice");
+        assert!(wall.contains(&"Alice post".to_string()));
+    }
+
+    #[test]
+    fn wall_includes_followed() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Bob", "Bob post");
+        sn.post("Alice", "Alice post");
+        sn.follow("Charlie", "Alice");
+        sn.follow("Charlie", "Bob");
+        sn.post("Charlie", "Charlie post");
+        let wall = sn.wall("Charlie");
+        assert!(wall.contains(&"Alice post".to_string()));
+        assert!(wall.contains(&"Bob post".to_string()));
+        assert!(wall.contains(&"Charlie post".to_string()));
+    }
+
+    #[test]
+    fn wall_does_not_include_non_followed() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Alice", "Alice post");
+        sn.post("Bob", "Bob post");
+        sn.follow("Charlie", "Alice");
+        let wall = sn.wall("Charlie");
+        assert!(!wall.contains(&"Bob post".to_string()));
+    }
+}
+`,
+    solutionCode: `use std::collections::HashMap;
+
+#[derive(Debug, Clone)]
+pub struct Post {
+    pub author: String,
+    pub message: String,
+    pub timestamp: u64,
+}
+
+#[derive(Debug, Default)]
+pub struct SocialNetwork {
+    posts: Vec<Post>,
+    following: HashMap<String, Vec<String>>,
+    clock: u64,
+}
+
+impl SocialNetwork {
+    pub fn new() -> Self {
+        Default::default()
+    }
+
+    pub fn post(&mut self, user: &str, message: &str) {
+        self.clock += 1;
+        self.posts.push(Post {
+            author: user.to_string(),
+            message: message.to_string(),
+            timestamp: self.clock,
+        });
+    }
+
+    pub fn read(&self, user: &str) -> Vec<String> {
+        let mut msgs: Vec<&Post> = self.posts.iter().filter(|p| p.author == user).collect();
+        msgs.sort_by(|a, b| b.timestamp.cmp(&a.timestamp));
+        msgs.iter().map(|p| p.message.clone()).collect()
+    }
+
+    pub fn follow(&mut self, user: &str, other: &str) {
+        self.following
+            .entry(user.to_string())
+            .or_default()
+            .push(other.to_string());
+    }
+
+    pub fn wall(&self, user: &str) -> Vec<String> {
+        let mut authors = vec![user.to_string()];
+        if let Some(followed) = self.following.get(user) {
+            authors.extend(followed.clone());
+        }
+        let mut msgs: Vec<&Post> = self
+            .posts
+            .iter()
+            .filter(|p| authors.contains(&p.author))
+            .collect();
+        msgs.sort_by(|a, b| b.timestamp.cmp(&a.timestamp));
+        msgs.iter().map(|p| p.message.clone()).collect()
+    }
+}
+
+fn main() {
+    println!("See tests");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn post_and_read() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Alice", "Hello world");
+        assert_eq!(sn.read("Alice"), vec!["Hello world"]);
+    }
+
+    #[test]
+    fn read_empty_user() {
+        assert!(SocialNetwork::new().read("Alice").is_empty());
+    }
+
+    #[test]
+    fn read_returns_newest_first() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Alice", "first");
+        sn.post("Alice", "second");
+        assert_eq!(sn.read("Alice"), vec!["second", "first"]);
+    }
+
+    #[test]
+    fn wall_includes_own_messages() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Alice", "Alice post");
+        let wall = sn.wall("Alice");
+        assert!(wall.contains(&"Alice post".to_string()));
+    }
+
+    #[test]
+    fn wall_includes_followed() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Bob", "Bob post");
+        sn.post("Alice", "Alice post");
+        sn.follow("Charlie", "Alice");
+        sn.follow("Charlie", "Bob");
+        sn.post("Charlie", "Charlie post");
+        let wall = sn.wall("Charlie");
+        assert!(wall.contains(&"Alice post".to_string()));
+        assert!(wall.contains(&"Bob post".to_string()));
+        assert!(wall.contains(&"Charlie post".to_string()));
+    }
+
+    #[test]
+    fn wall_does_not_include_non_followed() {
+        let mut sn = SocialNetwork::new();
+        sn.post("Alice", "Alice post");
+        sn.post("Bob", "Bob post");
+        sn.follow("Charlie", "Alice");
+        let wall = sn.wall("Charlie");
+        assert!(!wall.contains(&"Bob post".to_string()));
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/13-social-network/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-14-anagram',
+    title: 'Anagram',
+    titleEn: 'Anagram',
+    number: 29,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'generics',
+    xpReward: 50,
+    description: `This kata is based on [Anagram from Coding Dojo](https://codingdojo.org/kata/Anagram/).
+
+Implement \`anagrams_of(word: &str, candidates: &[&str]) -&gt; Vec&lt;String&gt;\` using idiomatic Rust: string manipulation, character sorting, iterators and closures.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement anagrams_of(word: &str, candidates: &[&str]) -> Vec<String>
+//
+// Rules:
+// - Return candidates that are anagrams of word
+// - An anagram uses exactly the same letters in a different order
+// - Comparison is case-insensitive
+// - A word is NOT an anagram of itself (even with different casing)
+// - Words of different lengths cannot be anagrams
+
+fn anagrams_of(word: &str, candidates: &[&str]) -> Vec<String> {
+    todo!("Implement anagram detection")
+}
+
+fn main() {
+    let word = "listen";
+    let candidates = ["enlist", "google", "inlets", "banana", "silent", "Listen"];
+    println!("{:?}", anagrams_of(word, &candidates));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn no_anagrams() {
+        assert_eq!(anagrams_of("hello", &["world", "hi"]), Vec::<String>::new());
+    }
+
+    #[test]
+    fn single_anagram() {
+        assert_eq!(anagrams_of("listen", &["enlist"]), vec!["enlist"]);
+    }
+
+    #[test]
+    fn multiple_anagrams() {
+        let mut result = anagrams_of("listen", &["enlist", "inlets", "silent"]);
+        result.sort();
+        assert_eq!(result, vec!["enlist", "inlets", "silent"]);
+    }
+
+    #[test]
+    fn case_insensitive() {
+        assert_eq!(anagrams_of("listen", &["ENLIST"]), vec!["ENLIST"]);
+    }
+
+    #[test]
+    fn word_not_its_own_anagram() {
+        assert!(anagrams_of("listen", &["listen", "Listen"]).is_empty());
+    }
+
+    #[test]
+    fn different_length_not_anagram() {
+        assert!(anagrams_of("hi", &["hello"]).is_empty());
+    }
+
+    #[test]
+    fn non_anagram_same_length() {
+        assert!(anagrams_of("hello", &["world"]).is_empty());
+    }
+}
+`,
+    solutionCode: `fn sorted_chars(s: &str) -> Vec<char> {
+    let mut chars: Vec<char> = s.to_lowercase().chars().collect();
+    chars.sort_unstable();
+    chars
+}
+
+fn anagrams_of(word: &str, candidates: &[&str]) -> Vec<String> {
+    let word_sorted = sorted_chars(word);
+    let word_lower = word.to_lowercase();
+    candidates
+        .iter()
+        .filter(|&&c| c.to_lowercase() != word_lower && sorted_chars(c) == word_sorted)
+        .map(|&c| c.to_string())
+        .collect()
+}
+
+fn main() {
+    let word = "listen";
+    let candidates = ["enlist", "google", "inlets", "banana", "silent", "Listen"];
+    println!("{:?}", anagrams_of(word, &candidates));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn no_anagrams() {
+        assert_eq!(anagrams_of("hello", &["world", "hi"]), Vec::<String>::new());
+    }
+
+    #[test]
+    fn single_anagram() {
+        assert_eq!(anagrams_of("listen", &["enlist"]), vec!["enlist"]);
+    }
+
+    #[test]
+    fn multiple_anagrams() {
+        let mut r = anagrams_of("listen", &["enlist", "inlets", "silent"]);
+        r.sort();
+        assert_eq!(r, vec!["enlist", "inlets", "silent"]);
+    }
+
+    #[test]
+    fn case_insensitive() {
+        assert_eq!(anagrams_of("listen", &["ENLIST"]), vec!["ENLIST"]);
+    }
+
+    #[test]
+    fn word_not_its_own_anagram() {
+        assert!(anagrams_of("listen", &["listen", "Listen"]).is_empty());
+    }
+
+    #[test]
+    fn different_length_not_anagram() {
+        assert!(anagrams_of("hi", &["hello"]).is_empty());
+    }
+
+    #[test]
+    fn non_anagram_same_length() {
+        assert!(anagrams_of("hello", &["world"]).is_empty());
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/14-anagram/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-02-structure-15-bank-ocr',
+    title: 'Bank OCR',
+    titleEn: 'Bank OCR',
+    number: 30,
+    total: 36,
+    difficulty: 'moyen',
+    concept: 'structs',
+    xpReward: 50,
+    description: `This kata is based on [Bank OCR from Coding Dojo](https://codingdojo.org/kata/BankOCR/).
+
+Implement \`parse_digits(input: &str) -&gt; Result&lt;u64, String&gt;\` that parses the OCR input into a number and returns \`Err\` if any digit is unrecognised or the checksum is invalid.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Parse OCR account numbers
+//
+// Each digit is represented on 3 lines of 3 characters using '|', '_' and ' ':
+//
+//  _     _  _     _  _  _  _  _
+// | |  | _| _||_||_  _    ||_||_|
+// |_|  ||_  _|  | _||_|   ||_| _|
+//  0   1  2  3  4  5  6   7  8  9
+//
+// Input: 4 lines (3 content lines + 1 blank), 27 characters wide for 9 digits.
+// Parse to a 9-digit number, then validate with checksum:
+//   (d9 + 2*d8 + 3*d7 + ... + 9*d1) % 11 == 0
+// Return Ok(number) on success, Err(message) on unrecognised digit or bad checksum.
+
+fn parse_digit(top: &str, mid: &str, bot: &str) -> Option<u32> {
+    match (top, mid, bot) {
+        (" _ ", "| |", "|_|") => Some(0),
+        ("   ", "  |", "  |") => Some(1),
+        (" _ ", " _|", "|_ ") => Some(2),
+        (" _ ", " _|", " _|") => Some(3),
+        ("   ", "|_|", "  |") => Some(4),
+        (" _ ", "|_ ", " _|") => Some(5),
+        (" _ ", "|_ ", "|_|") => Some(6),
+        (" _ ", "  |", "  |") => Some(7),
+        (" _ ", "|_|", "|_|") => Some(8),
+        (" _ ", "|_|", " _|") => Some(9),
+        _ => None,
+    }
+}
+
+fn parse_account(input: &str) -> Result<Vec<u32>, String> {
+    todo!("Split input into 3 lines, extract 9 digits of 3 chars each, use parse_digit")
+}
+
+fn validate_checksum(digits: &[u32]) -> bool {
+    todo!("Compute (d9 + 2*d8 + ... + 9*d1) % 11 and check it equals 0")
+}
+
+pub fn parse_digits(input: &str) -> Result<u64, String> {
+    todo!("Call parse_account, then validate_checksum, return the number or an Err")
+}
+
+fn main() {
+    let valid = "    _  _     _  _  _  _  _ \\n  | _| _||_||_ |_   ||_||_|\\n  ||_  _|  | _||_|  ||_| _|\\n                            \\n";
+    println!("{:?}", parse_digits(valid));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn parse_all_zeros() {
+        let input = " _  _  _  _  _  _  _  _  _ \\n| || || || || || || || || |\\n|_||_||_||_||_||_||_||_||_|\\n                            \\n";
+        assert_eq!(parse_digits(input), Ok(0));
+    }
+
+    #[test]
+    fn parse_123456789() {
+        let input = "    _  _     _  _  _  _  _ \\n  | _| _||_||_ |_   ||_||_|\\n  ||_  _|  | _||_|  ||_| _|\\n                            \\n";
+        assert_eq!(parse_digits(input), Ok(123456789));
+    }
+
+    #[test]
+    fn invalid_checksum_returns_err() {
+        // 111111111: checksum = 1+2+3+4+5+6+7+8+9 = 45, 45 % 11 = 1 != 0
+        let input = "                           \\n  |  |  |  |  |  |  |  |  |\\n  |  |  |  |  |  |  |  |  |\\n                            \\n";
+        assert!(parse_digits(input).is_err());
+    }
+
+    #[test]
+    fn unknown_pattern_returns_err() {
+        // Deliberately malformed digit pattern
+        let input = "XXX      _  _  _  _  _  _  _ \\n  | _| _||_||_ |_   ||_||_|\\n  ||_  _|  | _||_|  ||_| _|\\n                            \\n";
+        assert!(parse_digits(input).is_err());
+    }
+}
+`,
+    solutionCode: `fn parse_digit(top: &str, mid: &str, bot: &str) -> Option<u32> {
+    match (top, mid, bot) {
+        (" _ ", "| |", "|_|") => Some(0),
+        ("   ", "  |", "  |") => Some(1),
+        (" _ ", " _|", "|_ ") => Some(2),
+        (" _ ", " _|", " _|") => Some(3),
+        ("   ", "|_|", "  |") => Some(4),
+        (" _ ", "|_ ", " _|") => Some(5),
+        (" _ ", "|_ ", "|_|") => Some(6),
+        (" _ ", "  |", "  |") => Some(7),
+        (" _ ", "|_|", "|_|") => Some(8),
+        (" _ ", "|_|", " _|") => Some(9),
+        _ => None,
+    }
+}
+
+fn pad_to(s: &str, len: usize) -> String {
+    format!("{:<width\$}", s, width = len)
+}
+
+fn parse_account(input: &str) -> Result<Vec<u32>, String> {
+    let lines: Vec<&str> = input.lines().collect();
+    if lines.len() < 3 {
+        return Err("Input must have at least 3 lines".to_string());
+    }
+    let top = pad_to(lines[0], 27);
+    let mid = pad_to(lines[1], 27);
+    let bot = pad_to(lines[2], 27);
+
+    (0..9)
+        .map(|i| {
+            let s = i * 3;
+            parse_digit(&top[s..s + 3], &mid[s..s + 3], &bot[s..s + 3])
+                .ok_or_else(|| format!("Unknown digit pattern at position {}", i))
+        })
+        .collect()
+}
+
+fn validate_checksum(digits: &[u32]) -> bool {
+    // (9*d1 + 8*d2 + ... + 1*d9) % 11 == 0
+    // equivalently: (d9 + 2*d8 + ... + 9*d1) % 11 == 0
+    let sum: u32 = digits
+        .iter()
+        .rev()
+        .enumerate()
+        .map(|(i, &d)| (i as u32 + 1) * d)
+        .sum();
+    sum % 11 == 0
+}
+
+pub fn parse_digits(input: &str) -> Result<u64, String> {
+    let digits = parse_account(input)?;
+    if !validate_checksum(&digits) {
+        return Err("Invalid checksum".to_string());
+    }
+    Ok(digits.iter().fold(0u64, |acc, &d| acc * 10 + d as u64))
+}
+
+fn main() {
+    let valid = "    _  _     _  _  _  _  _ \\n  | _| _||_||_ |_   ||_||_|\\n  ||_  _|  | _||_|  ||_| _|\\n                            \\n";
+    println!("{:?}", parse_digits(valid));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn parse_all_zeros() {
+        let input = " _  _  _  _  _  _  _  _  _ \\n| || || || || || || || || |\\n|_||_||_||_||_||_||_||_||_|\\n                            \\n";
+        assert_eq!(parse_digits(input), Ok(0));
+    }
+
+    #[test]
+    fn parse_123456789() {
+        let input = "    _  _     _  _  _  _  _ \\n  | _| _||_||_ |_   ||_||_|\\n  ||_  _|  | _||_|  ||_| _|\\n                            \\n";
+        assert_eq!(parse_digits(input), Ok(123456789));
+    }
+
+    #[test]
+    fn invalid_checksum_returns_err() {
+        // 111111111: checksum = 1+2+3+4+5+6+7+8+9 = 45, 45 % 11 = 1 != 0
+        let input = "                           \\n  |  |  |  |  |  |  |  |  |\\n  |  |  |  |  |  |  |  |  |\\n                            \\n";
+        assert!(parse_digits(input).is_err());
+    }
+
+    #[test]
+    fn checksum_valid_for_000000000() {
+        // All zeros: checksum = 0, valid
+        let input = " _  _  _  _  _  _  _  _  _ \\n| || || || || || || || || |\\n|_||_||_||_||_||_||_||_||_|\\n                            \\n";
+        assert!(parse_digits(input).is_ok());
+    }
+}
+`,
+    hints: [
+      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
+      `💡 Les fichiers solutions dans \`katas/02-structure/15-bank-ocr/solutions/\` contiennent la correction.`
+    ],
+  },
+  {
+    id: 'kata-03-advanced-00-mars-rover',
+    title: 'Mars Rover',
+    titleEn: 'Mars Rover',
+    number: 31,
+    total: 36,
+    difficulty: 'difficile',
+    concept: 'unsafe',
+    xpReward: 30,
+    description: `This kata is based on [Mars Rover from Coding Dojo](https://codingdojo.org/kata/mars-rover/).
+
+Implement the Mars Rover simulator with obstacle detection.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `mod map;
+mod rover;
+
+fn main() {
+    let mut m = map::Map::new(10, 10);
+    m.add_obstacle(2, 2);
+    m.add_obstacle(3, 5);
+
+    let mut r = rover::Rover::new(0, 0, rover::Direction::North);
+    let obstacles = r.execute("rfflff", &m);
+
+    println!(
+        "Final position: ({}, {}), direction: {:?}",
+        r.position.x, r.position.y, r.direction
+    );
+    if !obstacles.is_empty() {
+        println!("Obstacles encountered: {:?}", obstacles);
+    }
+}
+
+
+use crate::rover::Position;
+use std::collections::HashSet;
+
+// TODO: Implement the Map
+
+#[derive(Debug, Clone)]
+pub struct Map {
+    pub width: i32,
+    pub height: i32,
+    pub obstacles: HashSet<Position>,
+}
+
+impl Map {
+    pub fn new(width: i32, height: i32) -> Self {
+        todo!("Create a new map")
+    }
+
+    pub fn add_obstacle(&mut self, x: i32, y: i32) {
+        todo!("Add an obstacle")
+    }
+
+    pub fn has_obstacle(&self, position: &Position) -> bool {
+        todo!("Check if position has an obstacle")
+    }
+
+    pub fn from_pattern(pattern: &str) -> Self {
+        todo!(
+            "Parse a map pattern. '.' for empty, '#' for obstacle, '^'/'v'/'<'/'>' for rover start"
+        )
+    }
+}
+
+
+use crate::map::Map;
+
+// TODO: Implement the Direction enum and Rover struct
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Direction {
+    North,
+    East,
+    South,
+    West,
+}
+
+impl Direction {
+    pub fn turn_right(self) -> Self {
+        todo!("Turn right 90 degrees")
+    }
+
+    pub fn turn_left(self) -> Self {
+        todo!("Turn left 90 degrees")
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Position {
+    pub x: i32,
+    pub y: i32,
+}
+
+#[derive(Debug, Clone)]
+pub struct Rover {
+    pub position: Position,
+    pub direction: Direction,
+}
+
+impl Rover {
+    pub fn new(x: i32, y: i32, direction: Direction) -> Self {
+        todo!("Create a new rover")
+    }
+
+    pub fn execute(&mut self, commands: &str, map: &Map) -> Vec<String> {
+        todo!("Execute a sequence of commands. Return list of encountered obstacles.")
+    }
+}
+`,
+    solutionCode: `mod map;
+mod rover;
+
+fn main() {
+    let mut m = map::Map::new(10, 10);
+    m.add_obstacle(2, 2);
+    m.add_obstacle(3, 5);
+
+    let mut r = rover::Rover::new(0, 0, rover::Direction::North);
+    let obstacles = r.execute("rfflff", &m);
+
+    println!(
+        "Final position: ({}, {}), direction: {:?}",
+        r.position.x, r.position.y, r.direction
+    );
+    if !obstacles.is_empty() {
+        println!("Obstacles encountered: {:?}", obstacles);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn move_forward_north() {
+        let map = map::Map::new(10, 10);
+        let mut rover = rover::Rover::new(0, 0, rover::Direction::North);
+        rover.execute("f", &map);
+        assert_eq!(rover.position, rover::Position { x: 0, y: 1 });
+    }
+
+    #[test]
+    fn turn_right() {
+        let map = map::Map::new(10, 10);
+        let mut rover = rover::Rover::new(0, 0, rover::Direction::North);
+        rover.execute("r", &map);
+        assert_eq!(rover.direction, rover::Direction::East);
+    }
+
+    #[test]
+    fn turn_left() {
+        let map = map::Map::new(10, 10);
+        let mut rover = rover::Rover::new(0, 0, rover::Direction::North);
+        rover.execute("l", &map);
+        assert_eq!(rover.direction, rover::Direction::West);
+    }
+
+    #[test]
+    fn avoid_obstacle() {
+        let mut map = map::Map::new(10, 10);
+        map.add_obstacle(0, 1);
+        let mut rover = rover::Rover::new(0, 0, rover::Direction::North);
+        let obstacles = rover.execute("f", &map);
+        assert_eq!(rover.position, rover::Position { x: 0, y: 0 });
+        assert_eq!(obstacles.len(), 1);
+    }
+
+    #[test]
+    fn complex_path() {
+        let map = map::Map::new(10, 10);
+        let mut rover = rover::Rover::new(0, 0, rover::Direction::North);
+        rover.execute("rfflff", &map);
+        assert_eq!(rover.position, rover::Position { x: 2, y: 2 });
+        assert_eq!(rover.direction, rover::Direction::North);
+    }
+}
+
+
+use crate::rover::Position;
+use std::collections::HashSet;
+
+#[derive(Debug, Clone)]
+pub struct Map {
+    pub width: i32,
+    pub height: i32,
+    pub obstacles: HashSet<Position>,
+}
+
+impl Map {
+    pub fn new(width: i32, height: i32) -> Self {
+        Map {
+            width,
+            height,
+            obstacles: HashSet::new(),
+        }
+    }
+
+    pub fn add_obstacle(&mut self, x: i32, y: i32) {
+        self.obstacles.insert(Position { x, y });
+    }
+
+    pub fn has_obstacle(&self, position: &Position) -> bool {
+        self.obstacles.contains(position)
+    }
+}
+
+
+use crate::map::Map;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Direction {
+    North,
+    East,
+    South,
+    West,
+}
+
+impl Direction {
+    pub fn turn_right(self) -> Self {
+        match self {
+            Direction::North => Direction::East,
+            Direction::East => Direction::South,
+            Direction::South => Direction::West,
+            Direction::West => Direction::North,
+        }
+    }
+
+    pub fn turn_left(self) -> Self {
+        match self {
+            Direction::North => Direction::West,
+            Direction::West => Direction::South,
+            Direction::South => Direction::East,
+            Direction::East => Direction::North,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct Position {
+    pub x: i32,
+    pub y: i32,
+}
+
+#[derive(Debug, Clone)]
+pub struct Rover {
+    pub position: Position,
+    pub direction: Direction,
+}
+
+impl Rover {
+    pub fn new(x: i32, y: i32, direction: Direction) -> Self {
+        Rover {
+            position: Position { x, y },
+            direction,
+        }
+    }
+
+    pub fn execute(&mut self, commands: &str, map: &Map) -> Vec<String> {
+        let mut obstacles = Vec::new();
+
+        for cmd in commands.chars() {
+            match cmd {
+                'f' => {
+                    let new_pos = self.forward_position();
+                    if map.has_obstacle(&new_pos) {
+                        obstacles.push(format!("Obstacle at ({}, {})", new_pos.x, new_pos.y));
+                    } else {
+                        self.position = new_pos;
+                    }
+                }
+                'b' => {
+                    let new_pos = self.backward_position();
+                    if map.has_obstacle(&new_pos) {
+                        obstacles.push(format!("Obstacle at ({}, {})", new_pos.x, new_pos.y));
+                    } else {
+                        self.position = new_pos;
+                    }
+                }
+                'r' => self.direction = self.direction.turn_right(),
+                'l' => self.direction = self.direction.turn_left(),
+                _ => {}
+            }
+        }
+
+        obstacles
+    }
+
+    fn forward_position(&self) -> Position {
+        let mut pos = self.position.clone();
+        match self.direction {
+            Direction::North => pos.y += 1,
+            Direction::East => pos.x += 1,
+            Direction::South => pos.y -= 1,
+            Direction::West => pos.x -= 1,
+        }
+        pos
+    }
+
+    fn backward_position(&self) -> Position {
+        let mut pos = self.position.clone();
+        match self.direction {
+            Direction::North => pos.y -= 1,
+            Direction::East => pos.x -= 1,
+            Direction::South => pos.y += 1,
+            Direction::West => pos.x += 1,
+        }
+        pos
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/03-advanced/00-mars-rover/\` pour les consignes.`
+    ],
+  },
+  {
+    id: 'kata-03-advanced-01-sudoku',
+    title: 'Sudoku',
+    titleEn: 'Sudoku',
+    number: 32,
+    total: 36,
+    difficulty: 'difficile',
+    concept: 'unsafe',
+    xpReward: 30,
+    description: `This kata is based on [Sudoku from Coding Dojo](https://codingdojo.org/kata/sudoku/).
+
+Implement \`CellState\`, \`Board\` with constraint propagation, and a \`solve()\` method combining propagation with backtracking.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement a Sudoku solver using constraint propagation
+//
+// Cell rules:
+// - A Cell expresses which of the numbers 1..9 are possible
+// - By default, all numbers (1..9) are possible
+// - If exactly one number is possible, the cell value is known
+// - If no number is possible, there is a contradiction (impossible state)
+//
+// Board:
+// - 9x9 grid of cells
+// - When a cell's value becomes known, eliminate that value from all peers
+//   (same row, column, and 3x3 box)
+//
+// Solver:
+// - Try to solve by pure constraint propagation first
+// - If stuck, use backtracking: pick an unsolved cell, try each possible value
+
+use std::collections::HashSet;
+
+#[derive(Debug, Clone)]
+pub enum CellState {
+    Known(u8),
+    Unknown(HashSet<u8>),
+    Contradiction,
+}
+
+impl CellState {
+    pub fn new() -> Self {
+        CellState::Unknown((1..=9).collect())
+    }
+
+    pub fn is_solved(&self) -> bool {
+        todo!("Return true if Known")
+    }
+
+    pub fn eliminate(&mut self, value: u8) -> bool {
+        todo!("Remove value from possibilities, return true if state changed")
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct Board {
+    pub cells: Vec<CellState>, // 81 cells, row-major
+}
+
+impl Board {
+    pub fn new() -> Self {
+        todo!("Create empty board (all cells unknown)")
+    }
+
+    pub fn from_string(s: &str) -> Self {
+        todo!("Parse 81-char string: '.' or '0' = unknown, '1'-'9' = given")
+    }
+
+    pub fn set(&mut self, row: usize, col: usize, value: u8) {
+        todo!("Set cell and propagate constraint to peers")
+    }
+
+    pub fn is_solved(&self) -> bool {
+        todo!("True if all cells are Known")
+    }
+
+    pub fn solve(&self) -> Option<Board> {
+        todo!("Solve using constraint propagation + backtracking")
+    }
+}
+
+fn main() {
+    let puzzle =
+        "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
+    let board = Board::from_string(puzzle);
+    if let Some(solution) = board.solve() {
+        println!("Solved!");
+        for row in 0..9 {
+            let line: String = (0..9)
+                .map(|col| match &solution.cells[row * 9 + col] {
+                    CellState::Known(v) => v.to_string(),
+                    _ => ".".to_string(),
+                })
+                .collect();
+            println!("{}", line);
+        }
+    } else {
+        println!("No solution found");
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_cell_has_9_possibilities() {
+        let cell = CellState::new();
+        match cell {
+            CellState::Unknown(s) => assert_eq!(s.len(), 9),
+            _ => panic!("Expected Unknown"),
+        }
+    }
+
+    #[test]
+    fn eliminate_reduces_possibilities() {
+        let mut cell = CellState::new();
+        cell.eliminate(5);
+        match &cell {
+            CellState::Unknown(s) => assert!(!s.contains(&5)),
+            _ => panic!("Expected Unknown"),
+        }
+    }
+
+    #[test]
+    fn eliminate_all_but_one_gives_known() {
+        let mut cell = CellState::new();
+        for v in 1..=8 {
+            cell.eliminate(v);
+        }
+        match cell {
+            CellState::Known(v) => assert_eq!(v, 9),
+            _ => panic!("Expected Known(9)"),
+        }
+    }
+
+    #[test]
+    fn solve_simple_puzzle() {
+        let puzzle =
+            "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
+        let board = Board::from_string(puzzle);
+        let solution = board.solve();
+        assert!(solution.is_some());
+        assert!(solution.unwrap().is_solved());
+    }
+}
+`,
+    solutionCode: `use std::collections::HashSet;
+
+#[derive(Debug, Clone)]
+pub enum CellState {
+    Known(u8),
+    Unknown(HashSet<u8>),
+    Contradiction,
+}
+
+impl CellState {
+    pub fn new() -> Self {
+        CellState::Unknown((1..=9).collect())
+    }
+
+    pub fn is_solved(&self) -> bool {
+        matches!(self, CellState::Known(_))
+    }
+
+    pub fn eliminate(&mut self, value: u8) -> bool {
+        match self {
+            CellState::Unknown(s) => {
+                if !s.remove(&value) {
+                    return false;
+                }
+                if s.is_empty() {
+                    *self = CellState::Contradiction;
+                } else if s.len() == 1 {
+                    let v = *s.iter().next().unwrap();
+                    *self = CellState::Known(v);
+                }
+                true
+            }
+            _ => false,
+        }
+    }
+}
+
+fn peers(idx: usize) -> Vec<usize> {
+    let row = idx / 9;
+    let col = idx % 9;
+    let box_r = (row / 3) * 3;
+    let box_c = (col / 3) * 3;
+    let mut p: HashSet<usize> = HashSet::new();
+    for c in 0..9 {
+        p.insert(row * 9 + c);
+    }
+    for r in 0..9 {
+        p.insert(r * 9 + col);
+    }
+    for dr in 0..3 {
+        for dc in 0..3 {
+            p.insert((box_r + dr) * 9 + (box_c + dc));
+        }
+    }
+    p.remove(&idx);
+    p.into_iter().collect()
+}
+
+#[derive(Debug, Clone)]
+pub struct Board {
+    pub cells: Vec<CellState>,
+}
+
+impl Board {
+    pub fn new() -> Self {
+        Board {
+            cells: (0..81).map(|_| CellState::new()).collect(),
+        }
+    }
+
+    pub fn from_string(s: &str) -> Self {
+        let mut b = Board::new();
+        for (i, c) in s.chars().enumerate().take(81) {
+            if let Some(d) = c.to_digit(10) {
+                if d >= 1 {
+                    b.set(i / 9, i % 9, d as u8);
+                }
+            }
+        }
+        b
+    }
+
+    pub fn set(&mut self, row: usize, col: usize, value: u8) {
+        let idx = row * 9 + col;
+        self.cells[idx] = CellState::Known(value);
+        let peer_list = peers(idx);
+        for p in peer_list {
+            self.cells[p].eliminate(value);
+        }
+    }
+
+    pub fn is_solved(&self) -> bool {
+        self.cells.iter().all(|c| c.is_solved())
+    }
+
+    pub fn has_contradiction(&self) -> bool {
+        self.cells
+            .iter()
+            .any(|c| matches!(c, CellState::Contradiction))
+    }
+
+    pub fn solve(&self) -> Option<Board> {
+        if self.has_contradiction() {
+            return None;
+        }
+        if self.is_solved() {
+            return Some(self.clone());
+        }
+        // Find cell with fewest possibilities (minimum remaining values heuristic)
+        let (idx, _) = self
+            .cells
+            .iter()
+            .enumerate()
+            .filter_map(|(i, c)| {
+                if let CellState::Unknown(s) = c {
+                    Some((i, s.len()))
+                } else {
+                    None
+                }
+            })
+            .min_by_key(|&(_, len)| len)?;
+
+        let possibilities = if let CellState::Unknown(s) = &self.cells[idx] {
+            s.clone()
+        } else {
+            return None;
+        };
+
+        for &v in &possibilities {
+            let mut b = self.clone();
+            b.set(idx / 9, idx % 9, v);
+            if let Some(sol) = b.solve() {
+                return Some(sol);
+            }
+        }
+        None
+    }
+}
+
+fn main() {
+    let puzzle =
+        "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
+    let board = Board::from_string(puzzle);
+    if let Some(solution) = board.solve() {
+        println!("Solved!");
+        for row in 0..9 {
+            let line: String = (0..9)
+                .map(|col| match &solution.cells[row * 9 + col] {
+                    CellState::Known(v) => v.to_string(),
+                    _ => ".".to_string(),
+                })
+                .collect();
+            println!("{}", line);
+        }
+    } else {
+        println!("No solution found");
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_cell_has_9_possibilities() {
+        match CellState::new() {
+            CellState::Unknown(s) => assert_eq!(s.len(), 9),
+            _ => panic!("Expected Unknown"),
+        }
+    }
+
+    #[test]
+    fn eliminate_reduces_possibilities() {
+        let mut c = CellState::new();
+        c.eliminate(5);
+        match &c {
+            CellState::Unknown(s) => assert!(!s.contains(&5)),
+            _ => panic!("Expected Unknown"),
+        }
+    }
+
+    #[test]
+    fn eliminate_all_but_one_gives_known() {
+        let mut c = CellState::new();
+        for v in 1..=8 {
+            c.eliminate(v);
+        }
+        match c {
+            CellState::Known(v) => assert_eq!(v, 9),
+            _ => panic!("Expected Known(9)"),
+        }
+    }
+
+    #[test]
+    fn solve_simple_puzzle() {
+        let puzzle =
+            "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
+        let sol = Board::from_string(puzzle).solve();
+        assert!(sol.is_some());
+        assert!(sol.unwrap().is_solved());
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/03-advanced/01-sudoku/\` pour les consignes.`
+    ],
+  },
+  {
+    id: 'kata-03-advanced-02-langton-ant',
+    title: 'Langton Ant',
+    titleEn: 'Langton Ant',
+    number: 33,
+    total: 36,
+    difficulty: 'difficile',
+    concept: 'unsafe',
+    xpReward: 30,
+    description: `This kata is based on [Langton's Ant from Coding Dojo](https://codingdojo.org/kata/LangtonAnt/).
+
+Implement \`Direction\`, \`Ant\`, and \`Grid\` structs with a \`step()\` function and a \`simulate(n)\` function that runs the simulation for n steps.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement Langton's Ant simulation
+//
+// Rules:
+// - White square: turn right 90°, flip to black, move 1 forward
+// - Black square: turn left 90°, flip to white, move 1 forward
+//
+// Direction: North, East, South, West
+
+use std::collections::HashSet;
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub enum Direction {
+    North,
+    East,
+    South,
+    West,
+}
+
+impl Direction {
+    pub fn turn_right(self) -> Self {
+        todo!("Turn 90° clockwise")
+    }
+
+    pub fn turn_left(self) -> Self {
+        todo!("Turn 90° counter-clockwise")
+    }
+
+    pub fn delta(self) -> (i32, i32) {
+        todo!("Return (dx, dy) for this direction")
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct Ant {
+    pub x: i32,
+    pub y: i32,
+    pub direction: Direction,
+}
+
+// Grid: set of black cells (white = absent)
+#[derive(Debug, Clone, Default)]
+pub struct Grid {
+    pub black_cells: HashSet<(i32, i32)>,
+}
+
+impl Grid {
+    pub fn is_black(&self, x: i32, y: i32) -> bool {
+        todo!()
+    }
+
+    pub fn flip(&mut self, x: i32, y: i32) {
+        todo!("Toggle cell color")
+    }
+}
+
+pub fn step(ant: &mut Ant, grid: &mut Grid) {
+    todo!("Apply one step of Langton's Ant rules")
+}
+
+pub fn simulate(steps: usize) -> (Ant, Grid) {
+    todo!("Run simulation for given number of steps")
+}
+
+fn main() {
+    let (ant, grid) = simulate(100);
+    println!(
+        "After 100 steps: ant at ({}, {}), {} black cells",
+        ant.x,
+        ant.y,
+        grid.black_cells.len()
+    );
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn first_step_on_white_turns_right() {
+        let mut ant = Ant {
+            x: 0,
+            y: 0,
+            direction: Direction::North,
+        };
+        let mut grid = Grid::default();
+        step(&mut ant, &mut grid);
+        assert_eq!(ant.direction, Direction::East);
+        assert!(grid.is_black(0, 0));
+        assert_eq!((ant.x, ant.y), (1, 0));
+    }
+
+    #[test]
+    fn second_step_on_white_from_east_turns_south() {
+        let mut ant = Ant {
+            x: 0,
+            y: 0,
+            direction: Direction::North,
+        };
+        let mut grid = Grid::default();
+        // First step: (0,0) white -> turn right (East), flip (0,0) black, move to (1,0)
+        step(&mut ant, &mut grid);
+        // Second step: (1,0) white -> turn right (South), flip (1,0) black, move to (1,-1)
+        step(&mut ant, &mut grid);
+        assert_eq!(ant.direction, Direction::South);
+        assert!(grid.is_black(1, 0));
+    }
+
+    #[test]
+    fn after_many_steps_creates_pattern() {
+        let (_, grid) = simulate(10000);
+        // After 10000 steps, the "highway" pattern has begun
+        assert!(grid.black_cells.len() > 100);
+    }
+}
+`,
+    solutionCode: `use std::collections::HashSet;
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub enum Direction {
+    North,
+    East,
+    South,
+    West,
+}
+
+impl Direction {
+    pub fn turn_right(self) -> Self {
+        match self {
+            Direction::North => Direction::East,
+            Direction::East => Direction::South,
+            Direction::South => Direction::West,
+            Direction::West => Direction::North,
+        }
+    }
+
+    pub fn turn_left(self) -> Self {
+        match self {
+            Direction::North => Direction::West,
+            Direction::West => Direction::South,
+            Direction::South => Direction::East,
+            Direction::East => Direction::North,
+        }
+    }
+
+    pub fn delta(self) -> (i32, i32) {
+        match self {
+            Direction::North => (0, 1),
+            Direction::East => (1, 0),
+            Direction::South => (0, -1),
+            Direction::West => (-1, 0),
+        }
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct Ant {
+    pub x: i32,
+    pub y: i32,
+    pub direction: Direction,
+}
+
+#[derive(Debug, Clone, Default)]
+pub struct Grid {
+    pub black_cells: HashSet<(i32, i32)>,
+}
+
+impl Grid {
+    pub fn is_black(&self, x: i32, y: i32) -> bool {
+        self.black_cells.contains(&(x, y))
+    }
+
+    pub fn flip(&mut self, x: i32, y: i32) {
+        if !self.black_cells.remove(&(x, y)) {
+            self.black_cells.insert((x, y));
+        }
+    }
+}
+
+pub fn step(ant: &mut Ant, grid: &mut Grid) {
+    if grid.is_black(ant.x, ant.y) {
+        ant.direction = ant.direction.turn_left();
+    } else {
+        ant.direction = ant.direction.turn_right();
+    }
+    grid.flip(ant.x, ant.y);
+    let (dx, dy) = ant.direction.delta();
+    ant.x += dx;
+    ant.y += dy;
+}
+
+pub fn simulate(steps: usize) -> (Ant, Grid) {
+    let mut ant = Ant {
+        x: 0,
+        y: 0,
+        direction: Direction::North,
+    };
+    let mut grid = Grid::default();
+    for _ in 0..steps {
+        step(&mut ant, &mut grid);
+    }
+    (ant, grid)
+}
+
+fn main() {
+    let (ant, grid) = simulate(100);
+    println!(
+        "After 100 steps: ant at ({}, {}), {} black cells",
+        ant.x,
+        ant.y,
+        grid.black_cells.len()
+    );
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn first_step_on_white_turns_right() {
+        let mut ant = Ant {
+            x: 0,
+            y: 0,
+            direction: Direction::North,
+        };
+        let mut grid = Grid::default();
+        step(&mut ant, &mut grid);
+        assert_eq!(ant.direction, Direction::East);
+        assert!(grid.is_black(0, 0));
+        assert_eq!((ant.x, ant.y), (1, 0));
+    }
+
+    #[test]
+    fn second_step_on_white_from_east_turns_south() {
+        let mut ant = Ant {
+            x: 0,
+            y: 0,
+            direction: Direction::North,
+        };
+        let mut grid = Grid::default();
+        step(&mut ant, &mut grid);
+        step(&mut ant, &mut grid);
+        assert_eq!(ant.direction, Direction::South);
+        assert!(grid.is_black(1, 0));
+    }
+
+    #[test]
+    fn after_many_steps_creates_pattern() {
+        let (_, grid) = simulate(10000);
+        assert!(grid.black_cells.len() > 100);
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/03-advanced/02-langton-ant/\` pour les consignes.`
+    ],
+  },
+  {
+    id: 'kata-03-advanced-03-brainfuck',
+    title: 'Brainfuck',
+    titleEn: 'Brainfuck',
+    number: 34,
+    total: 36,
+    difficulty: 'difficile',
+    concept: 'generics',
+    xpReward: 30,
+    description: `This kata is based on [Brainfuck from Coding Dojo](https://codingdojo.org/kata/Brainfuck/).
+
+Implement \`Interpreter::run(program: &str, input: &str) -&gt; Result&lt;String, String&gt;\` that executes a Brainfuck program and returns its output, or an error on invalid programs.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement a Brainfuck interpreter
+//
+// Commands:
+// > : move data pointer right (extend tape if needed)
+// < : move data pointer left (error if at position 0)
+// + : increment byte at pointer (wraps 255 -> 0)
+// - : decrement byte at pointer (wraps 0 -> 255)
+// . : output byte at pointer as ASCII char
+// , : read one byte of input into current cell
+// [ : if current cell is 0, jump past matching ]
+// ] : if current cell is non-zero, jump back to matching [
+
+pub struct Interpreter {
+    tape: Vec<u8>,
+    pointer: usize,
+}
+
+impl Interpreter {
+    pub fn new() -> Self {
+        todo!("Initialize tape with 30000 cells and pointer at 0")
+    }
+
+    pub fn run(program: &str, input: &str) -> Result<String, String> {
+        todo!("Execute the Brainfuck program and return output")
+    }
+}
+
+fn main() {
+    // "Hello, World!" program in Brainfuck
+    let hello_world = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
+    match Interpreter::run(hello_world, "") {
+        Ok(output) => println!("{}", output),
+        Err(e) => eprintln!("Error: {}", e),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_program_produces_empty_output() {
+        assert_eq!(Interpreter::run("", ""), Ok(String::new()));
+    }
+
+    #[test]
+    fn increment_and_output() {
+        // 65 increments = 'A'
+        let prog = "+".repeat(65) + ".";
+        assert_eq!(Interpreter::run(&prog, ""), Ok("A".to_string()));
+    }
+
+    #[test]
+    fn simple_loop() {
+        // Set cell to 5, then loop decrementing to 0
+        assert_eq!(Interpreter::run("+++++[-].", ""), Ok("\\0".to_string()));
+    }
+
+    #[test]
+    fn read_input_and_output() {
+        assert_eq!(Interpreter::run(",.", "A"), Ok("A".to_string()));
+    }
+
+    #[test]
+    fn hello_world() {
+        let prog = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
+        assert_eq!(
+            Interpreter::run(prog, ""),
+            Ok("Hello, World!\\n".to_string())
+        );
+    }
+
+    #[test]
+    fn unmatched_bracket_returns_error() {
+        assert!(Interpreter::run("[", "").is_err());
+    }
+}
+`,
+    solutionCode: `use std::collections::HashMap;
+
+pub struct Interpreter;
+
+impl Interpreter {
+    pub fn run(program: &str, input: &str) -> Result<String, String> {
+        let prog: Vec<char> = program.chars().collect();
+        let mut tape = vec![0u8; 30000];
+        let mut dp = 0usize;
+        let mut ip = 0usize;
+        let mut input_iter = input.bytes();
+        let mut output = String::new();
+
+        // Pre-compute bracket matching
+        let mut bracket_map: HashMap<usize, usize> = HashMap::new();
+        let mut stack: Vec<usize> = Vec::new();
+        for (i, &c) in prog.iter().enumerate() {
+            if c == '[' {
+                stack.push(i);
+            } else if c == ']' {
+                let open = stack
+                    .pop()
+                    .ok_or_else(|| format!("Unmatched ] at position {}", i))?;
+                bracket_map.insert(open, i);
+                bracket_map.insert(i, open);
+            }
+        }
+        if !stack.is_empty() {
+            return Err("Unmatched [ in program".to_string());
+        }
+
+        while ip < prog.len() {
+            match prog[ip] {
+                '>' => {
+                    dp += 1;
+                    if dp >= tape.len() {
+                        tape.push(0);
+                    }
+                }
+                '<' => {
+                    if dp == 0 {
+                        return Err("Data pointer underflow".to_string());
+                    }
+                    dp -= 1;
+                }
+                '+' => tape[dp] = tape[dp].wrapping_add(1),
+                '-' => tape[dp] = tape[dp].wrapping_sub(1),
+                '.' => output.push(tape[dp] as char),
+                ',' => tape[dp] = input_iter.next().unwrap_or(0),
+                '[' => {
+                    if tape[dp] == 0 {
+                        ip = *bracket_map.get(&ip).unwrap();
+                    }
+                }
+                ']' => {
+                    if tape[dp] != 0 {
+                        ip = *bracket_map.get(&ip).unwrap();
+                    }
+                }
+                _ => {} // Ignore all other characters
+            }
+            ip += 1;
+        }
+        Ok(output)
+    }
+}
+
+fn main() {
+    let prog = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
+    match Interpreter::run(prog, "") {
+        Ok(out) => print!("{}", out),
+        Err(e) => eprintln!("Error: {}", e),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_program_produces_empty_output() {
+        assert_eq!(Interpreter::run("", ""), Ok(String::new()));
+    }
+
+    #[test]
+    fn increment_and_output() {
+        let prog = "+".repeat(65) + ".";
+        assert_eq!(Interpreter::run(&prog, ""), Ok("A".to_string()));
+    }
+
+    #[test]
+    fn simple_loop() {
+        assert_eq!(Interpreter::run("+++++[-].", ""), Ok("\\0".to_string()));
+    }
+
+    #[test]
+    fn read_input() {
+        assert_eq!(Interpreter::run(",.", "A"), Ok("A".to_string()));
+    }
+
+    #[test]
+    fn hello_world() {
+        let prog = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
+        assert_eq!(
+            Interpreter::run(prog, ""),
+            Ok("Hello, World!\\n".to_string())
+        );
+    }
+
+    #[test]
+    fn unmatched_bracket_returns_error() {
+        assert!(Interpreter::run("[", "").is_err());
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/03-advanced/03-brainfuck/\` pour les consignes.`
+    ],
+  },
+  {
+    id: 'kata-03-advanced-04-mathematical-ast',
+    title: 'Mathematical AST',
+    titleEn: 'Mathematical AST',
+    number: 35,
+    total: 36,
+    difficulty: 'difficile',
+    concept: 'generics',
+    xpReward: 30,
+    description: `This kata is based on [Mathematical AST from Coding Dojo](https://codingdojo.org/kata/mathematical-ast/).
+
+Implement the \`Expr\` enum representing AST nodes, \`parse_rpn(expr: &str) -&gt; Result&lt;Expr, String&gt;\` to build the tree from RPN input, \`evaluate(expr: &Expr) -&gt; f64\` to compute the result, and \`pretty_print(expr: &Expr) -&gt; String\` for infix display.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement a Mathematical AST with Visitor pattern
+//
+// Step 1: Define AST nodes
+//   - Number(f64)
+//   - Add(Box<Expr>, Box<Expr>)
+//   - Sub(Box<Expr>, Box<Expr>)
+//   - Mul(Box<Expr>, Box<Expr>)
+//   - Div(Box<Expr>, Box<Expr>)
+//
+// Step 2: Implement parse_rpn(expr: &str) -> Result<Expr, String>
+//   Parse a space-separated RPN expression using a stack
+//
+// Step 3: Implement evaluate(expr: &Expr) -> f64
+//   Recursively evaluate the AST
+//
+// Step 4: Implement pretty_print(expr: &Expr) -> String
+//   e.g., "3 6 +" -> "(3 + 6)"
+//        "3 6 2 * +" -> "(3 + (6 * 2))"
+
+#[derive(Debug, Clone)]
+pub enum Expr {
+    Number(f64),
+    Add(Box<Expr>, Box<Expr>),
+    Sub(Box<Expr>, Box<Expr>),
+    Mul(Box<Expr>, Box<Expr>),
+    Div(Box<Expr>, Box<Expr>),
+}
+
+pub fn parse_rpn(expr: &str) -> Result<Expr, String> {
+    todo!("Parse RPN expression into AST")
+}
+
+pub fn evaluate(expr: &Expr) -> f64 {
+    todo!("Evaluate the AST recursively")
+}
+
+pub fn pretty_print(expr: &Expr) -> String {
+    todo!("Pretty-print the AST as infix notation with parentheses")
+}
+
+fn main() {
+    let expr = parse_rpn("3 6 +").unwrap();
+    println!("Value: {}", evaluate(&expr));
+    println!("Pretty: {}", pretty_print(&expr));
+
+    let nested = parse_rpn("3 6 -6 * +").unwrap();
+    println!("Nested value: {}", evaluate(&nested));
+    println!("Nested pretty: {}", pretty_print(&nested));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn single_number() {
+        let e = parse_rpn("42").unwrap();
+        assert!((evaluate(&e) - 42.0).abs() < 0.001);
+    }
+
+    #[test]
+    fn simple_addition() {
+        let e = parse_rpn("3 6 +").unwrap();
+        assert!((evaluate(&e) - 9.0).abs() < 0.001);
+    }
+
+    #[test]
+    fn nested_expression() {
+        let e = parse_rpn("3 6 -6 * +").unwrap();
+        assert!((evaluate(&e) - (-33.0)).abs() < 0.001);
+    }
+
+    #[test]
+    fn pretty_print_addition() {
+        let e = parse_rpn("3 6 +").unwrap();
+        assert_eq!(pretty_print(&e), "(3 + 6)");
+    }
+
+    #[test]
+    fn pretty_print_nested() {
+        let e = parse_rpn("3 6 2 * +").unwrap();
+        assert_eq!(pretty_print(&e), "(3 + (6 * 2))");
+    }
+
+    #[test]
+    fn unknown_token_returns_error() {
+        assert!(parse_rpn("3 x +").is_err());
+    }
+
+    #[test]
+    fn division() {
+        let e = parse_rpn("10 2 /").unwrap();
+        assert!((evaluate(&e) - 5.0).abs() < 0.001);
+    }
+}
+`,
+    solutionCode: `#[derive(Debug, Clone)]
+pub enum Expr {
+    Number(f64),
+    Add(Box<Expr>, Box<Expr>),
+    Sub(Box<Expr>, Box<Expr>),
+    Mul(Box<Expr>, Box<Expr>),
+    Div(Box<Expr>, Box<Expr>),
+}
+
+pub fn parse_rpn(expr: &str) -> Result<Expr, String> {
+    let mut stack: Vec<Expr> = Vec::new();
+    for token in expr.split_whitespace() {
+        match token {
+            "+" | "-" | "*" | "/" => {
+                let right = stack.pop().ok_or("Stack underflow: not enough operands")?;
+                let left = stack.pop().ok_or("Stack underflow: not enough operands")?;
+                let node = match token {
+                    "+" => Expr::Add(Box::new(left), Box::new(right)),
+                    "-" => Expr::Sub(Box::new(left), Box::new(right)),
+                    "*" => Expr::Mul(Box::new(left), Box::new(right)),
+                    "/" => Expr::Div(Box::new(left), Box::new(right)),
+                    _ => unreachable!(),
+                };
+                stack.push(node);
+            }
+            t => {
+                let n: f64 = t.parse().map_err(|_| format!("Unknown token: '{}'", t))?;
+                stack.push(Expr::Number(n));
+            }
+        }
+    }
+    stack.pop().ok_or_else(|| "Empty expression".to_string())
+}
+
+pub fn evaluate(expr: &Expr) -> f64 {
+    match expr {
+        Expr::Number(n) => *n,
+        Expr::Add(l, r) => evaluate(l) + evaluate(r),
+        Expr::Sub(l, r) => evaluate(l) - evaluate(r),
+        Expr::Mul(l, r) => evaluate(l) * evaluate(r),
+        Expr::Div(l, r) => evaluate(l) / evaluate(r),
+    }
+}
+
+pub fn pretty_print(expr: &Expr) -> String {
+    match expr {
+        Expr::Number(n) => {
+            if n.fract() == 0.0 {
+                format!("{}", *n as i64)
+            } else {
+                format!("{}", n)
+            }
+        }
+        Expr::Add(l, r) => format!("({} + {})", pretty_print(l), pretty_print(r)),
+        Expr::Sub(l, r) => format!("({} - {})", pretty_print(l), pretty_print(r)),
+        Expr::Mul(l, r) => format!("({} * {})", pretty_print(l), pretty_print(r)),
+        Expr::Div(l, r) => format!("({} / {})", pretty_print(l), pretty_print(r)),
+    }
+}
+
+fn main() {
+    let expr = parse_rpn("3 6 +").unwrap();
+    println!("Value: {}", evaluate(&expr));
+    println!("Pretty: {}", pretty_print(&expr));
+
+    let nested = parse_rpn("3 6 -6 * +").unwrap();
+    println!("Nested value: {}", evaluate(&nested));
+    println!("Nested pretty: {}", pretty_print(&nested));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn single_number() {
+        let e = parse_rpn("42").unwrap();
+        assert!((evaluate(&e) - 42.0).abs() < 0.001);
+    }
+
+    #[test]
+    fn simple_addition() {
+        let e = parse_rpn("3 6 +").unwrap();
+        assert!((evaluate(&e) - 9.0).abs() < 0.001);
+    }
+
+    #[test]
+    fn nested_expression() {
+        let e = parse_rpn("3 6 -6 * +").unwrap();
+        assert!((evaluate(&e) - (-33.0)).abs() < 0.001);
+    }
+
+    #[test]
+    fn pretty_print_addition() {
+        let e = parse_rpn("3 6 +").unwrap();
+        assert_eq!(pretty_print(&e), "(3 + 6)");
+    }
+
+    #[test]
+    fn pretty_print_nested() {
+        let e = parse_rpn("3 6 2 * +").unwrap();
+        assert_eq!(pretty_print(&e), "(3 + (6 * 2))");
+    }
+
+    #[test]
+    fn unknown_token_returns_error() {
+        assert!(parse_rpn("3 x +").is_err());
+    }
+
+    #[test]
+    fn division() {
+        let e = parse_rpn("10 2 /").unwrap();
+        assert!((evaluate(&e) - 5.0).abs() < 0.001);
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/03-advanced/04-mathematical-ast/\` pour les consignes.`
+    ],
+  },
+  {
+    id: 'kata-03-advanced-05-christmas-delivery',
+    title: 'Christmas Delivery',
+    titleEn: 'Christmas Delivery',
+    number: 36,
+    total: 36,
+    difficulty: 'difficile',
+    concept: 'concurrency',
+    xpReward: 30,
+    description: `This kata is based on [Christmas Delivery from Coding Dojo](https://codingdojo.org/kata/christmas-delivery/).
+
+Implement \`Sleigh\` (shared mutable state protected by \`Mutex\`) loaded concurrently by multiple \`Elf\` threads via \`Arc&lt;Mutex&lt;Sleigh&gt;&gt;\`. The \`run_delivery\` function spawns one thread per elf and returns the total number of presents loaded.`,
+    tests: [
+      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+    ],
+    starterCode: `// TODO: Implement concurrent Christmas Delivery
+//
+// The Sleigh can hold presents. Multiple Elves work concurrently to add presents.
+// Only one Elf can add a present at a time (use Mutex).
+//
+// Elf: has a name, adds N presents to the Sleigh
+// Sleigh: holds a list of presents (String), shared via Arc<Mutex<Sleigh>>
+//
+// Implement:
+// 1. Sleigh::new() -> Sleigh
+// 2. Sleigh::add_present(&mut self, present: String)
+// 3. Sleigh::present_count(&self) -> usize
+// 4. run_delivery(elves: Vec<(&str, usize)>) -> usize  -- runs concurrently
+
+use std::sync::{Arc, Mutex};
+use std::thread;
+
+#[derive(Debug, Default)]
+pub struct Sleigh {
+    presents: Vec<String>,
+}
+
+impl Sleigh {
+    pub fn new() -> Self {
+        Default::default()
+    }
+
+    pub fn add_present(&mut self, present: String) {
+        todo!("Add present to the sleigh")
+    }
+
+    pub fn present_count(&self) -> usize {
+        todo!("Return number of presents")
+    }
+}
+
+pub fn run_delivery(elves: Vec<(&str, usize)>) -> usize {
+    todo!("Spawn one thread per elf, each elf adds its presents concurrently, return total count")
+}
+
+fn main() {
+    let elves = vec![
+        ("Rudolph", 10),
+        ("Dasher", 15),
+        ("Comet", 20),
+        ("Blitzen", 5),
+    ];
+    let total = run_delivery(elves);
+    println!("Total presents on sleigh: {}", total);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn single_elf_adds_presents() {
+        let total = run_delivery(vec![("Alice", 5)]);
+        assert_eq!(total, 5);
+    }
+
+    #[test]
+    fn multiple_elves_add_concurrently() {
+        let total = run_delivery(vec![("A", 10), ("B", 20), ("C", 30)]);
+        assert_eq!(total, 60);
+    }
+
+    #[test]
+    fn no_elves_empty_sleigh() {
+        let total = run_delivery(vec![]);
+        assert_eq!(total, 0);
+    }
+
+    #[test]
+    fn concurrent_adds_are_safe() {
+        // Run many times to catch race conditions
+        for _ in 0..10 {
+            let total = run_delivery(vec![("A", 100), ("B", 100), ("C", 100)]);
+            assert_eq!(total, 300);
+        }
+    }
+}
+`,
+    solutionCode: `use std::sync::{Arc, Mutex};
+use std::thread;
+
+#[derive(Debug, Default)]
+pub struct Sleigh {
+    presents: Vec<String>,
+}
+
+impl Sleigh {
+    pub fn new() -> Self {
+        Default::default()
+    }
+
+    pub fn add_present(&mut self, present: String) {
+        self.presents.push(present);
+    }
+
+    pub fn present_count(&self) -> usize {
+        self.presents.len()
+    }
+}
+
+pub fn run_delivery(elves: Vec<(&str, usize)>) -> usize {
+    let sleigh = Arc::new(Mutex::new(Sleigh::new()));
+
+    let handles: Vec<_> = elves
+        .into_iter()
+        .map(|(name, count)| {
+            let sleigh = Arc::clone(&sleigh);
+            let name = name.to_string();
+            thread::spawn(move || {
+                for i in 0..count {
+                    let present = format!("Present from {} #{}", name, i + 1);
+                    sleigh.lock().unwrap().add_present(present);
+                }
+            })
+        })
+        .collect();
+
+    for h in handles {
+        h.join().unwrap();
+    }
+    let count = sleigh.lock().unwrap().present_count();
+    count
+}
+
+fn main() {
+    let elves = vec![
+        ("Rudolph", 10),
+        ("Dasher", 15),
+        ("Comet", 20),
+        ("Blitzen", 5),
+    ];
+    let total = run_delivery(elves);
+    println!("Total presents on sleigh: {}", total);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn single_elf_adds_presents() {
+        let total = run_delivery(vec![("Alice", 5)]);
+        assert_eq!(total, 5);
+    }
+
+    #[test]
+    fn multiple_elves_add_concurrently() {
+        let total = run_delivery(vec![("A", 10), ("B", 20), ("C", 30)]);
+        assert_eq!(total, 60);
+    }
+
+    #[test]
+    fn no_elves_empty_sleigh() {
+        let total = run_delivery(vec![]);
+        assert_eq!(total, 0);
+    }
+
+    #[test]
+    fn concurrent_adds_are_safe() {
+        for _ in 0..10 {
+            let total = run_delivery(vec![("A", 100), ("B", 100), ("C", 100)]);
+            assert_eq!(total, 300);
+        }
+    }
+}
+`,
+    hints: [
+      `💡 Regarde le README.md dans \`katas/03-advanced/05-christmas-delivery/\` pour les consignes.`
     ],
   },
 ]

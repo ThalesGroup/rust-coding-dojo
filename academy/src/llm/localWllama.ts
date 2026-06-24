@@ -3,8 +3,8 @@ import wasmUrl from '@wllama/wllama/esm/wasm/wllama.wasm?url'
 import type { ChatMessage } from '../types'
 
 const MODEL = {
-  repo: 'LiquidAI/LFM2.5-350M-GGUF',
-  file: 'LFM2.5-350M-Q4_K_M.gguf',
+  repo: 'Qwen/Qwen2.5-0.5B-Instruct-GGUF',
+  file: 'qwen2.5-0.5b-instruct-q8_0.gguf',
 }
 
 const SYSTEM_PROMPT = `Tu es Ferris, le mentor IA du Rust Dojo. Tu aides les apprenants à comprendre Rust avec des explications courtes, pédagogiques et encourageantes. Réponds en français par défaut. Si la question concerne un kata, donne des indices progressifs et n'écris pas la solution complète sauf demande explicite. Appuie-toi sur le contexte du kata, le code actuel et les résultats de tests fournis.`

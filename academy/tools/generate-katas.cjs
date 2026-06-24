@@ -6,19 +6,6 @@ const KATAS_DIR = path.join(ROOT, 'katas')
 const OUT_DIR = path.resolve(__dirname, '..', 'src', 'data')
 const OUT_FILE = path.join(OUT_DIR, 'katas.generated.ts')
 
-// Mapping de chaque kata vers concept, difficulté, XP
-const KATA_MAP = {
-  '00-setup/00-install':   { concept: 'bases',      difficulty: 'facile',   xpReward: 10 },
-  '00-setup/01-cargo':     { concept: 'bases',      difficulty: 'facile',   xpReward: 10 },
-  '00-setup/02-compiler':  { concept: 'bases',      difficulty: 'facile',   xpReward: 15 },
-  '01-starter/00-rustward-sword':     { concept: 'bases',      difficulty: 'facile',   xpReward: 25 },
-  '01-starter/01-roman-numerals':     { concept: 'bases',      difficulty: 'facile',   xpReward: 30 },
-  '01-starter/02-rpn_calculator':     { concept: 'bases',      difficulty: 'facile',   xpReward: 35 },
-  '01-starter/03-ownership-borrowing':{ concept: 'ownership',  difficulty: 'moyen',    xpReward: 45 },
-  '02-structure/00-basics':           { concept: 'structs',    difficulty: 'moyen',    xpReward: 50 },
-  '02-structure/01-smart-pointers':   { concept: 'structs',    difficulty: 'difficile', xpReward: 55 },
-}
-
 function collectDirs(root) {
   const dirs = []
   function walk(dir) {
@@ -61,7 +48,7 @@ function readRustFiles(dir) {
 
 function parseReadme(readme) {
   const title = (readme.match(/^#\s+(.+)/m) || [])[1] || ''
-  const level = (readme.match(/^##\s+Level\s*\/\s*Duration\s*\n+([^\n]+)/im) || [])[1] || ''
+  const level = (readme.match(/^##\s+Level\s*\/\s*[Dd]uration\s*\n+([^\n]+)/im) || [])[1] || ''
   const context = (readme.match(/^##\s+Context\s*\n+([\s\S]*?)(?=\n##\s|$)/im) || [])[1] || ''
   const objective = (readme.match(/^##\s+Objective\s*\n+([\s\S]*?)(?=\n##\s|$)/im) || [])[1] || ''
 
@@ -94,12 +81,48 @@ function makeId(rel) {
   return 'kata-' + rel.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
 }
 
-let count = 0
+function detectDifficulty(readme) {
+  const parsed = parseReadme(readme)
+  if (parsed.isBeginner) return 'facile'
+  if (parsed.isIntermediate) return 'moyen'
+  if (parsed.isExpert) return 'difficile'
+  return 'facile'
+}
+
+function detectConcept(rel) {
+  const lc = rel.toLowerCase()
+  if (lc.includes('ownership') || lc.includes('borrowing')) return 'ownership'
+  if (lc.includes('lifetime')) return 'lifetimes'
+  if (lc.includes('gilded-rose') || lc.includes('trading-card')) return 'traits'
+  if (lc.includes('range') || lc.includes('anagram') || lc.includes('greed')) return 'generics'
+  if (lc.includes('birthday') || lc.includes('christmas')) return 'concurrency'
+  if (lc.includes('wallet') || lc.includes('social-network')) return 'structs'
+  if (lc.startsWith('03-advanced')) {
+    if (lc.includes('brainfuck') || lc.includes('mathematical')) return 'generics'
+    if (lc.includes('christmas')) return 'concurrency'
+    return 'unsafe'
+  }
+  if (lc.startsWith('02-structure')) return 'structs'
+  return 'bases'
+}
+
+function getXpForDifficulty(difficulty) {
+  const map = { facile: 30, moyen: 50, difficulte: 70, expert: 90 }
+  return map[difficulty] || 30
+}
+
 const kataDirs = collectDirs(KATAS_DIR)
-  .filter(d => KATA_MAP[d.rel])
+  .filter(d => {
+    const cat = d.rel.split('/')[0]
+    return cat === '01-starter' || cat === '02-structure' || cat === '03-advanced'
+  })
   .sort((a, b) => {
-    const order = Object.keys(KATA_MAP)
-    return order.indexOf(a.rel) - order.indexOf(b.rel)
+    const order = (r) => {
+      const parts = r.split('/')
+      const catOrder = { '01-starter': 1, '02-structure': 2, '03-advanced': 3 }
+      return (catOrder[parts[0]] || 99) * 1000 + parseInt(parts[1]) || 0
+    }
+    return order(a.rel) - order(b.rel)
   })
 
 const lines = [
@@ -109,34 +132,29 @@ const lines = [
   'export const KATAS: Kata[] = [',
 ]
 
+let count = 0
 for (const { full, rel } of kataDirs) {
   count++
   const readme = readFileSafe(path.join(full, 'README.md'))
   const parsed = parseReadme(readme)
   const id = makeId(rel)
-  const mapping = KATA_MAP[rel]
+  const difficulty = detectDifficulty(readme)
+  const concept = detectConcept(rel)
+  const xpReward = getXpForDifficulty(difficulty)
 
-  // Starter code = all .rs files in src/
   const srcDir = path.join(full, 'src')
   const starterCode = readRustFiles(srcDir) || 'fn main() {\n    // See README.md\n    todo!()\n}'
 
-  // Solution code = all .rs files in solutions/
   const solutionsDir = path.join(full, 'solutions')
-  let solutionCode = readRustFiles(solutionsDir)
-  if (!solutionCode && rel.startsWith('00-setup')) {
-    solutionCode = '' // setup katas have no code
-  }
+  let solutionCode = readRustFiles(solutionsDir) || ''
 
   const desc = parsed.description || `Consulte le README.md du kata dans le dossier \`katas/${rel}/\``
 
-  // Generate tests
   const tests = []
   if (starterCode.includes('todo!()') || starterCode.includes('todo!')) {
     tests.push({ name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: '(c) => !/todo!\\s*\\(\\s*\\)/.test(c)' })
   }
-  if (solutionCode) {
-    tests.push({ name: 'solution_pattern', description: 'Code non vide', check: '(c) => c.trim().length > 0' })
-  }
+  tests.push({ name: 'solution_pattern', description: 'Code non vide', check: '(c) => c.trim().length > 0' })
 
   const testsJson = tests.map(t =>
     `      { name: '${t.name}', description: '${t.description}', check: ${t.check} }`
@@ -148,25 +166,19 @@ for (const { full, rel } of kataDirs) {
   lines.push(`    titleEn: '${escapeCode(parsed.title || '')}',`)
   lines.push(`    number: ${count},`)
   lines.push(`    total: ${kataDirs.length},`)
-  lines.push(`    difficulty: '${mapping.difficulty}',`)
-  lines.push(`    concept: '${mapping.concept}',`)
-  lines.push(`    xpReward: ${mapping.xpReward},`)
+  lines.push(`    difficulty: '${difficulty}',`)
+  lines.push(`    concept: '${concept}',`)
+  lines.push(`    xpReward: ${xpReward},`)
   lines.push(`    description: \`${escapeCode(desc)}\`,`)
-
-  if (tests.length > 0) {
-    lines.push(`    tests: [\n${testsJson}\n    ],`)
-  } else {
-    lines.push(`    tests: [],`)
-  }
-
+  lines.push(`    tests: [\n${testsJson}\n    ],`)
   lines.push(`    starterCode: \`${escapeCode(starterCode)}\`,`)
+
   if (solutionCode) {
     lines.push(`    solutionCode: \`${escapeCode(solutionCode)}\`,`)
   } else {
     lines.push(`    solutionCode: '',`)
   }
 
-  // hints
   lines.push(`    hints: [`)
   function escHint(s) {
     return s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\${/g, '\\${')
@@ -185,7 +197,6 @@ for (const { full, rel } of kataDirs) {
     lines.push(`      \`${hint1}\``)
   }
   lines.push(`    ],`)
-
   lines.push(`  },`)
 }
 

@@ -1,7 +1,34 @@
 # Welcome in Rust coding dojo repository !
 
-[![CI](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml/badge.svg)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml)
-[![Apache 2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![CI](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml/badge.svg?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml)
+[![MSRV](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/msrv.yml/badge.svg?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/msrv.yml)
+[![Deny](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/deny.yml/badge.svg?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/deny.yml)
+[![Nightly](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/nightly.yml/badge.svg?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/nightly.yml)
+[![Release Workflow](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/release.yml/badge.svg?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/release.yml)
+
+[![Release](https://img.shields.io/github/v/release/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/releases)
+[![Commits Since Release](https://img.shields.io/github/commits-since/NicolasPayneauT0132431/rust-coding-dojo/v0.1.0?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/commits/main/)
+[![License](https://img.shields.io/github/license/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](LICENSE)
+[![Changelog](https://img.shields.io/badge/changelog-CHANGELOG.md-blue?style=flat-square)](CHANGELOG.md)
+
+[![Last Commit](https://img.shields.io/github/last-commit/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/commits/main)
+[![Repo Size](https://img.shields.io/github/repo-size/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo)
+[![Contributors](https://img.shields.io/github/contributors/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/graphs/contributors)
+[![Top Language](https://img.shields.io/github/languages/top/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo)
+[![Language Count](https://img.shields.io/github/languages/count/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo)
+
+[![Open Issues](https://img.shields.io/github/issues/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/issues)
+[![Closed Issues](https://img.shields.io/github/issues-closed/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/issues?q=is%3Aissue+is%3Aclosed)
+[![Open PRs](https://img.shields.io/github/issues-pr/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/pulls)
+[![Closed PRs](https://img.shields.io/github/issues-pr-closed/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/pulls?q=is%3Apr+is%3Aclosed)
+[![Stars](https://img.shields.io/github/stars/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/stargazers)
+[![Forks](https://img.shields.io/github/forks/NicolasPayneauT0132431/rust-coding-dojo?style=flat-square)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/network/members)
+
+![Workspace](https://img.shields.io/badge/Cargo%20Workspace-16%20katas-6f42c1?style=flat-square)
+![Tracks](https://img.shields.io/badge/Tracks-setup%20%7C%20starter%20%7C%20structure%20%7C%20advanced-0a7ea4?style=flat-square)
+![Rust Edition](https://img.shields.io/badge/Rust-Edition%202021-dea584?style=flat-square&logo=rust)
+![MSRV](https://img.shields.io/badge/MSRV-1.75.0-informational?style=flat-square)
+![CI Scope](https://img.shields.io/badge/CI-Solutions%20validated-success?style=flat-square)
 
 This place is intended to provide resources, documentation and templates to organize coding dojo sessions about Rust language.
 Feel free to open an issue if you wish to add a new one, update an existing one or if you have any question.

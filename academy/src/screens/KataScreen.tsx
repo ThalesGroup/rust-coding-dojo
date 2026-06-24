@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useApp } from '../store/AppContext'
 import { getKataById, KATAS } from '../data/katas'
-import { askFerris, explainCode, reviewCode, preloadModel, isModelReady, getModelInfo } from '../llm/ferris'
+import { askFerris, explainCode, reviewCode, preloadModel, isModelReady, getModelInfo, getDownloadProgress } from '../llm/ferris'
 import type { ChatMessage } from '../types'
 import { EditorView } from '@codemirror/view'
 import { EditorState } from '@codemirror/state'
@@ -12,6 +12,7 @@ import { autocompletion, type CompletionContext } from '@codemirror/autocomplete
 import { lintGutter, setDiagnostics as setLintDiagnostics } from '@codemirror/lint'
 import type { Diagnostic } from '@codemirror/lint'
 import { compileRust, diagnosticsFromRustStderr } from '../editor/rustCompiler'
+import type { DownloadProgress } from '../llm/localWllama'
 
 const CODE_LS_PREFIX = 'rust-dojo-kata-code:'
 const RUST_KEYWORDS = [
@@ -90,6 +91,7 @@ export function KataScreen() {
   const alreadyCompleted = useRef(false)
   const [isCompiling, setIsCompiling] = useState(false)
   const [useKataContext, setUseKataContext] = useState(true)
+  const [dlProgress, setDlProgress] = useState<DownloadProgress>({ phase: 'idle', loaded: 0, total: 0, pct: 0 })
 
   // Reset when kata changes
   useEffect(() => {
@@ -113,6 +115,7 @@ export function KataScreen() {
   useEffect(() => {
     preloadModel()
     const poll = setInterval(() => {
+      setDlProgress(getDownloadProgress())
       if (isModelReady()) {
         setModelReady(true)
         clearInterval(poll)
@@ -396,7 +399,14 @@ export function KataScreen() {
             <div className="ferris-name">Ferris</div>
             <div className="ferris-status">
               <span className={`status-dot ${modelReady ? 'status-dot--green' : 'status-dot--yellow'}`} />
-              Mentor{modelReady ? ` · prêt · ${getModelInfo().multithread ? getModelInfo().threads + ' threads' : 'mono-thread'}` : ' · téléchargement...'}
+              Mentor{modelReady
+                ? ` · prêt · ${getModelInfo().multithread ? getModelInfo().threads + ' threads' : 'mono-thread'}`
+                : dlProgress.phase === 'downloading'
+                  ? ` · téléchargement ${dlProgress.pct}%`
+                  : dlProgress.phase === 'error'
+                    ? ' · erreur de chargement'
+                    : ' · téléchargement...'
+              }
             </div>
           </div>
         </div>

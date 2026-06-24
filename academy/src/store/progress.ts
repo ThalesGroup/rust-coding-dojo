@@ -1,46 +1,27 @@
 import { openDB, type IDBPDatabase } from 'idb'
-import type { UserProgress, XPEntry } from '../types'
+import type { UserProgress } from '../types'
 
 const DB_NAME = 'rust-dojo'
 const DB_VERSION = 1
 const STORE = 'progress'
 const LS_KEY = 'rust-dojo-progress'
 
-const DEFAULT_PROGRESS: UserProgress = {
-  xp: 1240,
-  level: 6,
-  streak: 7,
-  lastPlayDate: new Date().toISOString().slice(0, 10),
-  katasCompleted: ['kata-01-starter-00-rustward-sword', 'kata-01-starter-01-roman-numerals'],
-  badges: ['borrow-checker', 'no-panic', 'zero-cost'],
-  questsProgress: { 'no-clone-3': 2, 'lifetime-5': 0 },
+export const EMPTY_PROGRESS: UserProgress = {
+  firstName: '',
+  xp: 0,
+  level: 1,
+  streak: 0,
+  lastPlayDate: '',
+  katasCompleted: [],
+  badges: [],
+  questsProgress: {},
   conceptMastery: {
-    ownership: 95,
-    borrowing: 88,
-    lifetimes: 42,
-    structs: 100,
-    traits: 18,
-    generics: 10,
-    concurrency: 0,
-    macros: 0,
-    unsafe: 0,
-    bases: 100
+    ownership: 0, borrowing: 0, lifetimes: 0, structs: 0,
+    traits: 0, generics: 0, concurrency: 0, macros: 0, unsafe: 0, bases: 0
   },
-  xpHistory: buildDefaultXPHistory(),
-  currentKataId: 'kata-01-starter-02-rpn-calculator',
+  xpHistory: [],
+  currentKataId: 'kata-01-starter-00-rustward-sword',
   graalUnlocked: false
-}
-
-function buildDefaultXPHistory(): XPEntry[] {
-  const entries: XPEntry[] = []
-  const now = new Date()
-  const vals = [120, 80, 140, 200, 60, 180, 240]
-  for (let i = 6; i >= 0; i--) {
-    const d = new Date(now)
-    d.setDate(d.getDate() - i)
-    entries.push({ date: d.toISOString().slice(0, 10), xp: vals[6 - i] })
-  }
-  return entries
 }
 
 let db: IDBPDatabase | null = null
@@ -58,18 +39,19 @@ async function getDB() {
 }
 
 export async function loadProgress(): Promise<UserProgress> {
+  let saved: Record<string, unknown> | null = null
   try {
     const database = await getDB()
-    const saved = await database.get(STORE, 'progress')
-    if (saved) return { ...DEFAULT_PROGRESS, ...saved }
+    const data = await database.get(STORE, 'progress')
+    if (data) saved = data
   } catch {
-    // fallback to localStorage
     try {
       const raw = localStorage.getItem(LS_KEY)
-      if (raw) return { ...DEFAULT_PROGRESS, ...JSON.parse(raw) }
+      if (raw) saved = JSON.parse(raw) as Record<string, unknown>
     } catch { /* ignore */ }
   }
-  return { ...DEFAULT_PROGRESS }
+  if (!saved) return { ...EMPTY_PROGRESS }
+  return { ...EMPTY_PROGRESS, ...saved }
 }
 
 export async function saveProgress(progress: UserProgress): Promise<void> {

@@ -87,6 +87,7 @@ export interface XPEntry {
 }
 
 export interface UserProgress {
+  firstName: string
   xp: number
   level: number
   streak: number

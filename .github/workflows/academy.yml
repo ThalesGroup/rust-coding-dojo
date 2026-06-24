@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'academy/**'
+      - '.github/workflows/academy.yml'
   workflow_dispatch:
 
 permissions:
@@ -25,13 +26,14 @@ jobs:
         working-directory: academy
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: academy/package-lock.json
       - run: npm ci
-      - run: npm run build
+      - run: VITE_BASE_PATH="/${{ github.event.repository.name }}/" npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: academy/dist

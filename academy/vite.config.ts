@@ -2,10 +2,23 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
+function normalizeBasePath(value: string | undefined): string | null {
+  if (!value) return null
+  const trimmed = value.trim()
+  if (!trimmed) return null
+  const withLeading = trimmed.startsWith('/') ? trimmed : `/${trimmed}`
+  return withLeading.endsWith('/') ? withLeading : `${withLeading}/`
+}
+
+const basePath =
+  normalizeBasePath(process.env.VITE_BASE_PATH) ??
+  (process.env.GITHUB_ACTIONS === 'true'
+    ? normalizeBasePath(process.env.GITHUB_REPOSITORY?.split('/')[1])
+    : '/') ??
+  '/'
+
 export default defineConfig({
-  base: process.env.GITHUB_ACTIONS === 'true'
-    ? '/' + (process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'academy') + '/'
-    : '/',
+  base: basePath,
   server: {
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',

@@ -70,6 +70,19 @@ The kata may consist in a single program with gaps, then we put the program sour
 If the kata consists in several small exercise programs, we put all the exercises in a `src/bin` folder at kata's root.
 We can just run the exercise by calling `cargo run --bin <exercise_n>` to run the targeted exercise, without needing the others to compile, or to comment anything.
 
+## Academy — Interactive Learning Platform
+
+The [academy](./academy) is a React/Vite frontend that gamifies the Rust learning experience: interactive katas with embedded code editor, XP/progression system, quests, and an AI mentor. It works fully client-side with PWA support.
+
+```bash
+cd academy
+npm install     # install dependencies
+npm run dev     # start dev server (http://localhost:5173)
+npm run build   # production build → dist/
+```
+
+The academy is automatically deployed to GitHub Pages on every push to `main` touching `academy/`.
+
 ## Development
 
 All katas are organized as a Cargo workspace. You can run common commands from the repository root:

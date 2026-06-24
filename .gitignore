@@ -1,5 +1,8 @@
+target
 target/
 .opencode/
 *.rs.bk
 Cargo.lock
 .DS_Store
+academy/dist
+academy/node_modules

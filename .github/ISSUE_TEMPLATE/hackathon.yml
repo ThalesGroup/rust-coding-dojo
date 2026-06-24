@@ -1,0 +1,48 @@
+name: Hackathon Issue
+description: Create a hackathon task/idea with a required theme
+title: "[Hackathon]: "
+labels:
+  - hackathon
+body:
+  - type: input
+    id: theme
+    attributes:
+      label: Theme
+      description: Main theme/category for this issue
+      placeholder: "e.g., Learning Rust ownership, CLI tooling, game mechanics"
+    validations:
+      required: true
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: One-line description of the issue
+      placeholder: "Implement ..."
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What are we trying to solve?
+      placeholder: Describe the need or context.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: Clear conditions that define done
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
+  - type: textarea
+    id: resources
+    attributes:
+      label: Resources (optional)
+      description: Useful links, examples, or references
+      placeholder: Add links or notes.
+    validations:
+      required: false

@@ -25,3 +25,12 @@ All work items/issues must belong to one of these axes:
 
 - Every issue must include the **hackathon** label.
 - Every issue must have a **milestone** set.
+
+## Documentation sync rule (mandatory)
+
+Before finalizing any change, run the docs sync instruction:
+- `docs/agent-instructions/docs-sync/INSTRUCTION.md`
+
+Every completion message/PR must include one explicit docs-impact line:
+- `docs updated: <file list> — <reason>` or
+- `no docs changes needed: <explicit reason>`

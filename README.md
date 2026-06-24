@@ -103,6 +103,19 @@ It enforces quality gates:
 - `cargo clippy --workspace --exclude ownership-borrowing`
 - `cargo doc --workspace --no-deps --exclude ownership-borrowing` with `RUSTDOCFLAGS="-D warnings"`
 
+## Documentation Sync Instruction
+
+This repository provides an agent-agnostic docs-sync instruction at:
+
+- `docs/agent-instructions/docs-sync/INSTRUCTION.md`
+- Usage guide: `docs/agent-instructions/docs-sync/USAGE.md`
+
+Use it at the end of any change to detect and fix documentation drift before opening or updating a PR.
+
+Mandatory completion output:
+- `docs updated: <file list> — <reason>` or
+- `no docs changes needed: <explicit reason>`
+
 ## Contributing
 
 If you are interested in contributing to this repository please send an email to oss@thalesgroup.com, find more details about how to contribute [here](https://github.com/ThalesGroup/rust-coding-dojo/blob/main/CONTRIBUTING.md)

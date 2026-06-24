@@ -1,4 +1,4 @@
-/**
+/*
  * Section 3 : RefCell & Interior Mutability
  * 
  * - *Exercise 1:* Define a struct `Counter` that wraps an integer inside a `RefCell<i32>`.

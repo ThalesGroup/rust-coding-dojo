@@ -6,8 +6,6 @@ const NAV_ITEMS_BASE: Array<{ key: Screen; icon: string; label: string }> = [
   { key: 'path', icon: '🧭', label: 'Parcours' },
   { key: 'kata', icon: '📝', label: 'Katas' },
   { key: 'tree', icon: '🌳', label: 'Arbres de compétences' },
-  { key: 'dash', icon: '📊', label: 'Dashboard' },
-  { key: 'profile', icon: '🦀', label: 'Profil' },
 ]
 
 export function Header() {
@@ -45,7 +43,6 @@ export function Header() {
       <div className="header-right">
         <span className="streak-badge">
           🔥 {progress.streak}
-          <span className="streak-unit">jours</span>
         </span>
 
         <div className="xp-bar-container">

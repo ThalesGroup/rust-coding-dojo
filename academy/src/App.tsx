@@ -4,8 +4,6 @@ import { Header } from './components/Header'
 import { KataScreen } from './screens/KataScreen'
 import { TreeScreen } from './screens/TreeScreen'
 import { PathScreen } from './screens/PathScreen'
-import { DashScreen } from './screens/DashScreen'
-import { ProfileScreen } from './screens/ProfileScreen'
 import { GraalScreen } from './screens/GraalScreen'
 
 function OnboardingModal() {
@@ -74,8 +72,6 @@ function AppContent() {
         {screen === 'kata' && <KataScreen />}
         {screen === 'tree' && <TreeScreen />}
         {screen === 'path' && <PathScreen />}
-        {screen === 'dash' && <DashScreen />}
-        {screen === 'profile' && <ProfileScreen />}
         {screen === 'graal' && <GraalScreen />}
       </main>
       {showOnboarding && <OnboardingModal />}

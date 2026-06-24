@@ -3,8 +3,8 @@ import wasmUrl from '@wllama/wllama/esm/wasm/wllama.wasm?url'
 import type { ChatMessage } from '../types'
 
 const MODEL = {
-  repo: 'Qwen/Qwen2.5-0.5B-Instruct-GGUF',
-  file: 'qwen2.5-0.5b-instruct-q8_0.gguf',
+  repo: 'LiquidAI/LFM2.5-350M-GGUF',
+  file: 'LFM2.5-350M-Q4_K_M.gguf',
 }
 
 const SYSTEM_PROMPT = `Tu es Ferris, le mentor IA du Rust Dojo. Tu aides les apprenants à comprendre Rust avec des explications courtes, pédagogiques et encourageantes. Réponds en français par défaut. Si la question concerne un kata, donne des indices progressifs et n'écris pas la solution complète sauf demande explicite. Appuie-toi sur le contexte du kata, le code actuel et les résultats de tests fournis.`
@@ -100,23 +100,53 @@ function ensureModelLoaded() {
 
   downloadProgress = { phase: 'downloading', loaded: 0, total: 0, pct: 0 }
 
-  loadPromise ??= wllama.loadModelFromHF(
-    { repo: MODEL.repo, file: MODEL.file },
-    {
-      n_ctx: 4096,
-      n_threads: getThreadCount(),
-      n_gpu_layers: wllama.isSupportWebGPU() ? 99999 : 0,
-      useCache: true,
-      progressCallback: (opts) => {
-        downloadProgress = {
-          phase: 'downloading',
-          loaded: opts.loaded,
-          total: opts.total,
-          pct: Math.round((opts.loaded / (opts.total || 1)) * 100),
-        }
-      },
-    },
-  ).then(() => {
+  async function doLoad() {
+    try {
+      await wllama!.loadModelFromHF(
+        { repo: MODEL.repo, file: MODEL.file },
+        {
+          n_ctx: 4096,
+          n_threads: getThreadCount(),
+          n_gpu_layers: wllama!.isSupportWebGPU() ? 99999 : 0,
+          useCache: true,
+          progressCallback: (opts) => {
+            downloadProgress = {
+              phase: 'downloading',
+              loaded: opts.loaded,
+              total: opts.total,
+              pct: Math.round((opts.loaded / (opts.total || 1)) * 100),
+            }
+          },
+        },
+      )
+    } catch (err) {
+      // If first attempt fails, clear cache and retry once
+      console.warn('[ferris] first load attempt failed, retrying with fresh cache', err)
+      try {
+        await wllama!.cacheManager.clear()
+      } catch { /* ignore */ }
+      downloadProgress = { phase: 'downloading', loaded: 0, total: 0, pct: 0 }
+      await wllama!.loadModelFromHF(
+        { repo: MODEL.repo, file: MODEL.file },
+        {
+          n_ctx: 4096,
+          n_threads: getThreadCount(),
+          n_gpu_layers: wllama!.isSupportWebGPU() ? 99999 : 0,
+          useCache: true,
+          progressCallback: (opts) => {
+            downloadProgress = {
+              phase: 'downloading',
+              loaded: opts.loaded,
+              total: opts.total,
+              pct: Math.round((opts.loaded / (opts.total || 1)) * 100),
+            }
+          },
+        },
+      )
+    }
+  }
+
+  loadPromise ??= doLoad().then(() => {
     if (wllama) {
       multithreadAvailable = wllama.isMultithread()
       actualThreads = wllama.getNumThreads()

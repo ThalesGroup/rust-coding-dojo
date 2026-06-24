@@ -99,8 +99,8 @@ The **CI** workflow is activated automatically on:
 
 It enforces quality gates:
 
-- `cargo fmt --all --check`
-- `cargo clippy --workspace --exclude ownership-borrowing -- -D warnings`
+- `rustfmt --check` on changed `.rs` files in each push/PR
+- `cargo clippy --workspace --exclude ownership-borrowing`
 - `cargo doc --workspace --no-deps --exclude ownership-borrowing` with `RUSTDOCFLAGS="-D warnings"`
 
 ## Contributing

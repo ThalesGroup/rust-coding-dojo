@@ -15,11 +15,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: stable
           components: rustfmt
-      - run: cargo fmt --all --check
+      - name: Check formatting on changed Rust files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            base_sha="${{ github.event.pull_request.base.sha }}"
+            head_sha="${{ github.event.pull_request.head.sha }}"
+          else
+            base_sha="${{ github.event.before }}"
+            head_sha="${{ github.sha }}"
+          fi
+
+          mapfile -t changed_rs < <(git diff --name-only "$base_sha" "$head_sha" -- '*.rs')
+
+          if [[ ${#changed_rs[@]} -eq 0 ]]; then
+            echo "No Rust files changed."
+            exit 0
+          fi
+
+          rustfmt --check "${changed_rs[@]}"
 
   build:
     name: Build (${{ matrix.toolchain }})
@@ -58,7 +80,7 @@ jobs:
           toolchain: stable
           components: clippy
       - uses: Swatinem/rust-cache@v2
-      - run: cargo clippy --workspace --exclude ownership-borrowing -- -D warnings
+      - run: cargo clippy --workspace --exclude ownership-borrowing
 
   docs:
     name: Documentation

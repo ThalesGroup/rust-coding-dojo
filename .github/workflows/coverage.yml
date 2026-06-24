@@ -11,20 +11,11 @@ env:
 
 jobs:
   coverage:
-    name: Code Coverage
+    name: Solutions Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: stable
-          components: llvm-tools-preview
-      - uses: Swatinem/rust-cache@v2
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-llvm-cov
-      - run: cargo llvm-cov --workspace --exclude ownership-borrowing --exclude roman-numerals --lcov --output-path lcov.info
-      - uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: lcov.info
+      - run: bash .github/scripts/check-solutions.sh

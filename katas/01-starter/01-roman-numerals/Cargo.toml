@@ -9,6 +9,6 @@ publish = ["artifactory-remote"]
 [dependencies]
 
 [[bin]]
-# Enables VSCode to show a button "Run tests" directly below #[cfg(test)] and #[test] annotations inside the file solutions/main.rs (and also to use the command: cargo run --bin solutions)
-name = "solutions"
+# Enables VSCode to show a button "Run tests" directly below #[cfg(test)] and #[test] annotations inside the file solutions/main.rs (and also to use the command: cargo run --bin roman-numerals-solution)
+name = "roman-numerals-solution"
 path = "solutions/main.rs"

@@ -6,5 +6,5 @@ edition = "2021"
 [dependencies]
 
 [[bin]]
-name = "solutions"
+name = "minesweeper-solution"
 path = "solutions/main.rs"

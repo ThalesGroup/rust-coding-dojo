@@ -6,5 +6,5 @@ edition = "2021"
 [dependencies]
 
 [[bin]]
-name = "solutions"
+name = "diamond-solution"
 path = "solutions/main.rs"

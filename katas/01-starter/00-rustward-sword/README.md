@@ -56,6 +56,10 @@ Restarting from the ./src/main.rs, try to implement a solution for each challeng
    - Inside the function, calculate Link's chances of defeating the beast based on his health and stamina.
    - Return a message indicating whether Link succeeds or fails in defeating the beast.
 
+## Domains
+
+`Basics` `Variables` `Control Flow` `Functions` `Loops`
+
 ## How to run a kata
 All katas share the same structure:
 ```

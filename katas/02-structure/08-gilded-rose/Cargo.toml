@@ -1,0 +1,10 @@
+[package]
+name = "gilded-rose"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "solutions"
+path = "solutions/main.rs"

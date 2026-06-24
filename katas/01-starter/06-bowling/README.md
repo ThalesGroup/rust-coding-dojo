@@ -24,6 +24,10 @@ Scoring rules:
 ## Objective
 Implement the `score` function that takes a sequence of rolls and returns the total score.
 
+## Domains
+
+`Basics` `Iterators` `Algorithms` `Arrays`
+
 ## How to run a kata
 All katas share the same structure:
 ```

@@ -45,6 +45,10 @@ Cargo.lock
 Cargo.toml
 ```
 
+## Domains
+
+`Enums` `Structs` `Algorithms` `HashMap`
+
 ## Prerequisites
 The SETUP, STARTER and STRUCTURE packages must have been completed
 

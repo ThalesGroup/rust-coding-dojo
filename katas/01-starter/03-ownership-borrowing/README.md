@@ -17,6 +17,10 @@ TBC
 
 TBC
 
+## Domains
+
+`Ownership` `Borrowing` `Borrow Checker` `References` `Slices`
+
 ## How to run a kata
 All katas share the same structure:
 ```

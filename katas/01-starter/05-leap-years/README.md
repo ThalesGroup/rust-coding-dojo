@@ -20,6 +20,10 @@ The Gregorian Calendar defines leap years with the following rules:
 ## Objective
 Implement the `is_leap_year` function that returns true if a given year is a leap year.
 
+## Domains
+
+`Basics` `Conditionals` `Arithmetic` `TDD`
+
 ## How to run a kata
 All katas share the same structure:
 ```

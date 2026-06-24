@@ -13,7 +13,8 @@ export async function askFerris(
   kataTitle: string,
   history: ChatMessage[],
   context?: Partial<FerrisContext>,
-  onToken?: (token: string) => void
+  onToken?: (token: string) => void,
+  skipContext?: boolean
 ): Promise<string> {
   try {
     return await generateLocalFerrisReply(userMessage, {
@@ -21,7 +22,7 @@ export async function askFerris(
       code: kataCode,
       history,
       ...context,
-    }, onToken)
+    }, onToken, skipContext)
   } catch (error) {
     console.warn('[ferris] local wllama unavailable, using fallback', error)
     return fallbackReply(userMessage, kataCode)

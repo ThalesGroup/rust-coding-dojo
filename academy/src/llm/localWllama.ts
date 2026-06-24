@@ -55,16 +55,19 @@ export function preloadModel() {
   ensureModelLoaded()
 }
 
-export async function generateLocalFerrisReply(userMessage: string, context: FerrisContext, onToken?: (token: string) => void) {
+export async function generateLocalFerrisReply(userMessage: string, context: FerrisContext, onToken?: (token: string) => void, skipContext?: boolean) {
   await ensureModelLoaded()
   if (!wllama) throw new Error('Le moteur local Ferris est indisponible.')
+
+  const history = skipContext ? [] : buildRecentHistory(context.history ?? [])
+  const prompt = skipContext ? userMessage : buildPrompt(userMessage, context)
 
   let reply = ''
   await wllama.createChatCompletion({
     messages: [
       { role: 'system', content: SYSTEM_PROMPT },
-      ...buildRecentHistory(context.history ?? []),
-      { role: 'user', content: buildPrompt(userMessage, context) },
+      ...history,
+      { role: 'user', content: prompt },
     ],
     stream: true,
     max_tokens: 300,

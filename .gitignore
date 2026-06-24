@@ -3,3 +3,7 @@ target/
 *.rs.bk
 Cargo.lock
 .DS_Store
+
+# Academy frontend
+academy/node_modules/
+academy/dist/

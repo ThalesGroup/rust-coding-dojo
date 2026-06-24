@@ -39,20 +39,33 @@ Feel free to open an issue if you wish to add a new one, update an existing one 
 
 ## Kata Quick Guide (Domain x Difficulty)
 
-| Domain | Difficulty | Recommended Katas |
+| Domain | Difficulty | Kata |
 | --- | --- | --- |
-| Setup / Tooling | Beginner | [Install](katas/00-setup/00-install.md), [Cargo](katas/00-setup/01-cargo.md), [Compiler](katas/00-setup/02-compiler.md) |
-| Starter / Fundamentals | Beginner | [Rustward Sword](katas/01-starter/00-rustward-sword), [FizzBuzz](katas/01-starter/04-fizzbuzz), [Leap Years](katas/01-starter/05-leap-years), [Bowling](katas/01-starter/06-bowling) |
-| Starter / Core Logic | Intermediate | [Roman Numerals](katas/01-starter/01-roman-numerals), [RPN Calculator](katas/01-starter/02-rpn_calculator), [Ownership & Borrowing](katas/01-starter/03-ownership-borrowing), [String Calculator](katas/01-starter/07-string-calculator), [Tennis](katas/01-starter/08-tennis) |
-| Structure / Data Modeling | Intermediate | [Basics](katas/02-structure/00-basics), [Smart Pointers](katas/02-structure/01-smart-pointers), [Diamond](katas/02-structure/05-diamond) |
-| Structure / Algorithms & Grids | Intermediate to Advanced | [Game of Life](katas/02-structure/02-game-of-life), [Minesweeper](katas/02-structure/03-minesweeper), [Poker Hands](katas/02-structure/04-poker-hands) |
-| Advanced / System Thinking | Expert | [Mars Rover](katas/03-advanced/00-mars-rover) |
+| ⚙️ Setup | 🟢 Beginner | [Install](katas/00-setup/00-install.md) |
+| ⚙️ Setup | 🟢 Beginner | [Cargo](katas/00-setup/01-cargo.md) |
+| ⚙️ Setup | 🟢 Beginner | [Compiler](katas/00-setup/02-compiler.md) |
+| 🌱 Starter | 🟢 Beginner | [Rustward Sword](katas/01-starter/00-rustward-sword) |
+| 🌱 Starter | 🟡 Intermediate | [Roman Numerals](katas/01-starter/01-roman-numerals) |
+| 🌱 Starter | 🟡 Intermediate | [RPN Calculator](katas/01-starter/02-rpn_calculator) |
+| 🌱 Starter | 🟡 Intermediate | [Ownership & Borrowing](katas/01-starter/03-ownership-borrowing) |
+| 🌱 Starter | 🟢 Beginner | [FizzBuzz](katas/01-starter/04-fizzbuzz) |
+| 🌱 Starter | 🟢 Beginner | [Leap Years](katas/01-starter/05-leap-years) |
+| 🌱 Starter | 🟢 Beginner | [Bowling](katas/01-starter/06-bowling) |
+| 🌱 Starter | 🟡 Intermediate | [String Calculator](katas/01-starter/07-string-calculator) |
+| 🌱 Starter | 🟡 Intermediate | [Tennis](katas/01-starter/08-tennis) |
+| 🧱 Structure | 🟡 Intermediate | [Basics](katas/02-structure/00-basics) |
+| 🧱 Structure | 🟡 Intermediate | [Smart Pointers](katas/02-structure/01-smart-pointers) |
+| 🧱 Structure | 🟡 Intermediate | [Game of Life](katas/02-structure/02-game-of-life) |
+| 🧱 Structure | 🟡 Intermediate | [Minesweeper](katas/02-structure/03-minesweeper) |
+| 🧱 Structure | 🟡 Intermediate | [Poker Hands](katas/02-structure/04-poker-hands) |
+| 🧱 Structure | 🟡 Intermediate | [Diamond](katas/02-structure/05-diamond) |
+| 🚀 Advanced | 🔴 Expert | [Mars Rover](katas/03-advanced/00-mars-rover) |
 
 ### Where to start quickly
 
-- New to Rust: Setup / Tooling -> Starter / Fundamentals
-- Comfortable with Rust basics: Starter / Core Logic -> Structure / Data Modeling
-- Looking for challenge: Structure / Algorithms & Grids -> Advanced / System Thinking
+- 👶 New to Rust: ⚙️ Setup -> 🌱 Starter (🟢 Beginner)
+- 🛠️ Comfortable with basics: 🌱 Starter (🟡 Intermediate) -> 🧱 Structure
+- 🧠 Looking for challenge: 🧱 Structure -> 🚀 Advanced
 
 ## Rust Katas
 

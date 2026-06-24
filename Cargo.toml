@@ -1,5 +1,6 @@
 [workspace]
 resolver = "2"
+rust-version = "1.75.0"
 members = [
     "katas/01-starter/00-rustward-sword",
     "katas/01-starter/01-roman-numerals",

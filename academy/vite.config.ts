@@ -6,6 +6,18 @@ export default defineConfig({
   base: process.env.GITHUB_ACTIONS === 'true'
     ? '/' + (process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'academy') + '/'
     : '/',
+  server: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
+  },
+  preview: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
+  },
   plugins: [
     react(),
     VitePWA({

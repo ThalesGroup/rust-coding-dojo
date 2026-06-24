@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useApp } from '../store/AppContext'
 import { getKataById, KATAS } from '../data/katas'
-import { askFerris, explainCode, reviewCode } from '../llm/ferris'
+import { askFerris, explainCode, reviewCode, preloadModel, isModelReady, getModelInfo } from '../llm/ferris'
 import type { ChatMessage } from '../types'
 import { EditorView } from '@codemirror/view'
 import { EditorState } from '@codemirror/state'
@@ -82,6 +82,7 @@ export function KataScreen() {
   const [input, setInput] = useState('')
   const [hintIndex, setHintIndex] = useState(0)
   const [isReplying, setIsReplying] = useState(false)
+  const [modelReady, setModelReady] = useState(false)
   const chatEndRef = useRef<HTMLDivElement>(null)
   const editorRef = useRef<HTMLDivElement>(null)
   const editorViewRef = useRef<EditorView | null>(null)
@@ -106,6 +107,18 @@ export function KataScreen() {
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [chat])
+
+  // Preload local model in background
+  useEffect(() => {
+    preloadModel()
+    const poll = setInterval(() => {
+      if (isModelReady()) {
+        setModelReady(true)
+        clearInterval(poll)
+      }
+    }, 500)
+    return () => clearInterval(poll)
+  }, [])
 
   // CodeMirror editor
   useEffect(() => {
@@ -219,30 +232,51 @@ export function KataScreen() {
     setHintIndex(i => Math.min(i + 1, kata.hints.length))
   }, [hintIndex, kata.hints])
 
+  const buildFerrisContext = useCallback(() => ({
+    kataTitle: kata.title,
+    kataDescription: kata.description,
+    kataConcept: kata.concept,
+    kataDifficulty: kata.difficulty,
+    code,
+    tests,
+    output,
+    history: chat,
+  }), [kata.title, kata.description, kata.concept, kata.difficulty, code, tests, output, chat])
+
   const doExplain = useCallback(async () => {
     setIsReplying(true)
-    const msg = await explainCode(code, kata.title)
-    setChat(prev => [...prev, { role: 'ferris', text: msg, timestamp: Date.now() }])
+    const msgId = Date.now()
+    setChat(prev => [...prev, { role: 'ferris', text: '', timestamp: msgId }])
+    await explainCode(code, kata.title, buildFerrisContext(), (token) => {
+      setChat(prev => prev.map(m => m.timestamp === msgId ? { ...m, text: m.text + token } : m))
+    })
     setIsReplying(false)
-  }, [code, kata.title])
+  }, [code, kata.title, buildFerrisContext])
 
   const doReview = useCallback(async () => {
     setIsReplying(true)
-    const msg = await reviewCode(code, kata.title)
-    setChat(prev => [...prev, { role: 'review', text: msg, timestamp: Date.now() }])
+    const msgId = Date.now()
+    setChat(prev => [...prev, { role: 'review', text: '', timestamp: msgId }])
+    await reviewCode(code, kata.title, buildFerrisContext(), (token) => {
+      setChat(prev => prev.map(m => m.timestamp === msgId ? { ...m, text: m.text + token } : m))
+    })
     setIsReplying(false)
-  }, [code, kata.title])
+  }, [code, kata.title, buildFerrisContext])
 
   const send = useCallback(async () => {
     const v = input.trim()
     if (!v) return
     setInput('')
-    setChat(prev => [...prev, { role: 'user', text: v, timestamp: Date.now() }])
+    const msgId = Date.now()
+    setChat(prev => [...prev, { role: 'user', text: v, timestamp: msgId }])
     setIsReplying(true)
-    const reply = await askFerris(v, code, kata.title, chat)
-    setChat(prev => [...prev, { role: 'ferris', text: reply, timestamp: Date.now() }])
+    const replyMsgId = Date.now() + 1
+    setChat(prev => [...prev, { role: 'ferris', text: '', timestamp: replyMsgId }])
+    await askFerris(v, code, kata.title, chat, buildFerrisContext(), (token) => {
+      setChat(prev => prev.map(m => m.timestamp === replyMsgId ? { ...m, text: m.text + token } : m))
+    })
     setIsReplying(false)
-  }, [input, code, kata.title, chat])
+  }, [input, code, kata.title, chat, buildFerrisContext])
 
   const reset = useCallback(() => {
     if (editorViewRef.current) {
@@ -360,8 +394,8 @@ export function KataScreen() {
           <div>
             <div className="ferris-name">Ferris</div>
             <div className="ferris-status">
-              <span className="status-dot status-dot--green" />
-              Mentor · règles contextuelles
+              <span className={`status-dot ${modelReady ? 'status-dot--green' : 'status-dot--yellow'}`} />
+              Mentor{modelReady ? ` · prêt · ${getModelInfo().multithread ? getModelInfo().threads + ' threads' : 'mono-thread'}` : ' · téléchargement...'}
             </div>
           </div>
         </div>
@@ -382,19 +416,20 @@ export function KataScreen() {
 
         <div className="ferris-actions">
           <div className="quick-actions">
-            <button className="quick-btn quick-btn--blue" onClick={doExplain}>Explique le code</button>
+            <button className="quick-btn quick-btn--blue" onClick={doExplain} disabled={!modelReady || isReplying}>Explique le code</button>
             <button className="quick-btn quick-btn--yellow" onClick={hint}>💡 Indice +1</button>
-            <button className="quick-btn quick-btn--purple" onClick={doReview}>Code review</button>
+            <button className="quick-btn quick-btn--purple" onClick={doReview} disabled={!modelReady || isReplying}>Code review</button>
           </div>
           <div className="chat-input-row">
             <input
               className="chat-input"
               value={input}
               onChange={e => setInput(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter') send() }}
-              placeholder="Demande à Ferris…"
+              onKeyDown={e => { if (e.key === 'Enter' && modelReady) send() }}
+              placeholder={modelReady ? "Demande à Ferris…" : "Téléchargement du modèle…"}
+              disabled={!modelReady || isReplying}
             />
-            <button className="chat-send" onClick={send}>➤</button>
+            <button className="chat-send" onClick={send} disabled={!modelReady || isReplying}>➤</button>
           </div>
         </div>
       </div>

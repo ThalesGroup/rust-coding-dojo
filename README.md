@@ -72,7 +72,7 @@ We can just run the exercise by calling `cargo run --bin <exercise_n>` to run th
 
 ## Academy — Interactive Learning Platform
 
-The [academy](./academy) is a React/Vite frontend that gamifies the Rust learning experience: interactive katas with embedded code editor, XP/progression system, quests, and an AI mentor. It works fully client-side with PWA support.
+The [academy](./academy) is a React/Vite frontend that gamifies the Rust learning experience: interactive katas with embedded code editor, XP/progression system, quests, and a local Ferris mentor powered by `@wllama/wllama` with rule-based fallback. It works fully client-side with PWA support.
 
 ```bash
 cd academy

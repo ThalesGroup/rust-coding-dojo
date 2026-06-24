@@ -3,7 +3,6 @@ db-path = "~/.cargo/advisory-db"
 db-urls = ["https://github.com/rustsec/advisory-db"]
 vulnerability = "deny"
 unmaintained = "deny"
-notice = "warn"
 ignore = []
 
 [licenses]
@@ -13,7 +12,6 @@ allow = [
     "MIT",
 ]
 deny = []
-confidence-threshold = 0.8
 
 [bans]
 multiple-versions = "warn"
@@ -21,5 +19,5 @@ wildcards = "deny"
 deny = []
 
 [sources]
-unknown-registry = "deny"
-unknown-git = "deny"
+unknown-registry = { severity = "deny" }
+unknown-git = { severity = "deny" }

@@ -88,6 +88,21 @@ cargo clippy --workspace
 cargo fmt --all
 ```
 
+## CI Quality Automation
+
+### Automatic checks (run automatically)
+
+The **CI** workflow is activated automatically on:
+
+- push to `main`
+- pull requests targeting `main`
+
+It enforces quality gates:
+
+- `cargo fmt --all --check`
+- `cargo clippy --workspace --exclude ownership-borrowing -- -D warnings`
+- `cargo doc --workspace --no-deps --exclude ownership-borrowing` with `RUSTDOCFLAGS="-D warnings"`
+
 ## Contributing
 
 If you are interested in contributing to this repository please send an email to oss@thalesgroup.com, find more details about how to contribute [here](https://github.com/ThalesGroup/rust-coding-dojo/blob/main/CONTRIBUTING.md)

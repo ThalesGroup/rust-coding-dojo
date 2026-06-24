@@ -5,6 +5,4 @@ edition = "2021"
 
 [dependencies]
 
-[[bin]]
-name = "bowling-solution"
-path = "solutions/main.rs"
+

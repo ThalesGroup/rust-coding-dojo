@@ -2,6 +2,37 @@
 
 All notable changes to this project are documented in this file.
 
+## [v0.5.0] - 2026-06-24
+
+### Added
+- **Academy** : chargement des katas depuis le répertoire `/katas` avec coloration syntaxique CodeMirror.
+- **Academy** : exécution réelle Rust côté serveur via `play.rust-lang.org/execute`.
+- **Academy** : diagnostics de compilation Rust en temps réel dans l'éditeur.
+- **Academy** : pipeline de parsing des katas en JSON.
+- **Academy** : assistant IA local Wllama intégré à Ferris.
+- **Academy** : arbre de compétences interactif avec progression live et calcul de score.
+- **Academy** : déploiement CI/CD du projet React/Vite vers `academy/`.
+- **Docs** : pack d'instructions agent-agnostique `docs-sync`.
+- **Docs** : spécifications de design pour l'arbre de compétences live et le POC Wllama.
+
+### Changed
+- **Academy** : arbre de compétences redimensionné (1.5x) et onglet renommé « Arbres de compétences ».
+- **Style** : `rustfmt` appliqué sur l'ensemble des sources et solutions des katas.
+
+### Fixed
+- **Academy** : correction du double scroll sur les pages principales.
+- **Academy** : `GITHUB_REPOSITORY` utilisé pour le chemin de base Vite au lieu d'un chemin codé en dur.
+- **Academy CI** : mise à jour de Node 20 vers Node 22 (Node 20 déprécié sur GitHub Actions).
+- **CI** : suppression du workflow `labeler` redondant.
+
+### Resolved Issues
+- #52, #53, #58
+
+### Merged Pull Requests
+- #58 — feat: intégration Wllama dans l'assistant Academy Ferris
+- #53 — feat: projet Academy React/Vite avec CI/CD
+- #52 — docs: pack d'instructions docs-sync agent-agnostique
+
 ## [v0.4.0] - 2026-06-24
 
 ### Fixed

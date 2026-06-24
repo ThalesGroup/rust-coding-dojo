@@ -27,16 +27,15 @@ jobs:
       # broken (students fill in the gaps). It only compiles with solutions applied.
       - run: cargo build --workspace --exclude ownership-borrowing
 
-  test:
-    name: Test
+  solutions:
+    name: Solutions
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: stable
-      - uses: Swatinem/rust-cache@v2
-      - run: cargo test --workspace --exclude ownership-borrowing --exclude roman-numerals
+      - run: bash .github/scripts/check-solutions.sh
 
   clippy:
     name: Clippy

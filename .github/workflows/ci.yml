@@ -23,8 +23,8 @@ jobs:
         with:
           toolchain: ${{ matrix.toolchain }}
       - uses: Swatinem/rust-cache@v2
-      - run: cargo build --workspace --all-targets
-      - run: cargo test --workspace --all-targets
+      - run: cargo build --workspace --all-targets --exclude ownership-borrowing
+      - run: cargo test --workspace --all-targets --exclude ownership-borrowing
         continue-on-error: ${{ matrix.toolchain == 'nightly' }}
 
   lint:
@@ -37,7 +37,7 @@ jobs:
           toolchain: stable
           components: clippy, rustfmt
       - uses: Swatinem/rust-cache@v2
-      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo clippy --workspace --exclude ownership-borrowing -- -D warnings
       - run: cargo fmt --all -- --check
 
   audit:

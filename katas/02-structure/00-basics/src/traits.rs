@@ -1,4 +1,4 @@
-/**
+/*
  * Section 4 : Basics of Traits
  * - *Exercise 1:* Define a trait `MathOperation` with a method to perform a basic arithmetic operation (addition, subtraction, multiplication, etc.). Implement the trait for a custom struct.
  * - *Exercise 2:* Create a generic function that takes a vector of any type implementing the `Display` trait and prints each element.

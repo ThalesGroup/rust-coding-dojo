@@ -1,4 +1,4 @@
-/**
+/*
  * Section 2 : String and Vector
  * - *Exercise 1:* Given a string, count the number of vowels (a, e, i, o, u) and print the result.
  * - *Exercise 2:* Write a program that takes two vectors and merges them into a single vector, removing any duplicates.

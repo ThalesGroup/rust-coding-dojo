@@ -1,4 +1,4 @@
-/**
+/*
  * Section 1 : Introduction
  * - *Exercise 1:* Define an Enum BookType with some kinds like `comic`, `sf`, `novel` and `programming`.
  * - *Exercise 2:* Define a struct `Book` with fields for title, author, book type and publication year. Instantiate an instance and print its details

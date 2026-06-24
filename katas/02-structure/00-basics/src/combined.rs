@@ -1,4 +1,4 @@
-/**
+/*
  * Section 5 : Combined Exercise
  * - *Exercise 1:* Build a program that manages a list of employees. Each employee has a name, age, and job title (an num). Implement sorting based on age and display the sorted list. Make the struct Employee implements the trait Display.
  * - *Exercise 2:* Extend the employee program to handle promotions. Implement a trait `Promotable` with a method to increase the salary, and apply it to employees with specific job titles.

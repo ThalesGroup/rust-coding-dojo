@@ -3,70 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POC wllama - Rust Coding Dojo</title>
+    <title>Kani-sensei - POC wllama</title>
   </head>
   <body>
-    <main id="app">
-      <section class="hero">
-        <p class="eyebrow">POC wllama</p>
-        <h1>LLM local dans le navigateur</h1>
-        <p>
-          Prototype isolé pour valider le chargement de
-          <strong>Qwen3-0.6B-Q8_0.gguf</strong> avec wllama, sans backend ni clé API.
-        </p>
-      </section>
-
-      <section class="panel status-panel" aria-labelledby="runtime-title">
-        <div>
-          <h2 id="runtime-title">Runtime</h2>
-          <p id="model-source" class="muted"></p>
-        </div>
-        <dl class="status-grid">
+    <div class="demo-shell">
+      <div id="exercise" class="demo-workspace">
+        <div class="demo-toolbar">
           <div>
-            <dt>État</dt>
-            <dd id="status-label">Initialisation</dd>
+            <p class="demo-kicker">Kata workspace</p>
+            <h1>Ownership Borrowing</h1>
+            <p>
+              Zone éditable simulant une page kata. Sélectionne une partie du code ou modifie le texte,
+              puis demande un indice au mentor local.
+            </p>
           </div>
-          <div>
-            <dt>WebGPU</dt>
-            <dd id="webgpu-label">Détection...</dd>
+          <div class="demo-actions">
+            <button id="ask-kata-button" type="button">Demander un indice</button>
+            <label class="demo-debug-toggle">
+              <input id="debug-mode-toggle" type="checkbox" />
+              Debug mode
+            </label>
           </div>
-          <div>
-            <dt>Multi-thread</dt>
-            <dd id="thread-label">COOP/COEP requis</dd>
-          </div>
-        </dl>
-        <div class="progress-wrap" aria-label="Progression du téléchargement">
-          <progress id="download-progress" value="0" max="100"></progress>
-          <span id="progress-label">0%</span>
         </div>
-        <p id="error-message" class="error" role="alert"></p>
+        <textarea id="kata-zone" class="kata-zone" spellcheck="false" aria-label="Kata éditable"></textarea>
+      </div>
+      <section class="demo-panel" aria-label="Assistant">
+        <div id="assistant-root"></div>
       </section>
-
-      <section class="panel controls" aria-labelledby="prompt-title">
-        <h2 id="prompt-title">Prompt</h2>
-        <textarea id="prompt-input" rows="7">Explique en français, en trois points, pourquoi Rust utilise l'ownership.</textarea>
-        <div class="actions">
-          <button id="load-button" type="button">Charger le modèle</button>
-          <button id="generate-button" type="button" disabled>Générer</button>
-          <button id="stop-button" type="button" disabled>Arrêter</button>
-          <button id="clear-button" type="button">Effacer</button>
-        </div>
-      </section>
-
-      <section class="panel" aria-labelledby="output-title">
-        <h2 id="output-title">Sortie streamée</h2>
-        <pre id="output" aria-live="polite"></pre>
-      </section>
-
-      <section class="notes">
-        <h2>Limites du POC</h2>
-        <ul>
-          <li>Premier téléchargement lourd : le fichier GGUF fait environ 805 Mo.</li>
-          <li>Le mode multi-thread nécessite les headers COOP/COEP.</li>
-          <li>Sans WebGPU, wllama peut utiliser WASM CPU, mais les performances seront plus faibles.</li>
-        </ul>
-      </section>
-    </main>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

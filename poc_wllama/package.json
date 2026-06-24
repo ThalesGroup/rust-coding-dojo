@@ -9,7 +9,9 @@
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {
-    "@wllama/wllama": "^3.5.1"
+    "@wllama/wllama": "^3.5.1",
+    "dompurify": "^3.4.11",
+    "marked": "^18.0.5"
   },
   "devDependencies": {
     "typescript": "^5.8.3",

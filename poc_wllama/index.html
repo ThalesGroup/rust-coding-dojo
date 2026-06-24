@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kani-sensei - POC wllama</title>
+  </head>
+  <body>
+    <div class="demo-shell">
+      <div id="exercise" class="demo-workspace">
+        <div class="demo-toolbar">
+          <div>
+            <p class="demo-kicker">Kata workspace</p>
+            <h1>Ownership Borrowing</h1>
+            <p>
+              Zone éditable simulant une page kata. Sélectionne une partie du code ou modifie le texte,
+              puis demande un indice au mentor local.
+            </p>
+          </div>
+          <div class="demo-actions">
+            <button id="ask-kata-button" type="button">Demander un indice</button>
+            <label class="demo-debug-toggle">
+              <input id="debug-mode-toggle" type="checkbox" />
+              Debug mode
+            </label>
+          </div>
+        </div>
+        <textarea id="kata-zone" class="kata-zone" spellcheck="false" aria-label="Kata éditable"></textarea>
+      </div>
+      <section class="demo-panel" aria-label="Assistant">
+        <div id="assistant-root"></div>
+      </section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

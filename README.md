@@ -1,5 +1,8 @@
 # Welcome in Rust coding dojo repository !
 
+[![CI](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml/badge.svg)](https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml)
+[![Apache 2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
 This place is intended to provide resources, documentation and templates to organize coding dojo sessions about Rust language.
 Feel free to open an issue if you wish to add a new one, update an existing one or if you have any question.
 
@@ -35,6 +38,24 @@ The kata may consist in a single program with gaps, then we put the program sour
 
 If the kata consists in several small exercise programs, we put all the exercises in a `src/bin` folder at kata's root.
 We can just run the exercise by calling `cargo run --bin <exercise_n>` to run the targeted exercise, without needing the others to compile, or to comment anything.
+
+## Development
+
+All katas are organized as a Cargo workspace. You can run common commands from the repository root:
+
+```bash
+# Build all katas
+cargo build --workspace
+
+# Run all tests
+cargo test --workspace
+
+# Run linter
+cargo clippy --workspace
+
+# Format code
+cargo fmt --all
+```
 
 ## Contributing
 

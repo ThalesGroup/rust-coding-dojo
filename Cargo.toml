@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = [
+    "katas/01-starter/00-rustward-sword",
+    "katas/01-starter/01-roman-numerals",
+    "katas/01-starter/02-rpn_calculator",
+    "katas/01-starter/03-ownership-borrowing",
+    "katas/02-structure/00-basics",
+    "katas/02-structure/01-smart-pointers",
+]

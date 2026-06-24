@@ -1,17 +1,14 @@
 [advisories]
 db-path = "~/.cargo/advisory-db"
 db-urls = ["https://github.com/rustsec/advisory-db"]
-vulnerability = "deny"
 unmaintained = "all"
 ignore = []
 
 [licenses]
-unlicensed = "deny"
 allow = [
     "Apache-2.0",
     "MIT",
 ]
-deny = []
 
 [bans]
 multiple-versions = "warn"

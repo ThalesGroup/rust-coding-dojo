@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { SKILL_NODES } from '../data/gamification'
+import { KATAS } from '../data/katas'
+import { useApp } from '../store/AppContext'
 import type { Concept } from '../types'
+import { buildTreeNodeState, pickDefaultSelectedNode } from './treeState'
 
 const SVG_LINES = [
   'M465 105 V210',
@@ -13,17 +16,33 @@ const SVG_LINES = [
 ]
 
 export function TreeScreen() {
-  const [selectedNode, setSelectedNode] = useState<Concept>('ownership')
+  const { progress } = useApp()
 
-  const node = SKILL_NODES.find(n => n.id === selectedNode) ?? SKILL_NODES[1]
+  // Compute live node states from base metadata + kata list + user progress
+  const nodes = useMemo(
+    () => buildTreeNodeState(SKILL_NODES, KATAS, { katasCompleted: progress.katasCompleted }),
+    [progress.katasCompleted]
+  )
+  const [selectedNode, setSelectedNode] = useState<Concept>(() => pickDefaultSelectedNode(nodes))
+
+  // Ensure selected node remains valid: if missing or locked, pick default
+  useEffect(() => {
+    const found = nodes.find(n => n.id === selectedNode)
+    if (!found || !found.unlocked) {
+      const fallback = pickDefaultSelectedNode(nodes)
+      setSelectedNode(fallback)
+    }
+  }, [nodes, selectedNode])
+
+  const node = nodes.find(n => n.id === selectedNode) ?? nodes[0]
 
   return (
     <div className="tree-screen">
       <div className="tree-canvas-area">
         <h2 className="screen-title">Arbre de compétences</h2>
         <p className="screen-subtitle">
-          {SKILL_NODES.filter(n => n.unlocked).length} / {SKILL_NODES.length} nœuds débloqués ·{' '}
-          {Math.round(SKILL_NODES.filter(n => n.unlocked).length / SKILL_NODES.length * 100)}% · clique un nœud débloqué
+          {nodes.filter(n => n.unlocked).length} / {nodes.length} nœuds débloqués ·{' '}
+          {Math.round(nodes.filter(n => n.unlocked).length / nodes.length * 100)}% · clique un nœud débloqué
         </p>
 
           <div className="skill-tree-wrapper">
@@ -44,7 +63,7 @@ export function TreeScreen() {
             ))}
           </svg>
 
-          {SKILL_NODES.map(sn => (
+          {nodes.map(sn => (
             <div
               key={sn.id}
               className={`skill-node ${sn.unlocked ? 'skill-node--unlocked' : 'skill-node--locked'} ${selectedNode === sn.id ? 'skill-node--selected' : ''}`}

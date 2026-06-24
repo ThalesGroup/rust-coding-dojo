@@ -3,18 +3,13 @@ import { SKILL_NODES } from '../data/gamification'
 import type { Concept } from '../types'
 
 const SVG_LINES = [
-  // Bases -> Ownership and Borrowing
-  'M310 70 V140',
-  'M310 140 H165 M310 140 H475',
-  // Ownership -> Lifetimes and Structs
-  'M165 165 V230',
-  'M165 230 H100 M165 230 H230',
-  // Borrowing -> Concurrency
-  'M475 165 V320',
-  // Lifetimes -> Traits
-  'M100 256 V320',
-  // Lines connecting bottom nodes
-  'M310 320 H475 M310 320 V395'
+  'M465 105 V210',
+  'M465 210 H248 M465 210 H713',
+  'M248 248 V345',
+  'M248 345 H150 M248 345 H345',
+  'M713 248 V480',
+  'M150 384 V480',
+  'M465 480 H713 M465 480 V593',
 ]
 
 export function TreeScreen() {
@@ -31,10 +26,10 @@ export function TreeScreen() {
           {Math.round(SKILL_NODES.filter(n => n.unlocked).length / SKILL_NODES.length * 100)}% · clique un nœud débloqué
         </p>
 
-        <div className="skill-tree-wrapper">
+          <div className="skill-tree-wrapper">
           <svg
-            viewBox="0 0 620 460"
-            style={{ position: 'absolute', left: 0, top: 0, width: 620, height: 460, pointerEvents: 'none' }}
+            viewBox="0 0 930 690"
+            style={{ position: 'absolute', left: 0, top: 0, width: 930, height: 690, pointerEvents: 'none' }}
           >
             {SVG_LINES.map((d, i) => (
               <path

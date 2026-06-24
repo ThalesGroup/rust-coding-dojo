@@ -17,16 +17,16 @@ export const QUESTS: Quest[] = [
 ]
 
 export const SKILL_NODES: SkillNode[] = [
-  { id: 'bases', name: 'Les bases', icon: '⚙️', unlocked: true, katasCompleted: 3, katasTotal: 3, x: 280, y: 8, size: 62, color: '#3d9bff', description: "Variables, types, fonctions et contrôle de flux. Les fondations avant de plonger dans l'ownership.", children: ['ownership', 'structs'] },
-  { id: 'ownership', name: 'Ownership', icon: '🔑', unlocked: true, katasCompleted: 0, katasTotal: 1, x: 120, y: 96, size: 58, color: '#3d9bff', description: "Chaque valeur a un unique propriétaire. Quand il sort du scope, la valeur est libérée. Le cœur de la sûreté mémoire de Rust.", children: ['lifetimes', 'structs'] },
-  { id: 'structs', name: 'Structs', icon: '📦', unlocked: true, katasCompleted: 0, katasTotal: 2, x: 440, y: 96, size: 58, color: '#3d9bff', description: "Regroupe des données liées. Méthodes via impl. Base des types personnalisés et des traits.", children: ['traits', 'generics'] },
-  { id: 'lifetimes', name: 'Lifetimes', icon: '⏳', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 50, y: 188, size: 56, color: '#7f9cc4', description: "Annotations qui garantissent qu'une référence ne survit pas à la donnée qu'elle pointe.", children: ['traits'] },
-  { id: 'borrowing', name: 'Borrowing', icon: '🤝', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 200, y: 188, size: 56, color: '#7f9cc4', description: "Emprunte une valeur via une référence (&) sans en prendre la possession.", children: ['concurrency'] },
-  { id: 'traits', name: 'Traits', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 50, y: 280, size: 54, color: '#7f9cc4', description: "Les interfaces de Rust. Définit des comportements partagés.", children: ['macros'] },
-  { id: 'concurrency', name: 'Concurrence', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 440, y: 280, size: 54, color: '#7f9cc4', description: "Threads, Arc, Mutex, channels.", children: ['macros'] },
-  { id: 'macros', name: 'Macros', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 265, y: 356, size: 54, color: '#7f9cc4', description: "Méta-programmation : génère du code à la compilation.", children: [] },
-  { id: 'generics', name: 'Génériques', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 330, y: 188, size: 50, color: '#7f9cc4', description: "Paramétrise les types et fonctions.", children: [] },
-  { id: 'unsafe', name: 'Unsafe', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 370, y: 280, size: 48, color: '#7f9cc4', description: "Pointeurs bruts, FFI, opérations non vérifiées.", children: [] }
+  { id: 'bases', name: 'Les bases', icon: '⚙️', unlocked: true, katasCompleted: 3, katasTotal: 3, x: 420, y: 12, size: 93, color: '#3d9bff', description: "Variables, types, fonctions et contrôle de flux. Les fondations avant de plonger dans l'ownership.", children: ['ownership', 'structs'] },
+  { id: 'ownership', name: 'Ownership', icon: '🔑', unlocked: true, katasCompleted: 0, katasTotal: 1, x: 180, y: 144, size: 87, color: '#3d9bff', description: "Chaque valeur a un unique propriétaire. Quand il sort du scope, la valeur est libérée. Le cœur de la sûreté mémoire de Rust.", children: ['lifetimes', 'structs'] },
+  { id: 'structs', name: 'Structs', icon: '📦', unlocked: true, katasCompleted: 0, katasTotal: 2, x: 660, y: 144, size: 87, color: '#3d9bff', description: "Regroupe des données liées. Méthodes via impl. Base des types personnalisés et des traits.", children: ['traits', 'generics'] },
+  { id: 'lifetimes', name: 'Lifetimes', icon: '⏳', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 75, y: 282, size: 84, color: '#7f9cc4', description: "Annotations qui garantissent qu'une référence ne survit pas à la donnée qu'elle pointe.", children: ['traits'] },
+  { id: 'borrowing', name: 'Borrowing', icon: '🤝', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 300, y: 282, size: 84, color: '#7f9cc4', description: "Emprunte une valeur via une référence (&) sans en prendre la possession.", children: ['concurrency'] },
+  { id: 'traits', name: 'Traits', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 75, y: 420, size: 81, color: '#7f9cc4', description: "Les interfaces de Rust. Définit des comportements partagés.", children: ['macros'] },
+  { id: 'concurrency', name: 'Concurrence', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 660, y: 420, size: 81, color: '#7f9cc4', description: "Threads, Arc, Mutex, channels.", children: ['macros'] },
+  { id: 'macros', name: 'Macros', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 398, y: 534, size: 81, color: '#7f9cc4', description: "Méta-programmation : génère du code à la compilation.", children: [] },
+  { id: 'generics', name: 'Génériques', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 495, y: 282, size: 75, color: '#7f9cc4', description: "Paramétrise les types et fonctions.", children: [] },
+  { id: 'unsafe', name: 'Unsafe', icon: '🔒', unlocked: false, katasCompleted: 0, katasTotal: 1, x: 555, y: 420, size: 72, color: '#7f9cc4', description: "Pointeurs bruts, FFI, opérations non vérifiées.", children: [] }
 ]
 
 export const GRAAL_CHAPTERS = [

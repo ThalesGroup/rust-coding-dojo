@@ -1,0 +1,12 @@
+{
+  "name": "Rust Dojo",
+  "short_name": "RustDojo",
+  "description": "Apprends Rust par la pratique — katas, gamification, mentor IA local",
+  "theme_color": "#070f1b",
+  "background_color": "#070f1b",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" }
+  ]
+}

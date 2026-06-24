@@ -2,6 +2,18 @@
 
 All notable changes to this project are documented in this file.
 
+## [v0.3.0] - 2026-06-24
+
+### Added
+- CI quality gates stabilized against kata baseline debt (clippy allowance, rustfmt skip).
+
+### Changed
+- README simplified and streamlined.
+- `katas/README.md` removed (redundant with root README).
+
+### Merged Pull Requests
+- #50 — ci: stabilize quality gates against kata baseline debt
+
 ## [v0.2.0] - 2026-06-24
 
 ### Added

@@ -550,14 +550,30 @@ p { margin: 0; }
   color: #ffe0a8;
   animation: pop-in 0.3s ease;
 }
-.bubble--review {
-  align-self: flex-start;
-  background: rgba(167, 139, 250, 0.1);
-  border: 1px solid rgba(167, 139, 250, 0.24);
-  border-radius: 4px 14px 14px 14px;
-  color: #d8ccff;
-  animation: pop-in 0.3s ease;
+.bubble-content p { margin: 0 0 6px; }
+.bubble-content p:last-child { margin-bottom: 0; }
+.bubble-content code {
+  background: rgba(0,0,0,0.3);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
 }
+.bubble-content pre {
+  background: rgba(0,0,0,0.35);
+  padding: 10px 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 6px 0;
+}
+.bubble-content pre code {
+  background: none;
+  padding: 0;
+  font-size: 11px;
+}
+.bubble-content ul, .bubble-content ol { padding-left: 18px; margin: 4px 0; }
+.bubble-content li { margin: 2px 0; }
+.bubble-content strong { color: var(--text-primary); }
 
 .typing-dots { display: flex; gap: 4px; padding: 4px 2px; }
 .typing-dots span {

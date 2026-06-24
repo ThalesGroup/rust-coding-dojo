@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useApp } from '../store/AppContext'
 import { getKataById, KATAS } from '../data/katas'
-import { askFerris, explainCode, reviewCode, preloadModel, isModelReady, getModelInfo, getDownloadProgress } from '../llm/ferris'
+import { askFerris, preloadModel, isModelReady, getModelInfo, getDownloadProgress } from '../llm/ferris'
 import type { ChatMessage } from '../types'
 import { EditorView } from '@codemirror/view'
 import { EditorState } from '@codemirror/state'
@@ -13,6 +13,7 @@ import { lintGutter, setDiagnostics as setLintDiagnostics } from '@codemirror/li
 import type { Diagnostic } from '@codemirror/lint'
 import { compileRust, diagnosticsFromRustStderr } from '../editor/rustCompiler'
 import type { DownloadProgress } from '../llm/localWllama'
+import { marked } from 'marked'
 
 const CODE_LS_PREFIX = 'rust-dojo-kata-code:'
 const SOL_CACHE_PREFIX = 'rust-dojo-solution-out:'
@@ -107,7 +108,6 @@ export function KataScreen() {
   const diagnosticsRef = useRef<Diagnostic[]>([])
   const alreadyCompleted = useRef(false)
   const [isCompiling, setIsCompiling] = useState(false)
-  const [useKataContext, setUseKataContext] = useState(true)
   const [dlProgress, setDlProgress] = useState<DownloadProgress>({ phase: 'idle', loaded: 0, total: 0, pct: 0 })
 
   // Reset when kata changes
@@ -296,26 +296,6 @@ export function KataScreen() {
     history: chat,
   }), [kata.title, kata.description, kata.concept, kata.difficulty, code, tests, output, chat])
 
-  const doExplain = useCallback(async () => {
-    setIsReplying(true)
-    const msgId = Date.now()
-    setChat(prev => [...prev, { role: 'ferris', text: '', timestamp: msgId }])
-    await explainCode(code, kata.title, buildFerrisContext(), (token) => {
-      setChat(prev => prev.map(m => m.timestamp === msgId ? { ...m, text: m.text + token } : m))
-    })
-    setIsReplying(false)
-  }, [code, kata.title, buildFerrisContext])
-
-  const doReview = useCallback(async () => {
-    setIsReplying(true)
-    const msgId = Date.now()
-    setChat(prev => [...prev, { role: 'review', text: '', timestamp: msgId }])
-    await reviewCode(code, kata.title, buildFerrisContext(), (token) => {
-      setChat(prev => prev.map(m => m.timestamp === msgId ? { ...m, text: m.text + token } : m))
-    })
-    setIsReplying(false)
-  }, [code, kata.title, buildFerrisContext])
-
   const send = useCallback(async () => {
     const v = input.trim()
     if (!v) return
@@ -327,9 +307,9 @@ export function KataScreen() {
     setChat(prev => [...prev, { role: 'ferris', text: '', timestamp: replyMsgId }])
     await askFerris(v, code, kata.title, chat, buildFerrisContext(), (token) => {
       setChat(prev => prev.map(m => m.timestamp === replyMsgId ? { ...m, text: m.text + token } : m))
-    }, !useKataContext)
+    })
     setIsReplying(false)
-  }, [input, code, kata.title, chat, buildFerrisContext, useKataContext])
+  }, [input, code, kata.title, chat, buildFerrisContext])
 
   const reset = useCallback(() => {
     if (editorViewRef.current) {
@@ -349,10 +329,13 @@ export function KataScreen() {
   const passCount = tests.filter(t => t.pass).length
   const testColor = tests.length === 0 ? '#7f9cc4' : passCount === tests.length ? '#8af0c0' : passCount === 0 ? '#7f9cc4' : '#ffd08a'
 
+  function renderMarkdown(text: string): string {
+    try { return marked.parse(text, { async: false }) as string } catch { return text }
+  }
+
   function getBubbleClass(role: string) {
     if (role === 'user') return 'bubble bubble--user'
     if (role === 'hint') return 'bubble bubble--hint'
-    if (role === 'review') return 'bubble bubble--review'
     return 'bubble bubble--ferris'
   }
 
@@ -463,7 +446,7 @@ export function KataScreen() {
         <div className="chat-messages">
           {chat.map((msg, i) => (
             <div key={i} className={getBubbleClass(msg.role)}>
-              {msg.text}
+              <div className="bubble-content" dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.text) }} />
             </div>
           ))}
           {isReplying && (
@@ -475,14 +458,8 @@ export function KataScreen() {
         </div>
 
         <div className="ferris-actions">
-          <label style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, fontSize: 11, color: 'var(--text-dim)', cursor: 'pointer', userSelect: 'none' }}>
-            <input type="checkbox" checked={useKataContext} onChange={e => setUseKataContext(e.target.checked)} disabled={!modelReady} style={{ accentColor: 'var(--blue)' }} />
-            Contexte kata
-          </label>
           <div className="quick-actions">
-            <button className="quick-btn quick-btn--blue" onClick={doExplain} disabled={!modelReady || isReplying}>Explique le code</button>
             <button className="quick-btn quick-btn--yellow" onClick={hint}>💡 Indice +1</button>
-            <button className="quick-btn quick-btn--purple" onClick={doReview} disabled={!modelReady || isReplying}>Code review</button>
           </div>
           <div className="chat-input-row">
             <input

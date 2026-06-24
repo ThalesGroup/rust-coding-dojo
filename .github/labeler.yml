@@ -1,0 +1,14 @@
+KATA:
+  - katas/**/*
+
+CICD:
+  - .github/**/*
+
+documentation:
+  - "**/*.md"
+  - "**/docs/**"
+
+dependencies:
+  - Cargo.toml
+  - Cargo.lock
+  - deny.toml

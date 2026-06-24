@@ -1,5 +1,7 @@
 # Welcome in Rust coding dojo repository !
 
+![Rust Coding Dojo Banner](banner.png)
+
 <p align="center">
   <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml"><img src="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/ci.yml/badge.svg?style=flat-square" alt="CI"></a><br>
   <a href="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/msrv.yml"><img src="https://github.com/NicolasPayneauT0132431/rust-coding-dojo/actions/workflows/msrv.yml/badge.svg?style=flat-square" alt="MSRV Workflow"></a>

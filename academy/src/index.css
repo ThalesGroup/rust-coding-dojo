@@ -95,7 +95,7 @@ p { margin: 0; }
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: auto;
+  overflow: hidden;
 }
 
 /* ===== HEADER ===== */
@@ -697,6 +697,7 @@ p { margin: 0; }
 /* ===== PATH SCREEN ===== */
 .path-screen {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 30px 40px;
 }
@@ -803,6 +804,7 @@ p { margin: 0; }
 /* ===== DASH SCREEN ===== */
 .dash-screen {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 30px 40px;
 }
@@ -878,6 +880,7 @@ p { margin: 0; }
 /* ===== PROFILE SCREEN ===== */
 .profile-screen {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 30px 40px;
   max-width: 900px;
@@ -974,6 +977,7 @@ p { margin: 0; }
 /* ===== GRAAL SCREEN ===== */
 .graal-screen {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   position: relative;
 }

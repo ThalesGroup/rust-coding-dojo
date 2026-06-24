@@ -9,7 +9,10 @@ fn main() {
     let mut r = rover::Rover::new(0, 0, rover::Direction::North);
     let obstacles = r.execute("rfflff", &m);
 
-    println!("Final position: ({}, {}), direction: {:?}", r.position.x, r.position.y, r.direction);
+    println!(
+        "Final position: ({}, {}), direction: {:?}",
+        r.position.x, r.position.y, r.direction
+    );
     if !obstacles.is_empty() {
         println!("Obstacles encountered: {:?}", obstacles);
     }

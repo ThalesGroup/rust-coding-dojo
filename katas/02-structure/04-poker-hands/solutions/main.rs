@@ -1,6 +1,6 @@
 mod card;
-mod hand;
 mod compare;
+mod hand;
 
 fn main() {
     let tests = [

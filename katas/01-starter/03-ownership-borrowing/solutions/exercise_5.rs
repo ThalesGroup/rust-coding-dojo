@@ -5,7 +5,6 @@ fn main() {
 
     string_uppercase(&mut data); // We change the order so the move operation into get_char is performed at the end
     get_char(data);
-
 }
 
 // Should not take ownership

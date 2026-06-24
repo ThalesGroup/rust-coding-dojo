@@ -22,7 +22,11 @@ pub struct Employee {
 // Implement Display trait for Employee
 impl fmt::Display for Employee {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "Name: {}, Age: {}, Job Title: {}, Salary: {}", self.name, self.age, self.job_title, self.salary)
+        write!(
+            f,
+            "Name: {}, Age: {}, Job Title: {}, Salary: {}",
+            self.name, self.age, self.job_title, self.salary
+        )
     }
 }
 

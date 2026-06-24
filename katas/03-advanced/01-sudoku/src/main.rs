@@ -66,17 +66,18 @@ impl Board {
 }
 
 fn main() {
-    let puzzle = "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
+    let puzzle =
+        "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
     let board = Board::from_string(puzzle);
     if let Some(solution) = board.solve() {
         println!("Solved!");
         for row in 0..9 {
-            let line: String = (0..9).map(|col| {
-                match &solution.cells[row * 9 + col] {
+            let line: String = (0..9)
+                .map(|col| match &solution.cells[row * 9 + col] {
                     CellState::Known(v) => v.to_string(),
                     _ => ".".to_string(),
-                }
-            }).collect();
+                })
+                .collect();
             println!("{}", line);
         }
     } else {
@@ -121,7 +122,8 @@ mod tests {
 
     #[test]
     fn solve_simple_puzzle() {
-        let puzzle = "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
+        let puzzle =
+            "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
         let board = Board::from_string(puzzle);
         let solution = board.solve();
         assert!(solution.is_some());

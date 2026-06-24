@@ -94,7 +94,9 @@ impl Board {
     }
 
     pub fn has_contradiction(&self) -> bool {
-        self.cells.iter().any(|c| matches!(c, CellState::Contradiction))
+        self.cells
+            .iter()
+            .any(|c| matches!(c, CellState::Contradiction))
     }
 
     pub fn solve(&self) -> Option<Board> {
@@ -136,7 +138,8 @@ impl Board {
 }
 
 fn main() {
-    let puzzle = "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
+    let puzzle =
+        "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
     let board = Board::from_string(puzzle);
     if let Some(solution) = board.solve() {
         println!("Solved!");
@@ -190,7 +193,8 @@ mod tests {
 
     #[test]
     fn solve_simple_puzzle() {
-        let puzzle = "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
+        let puzzle =
+            "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79";
         let sol = Board::from_string(puzzle).solve();
         assert!(sol.is_some());
         assert!(sol.unwrap().is_solved());

@@ -1,6 +1,6 @@
 #[derive(Debug)]
 struct Person {
-    name: &str // error: expected lifetime parameter
+    name: &str, // error: expected lifetime parameter
 }
 
 fn main() {

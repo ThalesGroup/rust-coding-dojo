@@ -1,6 +1,6 @@
 /*
  * Section 2 : Rc & Shared Ownership
- * 
+ *
  * - *Exercise 1:* Define an enum `RcList` to implement a singly linked list of integers.
  *     - Use `Rc` to enable shared ownership of list tails.
  *     - Create multiple lists that share the same suffix.

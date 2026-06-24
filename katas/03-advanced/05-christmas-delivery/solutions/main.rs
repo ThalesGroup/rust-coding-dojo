@@ -37,7 +37,9 @@ pub fn run_delivery(elves: Vec<(&str, usize)>) -> usize {
         })
         .collect();
 
-    for h in handles { h.join().unwrap(); }
+    for h in handles {
+        h.join().unwrap();
+    }
     let count = sleigh.lock().unwrap().present_count();
     count
 }

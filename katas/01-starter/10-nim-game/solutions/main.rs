@@ -3,7 +3,11 @@ fn nim_winner(sticks: u32) -> &'static str {
     // Positions divisible by (max_take + 1) = 4 are losing for the current player.
     // sticks % 4 == 1 means the current player is forced to take 1,
     // leaving a multiple of 4 for the opponent -> they lose.
-    if sticks % 4 == 1 { "Player 2" } else { "Player 1" }
+    if sticks % 4 == 1 {
+        "Player 2"
+    } else {
+        "Player 1"
+    }
 }
 
 fn main() {

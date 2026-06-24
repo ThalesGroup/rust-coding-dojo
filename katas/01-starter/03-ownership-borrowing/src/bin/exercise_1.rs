@@ -6,7 +6,6 @@ fn mul_two(buffer_s: [i32]) {
     }
 }
 
-
 fn main() {
     let mut buffer_s = [1, 23, 41, 83, 40, 91, 10];
     mul_two(buffer_s);

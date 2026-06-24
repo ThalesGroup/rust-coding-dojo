@@ -1,7 +1,6 @@
 // Instruction: Make the program compiling and implement borrowing into return_vec function without using a return
 
-fn return_vec(v: Vec<i32>) -> Vec<i32>
-{
+fn return_vec(v: Vec<i32>) -> Vec<i32> {
     v.sort();
     v
 }

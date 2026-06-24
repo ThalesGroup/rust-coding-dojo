@@ -1,4 +1,3 @@
-
 pub mod cli {
     pub fn print_header() {
         clear_terminal_screen();
@@ -34,7 +33,9 @@ pub mod cli {
     }
 
     pub fn print_available_commands() {
-        println!("Input any floating point number. e.g. \"123.45\" for it to be added to the LIFO.");
+        println!(
+            "Input any floating point number. e.g. \"123.45\" for it to be added to the LIFO."
+        );
         println!("\"+\" to add the two last items on the LIFO.");
         println!("\"-\" to substract the two last items on the LIFO.");
         println!("\"*\" to multiply the two last items on the LIFO.");

@@ -30,9 +30,9 @@
 
 pub mod cli_prints;
 pub mod rpn_stack;
-use std::{io::Write, process::exit};
-use crate::rpn_stack::RPNStack;
 use crate::cli_prints::cli;
+use crate::rpn_stack::RPNStack;
+use std::{io::Write, process::exit};
 
 pub fn print_header() {
     cli::clear_terminal_screen();
@@ -50,13 +50,12 @@ fn verify_operands(lifo: &RPNStack) -> bool {
     lifo.length() >= 2
 }
 
-
 fn get_rpn_calculator_version() -> String {
-    let dot:char = '.';
-    let major_version:&str = "1";
-    let minor_version:Vec<u8> = vec![240, 159, 146, 150]; // Hint '💖';
-    let patch_version:u8 = 12;
-    let mut version:String = String::from(major_version);
+    let dot: char = '.';
+    let major_version: &str = "1";
+    let minor_version: Vec<u8> = vec![240, 159, 146, 150]; // Hint '💖';
+    let patch_version: u8 = 12;
+    let mut version: String = String::from(major_version);
     version.push(dot);
     version.push_str(&String::from_utf8(minor_version).unwrap());
     version.push(dot);
@@ -65,7 +64,7 @@ fn get_rpn_calculator_version() -> String {
 }
 
 fn get_user_input() -> Result<String, std::io::Error> {
-    print!("{} ",get_rpn_calculator_version());
+    print!("{} ", get_rpn_calculator_version());
     print!("> ");
     std::io::stdout().flush().unwrap(); // To make sure the prompt is displayed before stdin is read.
     let mut buffer = String::new();
@@ -104,7 +103,13 @@ fn main() {
         // Select operation from input
         match get_user_input() {
             Ok(inputs) => {
-                apply_inputs_to_stack_and_update_loop_controls(inputs, &mut stack, &mut continue_looping, &mut is_showing_commands, &mut first_time_running);
+                apply_inputs_to_stack_and_update_loop_controls(
+                    inputs,
+                    &mut stack,
+                    &mut continue_looping,
+                    &mut is_showing_commands,
+                    &mut first_time_running,
+                );
             } // end of string processing
             Err(_error) => {
                 cli::print_error_msg();
@@ -116,7 +121,13 @@ fn main() {
     exit(0);
 }
 
-fn apply_inputs_to_stack_and_update_loop_controls(inputs: String, stack:&mut RPNStack, continue_looping:&mut bool, is_showing_commands: &mut bool, first_time_running: &mut bool) {
+fn apply_inputs_to_stack_and_update_loop_controls(
+    inputs: String,
+    stack: &mut RPNStack,
+    continue_looping: &mut bool,
+    is_showing_commands: &mut bool,
+    first_time_running: &mut bool,
+) {
     // Cast inputs
     if inputs.trim().eq_ignore_ascii_case("+") {
         // Do the add

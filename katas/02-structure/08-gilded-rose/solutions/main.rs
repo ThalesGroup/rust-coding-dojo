@@ -7,7 +7,11 @@ pub struct Item {
 
 impl Item {
     pub fn new(name: &str, sell_in: i32, quality: i32) -> Self {
-        Item { name: name.to_string(), sell_in, quality }
+        Item {
+            name: name.to_string(),
+            sell_in,
+            quality,
+        }
     }
 }
 
@@ -24,7 +28,13 @@ pub fn update_quality(items: &mut Vec<Item>) {
                 item.quality = if item.sell_in < 0 {
                     0
                 } else {
-                    let inc = if item.sell_in < 5 { 3 } else if item.sell_in < 10 { 2 } else { 1 };
+                    let inc = if item.sell_in < 5 {
+                        3
+                    } else if item.sell_in < 10 {
+                        2
+                    } else {
+                        1
+                    };
                     (item.quality + inc).min(50)
                 };
             }
@@ -51,7 +61,9 @@ fn main() {
         Item::new("Conjured Mana Cake", 3, 6),
     ];
     update_quality(&mut items);
-    for item in &items { println!("{:?}", item); }
+    for item in &items {
+        println!("{:?}", item);
+    }
 }
 
 #[cfg(test)]
@@ -89,7 +101,11 @@ mod tests {
 
     #[test]
     fn backstage_drops_after_concert() {
-        let mut i = vec![Item::new("Backstage passes to a TAFKAL80ETC concert", 0, 20)];
+        let mut i = vec![Item::new(
+            "Backstage passes to a TAFKAL80ETC concert",
+            0,
+            20,
+        )];
         update_quality(&mut i);
         assert_eq!(i[0].quality, 0);
     }

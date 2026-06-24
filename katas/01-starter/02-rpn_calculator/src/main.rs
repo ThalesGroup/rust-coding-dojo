@@ -30,9 +30,9 @@
 
 pub mod cli_prints;
 pub mod rpn_stack;
-use std::{io::Write, process::exit};
-use crate::rpn_stack::RPNStack;
 use crate::cli_prints::cli;
+use crate::rpn_stack::RPNStack;
+use std::{io::Write, process::exit};
 
 pub fn print_header() {
     // TODO 1: Print a welcoming message to the user on the command line
@@ -45,12 +45,11 @@ fn verify_operands(lifo: &RPNStack) -> bool {
     return false;
 }
 
-
 fn get_rpn_calculator_version() -> String {
-    let dot:char = '.';
-    let major_version:&str = "1";
-    let minor_version:Vec<u8> = vec![240, 159, 146, 150]; // Hint '💖';
-    let patch_version:u8 = 12;
+    let dot: char = '.';
+    let major_version: &str = "1";
+    let minor_version: Vec<u8> = vec![240, 159, 146, 150]; // Hint '💖';
+    let patch_version: u8 = 12;
     // TODO 5: Compute the version number of the RPN_Calculator major.minor.patch and return it
     return "1.0".to_string();
 }
@@ -77,7 +76,13 @@ fn main() {
         // Select operation from input
         match get_user_input() {
             Ok(inputs) => {
-                apply_inputs_to_stack_and_update_loop_controls(inputs, &mut stack, &mut continue_looping, &mut is_showing_commands, &mut first_time_running);
+                apply_inputs_to_stack_and_update_loop_controls(
+                    inputs,
+                    &mut stack,
+                    &mut continue_looping,
+                    &mut is_showing_commands,
+                    &mut first_time_running,
+                );
             } // end of string processing
             Err(_error) => {
                 cli::print_error_msg();
@@ -91,18 +96,23 @@ fn main() {
 }
 
 fn get_user_input() -> Result<String, std::io::Error> {
-    print!("{} ",get_rpn_calculator_version());
+    print!("{} ", get_rpn_calculator_version());
     print!("> ");
     std::io::stdout().flush().unwrap(); // To make sure the prompt is displayed before stdin is read.
-    // TODO 8: read from the CLI input using the read_line methode from the stdin reference obtained via the std::io prelude into a buffer
-    // return a Result<String, std::io::Error> based on what you read.
-    // There should be no warning at compile time ;)
-    // Hint : you will need a match statement, see the main function for an example
+                                        // TODO 8: read from the CLI input using the read_line methode from the stdin reference obtained via the std::io prelude into a buffer
+                                        // return a Result<String, std::io::Error> based on what you read.
+                                        // There should be no warning at compile time ;)
+                                        // Hint : you will need a match statement, see the main function for an example
     return Ok("q".to_string());
 }
 
-
-fn apply_inputs_to_stack_and_update_loop_controls(inputs: String, stack:&mut RPNStack, continue_looping:&mut bool, is_showing_commands: &mut bool, first_time_running: &mut bool) {
+fn apply_inputs_to_stack_and_update_loop_controls(
+    inputs: String,
+    stack: &mut RPNStack,
+    continue_looping: &mut bool,
+    is_showing_commands: &mut bool,
+    first_time_running: &mut bool,
+) {
     // Cast inputs
     if inputs.trim().eq_ignore_ascii_case("+") {
         // Do the add

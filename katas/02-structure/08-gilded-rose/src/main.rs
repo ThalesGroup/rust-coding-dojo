@@ -12,7 +12,11 @@ pub struct Item {
 
 impl Item {
     pub fn new(name: &str, sell_in: i32, quality: i32) -> Self {
-        Item { name: name.to_string(), sell_in, quality }
+        Item {
+            name: name.to_string(),
+            sell_in,
+            quality,
+        }
     }
 }
 
@@ -29,10 +33,14 @@ pub fn update_quality(items: &mut Vec<Item>) {
                 item.quality += 1;
                 if item.name == "Backstage passes to a TAFKAL80ETC concert" {
                     if item.sell_in < 11 {
-                        if item.quality < 50 { item.quality += 1; }
+                        if item.quality < 50 {
+                            item.quality += 1;
+                        }
                     }
                     if item.sell_in < 6 {
-                        if item.quality < 50 { item.quality += 1; }
+                        if item.quality < 50 {
+                            item.quality += 1;
+                        }
                     }
                 }
             }
@@ -52,7 +60,9 @@ pub fn update_quality(items: &mut Vec<Item>) {
                     item.quality -= item.quality;
                 }
             } else {
-                if item.quality < 50 { item.quality += 1; }
+                if item.quality < 50 {
+                    item.quality += 1;
+                }
             }
         }
     }
@@ -109,7 +119,11 @@ mod tests {
 
     #[test]
     fn backstage_pass_drops_to_zero_after_concert() {
-        let mut items = vec![Item::new("Backstage passes to a TAFKAL80ETC concert", 0, 20)];
+        let mut items = vec![Item::new(
+            "Backstage passes to a TAFKAL80ETC concert",
+            0,
+            20,
+        )];
         update_quality(&mut items);
         assert_eq!(items[0].quality, 0);
     }

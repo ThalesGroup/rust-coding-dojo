@@ -68,15 +68,24 @@ mod tests {
     #[test]
     fn single_euro_stock() {
         let mut w = Wallet::new();
-        w.add(Stock { quantity: 100.0, stock_type: StockType::Euro });
+        w.add(Stock {
+            quantity: 100.0,
+            stock_type: StockType::Euro,
+        });
         assert!((w.value(&StockType::Euro, &FixedRateProvider) - 100.0).abs() < 0.001);
     }
 
     #[test]
     fn mixed_stocks() {
         let mut w = Wallet::new();
-        w.add(Stock { quantity: 5.0, stock_type: StockType::Dollar });
-        w.add(Stock { quantity: 10.0, stock_type: StockType::Euro });
+        w.add(Stock {
+            quantity: 5.0,
+            stock_type: StockType::Dollar,
+        });
+        w.add(Stock {
+            quantity: 10.0,
+            stock_type: StockType::Euro,
+        });
         let val = w.value(&StockType::Euro, &FixedRateProvider);
         assert!((val - 14.5).abs() < 0.001); // 5*0.9 + 10*1.0
     }
@@ -84,7 +93,10 @@ mod tests {
     #[test]
     fn bitcoin_conversion() {
         let mut w = Wallet::new();
-        w.add(Stock { quantity: 0.5, stock_type: StockType::Bitcoin });
+        w.add(Stock {
+            quantity: 0.5,
+            stock_type: StockType::Bitcoin,
+        });
         let val = w.value(&StockType::Euro, &FixedRateProvider);
         assert!((val - 15_000.0).abs() < 0.001);
     }

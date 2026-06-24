@@ -282,6 +282,9 @@ mod tests {
     fn number_0_is_invalid() {
         let input = 0;
         let output = Roman::from(input).to_string();
-        println!("Wrong output: {} (Should have failed because the input (0) is invalid.)", output);
+        println!(
+            "Wrong output: {} (Should have failed because the input (0) is invalid.)",
+            output
+        );
     }
 }

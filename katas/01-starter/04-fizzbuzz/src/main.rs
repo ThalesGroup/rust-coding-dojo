@@ -1,6 +1,6 @@
 // TODO 1: Implement the fizz_buzz function that takes a u32 and returns a String.
 // - For multiples of 3, return "Fizz"
-// - For multiples of 5, return "Buzz"  
+// - For multiples of 5, return "Buzz"
 // - For multiples of both 3 and 5, return "FizzBuzz"
 // - Otherwise, return the number as a string
 fn fizz_buzz(n: u32) -> String {

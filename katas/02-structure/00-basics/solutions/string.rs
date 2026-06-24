@@ -10,7 +10,10 @@
 
 // Section 2: Strings and Vectors - Exercise 1
 pub fn count_vowels(input_string: &str) -> usize {
-    input_string.chars().filter(|&c| "aeiouAEIOU".contains(c)).count()
+    input_string
+        .chars()
+        .filter(|&c| "aeiouAEIOU".contains(c))
+        .count()
 }
 
 // Section 2: Strings and Vectors - Exercise 2
@@ -23,5 +26,8 @@ pub fn merge_and_remove_duplicates(mut vec1: Vec<i32>, mut vec2: Vec<i32>) -> Ve
 
 // Section 2: Strings and Vectors - Exercise 3
 pub fn longest_word(sentence: &str) -> &str {
-    sentence.split_whitespace().max_by_key(|&word| word.len()).unwrap_or("")
+    sentence
+        .split_whitespace()
+        .max_by_key(|&word| word.len())
+        .unwrap_or("")
 }

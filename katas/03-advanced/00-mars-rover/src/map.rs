@@ -24,6 +24,8 @@ impl Map {
     }
 
     pub fn from_pattern(pattern: &str) -> Self {
-        todo!("Parse a map pattern. '.' for empty, '#' for obstacle, '^'/'v'/'<'/'>' for rover start")
+        todo!(
+            "Parse a map pattern. '.' for empty, '#' for obstacle, '^'/'v'/'<'/'>' for rover start"
+        )
     }
 }

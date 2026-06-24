@@ -18,7 +18,9 @@ impl Interpreter {
             if c == '[' {
                 stack.push(i);
             } else if c == ']' {
-                let open = stack.pop().ok_or_else(|| format!("Unmatched ] at position {}", i))?;
+                let open = stack
+                    .pop()
+                    .ok_or_else(|| format!("Unmatched ] at position {}", i))?;
                 bracket_map.insert(open, i);
                 bracket_map.insert(i, open);
             }
@@ -99,7 +101,10 @@ mod tests {
     #[test]
     fn hello_world() {
         let prog = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
-        assert_eq!(Interpreter::run(prog, ""), Ok("Hello, World!\n".to_string()));
+        assert_eq!(
+            Interpreter::run(prog, ""),
+            Ok("Hello, World!\n".to_string())
+        );
     }
 
     #[test]

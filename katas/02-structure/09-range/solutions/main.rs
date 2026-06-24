@@ -18,14 +18,14 @@ impl Range {
     fn lower(&self) -> i32 {
         match self.start {
             Bound::Closed(v) => v,
-            Bound::Open(v)   => v + 1,
+            Bound::Open(v) => v + 1,
         }
     }
 
     fn upper(&self) -> i32 {
         match self.end {
             Bound::Closed(v) => v,
-            Bound::Open(v)   => v - 1,
+            Bound::Open(v) => v - 1,
         }
     }
 

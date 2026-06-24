@@ -24,9 +24,7 @@ pub fn parse_rpn(expr: &str) -> Result<Expr, String> {
                 stack.push(node);
             }
             t => {
-                let n: f64 = t
-                    .parse()
-                    .map_err(|_| format!("Unknown token: '{}'", t))?;
+                let n: f64 = t.parse().map_err(|_| format!("Unknown token: '{}'", t))?;
                 stack.push(Expr::Number(n));
             }
         }

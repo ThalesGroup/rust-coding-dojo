@@ -1,4 +1,4 @@
-/**
+/*
  * Section 4 : Rc + RefCell Combined
  * 
  * - *Exercise 1:* Implement a bidirectional `Person` struct using `Rc<RefCell<T>>`.

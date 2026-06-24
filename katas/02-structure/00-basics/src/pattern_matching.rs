@@ -1,4 +1,4 @@
-/**
+/*
  * Section 3 : Pattern Matching
  * - *Exercise 1:* Create a function to check if a given number is prime, using pattern matching for different cases (prime, non-prime).
  * - *Exercise 2:* Implement a program that categorizes a list of integers into three groups: positive, negative, and zero.

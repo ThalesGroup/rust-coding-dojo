@@ -452,5 +452,19 @@ Recommended next work:
 - add multi-turn conversation history
 - split runtime engine from UI component
 - add automated browser smoke tests
-- evaluate real Academy frontend integration points
+- continue hardening the Academy Ferris engine replacement now backed by wllama
 - decide production model hosting and caching strategy
+
+## Academy Integration Follow-Up
+
+The Academy frontend now contains a minimal engine replacement behind the existing Ferris panel:
+
+```txt
+academy/src/llm/localWllama.ts  Browser-local wllama runtime for Ferris
+academy/src/llm/ferris.ts       Existing Ferris API with local model + rule fallback
+academy/src/screens/KataScreen.tsx  Provides kata/code/test/chat context to Ferris
+```
+
+The visible Ferris UI remains mostly unchanged. `KataScreen` builds context from React state rather than scraping the DOM: kata title, description, concept, difficulty, current CodeMirror source, test status, execution output, and recent chat history are passed to the local model.
+
+Academy also sets COOP/COEP headers in `academy/vite.config.ts` for dev and preview servers so the local wllama runtime can use WASM multithreading where supported.

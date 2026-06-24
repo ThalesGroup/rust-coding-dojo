@@ -20,6 +20,7 @@
     "@codemirror/state": "^6.4.1",
     "@codemirror/theme-one-dark": "^6.1.2",
     "@codemirror/view": "^6.34.1",
+    "@wllama/wllama": "^3.5.1",
     "chart.js": "^4.4.6",
     "codemirror": "^6.0.1",
     "idb": "^8.0.0",

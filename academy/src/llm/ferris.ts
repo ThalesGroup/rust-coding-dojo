@@ -1,23 +1,57 @@
+import { generateLocalFerrisReply, preloadModel, isModelReady, getModelInfo, type FerrisContext } from './localWllama'
+import type { ChatMessage } from '../types'
+
+export { preloadModel, isModelReady, getModelInfo }
+
 /**
- * Module Ferris — Mentor contextuel (règles)
- * WebLLM sera intégré dans une prochaine itération.
+ * Module Ferris — mentor local wllama avec fallback règles.
  */
 
 export async function askFerris(
   userMessage: string,
   kataCode: string,
-  _kataTitle: string,
-  _history: Array<{ role: string; text: string }>
+  kataTitle: string,
+  history: ChatMessage[],
+  context?: Partial<FerrisContext>,
+  onToken?: (token: string) => void
 ): Promise<string> {
-  return fallbackReply(userMessage, kataCode)
+  try {
+    return await generateLocalFerrisReply(userMessage, {
+      kataTitle,
+      code: kataCode,
+      history,
+      ...context,
+    }, onToken)
+  } catch (error) {
+    console.warn('[ferris] local wllama unavailable, using fallback', error)
+    return fallbackReply(userMessage, kataCode)
+  }
 }
 
-export async function explainCode(code: string, kataTitle: string): Promise<string> {
-  return fallbackExplain(code, kataTitle)
+export async function explainCode(code: string, kataTitle: string, context?: Partial<FerrisContext>, onToken?: (token: string) => void): Promise<string> {
+  try {
+    return await generateLocalFerrisReply('Explique ce code sans donner directement la solution complète du kata.', {
+      kataTitle,
+      code,
+      ...context,
+    }, onToken)
+  } catch (error) {
+    console.warn('[ferris] local wllama unavailable, using fallback', error)
+    return fallbackExplain(code, kataTitle)
+  }
 }
 
-export async function reviewCode(code: string, _kataTitle: string): Promise<string> {
-  return fallbackReview(code)
+export async function reviewCode(code: string, kataTitle: string, context?: Partial<FerrisContext>, onToken?: (token: string) => void): Promise<string> {
+  try {
+    return await generateLocalFerrisReply('Fais une code review courte et actionnable de mon code Rust.', {
+      kataTitle,
+      code,
+      ...context,
+    }, onToken)
+  } catch (error) {
+    console.warn('[ferris] local wllama unavailable, using fallback', error)
+    return fallbackReview(code)
+  }
 }
 
 function fallbackReply(text: string, code: string): string {

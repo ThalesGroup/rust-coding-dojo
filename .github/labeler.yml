@@ -1,14 +1,11 @@
 KATA:
-  - katas/**/*
+  - any: ['katas/**/*']
 
 CICD:
-  - .github/**/*
+  - any: ['.github/**/*']
 
 documentation:
-  - "**/*.md"
-  - "**/docs/**"
+  - any: ['**/*.md', '**/docs/**']
 
 dependencies:
-  - Cargo.toml
-  - Cargo.lock
-  - deny.toml
+  - any: ['Cargo.toml', 'Cargo.lock', 'deny.toml']

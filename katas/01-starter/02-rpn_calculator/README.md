@@ -41,6 +41,10 @@ Any other input will print an error message.
 >After all exercices, it should complie without any warning.
 >Solution is provided in the "solutions" folder.
 
+## Domains
+
+`Basics` `Control Flow` `Functions` `Pattern Matching` `CLI`
+
 ## How to run a kata
 All katas share the same structure:
 ```

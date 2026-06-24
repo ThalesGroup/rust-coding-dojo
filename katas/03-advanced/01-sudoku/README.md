@@ -14,11 +14,9 @@ Build a Sudoku solver using constraint propagation and backtracking. Each cell k
 ## Objective
 Implement `CellState`, `Board` with constraint propagation, and a `solve()` method combining propagation with backtracking.
 
-## Domaines
+## Domains
 
-- **Multithreading sécurisé (Arc, Mutex, RwLock, Channels)** : cellules communicant via channels ou Arc<Mutex> pour la propagation concurrente
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : état de la cellule (Unknown, Known, Contradiction) modélisé en enum
-- **Software Craftsmanship et Architecture** : propagation de contraintes, séparation des responsabilités, résolution de puzzles par backtracking
+`Enums` `Recursion` `Backtracking` `HashSet` `Constraint Propagation`
 
 ## How to run a kata
 All katas share the same structure:

@@ -23,6 +23,10 @@ Steps:
 ## Objective
 Implement the `add` function that takes a string and returns a Result containing the sum or an error message.
 
+## Domains
+
+`Basics` `String Manipulation` `Error Handling` `Iterators` `TDD`
+
 ## How to run a kata
 All katas share the same structure:
 ```

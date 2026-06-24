@@ -14,10 +14,9 @@ Given a word and a list of candidate words, return all candidates that are anagr
 ## Objective
 Implement `anagrams_of(word: &str, candidates: &[&str]) -> Vec<String>` using idiomatic Rust: string manipulation, character sorting, iterators and closures.
 
-## Domaines
+## Domains
 
-- **Fondamentaux et Mécanique du Langage** : manipulation de strings, tri de caractères, itérateurs, closures, `filter` et `map`
-- **Test-Driven Development (TDD)** : kata classique pour pratiquer le TDD en baby-steps avec des cas progressifs
+`Strings` `Iterators` `Sorting` `Closures`
 
 ## How to run a kata
 All katas share the same structure:

@@ -16,6 +16,10 @@ Write a program that prints the numbers from 1 to 100. But for multiples of thre
 ## Objective
 Implement the `fizz_buzz` function that returns the appropriate string for each number.
 
+## Domains
+
+`Basics` `Iterators` `Pattern Matching` `Arithmetic`
+
 ## How to run a kata
 All katas share the same structure:
 ```

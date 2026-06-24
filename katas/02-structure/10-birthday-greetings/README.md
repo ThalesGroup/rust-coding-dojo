@@ -14,11 +14,9 @@ Given a list of friends (name, birthdate, email), send birthday greeting emails 
 ## Objective
 Implement `BirthdayService` using traits for `FriendRepository` (input port) and `EmailSender` (output port), with in-memory test doubles to verify behavior without real I/O.
 
-## Domaines
+## Domains
 
-- **Architecture Hexagonale (Découplage de la logique métier et des I/O)** : ports/adapters pattern, inversion de dépendances via des traits, le domaine métier ne connaît pas les détails d'infrastructure
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : structs, traits comme interfaces, generics pour les adaptateurs
-- **Test-Driven Development (TDD)** : tests avec des faux adaptateurs (test doubles / spy) pour isoler la logique métier
+`Traits` `Generics` `Hexagonal Architecture` `TDD`
 
 ## How to run a kata
 All katas share the same structure:

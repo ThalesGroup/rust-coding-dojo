@@ -25,11 +25,9 @@ Implement a complete Brainfuck interpreter. Brainfuck is an esoteric programming
 ## Objective
 Implement `Interpreter::run(program: &str, input: &str) -> Result<String, String>` that executes a Brainfuck program and returns its output, or an error on invalid programs.
 
-## Domaines
+## Domains
 
-- **Ingénierie Système et Intégration** : implémentation d'une machine virtuelle minimale avec tape, pointeur de données et pointeur d'instruction
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : Result pour la gestion d'erreurs, matching sur les commandes
-- **Fondamentaux et Mécanique du Langage** : manipulation de vecteurs, itérateurs, HashMap pour le bracket matching
+`Interpreter` `HashMap` `Error Handling` `VM`
 
 ## How to run a kata
 All katas share the same structure:

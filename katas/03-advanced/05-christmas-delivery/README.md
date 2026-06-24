@@ -16,11 +16,9 @@ The challenge highlights Rust's ownership model and the `Send + Sync` guarantees
 ## Objective
 Implement `Sleigh` (shared mutable state protected by `Mutex`) loaded concurrently by multiple `Elf` threads via `Arc<Mutex<Sleigh>>`. The `run_delivery` function spawns one thread per elf and returns the total number of presents loaded.
 
-## Domaines
+## Domains
 
-- **Multithreading sécurisé (Arc, Mutex, RwLock, Channels)** : Arc<Mutex<T>> pour l'état partagé entre threads, spawn et join de threads
-- **Programmation Asynchrone** : compréhension du modèle de concurrence de Rust, garanties Send/Sync, alternative async/await avec Tokio
-- **Software Craftsmanship et Architecture** : pattern producteur/consommateur, gestion de la concurrence sans data race, design thread-safe
+`Arc` `Mutex` `Multithreading` `Concurrency`
 
 ## How to run a kata
 All katas share the same structure:

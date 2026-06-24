@@ -19,10 +19,9 @@ Support the following operations: `contains_point`, `get_all_points`, `endpoints
 ## Objective
 Implement a `Range` struct using `Bound::Open(i32)` and `Bound::Closed(i32)` enum variants, with all five range operations.
 
-## Domaines
+## Domains
 
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : bornes inclusives/exclusives modélisées en enum, pattern matching pour extraire la valeur normalisée
-- **Fondamentaux et Mécanique du Langage** : itérateurs, comparaisons d'entiers, plages (`..=`)
+`Enums` `Traits` `Iterators` `Pattern Matching`
 
 ## How to run a kata
 All katas share the same structure:

@@ -18,11 +18,9 @@ Despite the simplicity of the rules, after roughly 10,000 steps the ant starts b
 ## Objective
 Implement `Direction`, `Ant`, and `Grid` structs with a `step()` function and a `simulate(n)` function that runs the simulation for n steps.
 
-## Domaines
+## Domains
 
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : Direction enum (North/East/South/West), Color modélisée implicitement via HashSet
-- **Fondamentaux et Mécanique du Langage** : HashMap/HashSet pour la grille infinie, itérateurs, structs
-- **Software Craftsmanship et Architecture** : simulation à pas discrets, séparation état/comportement, affichage de l'état
+`Enums` `HashSet` `Simulation` `Cellular Automaton`
 
 ## How to run a kata
 All katas share the same structure:

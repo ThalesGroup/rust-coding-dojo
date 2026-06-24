@@ -23,6 +23,10 @@ C   C
 ## Objective
 Implement the `diamond` function that returns a vector of strings representing the diamond shape.
 
+## Domains
+
+`Strings` `Iterators` `Formatting` `Pattern Matching`
+
 ## How to run a kata
 All katas share the same structure:
 ```

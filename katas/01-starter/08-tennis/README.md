@@ -22,6 +22,10 @@ Implement a simple tennis scoring system:
 ## Objective
 Implement a Tennis struct with `point_won` and `score` methods.
 
+## Domains
+
+`Basics` `Enums` `State Machine` `Pattern Matching`
+
 ## How to run a kata
 All katas share the same structure:
 ```

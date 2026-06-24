@@ -21,11 +21,9 @@ An inn manages items with a `sell_in` (days until expiry) and `quality` value. E
 ## Objective
 Refactor the legacy `update_quality` function to be clean and readable, then extend it to support "Conjured" items.
 
-## Domaines
+## Domains
 
-- **Software Craftsmanship et Architecture** : refactoring de legacy code, réduction de la complexité cyclomatique, suppression des imbrications profondes
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : pattern matching sur le nom de l'item pour modéliser les comportements
-- **Test-Driven Development (TDD)** : écrire des tests de non-régression avant tout refactoring (Characterization Tests)
+`Refactoring` `Pattern Matching` `TDD` `Legacy Code`
 
 ## How to run a kata
 All katas share the same structure:

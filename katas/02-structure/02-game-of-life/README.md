@@ -26,6 +26,10 @@ Implement the Game of Life grid and the `next_generation` function.
 
 Resolved exercises: [solutions](solutions/)
 
+## Domains
+
+`Structs` `Iterators` `2D Grid` `Algorithms` `Simulation`
+
 ## How to run a kata
 All katas share the same structure:
 ```

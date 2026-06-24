@@ -20,10 +20,9 @@ Implement `nim_winner(sticks: u32) -> &'static str` that returns `"Player 1"` or
 
 **Hint:** Think about multiples of 4 — positions that are losing for the current player follow a pattern.
 
-## Domaines
+## Domains
 
-- **Fondamentaux et Mécanique du Langage** : variables, control flow, arithmétique
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : structuration des états de jeu
+`Basics` `Pattern Matching` `Algorithms` `Game Theory`
 
 ## How to run a kata
 All katas share the same structure:

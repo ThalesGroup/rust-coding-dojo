@@ -21,9 +21,9 @@ Rules:
 ## Objective
 Implement `wrap(text: &str, column: usize) -> String` that correctly wraps text at the given column width.
 
-## Domaines
+## Domains
 
-- **Fondamentaux et Mécanique du Langage** : manipulation de strings, itérateurs, slices, boucles
+`Basics` `String Manipulation` `Slices` `Iterators`
 
 ## How to run a kata
 All katas share the same structure:

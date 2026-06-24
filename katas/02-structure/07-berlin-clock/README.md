@@ -19,10 +19,9 @@ The Berlin Clock (Mengenlehreuhr) displays time using rows of illuminated lamps.
 ## Objective
 Implement `berlin_clock(time: &str) -> String` that converts a time to its Berlin Clock representation.
 
-## Domaines
+## Domains
 
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : représentation des états des lampes (allumée/éteinte/rouge/jaune)
-- **Fondamentaux et Mécanique du Langage** : arithmétique entière (division euclidienne, modulo), itérateurs, formatage de chaînes
+`Enums` `Arithmetic` `Iterators` `Formatting`
 
 ## How to run a kata
 All katas share the same structure:

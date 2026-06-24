@@ -14,6 +14,10 @@ Given a minefield represented by characters (* for mine, . for safe), output the
 ## Objective
 Implement a function that takes a minefield and returns the annotated field with mine counts.
 
+## Domains
+
+`Structs` `Arrays` `2D Grid` `Algorithms` `Counting`
+
 ## How to run a kata
 All katas share the same structure:
 ```

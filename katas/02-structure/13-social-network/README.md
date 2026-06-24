@@ -14,11 +14,9 @@ Build a simple social network with four commands: **Posting** (a user publishes 
 ## Objective
 Implement `SocialNetwork` with `post`, `read`, `follow`, and `wall` methods. The design should keep business logic decoupled from I/O concerns, making it fully testable without any external dependencies.
 
-## Domaines
+## Domains
 
-- **Architecture Hexagonale** : séparation commande/query, ports pour le stockage, logique métier isolée des I/O
-- **Software Craftsmanship et Architecture** : CQRS léger, design émergent par TDD, lisibilité du code
-- **Test-Driven Development (TDD)** : tester le comportement complet sans UI ni base de données
+`HashMap` `Architecture` `CQRS` `TDD`
 
 ## How to run a kata
 All katas share the same structure:

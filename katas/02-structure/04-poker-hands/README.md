@@ -23,6 +23,10 @@ Implement a poker hand comparator that determines which hand wins.
 
 Resolved exercises: [solutions](solutions/)
 
+## Domains
+
+`Enums` `Structs` `Sorting` `Pattern Matching` `HashMap`
+
 ## How to run a kata
 All katas share the same structure:
 ```

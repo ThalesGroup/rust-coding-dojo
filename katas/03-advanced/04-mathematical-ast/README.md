@@ -18,11 +18,9 @@ Examples:
 ## Objective
 Implement the `Expr` enum representing AST nodes, `parse_rpn(expr: &str) -> Result<Expr, String>` to build the tree from RPN input, `evaluate(expr: &Expr) -> f64` to compute the result, and `pretty_print(expr: &Expr) -> String` for infix display.
 
-## Domaines
+## Domains
 
-- **Traits, Généricité et Dispatch (statique/dynamique)** : enums récursifs avec Box pour éviter les types de taille infinie, pattern matching exhaustif
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : AST en enum récursif avec Box<Expr>, Result pour les erreurs de parsing
-- **Software Craftsmanship et Architecture** : séparation parsing/évaluation/affichage, principe de responsabilité unique
+`Enums` `Recursion` `Box` `Visitor Pattern` `Parsing`
 
 ## How to run a kata
 All katas share the same structure:

@@ -37,9 +37,9 @@ The digits 0–9 are represented as follows (3 chars wide, top / middle / bottom
 ## Objective
 Implement `to_lcd(number: &str) -> String` returning the 3-line LCD representation of the input number string, with lines separated by `\n`.
 
-## Domaines
+## Domains
 
-- **Fondamentaux et Mécanique du Langage** : tableaux, manipulation de strings, itérateurs, indexation
+`Basics` `Arrays` `String Manipulation` `Formatting`
 
 ## How to run a kata
 All katas share the same structure:

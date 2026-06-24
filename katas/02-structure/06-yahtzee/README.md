@@ -14,10 +14,9 @@ Score a Yahtzee hand. Given 5 dice values, compute the score for a chosen catego
 ## Objective
 Implement `score(dice: &[u32; 5], category: Category) -> u32` for all scoring categories.
 
-## Domaines
+## Domains
 
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : catégories représentées en enum, pattern matching exhaustif sur les combinaisons de dés
-- **Fondamentaux et Mécanique du Langage** : tableaux de comptage, itérateurs, arithmétique entière
+`Enums` `Pattern Matching` `Arrays` `Counting`
 
 ## How to run a kata
 All katas share the same structure:

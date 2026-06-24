@@ -14,10 +14,9 @@ Parse scanned bank account numbers. Each digit is represented as a 3×3 pattern 
 ## Objective
 Implement `parse_digits(input: &str) -> Result<u64, String>` that parses the OCR input into a number and returns `Err` if any digit is unrecognised or the checksum is invalid.
 
-## Domaines
+## Domains
 
-- **Fondamentaux et Mécanique du Langage** : parsing de strings, slicing 2D, itérateurs, gestion de l'encodage caractère par caractère
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : `Option` pour la reconnaissance de digit, `Result` pour la validation globale, propagation d'erreurs avec `?`
+`Strings` `Parsing` `Error Handling` `Slices`
 
 ## How to run a kata
 All katas share the same structure:

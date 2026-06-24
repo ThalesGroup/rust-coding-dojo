@@ -14,11 +14,9 @@ A two-player trading card game loosely based on Hearthstone. Each player starts 
 ## Objective
 Implement `Player` and `Game` structs with turn-based gameplay: `start_turn`, `draw`, `can_play`, `play_card`, and `check_winner`.
 
-## Domaines
+## Domains
 
-- **Test-Driven Development (TDD)** : construire un jeu complexe pas à pas avec des tests unitaires ciblés
-- **Modélisation de types (Enums, Pattern Matching, Option/Result)** : état du jeu, résultat `GameResult`, gestion des cas limites
-- **Design Patterns idiomatiques** : séparation claire des responsabilités entre `Player` et `Game`
+`Enums` `TDD` `State Machine` `Structs`
 
 ## How to run a kata
 All katas share the same structure:

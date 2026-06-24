@@ -32,9 +32,9 @@ All other dice score 0.
 ## Objective
 Implement `score(dice: &[u32]) -> u32` that computes the total score for a given set of dice.
 
-## Domaines
+## Domains
 
-- **Fondamentaux et Mécanique du Langage** : tableaux, comptage, itérateurs, arithmétique
+`Basics` `Arrays` `Counting` `Iterators`
 
 ## How to run a kata
 All katas share the same structure:

@@ -3,6 +3,11 @@ import { useApp } from '../store/AppContext'
 import { getKataById, KATAS } from '../data/katas'
 import { askFerris, explainCode, reviewCode } from '../llm/ferris'
 import type { ChatMessage } from '../types'
+import { EditorView } from '@codemirror/view'
+import { EditorState } from '@codemirror/state'
+import { basicSetup } from '@codemirror/basic-setup'
+import { rust } from '@codemirror/lang-rust'
+import { oneDark } from '@codemirror/theme-one-dark'
 
 // Simulated WASM sandbox result
 function runInSandbox(kata: ReturnType<typeof getKataById>, code: string) {
@@ -52,6 +57,8 @@ export function KataScreen() {
   const [hintIndex, setHintIndex] = useState(0)
   const [isReplying, setIsReplying] = useState(false)
   const chatEndRef = useRef<HTMLDivElement>(null)
+  const editorRef = useRef<HTMLDivElement>(null)
+  const editorViewRef = useRef<EditorView | null>(null)
   const alreadyCompleted = useRef(false)
 
   // Reset when kata changes
@@ -69,6 +76,52 @@ export function KataScreen() {
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [chat])
+
+  // CodeMirror editor
+  useEffect(() => {
+    if (!editorRef.current) return
+
+    if (editorViewRef.current) {
+      editorViewRef.current.destroy()
+      editorViewRef.current = null
+    }
+
+    const updateListener = EditorView.updateListener.of(update => {
+      if (update.docChanged) {
+        setCode(update.state.doc.toString())
+      }
+    })
+
+    const state = EditorState.create({
+      doc: kata.starterCode,
+      extensions: [
+        basicSetup,
+        rust(),
+        oneDark,
+        updateListener,
+        EditorView.lineWrapping,
+      ]
+    })
+
+    const view = new EditorView({
+      state,
+      parent: editorRef.current,
+    })
+
+    editorViewRef.current = view
+
+    return () => {
+      view.destroy()
+      editorViewRef.current = null
+    }
+  }, [kata.id])
+
+  // Sync editor content when reset is triggered
+  useEffect(() => {
+    if (editorViewRef.current && code === kata.starterCode) {
+      // Editor is already set up with starterCode from the creation effect
+    }
+  }, [kata.starterCode])
 
   const run = useCallback(() => {
     const { tests: newTests, output: newOutput, allPass } = runInSandbox(kata, code)
@@ -120,6 +173,11 @@ export function KataScreen() {
   }, [input, code, kata.title, chat])
 
   const reset = useCallback(() => {
+    if (editorViewRef.current) {
+      editorViewRef.current.dispatch({
+        changes: { from: 0, to: editorViewRef.current.state.doc.length, insert: kata.starterCode }
+      })
+    }
     setCode(kata.starterCode)
     setRan(false)
     setTests([])
@@ -210,24 +268,7 @@ export function KataScreen() {
           </div>
         </div>
 
-        <textarea
-          className="code-editor"
-          value={code}
-          onChange={e => setCode(e.target.value)}
-          spellCheck={false}
-          onKeyDown={e => {
-            if (e.key === 'Tab') {
-              e.preventDefault()
-              const start = e.currentTarget.selectionStart
-              const end = e.currentTarget.selectionEnd
-              const newCode = code.substring(0, start) + '    ' + code.substring(end)
-              setCode(newCode)
-              requestAnimationFrame(() => {
-                e.currentTarget.selectionStart = e.currentTarget.selectionEnd = start + 4
-              })
-            }
-          }}
-        />
+        <div className="code-editor" ref={editorRef} />
 
         <div className="editor-output">
           {output.length === 0

@@ -12,11 +12,11 @@ interface PathStep {
 }
 
 const PATH_STEPS: PathStep[] = [
-  { title: 'Possession & déplacement', subtitle: 'Ownership · 6 katas', concept: 'ownership', kataCount: 6, xpTotal: 240, status: 'done' },
-  { title: 'Emprunts & références', subtitle: 'Borrowing · 5 katas', concept: 'borrowing', kataCount: 5, xpTotal: 200, status: 'done' },
-  { title: 'Le Borrow Checker', subtitle: 'Ownership · en cours · kata 12/40', concept: 'ownership', kataCount: 1, xpTotal: 40, status: 'active', kataId: 'kata-12', progress: 40 },
-  { title: 'Traits & génériques', subtitle: 'Traits · 7 katas', concept: 'traits', kataCount: 7, xpTotal: 350, status: 'locked' },
-  { title: 'Threads & async', subtitle: 'Concurrence · 6 katas', concept: 'concurrency', kataCount: 6, xpTotal: 300, status: 'locked' },
+  { title: 'Les bases de Rust', subtitle: 'Bases · 3 katas', concept: 'bases', kataCount: 3, xpTotal: 90, status: 'done' },
+  { title: 'Structures de données', subtitle: 'Structs · 2 katas', concept: 'structs', kataCount: 2, xpTotal: 105, status: 'done' },
+  { title: 'Ownership & Borrowing', subtitle: 'Ownership · 3 exercices', concept: 'ownership', kataCount: 3, xpTotal: 120, status: 'active', kataId: 'kata-01-starter-03-ownership-borrowing', progress: 40 },
+  { title: 'Ownership & emprunts', subtitle: 'Ownership · 1 kata', concept: 'ownership', kataCount: 1, xpTotal: 45, status: 'locked' },
+  { title: 'Smart pointers', subtitle: 'Structs avancé · 1 kata', concept: 'structs', kataCount: 1, xpTotal: 55, status: 'locked' },
 ]
 
 export function PathScreen() {

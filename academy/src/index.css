@@ -420,16 +420,36 @@ p { margin: 0; }
 .code-editor {
   flex: 1;
   min-height: 0;
-  resize: none;
-  background: var(--bg-editor);
-  color: var(--text-secondary);
-  border: none;
-  outline: none;
-  padding: 18px 20px;
+  overflow: hidden;
+}
+.code-editor .cm-editor {
+  height: 100%;
   font-size: 13.5px;
-  line-height: 1.85;
-  tab-size: 4;
+}
+.code-editor .cm-scroller {
+  overflow: auto;
   font-family: var(--font-mono);
+}
+.code-editor .cm-gutters {
+  border-right: 1px solid rgba(61, 155, 255, 0.15);
+  background: rgba(8, 19, 32, 0.5);
+}
+.code-editor .cm-activeLineGutter {
+  background: rgba(61, 155, 255, 0.08);
+}
+.code-editor .cm-activeLine {
+  background: rgba(61, 155, 255, 0.04);
+}
+.code-editor .cm-cursor {
+  border-left-color: #9fd0ff;
+}
+.code-editor .cm-selectionBackground,
+.code-editor.cm-focused .cm-selectionBackground {
+  background: rgba(61, 155, 255, 0.18);
+}
+.code-editor .cm-matchingBracket {
+  background: rgba(74, 222, 128, 0.15);
+  outline: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .editor-output {

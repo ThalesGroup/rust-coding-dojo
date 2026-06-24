@@ -25,19 +25,19 @@ const AppContext = createContext<AppContextType | null>(null)
 export function AppProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
   const [progress, setProgress] = useState<UserProgress>({
-    xp: 1240,
-    level: 6,
-    streak: 7,
+    xp: 240,
+    level: 2,
+    streak: 3,
     lastPlayDate: new Date().toISOString().slice(0, 10),
     katasCompleted: [],
-    badges: ['borrow-checker', 'no-panic', 'zero-cost'],
+    badges: [],
     questsProgress: {},
     conceptMastery: {
-      ownership: 95, borrowing: 88, lifetimes: 42, structs: 100,
-      traits: 18, generics: 10, concurrency: 0, macros: 0, unsafe: 0, bases: 100
+      ownership: 0, borrowing: 0, lifetimes: 0, structs: 0,
+      traits: 0, generics: 0, concurrency: 0, macros: 0, unsafe: 0, bases: 50
     },
     xpHistory: [],
-    currentKataId: 'kata-12',
+    currentKataId: 'kata-01-starter-00-rustward-sword',
     graalUnlocked: false
   })
   const [screen, setScreenState] = useState<Screen>('kata')
@@ -99,11 +99,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
       const katasCompleted = [...p.katasCompleted, kataId]
       // Badge checks
       const badges = [...p.badges]
-      const ownershipCount = katasCompleted.filter(id => {
-        const k = id // simplified
-        return k.startsWith('kata-0') || k === 'kata-12'
-      }).length
-      if (ownershipCount >= 5 && !badges.includes('borrow-checker')) badges.push('borrow-checker')
+      const ownershipCount = katasCompleted.filter(id =>
+        id.includes('ownership')
+      ).length
+      if (ownershipCount >= 1 && !badges.includes('borrow-checker')) badges.push('borrow-checker')
 
       return { ...p, xp: newXP, level: newLevel, conceptMastery: mastery, katasCompleted, badges }
     })

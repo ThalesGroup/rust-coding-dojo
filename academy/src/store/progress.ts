@@ -11,8 +11,7 @@ const DEFAULT_PROGRESS: UserProgress = {
   level: 6,
   streak: 7,
   lastPlayDate: new Date().toISOString().slice(0, 10),
-  katasCompleted: ['kata-01', 'kata-02', 'kata-03', 'kata-04', 'kata-05', 'kata-06',
-                   'kata-07', 'kata-08', 'kata-09', 'kata-10', 'kata-11'],
+  katasCompleted: ['kata-01-starter-00-rustward-sword', 'kata-01-starter-01-roman-numerals'],
   badges: ['borrow-checker', 'no-panic', 'zero-cost'],
   questsProgress: { 'no-clone-3': 2, 'lifetime-5': 0 },
   conceptMastery: {
@@ -28,7 +27,7 @@ const DEFAULT_PROGRESS: UserProgress = {
     bases: 100
   },
   xpHistory: buildDefaultXPHistory(),
-  currentKataId: 'kata-12',
+  currentKataId: 'kata-01-starter-02-rpn-calculator',
   graalUnlocked: false
 }
 

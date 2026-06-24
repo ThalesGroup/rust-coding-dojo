@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "predev": "node tools/generate-katas.cjs",
     "dev": "vite",
+    "prebuild": "node tools/generate-katas.cjs",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

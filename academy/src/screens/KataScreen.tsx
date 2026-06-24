@@ -8,6 +8,54 @@ import { EditorState } from '@codemirror/state'
 import { basicSetup } from 'codemirror'
 import { rust } from '@codemirror/lang-rust'
 import { oneDark } from '@codemirror/theme-one-dark'
+import { autocompletion, type CompletionContext } from '@codemirror/autocomplete'
+import { lintGutter, setDiagnostics as setLintDiagnostics } from '@codemirror/lint'
+import type { Diagnostic } from '@codemirror/lint'
+import { compileRust, diagnosticsFromRustStderr } from '../editor/rustCompiler'
+
+const CODE_LS_PREFIX = 'rust-dojo-kata-code:'
+const RUST_KEYWORDS = [
+  'fn', 'let', 'mut', 'struct', 'enum', 'impl', 'trait', 'match', 'if', 'else',
+  'for', 'while', 'loop', 'pub', 'use', 'mod', 'crate', 'Self', 'self', 'where',
+  'const', 'static', 'return', 'break', 'continue', 'async', 'await', 'move',
+  'ref', 'type', 'as', 'in', 'unsafe', 'dyn', 'super', 'String', 'Vec', 'Option',
+  'Result', 'Some', 'None', 'Ok', 'Err', 'println!', 'todo!', 'panic!',
+]
+
+function loadSavedCode(kataId: string, fallback: string): string {
+  try {
+    const raw = localStorage.getItem(CODE_LS_PREFIX + kataId)
+    return raw ?? fallback
+  } catch {
+    return fallback
+  }
+}
+
+function saveCode(kataId: string, code: string): void {
+  try {
+    localStorage.setItem(CODE_LS_PREFIX + kataId, code)
+  } catch {
+    // ignore storage failures
+  }
+}
+
+function rustCompletionSource(context: CompletionContext) {
+  const word = context.matchBefore(/[A-Za-z_][A-Za-z0-9_]*/)
+  if (!word && !context.explicit) return null
+
+  const fullText = context.state.doc.toString()
+  const identifiers = fullText.match(/\b[A-Za-z_][A-Za-z0-9_]*\b/g) ?? []
+  const uniq = new Set<string>([...RUST_KEYWORDS, ...identifiers])
+  const options = Array.from(uniq)
+    .slice(0, 500)
+    .map(label => ({ label, type: RUST_KEYWORDS.includes(label) ? 'keyword' : 'variable' as const }))
+
+  return {
+    from: word ? word.from : context.pos,
+    options,
+    validFor: /^[A-Za-z_][A-Za-z0-9_]*$/,
+  }
+}
 
 // Simulated WASM sandbox result
 function runInSandbox(kata: ReturnType<typeof getKataById>, code: string) {
@@ -45,8 +93,9 @@ function runInSandbox(kata: ReturnType<typeof getKataById>, code: string) {
 export function KataScreen() {
   const { progress, currentKataId, setCurrentKata, completeKata, setScreen } = useApp()
   const kata = getKataById(currentKataId) ?? KATAS[11]
+  const initialCode = loadSavedCode(kata.id, kata.starterCode)
 
-  const [code, setCode] = useState(kata.starterCode)
+  const [code, setCode] = useState(initialCode)
   const [ran, setRan] = useState(false)
   const [tests, setTests] = useState<Array<{ name: string; pass: boolean }>>([])
   const [output, setOutput] = useState<Array<{ text: string; color: string }>>([])
@@ -59,15 +108,19 @@ export function KataScreen() {
   const chatEndRef = useRef<HTMLDivElement>(null)
   const editorRef = useRef<HTMLDivElement>(null)
   const editorViewRef = useRef<EditorView | null>(null)
+  const diagnosticsRef = useRef<Diagnostic[]>([])
   const alreadyCompleted = useRef(false)
+  const [isCompiling, setIsCompiling] = useState(false)
 
   // Reset when kata changes
   useEffect(() => {
-    setCode(kata.starterCode)
+    const restoredCode = loadSavedCode(kata.id, kata.starterCode)
+    setCode(restoredCode)
     setRan(false)
     setTests([])
     setOutput([])
     setHintIndex(0)
+    diagnosticsRef.current = []
     alreadyCompleted.current = progress.katasCompleted.includes(kata.id)
     setChat([{ role: 'ferris', text: `Kata : "${kata.title}". ${kata.difficulty === 'facile' ? 'Un kata de niveau facile — bonne chance !' : 'Un challenge qui va muscler ton ownership !'}`, timestamp: Date.now() }])
   }, [kata.id])
@@ -88,16 +141,20 @@ export function KataScreen() {
 
     const updateListener = EditorView.updateListener.of(update => {
       if (update.docChanged) {
-        setCode(update.state.doc.toString())
+        const nextCode = update.state.doc.toString()
+        setCode(nextCode)
+        saveCode(kata.id, nextCode)
       }
     })
 
     const state = EditorState.create({
-      doc: kata.starterCode,
+      doc: loadSavedCode(kata.id, kata.starterCode),
       extensions: [
         basicSetup,
         rust(),
         oneDark,
+        autocompletion({ override: [rustCompletionSource] }),
+        lintGutter(),
         updateListener,
         EditorView.lineWrapping,
       ]
@@ -123,7 +180,32 @@ export function KataScreen() {
     }
   }, [kata.starterCode])
 
-  const run = useCallback(() => {
+  const applyDiagnostics = useCallback((diagnostics: Diagnostic[]) => {
+    diagnosticsRef.current = diagnostics
+    if (editorViewRef.current) {
+      editorViewRef.current.dispatch(setLintDiagnostics(editorViewRef.current.state, diagnostics))
+    }
+  }, [])
+
+  const run = useCallback(async () => {
+    setIsCompiling(true)
+    const compile = await compileRust(code)
+    const compileDiagnostics = diagnosticsFromRustStderr(code, compile.stderr)
+    applyDiagnostics(compileDiagnostics)
+
+    if (!compile.success) {
+      const stderrLines = compile.stderr.split(/\r?\n/).filter(Boolean).slice(0, 8)
+      setOutput([
+        { text: '   Compiling rust-dojo v0.1.0 (playground)', color: '#5a7290' },
+        ...stderrLines.map(line => ({ text: line, color: '#ff8a5c' })),
+      ])
+      setRan(false)
+      setTests([])
+      setChat(prev => [...prev, { role: 'ferris', text: 'Le compilateur Rust réel a trouvé des erreurs. Elles sont soulignées dans l\'éditeur.', timestamp: Date.now() }])
+      setIsCompiling(false)
+      return
+    }
+
     const { tests: newTests, output: newOutput, allPass } = runInSandbox(kata, code)
     setTests(newTests)
     setOutput(newOutput)
@@ -139,7 +221,8 @@ export function KataScreen() {
       alreadyCompleted.current = true
       completeKata(kata.id, kata.concept, kata.xpReward)
     }
-  }, [kata, code, completeKata])
+    setIsCompiling(false)
+  }, [kata, code, completeKata, applyDiagnostics])
 
   const hint = useCallback(() => {
     const idx = Math.min(hintIndex, kata.hints.length - 1)
@@ -177,12 +260,15 @@ export function KataScreen() {
       editorViewRef.current.dispatch({
         changes: { from: 0, to: editorViewRef.current.state.doc.length, insert: kata.starterCode }
       })
+      editorViewRef.current.dispatch(setLintDiagnostics(editorViewRef.current.state, []))
     }
+    saveCode(kata.id, kata.starterCode)
     setCode(kata.starterCode)
     setRan(false)
     setTests([])
     setOutput([])
-  }, [kata.starterCode])
+    diagnosticsRef.current = []
+  }, [kata.id, kata.starterCode])
 
   const passCount = tests.filter(t => t.pass).length
   const testColor = tests.length === 0 ? '#7f9cc4' : passCount === tests.length ? '#8af0c0' : passCount === 0 ? '#7f9cc4' : '#ffd08a'
@@ -262,11 +348,11 @@ export function KataScreen() {
       <div className="kata-editor">
         <div className="editor-toolbar">
           <span className="editor-tab">main.rs</span>
-          <button className="btn-ghost" onClick={reset}>↺ Réinitialiser</button>
-          <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
-            <button className="btn btn--run" onClick={run}>▶ Exécuter</button>
+            <button className="btn-ghost" onClick={reset}>↺ Réinitialiser</button>
+            <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
+            <button className="btn btn--run" onClick={run} disabled={isCompiling}>{isCompiling ? 'Compiling…' : '▶ Exécuter'}</button>
+            </div>
           </div>
-        </div>
 
         <div className="code-editor" ref={editorRef} />
 

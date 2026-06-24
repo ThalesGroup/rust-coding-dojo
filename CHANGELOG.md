@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
+## [v0.4.0] - 2026-06-24
+
+### Fixed
+- **SECURITY** : Historique Git réécrit (`git filter-branch`) pour supprimer les tokens SonarQube hardcodés. Les tokens `squ_...` et `sqp_...` sont remplacés par des placeholders (`<ADMIN_TOKEN>`, `<SONAR_TOKEN>`).
+- CI : retrait de `cargo publish --workspace --dry-run` du workflow de release.
+
+### Merged Pull Requests
+- PR #24 (ThalesGroup/rust-coding-dojo) — Nouvelle PR vers le repo de base après nettoyage des secrets.
+
 ## [v0.3.0] - 2026-06-24
 
 ### Added

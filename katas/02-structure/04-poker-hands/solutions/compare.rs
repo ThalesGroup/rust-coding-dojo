@@ -29,12 +29,25 @@ pub fn compare(black: &Hand, white: &Hand) -> Winner {
 pub fn describe_winner(black: &Hand, white: &Hand) -> String {
     let result = compare(black, white);
     let rank_names = [
-        "high card", "pair", "two pairs", "three of a kind",
-        "straight", "flush", "full house", "four of a kind", "straight flush",
+        "high card",
+        "pair",
+        "two pairs",
+        "three of a kind",
+        "straight",
+        "flush",
+        "full house",
+        "four of a kind",
+        "straight flush",
     ];
     match result {
-        Winner::Black => format!("Black wins. - with {}: {:?}", rank_names[black.rank as usize], black.tie_breakers),
-        Winner::White => format!("White wins. - with {}: {:?}", rank_names[white.rank as usize], white.tie_breakers),
+        Winner::Black => format!(
+            "Black wins. - with {}: {:?}",
+            rank_names[black.rank as usize], black.tie_breakers
+        ),
+        Winner::White => format!(
+            "White wins. - with {}: {:?}",
+            rank_names[white.rank as usize], white.tie_breakers
+        ),
         Winner::Tie => "Tie.".to_string(),
     }
 }

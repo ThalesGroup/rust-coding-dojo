@@ -10,7 +10,7 @@ pub enum Suit {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Card {
-    pub value: u8,  // 2..=14 (Ace = 14)
+    pub value: u8, // 2..=14 (Ace = 14)
     pub suit: Suit,
 }
 

@@ -21,7 +21,9 @@ fn add(numbers: &str) -> Result<i32, String> {
         if part.is_empty() {
             continue;
         }
-        let num: i32 = part.parse().map_err(|_| format!("Invalid number: {}", part))?;
+        let num: i32 = part
+            .parse()
+            .map_err(|_| format!("Invalid number: {}", part))?;
         if num < 0 {
             negatives.push(num);
         }

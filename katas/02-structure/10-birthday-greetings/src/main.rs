@@ -49,12 +49,18 @@ mod tests {
     use super::*;
     use std::cell::RefCell;
 
-    struct InMemoryRepo { friends: Vec<Friend> }
+    struct InMemoryRepo {
+        friends: Vec<Friend>,
+    }
     impl FriendRepository for InMemoryRepo {
-        fn find_all(&self) -> Vec<Friend> { self.friends.clone() }
+        fn find_all(&self) -> Vec<Friend> {
+            self.friends.clone()
+        }
     }
 
-    struct SpySender { sent: RefCell<Vec<String>> }
+    struct SpySender {
+        sent: RefCell<Vec<String>>,
+    }
     impl EmailSender for SpySender {
         fn send(&self, to: &str, _subject: &str, _body: &str) {
             self.sent.borrow_mut().push(to.to_string());
@@ -63,11 +69,25 @@ mod tests {
 
     #[test]
     fn sends_greeting_to_birthday_friend() {
-        let repo = InMemoryRepo { friends: vec![
-            Friend { name: "John".to_string(), birth_month: 10, birth_day: 8, email: "john@example.com".to_string() },
-            Friend { name: "Mary".to_string(), birth_month: 9,  birth_day: 11, email: "mary@example.com".to_string() },
-        ]};
-        let sender = SpySender { sent: RefCell::new(vec![]) };
+        let repo = InMemoryRepo {
+            friends: vec![
+                Friend {
+                    name: "John".to_string(),
+                    birth_month: 10,
+                    birth_day: 8,
+                    email: "john@example.com".to_string(),
+                },
+                Friend {
+                    name: "Mary".to_string(),
+                    birth_month: 9,
+                    birth_day: 11,
+                    email: "mary@example.com".to_string(),
+                },
+            ],
+        };
+        let sender = SpySender {
+            sent: RefCell::new(vec![]),
+        };
         let service = BirthdayService::new(repo, sender);
         service.send_greetings(10, 8);
         // Should send to john, not mary
@@ -76,10 +96,17 @@ mod tests {
 
     #[test]
     fn no_birthday_today_sends_nothing() {
-        let repo = InMemoryRepo { friends: vec![
-            Friend { name: "John".to_string(), birth_month: 10, birth_day: 8, email: "john@example.com".to_string() },
-        ]};
-        let sender = SpySender { sent: RefCell::new(vec![]) };
+        let repo = InMemoryRepo {
+            friends: vec![Friend {
+                name: "John".to_string(),
+                birth_month: 10,
+                birth_day: 8,
+                email: "john@example.com".to_string(),
+            }],
+        };
+        let sender = SpySender {
+            sent: RefCell::new(vec![]),
+        };
         let service = BirthdayService::new(repo, sender);
         service.send_greetings(1, 1);
         todo!("Assert no emails sent")

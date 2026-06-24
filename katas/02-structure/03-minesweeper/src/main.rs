@@ -62,8 +62,16 @@ mod tests {
 
     #[test]
     fn multiple_mines() {
-        let field = vec!["**...".to_string(), ".....".to_string(), ".*...".to_string()];
-        let expected = vec!["**100".to_string(), "33200".to_string(), "1*100".to_string()];
+        let field = vec![
+            "**...".to_string(),
+            ".....".to_string(),
+            ".*...".to_string(),
+        ];
+        let expected = vec![
+            "**100".to_string(),
+            "33200".to_string(),
+            "1*100".to_string(),
+        ];
         assert_eq!(annotate(&field), expected);
     }
 }

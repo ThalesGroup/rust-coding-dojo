@@ -1,17 +1,17 @@
+use crate::combined::{CompetenceMatrix, Employee, Promotable};
+use crate::introduction::{Book, BookType, Library};
+use crate::pattern_matching::{categorize_numbers, is_prime, Shape};
+use crate::string::{count_vowels, longest_word, merge_and_remove_duplicates};
+use crate::traits::{display_elements, Calculator, CustomStruct, MathOperation, Sortable};
 use std::collections::HashMap;
 use std::error::Error;
 use std::f32::consts;
-use crate::combined::{CompetenceMatrix, Employee, Promotable};
-use crate::introduction::{BookType, Book, Library};
-use crate::pattern_matching::{categorize_numbers, is_prime, Shape};
-use crate::string::{count_vowels, longest_word, merge_and_remove_duplicates};
-use crate::traits::{Calculator, CustomStruct, display_elements, MathOperation, Sortable};
 
+mod combined;
 mod introduction;
+mod pattern_matching;
 mod string;
 mod traits;
-mod pattern_matching;
-mod combined;
 
 fn main() {
     // Section 1: Introduction - Exercise 2
@@ -46,7 +46,10 @@ fn main() {
 
     // Display Book Details
     println!("Book 1 Details:");
-    println!("Title: {}, Author: {}, Year: {}, Type: {:?}", book1.title, book1.author, book1.publication_year, book1.book_type);
+    println!(
+        "Title: {}, Author: {}, Year: {}, Type: {:?}",
+        book1.title, book1.author, book1.publication_year, book1.book_type
+    );
     println!("Age of Book 1: {} years", age);
 
     // Display Library Books
@@ -102,15 +105,32 @@ fn main() {
     display_elements(display_elements_vector);
 
     // Section 4: Basics of Traits - Exercise 3
-    let mut custom_struct = CustomStruct { numbers: vec![3, 1, 4, 1, 5, 9] };
+    let mut custom_struct = CustomStruct {
+        numbers: vec![3, 1, 4, 1, 5, 9],
+    };
     custom_struct.sort();
     println!("Sorted Numbers: {:?}", custom_struct.numbers);
 
     // Section 5: Combined Exercise - Exercise 1
     let mut employees = vec![
-        Employee { name: String::from("Alice"), age: 30, job_title: String::from("Manager"), salary: 80000.0 },
-        Employee { name: String::from("Bob"), age: 28, job_title: String::from("Senior Engineer"), salary: 75000.0 },
-        Employee { name: String::from("Charlie"), age: 35, job_title: String::from("Junior Engineer"), salary: 60000.0 },
+        Employee {
+            name: String::from("Alice"),
+            age: 30,
+            job_title: String::from("Manager"),
+            salary: 80000.0,
+        },
+        Employee {
+            name: String::from("Bob"),
+            age: 28,
+            job_title: String::from("Senior Engineer"),
+            salary: 75000.0,
+        },
+        Employee {
+            name: String::from("Charlie"),
+            age: 35,
+            job_title: String::from("Junior Engineer"),
+            salary: 60000.0,
+        },
     ];
 
     // Sort employees by age
@@ -118,7 +138,6 @@ fn main() {
 
     // Section 5: Combined Exercise - Exercise 2
     // Promote employees
-
 
     // Section 5: Combined Exercise - Exercise 3
     // Create competence matrix with skills

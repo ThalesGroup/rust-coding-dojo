@@ -1,6 +1,6 @@
 /*
  * Section 3 : RefCell & Interior Mutability
- * 
+ *
  * - *Exercise 1:* Define a struct `Counter` that wraps an integer inside a `RefCell<i32>`.
  *     - Implement methods `increment`, `get`, and `reset`.
  *     - Demonstrate how interior mutability allows mutation through an immutable reference.

@@ -1,6 +1,6 @@
 /**
  * Section 3 : RefCell & Interior Mutability
- * 
+ *
  * - *Exercise 1:* Define a struct `Counter` that wraps an integer inside a `RefCell<i32>`.
  *     - Implement methods `increment`, `get`, and `reset`.
  *     - Demonstrate how interior mutability allows mutation through an immutable reference.
@@ -18,7 +18,6 @@
  * Define in this module the types, methods, and functions, and use them in `main.rs`.
  * The exercises in this coding dojo are designed to explore real use-cases for RefCell in Rust.
  */
-
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -71,7 +70,6 @@ impl SharedLog {
         }
     }
 }
-
 
 // Section 3 RefCell & Interior Mutability - Exercise 3
 

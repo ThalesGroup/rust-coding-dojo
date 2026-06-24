@@ -12,8 +12,12 @@ fn score(dice: &[u32]) -> u32 {
             let triple = if face == 1 { 1000 } else { face * 100 };
             total += triple * 2u32.pow(c - 3);
         } else {
-            if face == 1 { total += c * 100; }
-            if face == 5 { total += c * 50; }
+            if face == 1 {
+                total += c * 100;
+            }
+            if face == 5 {
+                total += c * 50;
+            }
         }
     }
     total

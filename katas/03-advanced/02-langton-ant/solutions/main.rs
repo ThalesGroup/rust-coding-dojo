@@ -74,7 +74,11 @@ pub fn step(ant: &mut Ant, grid: &mut Grid) {
 }
 
 pub fn simulate(steps: usize) -> (Ant, Grid) {
-    let mut ant = Ant { x: 0, y: 0, direction: Direction::North };
+    let mut ant = Ant {
+        x: 0,
+        y: 0,
+        direction: Direction::North,
+    };
     let mut grid = Grid::default();
     for _ in 0..steps {
         step(&mut ant, &mut grid);
@@ -98,7 +102,11 @@ mod tests {
 
     #[test]
     fn first_step_on_white_turns_right() {
-        let mut ant = Ant { x: 0, y: 0, direction: Direction::North };
+        let mut ant = Ant {
+            x: 0,
+            y: 0,
+            direction: Direction::North,
+        };
         let mut grid = Grid::default();
         step(&mut ant, &mut grid);
         assert_eq!(ant.direction, Direction::East);
@@ -108,7 +116,11 @@ mod tests {
 
     #[test]
     fn second_step_on_white_from_east_turns_south() {
-        let mut ant = Ant { x: 0, y: 0, direction: Direction::North };
+        let mut ant = Ant {
+            x: 0,
+            y: 0,
+            direction: Direction::North,
+        };
         let mut grid = Grid::default();
         step(&mut ant, &mut grid);
         step(&mut ant, &mut grid);

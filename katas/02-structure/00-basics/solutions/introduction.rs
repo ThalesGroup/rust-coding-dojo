@@ -24,7 +24,7 @@ pub struct Book {
     pub title: String,
     pub author: String,
     pub publication_year: u32,
-    pub book_type: BookType
+    pub book_type: BookType,
 }
 
 // Section 1: Introduction - Exercise 3
@@ -35,7 +35,10 @@ pub struct Library {
 impl Library {
     pub fn display_books(&self) {
         for book in &self.books {
-            println!("Title: {}, Author: {}, Year: {}, Type: {:?}", book.title, book.author, book.publication_year, book.book_type);
+            println!(
+                "Title: {}, Author: {}, Year: {}, Type: {:?}",
+                book.title, book.author, book.publication_year, book.book_type
+            );
         }
     }
 }

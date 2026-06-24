@@ -37,7 +37,12 @@ impl Hand {
         freq.sort_by(|a, b| b.0.cmp(&a.0).then(b.1.cmp(&a.1)));
 
         let (rank, tie_breakers) = if is_flush && is_straight {
-            let high = if cards.iter().map(|c| c.value).collect::<Vec<_>>() == vec![14, 5, 4, 3, 2] { 5 } else { cards[0].value };
+            let high = if cards.iter().map(|c| c.value).collect::<Vec<_>>() == vec![14, 5, 4, 3, 2]
+            {
+                5
+            } else {
+                cards[0].value
+            };
             (HandRank::StraightFlush, vec![high])
         } else if freq[0].0 == 4 {
             (HandRank::FourOfAKind, vec![freq[0].1, freq[1].1])
@@ -47,7 +52,12 @@ impl Hand {
             let values: Vec<u8> = cards.iter().map(|c| c.value).collect();
             (HandRank::Flush, values)
         } else if is_straight {
-            let high = if cards.iter().map(|c| c.value).collect::<Vec<_>>() == vec![14, 5, 4, 3, 2] { 5 } else { cards[0].value };
+            let high = if cards.iter().map(|c| c.value).collect::<Vec<_>>() == vec![14, 5, 4, 3, 2]
+            {
+                5
+            } else {
+                cards[0].value
+            };
             (HandRank::Straight, vec![high])
         } else if freq[0].0 == 3 {
             let kickers: Vec<u8> = freq.iter().skip(1).map(|(_, v)| *v).collect();
@@ -68,7 +78,11 @@ impl Hand {
             (HandRank::HighCard, values)
         };
 
-        Hand { cards, rank, tie_breakers }
+        Hand {
+            cards,
+            rank,
+            tie_breakers,
+        }
     }
 
     pub fn from_str(s: &str) -> Self {

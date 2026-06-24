@@ -25,7 +25,9 @@ fn main() {
     let perfect: Vec<u32> = vec![10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
     println!("Perfect game score: {}", score(&perfect));
 
-    let all_spares: Vec<u32> = vec![5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
+    let all_spares: Vec<u32> = vec![
+        5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+    ];
     println!("All spares score: {}", score(&all_spares));
 
     let gutter: Vec<u32> = vec![0; 20];

@@ -1,6 +1,6 @@
 /**
  * Section 1 : Box Smart Pointers
- * 
+ *
  * - *Exercise 1:* Define an enum `List` to implement a singly linked list of integers.
  *     - Use `Box` to enable recursive types.
  *     - Implement a method `prepend` to add elements to the front of the list.
@@ -108,7 +108,7 @@ pub struct MyRc<T> {
     count: usize,
 }
 
-impl<T : Copy> MyRc<T> {
+impl<T: Copy> MyRc<T> {
     pub fn new(value: T) -> Self {
         MyRc {
             value: Box::new(value),

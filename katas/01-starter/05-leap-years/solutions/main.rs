@@ -13,7 +13,15 @@ fn is_leap_year(year: u32) -> bool {
 fn main() {
     let test_years = [1900, 2000, 2004, 2008, 2012, 2016, 2020, 2024, 2100];
     for year in test_years {
-        println!("{}: {}", year, if is_leap_year(year) { "leap year" } else { "not leap year" });
+        println!(
+            "{}: {}",
+            year,
+            if is_leap_year(year) {
+                "leap year"
+            } else {
+                "not leap year"
+            }
+        );
     }
 }
 

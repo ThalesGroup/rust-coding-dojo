@@ -7,13 +7,19 @@ fn berlin_clock(time: &str) -> String {
     let row2: String = (0..4).map(|i| if i < h / 5 { 'R' } else { 'O' }).collect();
     let row3: String = (0..4).map(|i| if i < h % 5 { 'R' } else { 'O' }).collect();
 
-    let row4: String = (1..=11).map(|i| {
-        if i <= m / 5 {
-            if i % 3 == 0 { 'R' } else { 'Y' }
-        } else {
-            'O'
-        }
-    }).collect();
+    let row4: String = (1..=11)
+        .map(|i| {
+            if i <= m / 5 {
+                if i % 3 == 0 {
+                    'R'
+                } else {
+                    'Y'
+                }
+            } else {
+                'O'
+            }
+        })
+        .collect();
 
     let row5: String = (0..4).map(|i| if i < m % 5 { 'Y' } else { 'O' }).collect();
 

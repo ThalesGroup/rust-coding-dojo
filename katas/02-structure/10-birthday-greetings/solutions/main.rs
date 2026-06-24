@@ -46,12 +46,18 @@ mod tests {
     use super::*;
     use std::cell::RefCell;
 
-    struct InMemoryRepo { friends: Vec<Friend> }
+    struct InMemoryRepo {
+        friends: Vec<Friend>,
+    }
     impl FriendRepository for InMemoryRepo {
-        fn find_all(&self) -> Vec<Friend> { self.friends.clone() }
+        fn find_all(&self) -> Vec<Friend> {
+            self.friends.clone()
+        }
     }
 
-    struct SpySender { sent: RefCell<Vec<String>> }
+    struct SpySender {
+        sent: RefCell<Vec<String>>,
+    }
     impl EmailSender for SpySender {
         fn send(&self, to: &str, _: &str, _: &str) {
             self.sent.borrow_mut().push(to.to_string());
@@ -69,11 +75,12 @@ mod tests {
 
     #[test]
     fn sends_greeting_to_birthday_friend() {
-        let repo = InMemoryRepo { friends: vec![
-            make_friend("John", 10, 8),
-            make_friend("Mary", 9, 11),
-        ]};
-        let sender = SpySender { sent: RefCell::new(vec![]) };
+        let repo = InMemoryRepo {
+            friends: vec![make_friend("John", 10, 8), make_friend("Mary", 9, 11)],
+        };
+        let sender = SpySender {
+            sent: RefCell::new(vec![]),
+        };
         let service = BirthdayService::new(repo, sender);
         service.send_greetings(10, 8);
         let sent = service.sender.sent.borrow();
@@ -83,8 +90,12 @@ mod tests {
 
     #[test]
     fn no_birthday_sends_nothing() {
-        let repo = InMemoryRepo { friends: vec![make_friend("John", 10, 8)] };
-        let sender = SpySender { sent: RefCell::new(vec![]) };
+        let repo = InMemoryRepo {
+            friends: vec![make_friend("John", 10, 8)],
+        };
+        let sender = SpySender {
+            sent: RefCell::new(vec![]),
+        };
         let service = BirthdayService::new(repo, sender);
         service.send_greetings(1, 1);
         assert!(service.sender.sent.borrow().is_empty());

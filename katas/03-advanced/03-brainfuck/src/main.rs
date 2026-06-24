@@ -64,7 +64,10 @@ mod tests {
     #[test]
     fn hello_world() {
         let prog = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
-        assert_eq!(Interpreter::run(prog, ""), Ok("Hello, World!\n".to_string()));
+        assert_eq!(
+            Interpreter::run(prog, ""),
+            Ok("Hello, World!\n".to_string())
+        );
     }
 
     #[test]

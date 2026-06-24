@@ -1,5 +1,5 @@
 struct Container {
-    str: String
+    str: String,
 }
 
 impl Drop for Container {
@@ -15,9 +15,7 @@ fn consume(str_consumed: Container) {
 fn main() {
     let str_1 = String::from("string");
 
-    let container = Container {
-        str: str_1
-    };
+    let container = Container { str: str_1 };
 
     println!("Before function call");
     consume(container);

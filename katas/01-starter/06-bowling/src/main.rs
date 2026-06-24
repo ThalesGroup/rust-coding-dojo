@@ -17,7 +17,9 @@ fn main() {
     println!("Perfect game score: {}", score(&perfect));
 
     // All spares with 5: 21 rolls = 150
-    let all_spares: Vec<u32> = vec![5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
+    let all_spares: Vec<u32> = vec![
+        5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+    ];
     println!("All spares score: {}", score(&all_spares));
 
     // All gutter balls: 20 rolls of 0 = 0

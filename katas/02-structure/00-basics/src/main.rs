@@ -1,8 +1,8 @@
-mod introduction;
-mod string;
-mod pattern_matching;
-mod traits;
 mod combined;
+mod introduction;
+mod pattern_matching;
+mod string;
+mod traits;
 
 fn main() {
     todo!()

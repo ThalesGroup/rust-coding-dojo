@@ -1,6 +1,6 @@
 /*
  * Section 4 : Rc + RefCell Combined
- * 
+ *
  * - *Exercise 1:* Implement a bidirectional `Person` struct using `Rc<RefCell<T>>`.
  *     - Each `Person` has a name and an optional `friend`.
  *     - Use `Rc<RefCell<Person>>` to allow two persons to point to each other.

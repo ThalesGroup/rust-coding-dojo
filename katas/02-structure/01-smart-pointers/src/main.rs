@@ -1,9 +1,9 @@
 #![allow(clippy::duplicate_mod)]
 
 mod r#box;
+mod combined;
 mod rc;
 mod refcell;
-mod combined;
 
 fn main() {
     todo!()

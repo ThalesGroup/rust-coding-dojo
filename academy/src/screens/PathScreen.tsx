@@ -1,26 +1,29 @@
 import { useApp } from '../store/AppContext'
+import { KATAS } from '../data/katas'
+import type { Difficulty } from '../types'
 
-interface PathStep {
-  title: string
-  subtitle: string
-  concept: string
-  kataCount: number
-  xpTotal: number
-  status: 'done' | 'active' | 'locked'
-  kataId?: string
-  progress?: number
+const DIFFICULTY_ORDER: Difficulty[] = ['facile', 'moyen', 'difficile', 'expert']
+
+function getAccessibleDifficulty(katasCompleted: string[]): Difficulty {
+  const done = new Set(katasCompleted)
+  const facileIds = KATAS.filter(k => k.difficulty === 'facile').map(k => k.id)
+  const moyenIds = KATAS.filter(k => k.difficulty === 'moyen').map(k => k.id)
+  const difficileIds = KATAS.filter(k => k.difficulty === 'difficile').map(k => k.id)
+
+  const allFacileDone = facileIds.every(id => done.has(id))
+  const allMoyenDone = moyenIds.every(id => done.has(id))
+  const allDifficileDone = difficileIds.every(id => done.has(id))
+
+  if (allDifficileDone) return 'expert'
+  if (allMoyenDone) return 'difficile'
+  if (allFacileDone) return 'moyen'
+  return 'facile'
 }
 
-const PATH_STEPS: PathStep[] = [
-  { title: 'Les bases de Rust', subtitle: 'Bases · 3 katas', concept: 'bases', kataCount: 3, xpTotal: 90, status: 'done' },
-  { title: 'Structures de données', subtitle: 'Structs · 2 katas', concept: 'structs', kataCount: 2, xpTotal: 105, status: 'done' },
-  { title: 'Ownership & Borrowing', subtitle: 'Ownership · 3 exercices', concept: 'ownership', kataCount: 3, xpTotal: 120, status: 'active', kataId: 'kata-01-starter-03-ownership-borrowing', progress: 40 },
-  { title: 'Ownership & emprunts', subtitle: 'Ownership · 1 kata', concept: 'ownership', kataCount: 1, xpTotal: 45, status: 'locked' },
-  { title: 'Smart pointers', subtitle: 'Structs avancé · 1 kata', concept: 'structs', kataCount: 1, xpTotal: 55, status: 'locked' },
-]
-
 export function PathScreen() {
-  const { setScreen, setCurrentKata } = useApp()
+  const { progress, setScreen, setCurrentKata } = useApp()
+  const currentDifficulty = getAccessibleDifficulty(progress.katasCompleted)
+  const currentIdx = DIFFICULTY_ORDER.indexOf(currentDifficulty)
 
   const goToKata = (kataId: string) => {
     setCurrentKata(kataId)
@@ -30,69 +33,90 @@ export function PathScreen() {
   return (
     <div className="path-screen">
       <div className="path-content">
-        <h2 className="screen-title">Chemin recommandé</h2>
-        <p className="screen-subtitle">Débutant → Ownership → Lifetimes → Traits → Concurrence · adaptatif</p>
+        <h2 className="screen-title">Parcours</h2>
+        <p className="screen-subtitle">{progress.firstName ? `${progress.firstName}, c` : 'C'}hoisis un kata et commence à coder !</p>
 
-        <div className="path-list">
-          {PATH_STEPS.map((step, i) => {
-            if (step.status === 'done') {
-              return (
-                <div key={i} className="path-step path-step--done">
-                  <div className="path-step-icon path-step-icon--done">✓</div>
-                  <div className="path-step-body">
-                    <div className="path-step-title">{step.title}</div>
-                    <div className="path-step-sub">{step.subtitle}</div>
-                  </div>
-                  <span className="path-step-xp" style={{ color: '#8af0c0' }}>+{step.xpTotal} XP</span>
-                </div>
-              )
-            }
+        {DIFFICULTY_ORDER.map((diff, diffIdx) => {
+          const katas = KATAS.filter(k => k.difficulty === diff)
+          if (katas.length === 0) return null
+          const unlocked = diffIdx <= currentIdx
+          const diffPassed = diffIdx < currentIdx
 
-            if (step.status === 'active') {
-              return (
-                <button
-                  key={i}
-                  className="path-step path-step--active glow"
-                  onClick={() => step.kataId && goToKata(step.kataId)}
-                >
-                  <div className="path-step-icon path-step-icon--active">▶</div>
-                  <div className="path-step-body" style={{ flex: 1 }}>
-                    <div className="path-step-title">{step.title}</div>
-                    <div className="path-step-sub" style={{ color: '#9fd0ff', marginBottom: 7 }}>{step.subtitle}</div>
-                    <div className="progress-track">
-                      <div className="progress-fill" style={{ width: `${step.progress ?? 0}%`, background: '#3d9bff' }} />
-                    </div>
-                  </div>
-                  <span className="btn btn--primary" style={{ padding: '9px 15px', fontSize: 11 }}>Continuer</span>
-                </button>
-              )
-            }
-
-            return (
-              <div key={i} className="path-step path-step--locked">
-                <div className="path-step-icon path-step-icon--locked">🔒</div>
-                <div className="path-step-body">
-                  <div className="path-step-title" style={{ color: '#cfe2ff' }}>{step.title}</div>
-                  <div className="path-step-sub">{step.subtitle}</div>
-                </div>
-                <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: '#7f9cc4', fontWeight: 700 }}>verrouillé</span>
+          return (
+            <div key={diff} className="path-difficulty-group">
+              <div className="path-difficulty-header">
+                <span className={`path-difficulty-badge path-difficulty-badge--${diff}`}>
+                  {diffPassed ? '✓' : unlocked ? '●' : '🔒'} {diff.charAt(0).toUpperCase() + diff.slice(1)}
+                </span>
+                <span className="path-difficulty-count">{katas.filter(k => progress.katasCompleted.includes(k.id)).length}/{katas.length}</span>
               </div>
-            )
-          })}
-        </div>
+              <div className="path-list">
+                {katas.map(kata => {
+                  const completed = progress.katasCompleted.includes(kata.id)
+                  const active = kata.id === progress.currentKataId
+
+                  if (!unlocked && !completed) {
+                    return (
+                      <div key={kata.id} className="path-step path-step--locked">
+                        <div className="path-step-icon path-step-icon--locked">🔒</div>
+                        <div className="path-step-body">
+                          <div className="path-step-title" style={{ color: '#cfe2ff' }}>{kata.title}</div>
+                          <div className="path-step-sub">{kata.concept}</div>
+                        </div>
+                      </div>
+                    )
+                  }
+
+                  if (completed) {
+                    return (
+                      <div key={kata.id} className="path-step path-step--done">
+                        <div className="path-step-icon path-step-icon--done">✓</div>
+                        <div className="path-step-body">
+                          <div className="path-step-title">{kata.title}</div>
+                          <div className="path-step-sub">{kata.concept} · +{kata.xpReward} XP</div>
+                        </div>
+                        <button className="btn-ghost" onClick={() => goToKata(kata.id)}>Rouvrir</button>
+                      </div>
+                    )
+                  }
+
+                  return (
+                    <button
+                      key={kata.id}
+                      className={`path-step path-step--active ${active ? 'glow' : ''}`}
+                      onClick={() => goToKata(kata.id)}
+                    >
+                      <div className="path-step-icon path-step-icon--active">▶</div>
+                      <div className="path-step-body" style={{ flex: 1 }}>
+                        <div className="path-step-title">{kata.title}</div>
+                        <div className="path-step-sub" style={{ color: '#9fd0ff', marginBottom: 4 }}>{kata.concept} · +{kata.xpReward} XP</div>
+                        <div className="kata-diff-tag" style={{ color: diff === 'facile' ? '#8af0c0' : diff === 'moyen' ? '#ffd08a' : '#ff8a5c', fontSize: 10 }}>
+                          {diff}
+                        </div>
+                      </div>
+                      <span className="btn btn--primary" style={{ padding: '9px 15px', fontSize: 11 }}>Commencer</span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
 
         {/* Le Graal mystery teaser */}
-        <button
-          className="path-graal-teaser shine"
-          onClick={() => setScreen('graal')}
-        >
-          <div className="path-graal-icon">🎁</div>
-          <div className="path-graal-body">
-            <div className="path-graal-title">À la fin du parcours… une surprise t'attend 🤫</div>
-            <div className="path-graal-desc">Une récompense légendaire, scellée jusqu'à la dernière épreuve. Personne ne sait ce que c'est avant de l'avoir débloquée.</div>
-          </div>
-          <span className="btn btn--golden" style={{ padding: '9px 14px', fontSize: 11, whiteSpace: 'nowrap' }}>Voir la quête →</span>
-        </button>
+        {currentDifficulty === 'expert' && (
+          <button
+            className="path-graal-teaser shine"
+            onClick={() => setScreen('graal')}
+          >
+            <div className="path-graal-icon">🎁</div>
+            <div className="path-graal-body">
+              <div className="path-graal-title">À la fin du parcours… une surprise t'attend 🤫</div>
+              <div className="path-graal-desc">Une récompense légendaire, scellée jusqu'à la dernière épreuve. Personne ne sait ce que c'est avant de l'avoir débloquée.</div>
+            </div>
+            <span className="btn btn--golden" style={{ padding: '9px 14px', fontSize: 11, whiteSpace: 'nowrap' }}>Voir la quête →</span>
+          </button>
+        )}
       </div>
     </div>
   )

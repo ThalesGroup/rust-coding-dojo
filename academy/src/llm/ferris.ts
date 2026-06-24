@@ -1,7 +1,7 @@
-import { generateLocalFerrisReply, preloadModel, isModelReady, getModelInfo, type FerrisContext } from './localWllama'
+import { generateLocalFerrisReply, preloadModel, isModelReady, getModelInfo, getDownloadProgress, type FerrisContext } from './localWllama'
 import type { ChatMessage } from '../types'
 
-export { preloadModel, isModelReady, getModelInfo }
+export { preloadModel, isModelReady, getModelInfo, getDownloadProgress }
 
 /**
  * Module Ferris — mentor local wllama avec fallback règles.

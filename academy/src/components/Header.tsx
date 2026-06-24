@@ -61,7 +61,7 @@ export function Header() {
           </div>
         </div>
 
-        <div className="avatar">L</div>
+        <div className="avatar">{progress.firstName?.charAt(0) || '?'}</div>
       </div>
     </header>
   )

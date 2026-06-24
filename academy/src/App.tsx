@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react'
 import { AppProvider, useApp } from './store/AppContext'
 import { Header } from './components/Header'
 import { KataScreen } from './screens/KataScreen'
@@ -7,8 +8,55 @@ import { DashScreen } from './screens/DashScreen'
 import { ProfileScreen } from './screens/ProfileScreen'
 import { GraalScreen } from './screens/GraalScreen'
 
+function OnboardingModal() {
+  const { setFirstName } = useApp()
+  const [name, setName] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [])
+
+  const submit = () => {
+    const v = name.trim()
+    if (v) setFirstName(v)
+  }
+
+  return (
+    <div className="onboarding-overlay">
+      <div className="onboarding-modal">
+        <div className="onboarding-crab">🦀</div>
+        <h1 className="onboarding-title">Bienvenue sur Rust Dojo</h1>
+        <p className="onboarding-desc">
+          Tu vas apprendre le Rust pas à pas à travers des défis interactifs.<br />
+          Chaque kata te fait gagner de l'XP et débloque le niveau suivant.
+        </p>
+        <p className="onboarding-desc" style={{ marginTop: 8 }}>
+          Commence par les katas <strong>faciles</strong>, maîtrise les bases,
+          puis progresse vers les niveaux <strong>moyen</strong> et <strong>difficile</strong>.
+        </p>
+        <div className="onboarding-input-row">
+          <input
+            ref={inputRef}
+            className="onboarding-input"
+            type="text"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            onKeyDown={e => { if (e.key === 'Enter') submit() }}
+            placeholder="Ton prénom…"
+            maxLength={20}
+          />
+          <button className="btn btn--primary onboarding-btn" onClick={submit} disabled={!name.trim()}>
+            C'est parti →
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function AppContent() {
-  const { screen, isLoading } = useApp()
+  const { screen, isLoading, showOnboarding } = useApp()
 
   if (isLoading) {
     return (
@@ -30,6 +78,7 @@ function AppContent() {
         {screen === 'profile' && <ProfileScreen />}
         {screen === 'graal' && <GraalScreen />}
       </main>
+      {showOnboarding && <OnboardingModal />}
     </div>
   )
 }

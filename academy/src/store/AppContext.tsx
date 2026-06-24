@@ -1,12 +1,13 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react'
 import type { UserProgress, Screen, Concept } from '../types'
-import { loadProgress, saveProgress, getLevelFromXP, updateStreak } from '../store/progress'
+import { loadProgress, saveProgress, getLevelFromXP, updateStreak, EMPTY_PROGRESS } from '../store/progress'
 
 interface AppState {
   progress: UserProgress
   screen: Screen
   currentKataId: string
   isLoading: boolean
+  showOnboarding: boolean
 }
 
 interface AppActions {
@@ -16,6 +17,7 @@ interface AppActions {
   completeKata: (kataId: string, concept: Concept, xp: number) => void
   unlockGraal: () => void
   saveState: () => void
+  setFirstName: (name: string) => void
 }
 
 type AppContextType = AppState & AppActions
@@ -24,24 +26,10 @@ const AppContext = createContext<AppContextType | null>(null)
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
-  const [progress, setProgress] = useState<UserProgress>({
-    xp: 240,
-    level: 2,
-    streak: 3,
-    lastPlayDate: new Date().toISOString().slice(0, 10),
-    katasCompleted: [],
-    badges: [],
-    questsProgress: {},
-    conceptMastery: {
-      ownership: 0, borrowing: 0, lifetimes: 0, structs: 0,
-      traits: 0, generics: 0, concurrency: 0, macros: 0, unsafe: 0, bases: 50
-    },
-    xpHistory: [],
-    currentKataId: 'kata-01-starter-00-rustward-sword',
-    graalUnlocked: false
-  })
-  const [screen, setScreenState] = useState<Screen>('kata')
-  const [currentKataId, setCurrentKataIdState] = useState('kata-12')
+  const [showOnboarding, setShowOnboarding] = useState(false)
+  const [progress, setProgress] = useState<UserProgress>(EMPTY_PROGRESS)
+  const [screen, setScreenState] = useState<Screen>('path')
+  const [currentKataId, setCurrentKataIdState] = useState('kata-01-starter-00-rustward-sword')
 
   useEffect(() => {
     loadProgress().then(p => {
@@ -49,6 +37,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setProgress(updated)
       setCurrentKataIdState(updated.currentKataId)
       setIsLoading(false)
+      if (!updated.firstName) {
+        setShowOnboarding(true)
+      }
     })
   }, [])
 
@@ -112,10 +103,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setProgress(p => ({ ...p, graalUnlocked: true }))
   }, [])
 
+  const setFirstName = useCallback((name: string) => {
+    setProgress(p => {
+      const updated = { ...p, firstName: name }
+      saveProgress(updated)
+      return updated
+    })
+    setShowOnboarding(false)
+  }, [])
+
   return (
     <AppContext.Provider value={{
-      progress, screen, currentKataId, isLoading,
-      setScreen, setCurrentKata, addXP, completeKata, unlockGraal, saveState
+      progress, screen, currentKataId, isLoading, showOnboarding,
+      setScreen, setCurrentKata, addXP, completeKata, unlockGraal, saveState, setFirstName
     }}>
       {children}
     </AppContext.Provider>

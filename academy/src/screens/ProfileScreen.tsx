@@ -28,7 +28,7 @@ export function ProfileScreen() {
 
         <div className="profile-info">
           <h2 className="profile-name">
-            Léa · <span style={{ color: '#4fd6e0' }}>Niveau {progress.level}</span>
+            {progress.firstName || 'Apprenti'} · <span style={{ color: '#4fd6e0' }}>Niveau {progress.level}</span>
           </h2>
           <div className="profile-title">
             Apprentie du Borrow Checker · {progress.xp} XP

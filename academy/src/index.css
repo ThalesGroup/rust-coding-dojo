@@ -1144,6 +1144,113 @@ p { margin: 0; }
 }
 .claim-success code { font-family: var(--font-mono); }
 
+/* ===== ONBOARDING ===== */
+.onboarding-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 15, 27, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+}
+.onboarding-modal {
+  background: linear-gradient(145deg, #0f1d32, #0a1628);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px 40px 40px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+}
+.onboarding-crab {
+  font-size: 64px;
+  margin-bottom: 16px;
+  animation: floaty 3s ease-in-out infinite;
+}
+.onboarding-title {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 12px;
+}
+.onboarding-desc {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+.onboarding-input-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+  justify-content: center;
+}
+.onboarding-input {
+  flex: 1;
+  max-width: 220px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.onboarding-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-subtle);
+}
+.onboarding-btn {
+  padding: 12px 24px !important;
+  font-size: 15px !important;
+}
+
+/* ===== PATH SCREEN — Difficulty groups ===== */
+.path-difficulty-group {
+  margin-bottom: 28px;
+}
+.path-difficulty-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.path-difficulty-badge {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.path-difficulty-badge--facile {
+  background: rgba(74,222,128,.12);
+  color: #8af0c0;
+}
+.path-difficulty-badge--moyen {
+  background: rgba(255,194,75,.12);
+  color: #ffd08a;
+}
+.path-difficulty-badge--difficile {
+  background: rgba(255,138,92,.12);
+  color: #ff8a5c;
+}
+.path-difficulty-badge--expert {
+  background: rgba(167,139,250,.12);
+  color: #c9b6ff;
+}
+.path-difficulty-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 1100px) {
   .kata-screen {

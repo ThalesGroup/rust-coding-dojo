@@ -25,8 +25,21 @@ let loadPromise: Promise<void> | null = null
 let actualThreads = 1
 let multithreadAvailable = false
 
+export interface DownloadProgress {
+  phase: 'idle' | 'downloading' | 'loading' | 'ready' | 'error'
+  loaded: number
+  total: number
+  pct: number
+}
+
+let downloadProgress: DownloadProgress = { phase: 'idle', loaded: 0, total: 0, pct: 0 }
+
 export function isModelReady() {
   return wllama?.isModelLoaded() ?? false
+}
+
+export function getDownloadProgress(): DownloadProgress {
+  return downloadProgress
 }
 
 export function getModelInfo() {
@@ -82,6 +95,8 @@ function ensureModelLoaded() {
 
   if (wllama.isModelLoaded()) return Promise.resolve()
 
+  downloadProgress = { phase: 'downloading', loaded: 0, total: 0, pct: 0 }
+
   loadPromise ??= wllama.loadModelFromHF(
     { repo: MODEL.repo, file: MODEL.file },
     {
@@ -89,13 +104,25 @@ function ensureModelLoaded() {
       n_threads: getThreadCount(),
       n_gpu_layers: wllama.isSupportWebGPU() ? 99999 : 0,
       useCache: true,
+      progressCallback: (opts) => {
+        downloadProgress = {
+          phase: 'downloading',
+          loaded: opts.loaded,
+          total: opts.total,
+          pct: Math.round((opts.loaded / (opts.total || 1)) * 100),
+        }
+      },
     },
   ).then(() => {
     if (wllama) {
       multithreadAvailable = wllama.isMultithread()
       actualThreads = wllama.getNumThreads()
+      downloadProgress = { phase: 'ready', loaded: 1, total: 1, pct: 100 }
       console.log(`[ferris] model loaded — ${actualThreads} threads, multithread=${multithreadAvailable}, webgpu=${wllama?.isSupportWebGPU() ?? false}`)
     }
+  }).catch((err) => {
+    downloadProgress = { phase: 'error', loaded: 0, total: 0, pct: 0 }
+    throw err
   })
 
   return loadPromise

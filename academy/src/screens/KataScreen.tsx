@@ -15,6 +15,7 @@ import { compileRust, diagnosticsFromRustStderr } from '../editor/rustCompiler'
 import type { DownloadProgress } from '../llm/localWllama'
 
 const CODE_LS_PREFIX = 'rust-dojo-kata-code:'
+const SOL_CACHE_PREFIX = 'rust-dojo-solution-out:'
 const RUST_KEYWORDS = [
   'fn', 'let', 'mut', 'struct', 'enum', 'impl', 'trait', 'match', 'if', 'else',
   'for', 'while', 'loop', 'pub', 'use', 'mod', 'crate', 'Self', 'self', 'where',
@@ -37,6 +38,22 @@ function saveCode(kataId: string, code: string): void {
     localStorage.setItem(CODE_LS_PREFIX + kataId, code)
   } catch {
     // ignore storage failures
+  }
+}
+
+function getCachedSolutionOutput(kataId: string): string | null {
+  try {
+    return localStorage.getItem(SOL_CACHE_PREFIX + kataId)
+  } catch {
+    return null
+  }
+}
+
+function setCachedSolutionOutput(kataId: string, output: string): void {
+  try {
+    localStorage.setItem(SOL_CACHE_PREFIX + kataId, output)
+  } catch {
+    // ignore
   }
 }
 
@@ -183,12 +200,12 @@ export function KataScreen() {
 
   const run = useCallback(async () => {
     setIsCompiling(true)
-    const result = await compileRust(code)
-    const compileDiagnostics = diagnosticsFromRustStderr(code, result.stderr)
+    const userResult = await compileRust(code)
+    const compileDiagnostics = diagnosticsFromRustStderr(code, userResult.stderr)
     applyDiagnostics(compileDiagnostics)
 
-    if (!result.success) {
-      const stderrLines = result.stderr.split(/\r?\n/).filter(Boolean).slice(0, 12)
+    if (!userResult.success) {
+      const stderrLines = userResult.stderr.split(/\r?\n/).filter(Boolean).slice(0, 12)
       setOutput([
         { text: '   Compiling rust-dojo v0.1.0 (playground)', color: '#5a7290' },
         ...stderrLines.map(line => ({ text: line, color: '#ff8a5c' })),
@@ -200,26 +217,58 @@ export function KataScreen() {
       return
     }
 
-    const { tests: newTests, allPass } = evaluateKataTests(kata, code)
+    const { tests: newTests, allPass: regexPass } = evaluateKataTests(kata, code)
+
+    // Execute solution to get reference stdout (with cache)
+    let solutionStdout: string | null = getCachedSolutionOutput(kata.id)
+    let stdoutMatch = true
+    let solExecuted = false
+    if (!solutionStdout && kata.solutionCode && kata.solutionCode.trim()) {
+      const solResult = await compileRust(kata.solutionCode)
+      if (solResult.success) {
+        solutionStdout = solResult.stdout
+        setCachedSolutionOutput(kata.id, solutionStdout)
+        solExecuted = true
+      } else {
+        solutionStdout = null
+      }
+    } else if (solutionStdout) {
+      solExecuted = true
+    }
+    if (solutionStdout !== null) {
+      stdoutMatch = userResult.stdout.trim() === solutionStdout.trim()
+    }
+
     setTests(newTests)
     setRan(true)
 
+    const allPass = regexPass && stdoutMatch
     const outputLines: Array<{ text: string; color: string }> = []
     outputLines.push({ text: '   Compiling rust-dojo v0.1.0 (rust playground)', color: '#5a7290' })
-    if (result.stdout) {
+    if (userResult.stdout) {
       outputLines.push({ text: '   Running...', color: '#5a7290' })
-      result.stdout.split(/\r?\n/).filter(Boolean).forEach(line => {
+      userResult.stdout.split(/\r?\n/).filter(Boolean).forEach(line => {
         outputLines.push({ text: line, color: '#c0caf5' })
       })
     }
     outputLines.push({ text: '', color: '#4a6080' })
+
+    if (solExecuted) {
+      const matchLabel = stdoutMatch ? '✓ identique' : '✗ différent'
+      const matchColor = stdoutMatch ? '#8af0c0' : '#ff8a5c'
+      outputLines.push({ text: `   Sortie vs solution : ${matchLabel}`, color: matchColor })
+    } else if (kata.solutionCode && kata.solutionCode.trim()) {
+      outputLines.push({ text: '   Sortie solution : (non disponible)', color: '#7f9cc4' })
+    }
     outputLines.push({ text: `   Kata tests: ${newTests.filter(t => t.pass).length}/${newTests.length} passed`, color: allPass ? '#8af0c0' : '#ff8a5c' })
 
     setOutput(outputLines)
 
     const msg: ChatMessage = allPass
-      ? { role: 'ferris', text: `🎉 Les ${newTests.length} tests passent ! +${kata.xpReward} XP ! ${kata.id === 'kata-12' ? 'Emprunt propre, sans .clone(). Joli zero-cost abstraction !' : 'Excellent travail !'}`, timestamp: Date.now() }
-      : { role: 'ferris', text: `Pas encore — ${newTests.filter(t => !t.pass).map(t => t.name).join(', ')} échoue(nt). Clique 💡 Indice +1 si tu bloques.`, timestamp: Date.now() }
+      ? { role: 'ferris', text: `🎉 Les ${newTests.length} tests passent et la sortie correspond à la solution ! +${kata.xpReward} XP !`, timestamp: Date.now() }
+      : stdoutMatch
+        ? { role: 'ferris', text: `Pas encore — ${newTests.filter(t => !t.pass).map(t => t.name).join(', ')} échoue(nt). Clique 💡 Indice +1 si tu bloques.`, timestamp: Date.now() }
+        : { role: 'ferris', text: `La sortie de ton code ne correspond pas à la solution attendue. Vérifie les println!().`, timestamp: Date.now() }
 
     setChat(prev => [...prev, msg])
 
@@ -350,7 +399,7 @@ export function KataScreen() {
               ))}
             </div>
           ) : (
-            <p className="kata-test-hint">Clique sur <b style={{ color: '#9fd0ff' }}>▶ Exécuter</b> pour compiler et exécuter ton code sur le Rust Playground.</p>
+            <p className="kata-test-hint">Clique sur <b style={{ color: '#9fd0ff' }}>▶ Exécuter</b> pour comparer ta sortie avec la solution.</p>
           )}
         </div>
 

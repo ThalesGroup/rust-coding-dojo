@@ -4,9 +4,11 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "predev": "node tools/generate-katas.cjs",
+    "generate": "node scripts/parse-katas.js",
+    "generate:watch": "node scripts/parse-katas.js --watch",
+    "predev": "npm run generate",
     "dev": "vite",
-    "prebuild": "node tools/generate-katas.cjs",
+    "prebuild": "npm run generate",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

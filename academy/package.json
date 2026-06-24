@@ -1,0 +1,33 @@
+{
+  "name": "rust-dojo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node tools/generate-katas.cjs",
+    "dev": "vite",
+    "prebuild": "node tools/generate-katas.cjs",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@codemirror/lang-rust": "^6.0.1",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@codemirror/view": "^6.34.1",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/language": "^6.10.1",
+    "@codemirror/basic-setup": "^0.20.0",
+    "chart.js": "^4.4.6",
+    "idb": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-plugin-pwa": "^0.21.1"
+  }
+}

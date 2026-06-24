@@ -57,42 +57,19 @@ function rustCompletionSource(context: CompletionContext) {
   }
 }
 
-// Simulated WASM sandbox result
-function runInSandbox(kata: ReturnType<typeof getKataById>, code: string) {
-  if (!kata) return { tests: [], output: [], allPass: false }
-
+function evaluateKataTests(kata: ReturnType<typeof getKataById>, code: string) {
+  if (!kata) return { tests: [], allPass: false }
   const tests = kata.tests.map(t => ({
     name: t.name,
     pass: t.check(code)
   }))
-
   const allPass = tests.every(t => t.pass)
-  const output: Array<{ text: string; color: string }> = []
-
-  if (allPass) {
-    output.push({ text: `   Compiling rust-dojo v0.1.0 (wasm sandbox)`, color: '#5a7290' })
-    output.push({ text: `   Running tests...`, color: '#5a7290' })
-    output.push({ text: `test result: ok. ${tests.length} passed; 0 failed`, color: '#8af0c0' })
-  } else {
-    const failed = tests.filter(t => !t.pass)
-    if (code.includes('error') || failed.some(t => t.name.includes('error'))) {
-      output.push({ text: `error[E0382]: borrow of moved value`, color: '#ff8a5c' })
-      output.push({ text: `  --> main.rs  — valeur déplacée puis utilisée`, color: '#9db6d6' })
-    } else {
-      output.push({ text: `   Compiling rust-dojo v0.1.0 (wasm sandbox)`, color: '#5a7290' })
-      output.push({ text: `test result: FAILED. ${tests.filter(t => t.pass).length} passed; ${failed.length} failed`, color: '#ff8a5c' })
-      for (const f of failed) {
-        output.push({ text: `  ✗ ${f.name}`, color: '#ff8a5c' })
-      }
-    }
-  }
-
-  return { tests, output, allPass }
+  return { tests, allPass }
 }
 
 export function KataScreen() {
   const { progress, currentKataId, setCurrentKata, completeKata, setScreen } = useApp()
-  const kata = getKataById(currentKataId) ?? KATAS[11]
+  const kata = getKataById(currentKataId) ?? KATAS[0]
   const initialCode = loadSavedCode(kata.id, kata.starterCode)
 
   const [code, setCode] = useState(initialCode)
@@ -189,30 +166,42 @@ export function KataScreen() {
 
   const run = useCallback(async () => {
     setIsCompiling(true)
-    const compile = await compileRust(code)
-    const compileDiagnostics = diagnosticsFromRustStderr(code, compile.stderr)
+    const result = await compileRust(code)
+    const compileDiagnostics = diagnosticsFromRustStderr(code, result.stderr)
     applyDiagnostics(compileDiagnostics)
 
-    if (!compile.success) {
-      const stderrLines = compile.stderr.split(/\r?\n/).filter(Boolean).slice(0, 8)
+    if (!result.success) {
+      const stderrLines = result.stderr.split(/\r?\n/).filter(Boolean).slice(0, 12)
       setOutput([
         { text: '   Compiling rust-dojo v0.1.0 (playground)', color: '#5a7290' },
         ...stderrLines.map(line => ({ text: line, color: '#ff8a5c' })),
       ])
       setRan(false)
       setTests([])
-      setChat(prev => [...prev, { role: 'ferris', text: 'Le compilateur Rust réel a trouvé des erreurs. Elles sont soulignées dans l\'éditeur.', timestamp: Date.now() }])
+      setChat(prev => [...prev, { role: 'ferris', text: 'Le compilateur Rust a trouvé des erreurs — elles sont soulignées dans l\'éditeur.', timestamp: Date.now() }])
       setIsCompiling(false)
       return
     }
 
-    const { tests: newTests, output: newOutput, allPass } = runInSandbox(kata, code)
+    const { tests: newTests, allPass } = evaluateKataTests(kata, code)
     setTests(newTests)
-    setOutput(newOutput)
     setRan(true)
 
+    const outputLines: Array<{ text: string; color: string }> = []
+    outputLines.push({ text: '   Compiling rust-dojo v0.1.0 (rust playground)', color: '#5a7290' })
+    if (result.stdout) {
+      outputLines.push({ text: '   Running...', color: '#5a7290' })
+      result.stdout.split(/\r?\n/).filter(Boolean).forEach(line => {
+        outputLines.push({ text: line, color: '#c0caf5' })
+      })
+    }
+    outputLines.push({ text: '', color: '#4a6080' })
+    outputLines.push({ text: `   Kata tests: ${newTests.filter(t => t.pass).length}/${newTests.length} passed`, color: allPass ? '#8af0c0' : '#ff8a5c' })
+
+    setOutput(outputLines)
+
     const msg: ChatMessage = allPass
-      ? { role: 'ferris', text: `🎉 Les ${newTests.length} tests passent ! ${allPass ? '+' + kata.xpReward + ' XP !' : ''} ${kata.id === 'kata-12' ? 'Emprunt propre, sans .clone(). Joli zero-cost abstraction !' : 'Excellent travail !'}`, timestamp: Date.now() }
+      ? { role: 'ferris', text: `🎉 Les ${newTests.length} tests passent ! +${kata.xpReward} XP ! ${kata.id === 'kata-12' ? 'Emprunt propre, sans .clone(). Joli zero-cost abstraction !' : 'Excellent travail !'}`, timestamp: Date.now() }
       : { role: 'ferris', text: `Pas encore — ${newTests.filter(t => !t.pass).map(t => t.name).join(', ')} échoue(nt). Clique 💡 Indice +1 si tu bloques.`, timestamp: Date.now() }
 
     setChat(prev => [...prev, msg])
@@ -323,7 +312,7 @@ export function KataScreen() {
               ))}
             </div>
           ) : (
-            <p className="kata-test-hint">Clique sur <b style={{ color: '#9fd0ff' }}>▶ Exécuter</b> pour lancer les tests dans le bac à sable WASM.</p>
+            <p className="kata-test-hint">Clique sur <b style={{ color: '#9fd0ff' }}>▶ Exécuter</b> pour compiler et exécuter ton code sur le Rust Playground.</p>
           )}
         </div>
 
@@ -358,7 +347,7 @@ export function KataScreen() {
 
         <div className="editor-output">
           {output.length === 0
-            ? <span style={{ color: '#4a6080' }}>// Prêt — clique ▶ Exécuter</span>
+            ? <span style={{ color: '#4a6080' }}>// Prêt — clique ▶ Exécuter (compile + run sur Rust Playground)</span>
             : output.map((o, i) => <div key={i} style={{ color: o.color }}>{o.text}</div>)
           }
         </div>

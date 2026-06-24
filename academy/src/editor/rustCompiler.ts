@@ -12,14 +12,14 @@ interface PlaygroundCompileResponse {
   stderr?: string
 }
 
-const PLAYGROUND_COMPILE_URL = 'https://play.rust-lang.org/compile'
+const PLAYGROUND_EXECUTE_URL = 'https://play.rust-lang.org/execute'
 
 export async function compileRust(code: string): Promise<CompileResult> {
   const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 12000)
+  const timeoutId = setTimeout(() => controller.abort(), 30000)
 
   try {
-    const response = await fetch(PLAYGROUND_COMPILE_URL, {
+    const response = await fetch(PLAYGROUND_EXECUTE_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -37,7 +37,7 @@ export async function compileRust(code: string): Promise<CompileResult> {
       return {
         success: false,
         stdout: '',
-        stderr: `error: rust compiler request failed (${response.status})`,
+        stderr: `error: rust playground request failed (${response.status})`,
       }
     }
 
@@ -48,11 +48,11 @@ export async function compileRust(code: string): Promise<CompileResult> {
       stderr: payload.stderr ?? '',
     }
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'unknown compile error'
+    const message = error instanceof Error ? error.message : 'unknown error'
     return {
       success: false,
       stdout: '',
-      stderr: `error: unable to reach rust compiler (${message})`,
+      stderr: `error: unable to reach rust playground (${message})`,
     }
   } finally {
     clearTimeout(timeoutId)

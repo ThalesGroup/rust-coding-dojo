@@ -33,6 +33,10 @@
 This place is intended to provide resources, documentation and templates to organize coding dojo sessions about Rust language.
 Feel free to open an issue if you wish to add a new one, update an existing one or if you have any question.
 
+## Repository Summary
+
+![Repository Summary](repo_summary.png)
+
 ## Rust Katas
 
 A code **kata** is a software development exercise in which the focus is not on solving a task or problem, but on **learning new skills and developing successful routines**. For each code kata, **several solutions** have to be found in order to **learn from mistakes, gain experience** and develop even better solutions.

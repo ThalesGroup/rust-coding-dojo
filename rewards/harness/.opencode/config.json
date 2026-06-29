@@ -1,0 +1,26 @@
+{
+  "rust": {
+    "doc": {
+      "stable": "https://doc.rust-lang.org/stable/",
+      "reference": "https://doc.rust-lang.org/reference/",
+      "book": "https://doc.rust-lang.org/book/",
+      "rustByExample": "https://doc.rust-lang.org/rust-by-example/",
+      "cargo": "https://doc.rust-lang.org/cargo/",
+      "rustc": "https://doc.rust-lang.org/rustc/",
+      "rustdoc": "https://doc.rust-lang.org/rustdoc/",
+      "editionGuide": "https://doc.rust-lang.org/edition-guide/",
+      "nomicon": "https://doc.rust-lang.org/nomicon/",
+      "styleGuide": "https://doc.rust-lang.org/style-guide/",
+      "perf": "https://nnethercote.github.io/perf-book/",
+      "littleBook": "https://rust-lang.github.io/async-book/"
+    },
+    "tools": {
+      "clippy": "https://rust-lang.github.io/rust-clippy/",
+      "playground": "https://play.rust-lang.org/",
+      "crates": "https://crates.io/",
+      "docsrs": "https://docs.rs/"
+    },
+    "edition": "2024",
+    "stableVersion": "latest"
+  }
+}

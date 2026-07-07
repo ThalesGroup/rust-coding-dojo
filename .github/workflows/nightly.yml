@@ -17,5 +17,7 @@ jobs:
         with:
           toolchain: nightly
       - uses: Swatinem/rust-cache@v2
+      # cargo test is not run here: kata src/ files intentionally contain
+      # unimplemented todo!()s for students to fill in (see solutions job in
+      # ci.yml, which validates the reference solutions instead).
       - run: cargo build --workspace --exclude ownership-borrowing
-      - run: cargo test --workspace --exclude ownership-borrowing

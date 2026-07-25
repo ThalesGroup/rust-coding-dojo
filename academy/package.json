@@ -24,7 +24,7 @@
     "@wllama/wllama": "^3.5.1",
     "chart.js": "^4.4.6",
     "codemirror": "^6.0.1",
-    "dompurify": "^3.4.11",
+    "dompurify": "^3.4.12",
     "idb": "^8.0.0",
     "marked": "^18.0.5",
     "react": "^18.3.1",

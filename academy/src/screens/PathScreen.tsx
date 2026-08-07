@@ -116,7 +116,7 @@ export function PathScreen() {
               <div className="path-graal-title">At the end of the path… a surprise awaits 🤫</div>
               <div className="path-graal-desc">A legendary reward, sealed until the final challenge. No one knows what it is until it's unlocked.</div>
             </div>
-            <span className="btn btn--golden" style={{ padding: '9px 14px', fontSize: 11, whiteSpace: 'nowrap' }}>Voir la quête →</span>
+            <span className="btn btn--golden" style={{ padding: '9px 14px', fontSize: 11, whiteSpace: 'nowrap' }}>View the quest →</span>
           </button>
         )}
       </div>

@@ -162,24 +162,24 @@ function ensureModelLoaded() {
 }
 
 function buildPrompt(userMessage: string, context: FerrisContext) {
-  return `Contexte du kata :
+  return `Kata context:
 
-Titre : ${context.kataTitle}
-Concept : ${context.kataConcept ?? 'non renseigné'}
-Difficulté : ${context.kataDifficulty ?? 'non renseignée'}
+Title: ${context.kataTitle}
+Concept: ${context.kataConcept ?? 'not specified'}
+Difficulty: ${context.kataDifficulty ?? 'not specified'}
 
-Code actuel :
+Current code:
 \`\`\`rust
 ${context.code}
 \`\`\`
 
-Résultats des tests :
+Test results:
 ${formatTests(context.tests ?? [])}
 
-Sortie d'exécution :
+Execution output:
 ${formatOutput(context.output ?? [])}
 
-Question de l'apprenant :
+Learner's question:
 ${userMessage}`
 }
 
@@ -194,12 +194,12 @@ function buildRecentHistory(history: ChatMessage[]) {
 }
 
 function formatTests(tests: Array<{ name: string; pass: boolean }>) {
-  if (tests.length === 0) return 'Les tests n’ont pas encore été lancés.'
+  if (tests.length === 0) return 'Tests have not been run yet.'
   return tests.map((test) => `${test.pass ? 'PASS' : 'FAIL'} ${test.name}`).join('\n')
 }
 
 function formatOutput(output: Array<{ text: string }>) {
-  if (output.length === 0) return 'Aucune sortie disponible.'
+  if (output.length === 0) return 'No output available.'
   return output.map((line) => line.text).join('\n')
 }
 

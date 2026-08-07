@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24T19:38:01.537Z",
+  "generatedAt": "2026-08-07T07:24:57.740Z",
   "count": 36,
   "katas": [
     {
@@ -301,7 +301,7 @@
       "package": "nim-game",
       "level": "starter",
       "difficulty": "beginner",
-      "readme": "# NimGame\n\nKata for the STARTER package of the Rust coding DOJO\n\n## Level / Duration\n\nBeginner / 30 minutes\n\nThis kata as a part of the STARTER package targets Rust beginners.\n\n## Context\nThis kata is based on [Nim from Coding Dojo](https://codingdojo.org/kata/Nim/).\n\nJeu de Nim à deux joueurs. Start with a pile of sticks. Each turn, a player removes 1, 2, or 3 sticks. The player who takes the **last** stick **loses**.\n\nGiven an initial number of sticks, determine which player wins with optimal play.\n\n## Objective\nImplement `nim_winner(sticks: u32) -> &'static str` that returns `\"Player 1\"` or `\"Player 2\"` (the winner with optimal play).\n\n**Hint:** Think about multiples of 4 — positions that are losing for the current player follow a pattern.\n\n## Domains\n\n`Basics` `Pattern Matching` `Algorithms` `Game Theory`\n\n## How to run a kata\nAll katas share the same structure:\n```\n/XX-package/XX-kataname\n|- src\n|   main.rs\n|- solutions\n|   main.rs\nCargo.lock\nCargo.toml\n```\n\nRun the exercise:\n```bash\ncargo run\ncargo test\n```\n\nRun the solution:\n```bash\ncargo run --bin solutions\n```\n\n## Prerequisites\nThe SETUP package must have been completed\n\nAccess to the Rust documentation at https://doc.rust-lang.org/std/index.html\nAccess to the Rust book at https://doc.rust-lang.org/book/\n",
+      "readme": "# NimGame\n\nKata for the STARTER package of the Rust coding DOJO\n\n## Level / Duration\n\nBeginner / 30 minutes\n\nThis kata as a part of the STARTER package targets Rust beginners.\n\n## Context\nThis kata is based on [Nim from Coding Dojo](https://codingdojo.org/kata/Nim/).\n\nTwo-player Nim game. Start with a pile of sticks. Each turn, a player removes 1, 2, or 3 sticks. The player who takes the **last** stick **loses**.\n\nGiven an initial number of sticks, determine which player wins with optimal play.\n\n## Objective\nImplement `nim_winner(sticks: u32) -> &'static str` that returns `\"Player 1\"` or `\"Player 2\"` (the winner with optimal play).\n\n**Hint:** Think about multiples of 4 — positions that are losing for the current player follow a pattern.\n\n## Domains\n\n`Basics` `Pattern Matching` `Algorithms` `Game Theory`\n\n## How to run a kata\nAll katas share the same structure:\n```\n/XX-package/XX-kataname\n|- src\n|   main.rs\n|- solutions\n|   main.rs\nCargo.lock\nCargo.toml\n```\n\nRun the exercise:\n```bash\ncargo run\ncargo test\n```\n\nRun the solution:\n```bash\ncargo run --bin solutions\n```\n\n## Prerequisites\nThe SETUP package must have been completed\n\nAccess to the Rust documentation at https://doc.rust-lang.org/std/index.html\nAccess to the Rust book at https://doc.rust-lang.org/book/\n",
       "exercises": [
         {
           "name": "main.rs",

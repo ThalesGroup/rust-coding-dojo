@@ -148,13 +148,13 @@ for (const { full, rel } of kataDirs) {
   const solutionsDir = path.join(full, 'solutions')
   let solutionCode = readRustFiles(solutionsDir) || ''
 
-  const desc = readme.trim() || `Consulte le README.md du kata dans le dossier \`katas/${rel}/\``
+  const desc = readme.trim() || `See the kata's README.md in the \`katas/${rel}/\` folder`
 
   const tests = []
   if (starterCode.includes('todo!()') || starterCode.includes('todo!')) {
-    tests.push({ name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: '(c) => !/todo!\\s*\\(\\s*\\)/.test(c)' })
+    tests.push({ name: 'no_todo_remaining', description: 'No todo!() left', check: '(c) => !/todo!\\s*\\(\\s*\\)/.test(c)' })
   }
-  tests.push({ name: 'solution_pattern', description: 'Code non vide', check: '(c) => c.trim().length > 0' })
+  tests.push({ name: 'solution_pattern', description: 'Code not empty', check: '(c) => c.trim().length > 0' })
 
   const testsJson = tests.map(t =>
     `      { name: '${t.name}', description: '${t.description}', check: ${t.check} }`
@@ -183,10 +183,10 @@ for (const { full, rel } of kataDirs) {
   function escHint(s) {
     return s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\${/g, '\\${')
   }
-  const hint1 = escHint(`💡 Regarde le README.md dans \`katas/${rel}/\` pour les consignes.`)
-  const hint2 = escHint(`💡 Consulte la solution dans \`katas/${rel}/solutions/\` si tu bloques.`)
-  const hint3 = escHint(`💡 Ce kata n\u00e9cessite de comprendre les concepts avanc\u00e9s \u2014 relis le README.md.`)
-  const hint4 = escHint(`💡 Les fichiers solutions dans \`katas/${rel}/solutions/\` contiennent la correction.`)
+  const hint1 = escHint(`💡 Check the README.md in \`katas/${rel}/\` for the instructions.`)
+  const hint2 = escHint(`💡 Check the solution in \`katas/${rel}/solutions/\` if you're stuck.`)
+  const hint3 = escHint(`💡 This kata requires understanding advanced concepts \u2014 re-read the README.md.`)
+  const hint4 = escHint(`💡 The solution files in \`katas/${rel}/solutions/\` contain the fix.`)
   if (parsed.isBeginner) {
     lines.push(`      \`${hint1}\`,`)
     lines.push(`      \`${hint2}\``)

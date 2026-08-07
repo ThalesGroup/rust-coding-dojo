@@ -68,7 +68,7 @@ export function GraalScreen() {
     <div className="graal-screen graal-screen--locked">
       <div className="graal-content" style={{ textAlign: 'center' }}>
         <div style={{ fontFamily: 'JetBrains Mono', fontSize: 11, color: '#ffd08a', letterSpacing: '0.28em', textTransform: 'uppercase' }}>
-          La quête finale
+          The final quest
         </div>
 
         <div className="graal-mystery-box">

@@ -267,7 +267,7 @@ export function KataScreen() {
     outputLines.push({ text: '', color: '#4a6080' })
 
     if (solExecuted) {
-      const matchLabel = stdoutMatch ? '✓ identique' : '✗ différent'
+      const matchLabel = stdoutMatch ? '✓ identical' : '✗ different'
       const matchColor = stdoutMatch ? '#8af0c0' : '#ff8a5c'
       outputLines.push({ text: `   Output vs solution: ${matchLabel}`, color: matchColor })
     } else if (kata.solutionCode && kata.solutionCode.trim()) {
@@ -278,10 +278,10 @@ export function KataScreen() {
     setOutput(outputLines)
 
     const msg: ChatMessage = allPass
-      ? { role: 'ferris', text: `🎉 Les ${newTests.length} tests passent et la sortie correspond à la solution ! +${kata.xpReward} XP !`, timestamp: Date.now() }
+      ? { role: 'ferris', text: `🎉 All ${newTests.length} tests pass and the output matches the solution! +${kata.xpReward} XP!`, timestamp: Date.now() }
       : stdoutMatch
-        ? { role: 'ferris', text: `Pas encore — ${newTests.filter(t => !t.pass).map(t => t.name).join(', ')} échoue(nt). Clique 💡 Indice +1 si tu bloques.`, timestamp: Date.now() }
-        : { role: 'ferris', text: `La sortie de ton code ne correspond pas à la solution attendue. Vérifie les println!().`, timestamp: Date.now() }
+      ? { role: 'ferris', text: `Not yet — ${newTests.filter(t => !t.pass).map(t => t.name).join(', ')} failing. Click 💡 Hint +1 if you're stuck.`, timestamp: Date.now() }
+      : { role: 'ferris', text: `Your code's output doesn't match the expected solution. Check your println!() calls.`, timestamp: Date.now() }
 
     setChat(prev => [...prev, msg])
 

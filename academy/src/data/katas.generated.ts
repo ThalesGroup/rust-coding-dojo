@@ -101,8 +101,8 @@ We can just run the exercise by calling \`cargo run --bin <exercise_n>\` to run 
 
 - Join the Rust community on forums such as the Rust Users Forum ([https://users.rust-lang.org/](https://users.rust-lang.org/)) or the Rust subreddit ([https://www.reddit.com/r/rust/](https://www.reddit.com/r/rust/)) for support and discussions.`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `fn main() {
     // See README.md
@@ -152,8 +152,8 @@ fn defeat_beast(health: i32, stamina: f32) -> String {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/00-rustward-sword/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/00-rustward-sword/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/00-rustward-sword/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/00-rustward-sword/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -228,8 +228,8 @@ Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 
 Acces to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `use std::fmt::{Display, Formatter, Result};
 
@@ -773,8 +773,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/01-roman-numerals/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/01-roman-numerals/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/01-roman-numerals/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/01-roman-numerals/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -862,7 +862,7 @@ Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 
 Acces to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `pub mod cli {
     pub fn print_header() {
@@ -1424,8 +1424,8 @@ impl RPNStack {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/02-rpn_calculator/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/02-rpn_calculator/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/02-rpn_calculator/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/02-rpn_calculator/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -1490,7 +1490,7 @@ Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 
 Acces to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `struct Container {
     str: String,
@@ -1718,8 +1718,8 @@ fn string_uppercase(data: &mut String) {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/01-starter/03-ownership-borrowing/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/01-starter/03-ownership-borrowing/solutions/\` contain the fix.`
     ],
   },
   {
@@ -1771,8 +1771,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO 1: Implement the fizz_buzz function that takes a u32 and returns a String.
 // - For multiples of 3, return "Fizz"
@@ -1865,8 +1865,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/04-fizzbuzz/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/04-fizzbuzz/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/04-fizzbuzz/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/04-fizzbuzz/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -1922,8 +1922,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO 1: Implement the is_leap_year function that takes a u32 year and returns a bool.
 // Rules:
@@ -2038,8 +2038,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/05-leap-years/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/05-leap-years/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/05-leap-years/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/05-leap-years/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -2099,8 +2099,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// A game of bowling consists of 10 frames.
 // Each roll knocks down 0-10 pins.
@@ -2238,8 +2238,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/06-bowling/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/06-bowling/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/06-bowling/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/06-bowling/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -2298,8 +2298,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO 1: Implement the add function that takes a string of comma-separated numbers and returns their sum as a Result.
 // Steps to implement:
@@ -2491,8 +2491,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/01-starter/07-string-calculator/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/01-starter/07-string-calculator/solutions/\` contain the fix.`
     ],
   },
   {
@@ -2550,8 +2550,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO 1: Implement the Tennis struct and its methods.
 // - new() creates a game with both players at 0
@@ -2766,8 +2766,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/01-starter/08-tennis/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/01-starter/08-tennis/solutions/\` contain the fix.`
     ],
   },
   {
@@ -2839,8 +2839,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO 1: Implement compute(n: u32) -> String
 // Rules:
@@ -2978,8 +2978,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/09-foobaqix/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/09-foobaqix/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/09-foobaqix/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/09-foobaqix/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -3004,7 +3004,7 @@ This kata as a part of the STARTER package targets Rust beginners.
 ## Context
 This kata is based on [Nim from Coding Dojo](https://codingdojo.org/kata/Nim/).
 
-Jeu de Nim à deux joueurs. Start with a pile of sticks. Each turn, a player removes 1, 2, or 3 sticks. The player who takes the **last** stick **loses**.
+Two-player Nim game. Start with a pile of sticks. Each turn, a player removes 1, 2, or 3 sticks. The player who takes the **last** stick **loses**.
 
 Given an initial number of sticks, determine which player wins with optimal play.
 
@@ -3046,8 +3046,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO 1: Implement nim_winner(sticks: u32) -> &'static str
 // Rules:
@@ -3145,8 +3145,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/10-nim-game/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/10-nim-game/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/10-nim-game/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/10-nim-game/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -3214,8 +3214,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement wrap(text: &str, column: usize) -> String
 // Rules:
@@ -3335,8 +3335,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/11-word-wrap/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/11-word-wrap/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/11-word-wrap/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/11-word-wrap/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -3420,8 +3420,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement to_lcd(number: &str) -> String
 // Each digit is 3 characters wide, represented on 3 lines.
@@ -3532,8 +3532,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/12-number-to-lcd/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/12-number-to-lcd/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/12-number-to-lcd/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/12-number-to-lcd/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -3612,8 +3612,8 @@ The SETUP package must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement score(dice: &[u32]) -> u32
 // Scoring rules:
@@ -3756,8 +3756,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/01-starter/13-greed/\` pour les consignes.`,
-      `💡 Consulte la solution dans \`katas/01-starter/13-greed/solutions/\` si tu bloques.`
+      `💡 Check the README.md in \`katas/01-starter/13-greed/\` for the instructions.`,
+      `💡 Check the solution in \`katas/01-starter/13-greed/solutions/\` if you're stuck.`
     ],
   },
   {
@@ -3880,8 +3880,8 @@ Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `/*
  * Section 5 : Combined Exercise
@@ -4348,7 +4348,7 @@ impl Sortable for CustomStruct {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/02-structure/00-basics/\` pour les consignes.`
+      `💡 Check the README.md in \`katas/02-structure/00-basics/\` for the instructions.`
     ],
   },
   {
@@ -4518,8 +4518,8 @@ Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `/*
  * Section 1 : Box Smart Pointers
@@ -5206,8 +5206,8 @@ impl TreeNode2 {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/01-smart-pointers/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/01-smart-pointers/solutions/\` contain the fix.`
     ],
   },
   {
@@ -5273,8 +5273,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement the Grid structure for Conway's Game of Life.
 // The grid is a 2D vector of booleans (true = alive, false = dead).
@@ -5495,8 +5495,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/02-game-of-life/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/02-game-of-life/solutions/\` contain the fix.`
     ],
   },
   {
@@ -5546,8 +5546,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement the annotate function that takes a minefield (Vec<&str> or Vec<String>)
 // and returns the annotated field where each safe square '.' is replaced by a digit
@@ -5731,8 +5731,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/03-minesweeper/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/03-minesweeper/solutions/\` contain the fix.`
     ],
   },
   {
@@ -5797,8 +5797,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement Card and Suit types
 
@@ -6179,8 +6179,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/04-poker-hands/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/04-poker-hands/solutions/\` contain the fix.`
     ],
   },
   {
@@ -6239,8 +6239,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement the diamond function that takes a char (A-Z) and returns
 // a vector of strings representing the diamond shape.
@@ -6360,8 +6360,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/05-diamond/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/05-diamond/solutions/\` contain the fix.`
     ],
   },
   {
@@ -6411,8 +6411,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement the Yahtzee scoring system
 // Categories: Ones, Twos, ..., Sixes = sum of matching dice
@@ -6649,8 +6649,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/06-yahtzee/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/06-yahtzee/solutions/\` contain the fix.`
     ],
   },
   {
@@ -6705,8 +6705,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement berlin_clock(time: &str) -> String
 // Input: "HH:MM:SS"
@@ -6812,8 +6812,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/07-berlin-clock/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/07-berlin-clock/solutions/\` contain the fix.`
     ],
   },
   {
@@ -6870,7 +6870,7 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// This is the legacy code of the Gilded Rose inn.
 // TODO 1: Write tests to characterize existing behavior (Characterization Tests)
@@ -7124,8 +7124,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/08-gilded-rose/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/08-gilded-rose/solutions/\` contain the fix.`
     ],
   },
   {
@@ -7180,8 +7180,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement integer range with open/closed bounds
 // Notation: [a,b) = closed start, open end
@@ -7388,8 +7388,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/09-range/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/09-range/solutions/\` contain the fix.`
     ],
   },
   {
@@ -7439,8 +7439,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement Birthday Greetings with Hexagonal Architecture
 //
@@ -7662,8 +7662,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/10-birthday-greetings/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/10-birthday-greetings/solutions/\` contain the fix.`
     ],
   },
   {
@@ -7713,8 +7713,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement Wallet valuation system
 //
@@ -7930,8 +7930,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/11-wallet/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/11-wallet/solutions/\` contain the fix.`
     ],
   },
   {
@@ -7981,8 +7981,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement a two-player Trading Card Game
 //
@@ -8283,8 +8283,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/12-trading-card-game/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/12-trading-card-game/solutions/\` contain the fix.`
     ],
   },
   {
@@ -8334,8 +8334,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement a simple social network
 //
@@ -8566,8 +8566,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/13-social-network/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/13-social-network/solutions/\` contain the fix.`
     ],
   },
   {
@@ -8617,8 +8617,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement anagrams_of(word: &str, candidates: &[&str]) -> Vec<String>
 //
@@ -8746,8 +8746,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/14-anagram/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/14-anagram/solutions/\` contain the fix.`
     ],
   },
   {
@@ -8797,8 +8797,8 @@ The SETUP and STARTER packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Parse OCR account numbers
 //
@@ -8973,8 +8973,8 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Ce kata nécessite de comprendre les concepts avancés — relis le README.md.`,
-      `💡 Les fichiers solutions dans \`katas/02-structure/15-bank-ocr/solutions/\` contiennent la correction.`
+      `💡 This kata requires understanding advanced concepts — re-read the README.md.`,
+      `💡 The solution files in \`katas/02-structure/15-bank-ocr/solutions/\` contain the fix.`
     ],
   },
   {
@@ -9043,8 +9043,8 @@ The SETUP, STARTER and STRUCTURE packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `mod map;
 mod rover;
@@ -9346,7 +9346,7 @@ impl Rover {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/03-advanced/00-mars-rover/\` pour les consignes.`
+      `💡 Check the README.md in \`katas/03-advanced/00-mars-rover/\` for the instructions.`
     ],
   },
   {
@@ -9396,8 +9396,8 @@ The SETUP, STARTER and STRUCTURE packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement a Sudoku solver using constraint propagation
 //
@@ -9736,7 +9736,7 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/03-advanced/01-sudoku/\` pour les consignes.`
+      `💡 Check the README.md in \`katas/03-advanced/01-sudoku/\` for the instructions.`
     ],
   },
   {
@@ -9790,8 +9790,8 @@ The SETUP, STARTER and STRUCTURE packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement Langton's Ant simulation
 //
@@ -10046,7 +10046,7 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/03-advanced/02-langton-ant/\` pour les consignes.`
+      `💡 Check the README.md in \`katas/03-advanced/02-langton-ant/\` for the instructions.`
     ],
   },
   {
@@ -10107,8 +10107,8 @@ The SETUP, STARTER and STRUCTURE packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement a Brainfuck interpreter
 //
@@ -10304,7 +10304,7 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/03-advanced/03-brainfuck/\` pour les consignes.`
+      `💡 Check the README.md in \`katas/03-advanced/03-brainfuck/\` for the instructions.`
     ],
   },
   {
@@ -10358,8 +10358,8 @@ The SETUP, STARTER and STRUCTURE packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement a Mathematical AST with Visitor pattern
 //
@@ -10574,7 +10574,7 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/03-advanced/04-mathematical-ast/\` pour les consignes.`
+      `💡 Check the README.md in \`katas/03-advanced/04-mathematical-ast/\` for the instructions.`
     ],
   },
   {
@@ -10626,8 +10626,8 @@ The SETUP, STARTER and STRUCTURE packages must have been completed
 Access to the Rust documentation at https://doc.rust-lang.org/std/index.html
 Access to the Rust book at https://doc.rust-lang.org/book/`,
     tests: [
-      { name: 'no_todo_remaining', description: 'Aucun todo!() restant', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
-      { name: 'solution_pattern', description: 'Code non vide', check: (c) => c.trim().length > 0 }
+      { name: 'no_todo_remaining', description: 'No todo!() left', check: (c) => !/todo!\s*\(\s*\)/.test(c) },
+      { name: 'solution_pattern', description: 'Code not empty', check: (c) => c.trim().length > 0 }
     ],
     starterCode: `// TODO: Implement concurrent Christmas Delivery
 //
@@ -10801,7 +10801,7 @@ mod tests {
 }
 `,
     hints: [
-      `💡 Regarde le README.md dans \`katas/03-advanced/05-christmas-delivery/\` pour les consignes.`
+      `💡 Check the README.md in \`katas/03-advanced/05-christmas-delivery/\` for the instructions.`
     ],
   },
 ]

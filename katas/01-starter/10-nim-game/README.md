@@ -11,7 +11,7 @@ This kata as a part of the STARTER package targets Rust beginners.
 ## Context
 This kata is based on [Nim from Coding Dojo](https://codingdojo.org/kata/Nim/).
 
-Jeu de Nim à deux joueurs. Start with a pile of sticks. Each turn, a player removes 1, 2, or 3 sticks. The player who takes the **last** stick **loses**.
+Two-player Nim game. Start with a pile of sticks. Each turn, a player removes 1, 2, or 3 sticks. The player who takes the **last** stick **loses**.
 
 Given an initial number of sticks, determine which player wins with optimal play.
 

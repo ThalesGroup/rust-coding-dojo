@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: taiki-e/install-action@v2.85.4
+      - uses: taiki-e/install-action@v2.86.3
         with:
           tool: cargo-deny
       - run: cargo deny check advisories bans sources

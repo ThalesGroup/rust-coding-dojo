@@ -105,7 +105,7 @@ jobs:
           toolchain: stable
       - uses: Swatinem/rust-cache@v2
       - run: cargo generate-lockfile
-      - uses: taiki-e/install-action@v2.85.4
+      - uses: taiki-e/install-action@v2.86.3
         with:
           tool: cargo-audit
       - run: cargo audit
